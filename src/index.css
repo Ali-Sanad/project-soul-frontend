@@ -3,3 +3,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+}
+
+.alert {
+  @apply fixed top-10 right-0 p-10 w-72 h-16  text-xs text-justify font-bold cursor-pointer tracking-wider;
+}
+
+.card {
+  @apply bg-white rounded-md overflow-hidden shadow-2xl relative;
+}
