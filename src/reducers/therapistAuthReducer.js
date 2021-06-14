@@ -1,9 +1,9 @@
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  LOGIN_FAIL,
-  LOGIN_SUCCESS,
-  LOGOUT,
+  THERAPIST_REGISTER_SUCCESS,
+  THERAPIST_REGISTER_FAIL,
+  THERAPIST_LOGIN_FAIL,
+  THERAPIST_LOGIN_SUCCESS,
+  THERAPIST_LOGOUT,
 } from "../actions/types";
 
 const initialState = {
@@ -18,8 +18,8 @@ function therapistAuthReducer(state = initialState, action) {
   console.log("Action", action);
 
   switch (type) {
-    case REGISTER_SUCCESS:
-    case LOGIN_SUCCESS:
+    case THERAPIST_REGISTER_SUCCESS:
+    case THERAPIST_LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
       return {
         ...state,
@@ -28,8 +28,8 @@ function therapistAuthReducer(state = initialState, action) {
         loading: false,
       };
 
-    case REGISTER_FAIL:
-    case LOGIN_FAIL:
+    case THERAPIST_REGISTER_FAIL:
+    case THERAPIST_LOGIN_FAIL:
       localStorage.removeItem("token");
       return {
         ...state,
@@ -38,7 +38,7 @@ function therapistAuthReducer(state = initialState, action) {
         loading: false,
       };
 
-    case LOGOUT:
+    case THERAPIST_LOGOUT:
       localStorage.removeItem("token");
 
       return {

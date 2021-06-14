@@ -4,11 +4,11 @@ import Alert from "@material-ui/lab/Alert";
 import { setAlert } from "./alert";
 
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
+  THERAPIST_REGISTER_SUCCESS,
+  THERAPIST_REGISTER_FAIL,
+  THERAPIST_LOGIN_SUCCESS,
+  THERAPIST_LOGIN_FAIL,
+  THERAPIST_LOGOUT,
 } from "./types";
 
 // Register User
@@ -33,7 +33,7 @@ export const register =
       const res = await api.post("/therapist/signup", body, config);
       console.log("res.data", res);
       dispatch({
-        type: REGISTER_SUCCESS,
+        type: THERAPIST_REGISTER_SUCCESS,
         payload: res.data,
       });
       console.log("res", res);
@@ -51,7 +51,7 @@ export const register =
           dispatch(setAlert(error, "danger"));
         }
         dispatch({
-          type: REGISTER_FAIL,
+          type: THERAPIST_REGISTER_FAIL,
         });
       }
     }
@@ -79,7 +79,7 @@ export const login =
       dispatch(<Alert severity="success">SUCESS</Alert>);
       // dispatch(setAlert("sucess", "primary"), 5);
       dispatch({
-        type: LOGIN_SUCCESS,
+        type: THERAPIST_LOGIN_SUCCESS,
         payload: res.data,
       });
     } catch (err) {
@@ -99,7 +99,7 @@ export const login =
         }
 
         dispatch({
-          type: LOGIN_FAIL,
+          type: THERAPIST_LOGIN_FAIL,
         });
       }
     }
@@ -107,5 +107,5 @@ export const login =
 
 // // Logout
 export const logout = () => (dispatch) => {
-  dispatch({ type: LOGOUT });
+  dispatch({ type: THERAPIST_LOGOUT });
 };
