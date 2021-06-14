@@ -39,7 +39,6 @@ function therapistAuthReducer(state = initialState, action) {
     case THERAPIST_REGISTER_FAIL:
     case THERAPIST_LOGIN_FAIL:
     case THERAPIST_LOGOUT:
-      // localStorage.removeItem('token');
       return {
         ...state,
         token: null,

@@ -115,10 +115,10 @@ const LoginTherapist = ({login, setAlert, isAuthenticated, therapist}) => {
             value={password}
             onChange={(e) => onChange(e)}
           />
-          <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
-            label='Remember me'
-          />
+          {/* <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          /> */}
           <Button
             type='submit'
             fullWidth
