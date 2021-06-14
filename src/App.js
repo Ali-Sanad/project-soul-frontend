@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 // import Navbar from './components/layout/Navbar';
 import LandingPage from './components/layout/LandingPage';
 import Alert from './components/layout/Alert';
+import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
 // import AllRoutes from './components/routes/AllRoutes';
 import {LOGOUT} from './actions/types';
@@ -39,6 +40,7 @@ const App = () => {
           <Route path='/' exact component={LandingPage} />
           <Route path='/login' exact component={Login} />
           <Route path='/register' exact component={Register} />
+          <Route path='/admin-dashboard' exact component={AdminDashboard} />
         </Switch>
       </BrowserRouter>
     </Provider>

@@ -11,6 +11,7 @@ import {
   //   PROFILE_ERROR,
   //   USER_IMAGE,
 } from './types';
+import {setAlert} from './alert';
 
 //load user
 export const loadUser = () => async (dispatch) => {
@@ -41,11 +42,11 @@ export const register = (formData) => async (dispatch) => {
     });
     dispatch(loadUser());
   } catch (err) {
-    // const errors = err.response.data.errors;
+    const errors = err.response.data.errors;
 
-    // if (errors) {
-    //   errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    // }
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
+    }
     dispatch({
       type: REGISTER_FAIL,
     });
@@ -64,11 +65,11 @@ export const login = (formData) => async (dispatch) => {
     });
     dispatch(loadUser());
   } catch (err) {
-    // const errors = err.response.data.errors;
+    const errors = err.response.data.errors;
 
-    // if (errors) {
-    //   errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    // }
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
+    }
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -77,6 +78,7 @@ export const login = (formData) => async (dispatch) => {
 
 //logout
 export const logout = () => (dispatch) => {
+  dispatch(setAlert('Logged out successfully', 'success'));
   dispatch({
     type: LOGOUT,
   });

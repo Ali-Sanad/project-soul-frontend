@@ -32,7 +32,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Passwords do not match', 'red', 4000);
+      setAlert('Passwords do not match', 'error');
     } else {
       register({name, email, password});
     }
@@ -42,97 +42,104 @@ const Register = ({setAlert, register, isAuthenticated}) => {
     return <Redirect to='/' />;
   }
 
-  const eye1 = (
-    <i
-      className={passwordShown1 ? 'fa fa-eye' : 'fa fa-eye-slash'}
-      aria-hidden='true'
-      style={{
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        cursor: 'pointer',
-      }}
-      onClick={() => togglePasswordVisiblity1()}
-    ></i>
-  );
-
-  const eye2 = (
-    <i
-      className={passwordShown2 ? 'fa fa-eye' : 'fa fa-eye-slash'}
-      aria-hidden='true'
-      style={{
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        cursor: 'pointer',
-      }}
-      onClick={() => togglePasswordVisiblity2()}
-    ></i>
-  );
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
-    >
-      <h4 className='large text-primary'>Sign Up</h4>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
-      </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={name}
-            onChange={(e) => onChange(e)}
-            required
-          />
+    <>
+      <div className=' mx-auto card rounded-lg  mt-6 mb-12 sm:w-4/5 md:w-1/2 lg:w-2/6 w-5/6'>
+        <div className='mx-auto mt-6 ml-12 w-4/5'>
+          <h4 className=' text-4xl bold my-2 text-blue-500'>Join Us </h4>
+          <p className='text-md'>Make the most out of your life</p>
         </div>
-        <div className='form-group'>
+        <form className='mt-2' onSubmit={(e) => onSubmit(e)}>
+          <div className=' mt-6 '>
+            <input
+              className='block mx-auto mt-2  w-4/5 p-3 rounded-md
+            border border-gray-900  focus:outline-none
+            focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+            '
+              type='text'
+              placeholder='Name'
+              name='name'
+              value={name}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className='mt-6'>
+            <input
+              className='block mx-auto mt-6  w-4/5 p-3 rounded-md
+            border border-gray-900  focus:outline-none
+             focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+             '
+              type='email'
+              placeholder='Email'
+              name='email'
+              value={email}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className='relative mx-auto  mt-6'>
+            <input
+              className='block mx-auto mt-6  w-4/5 p-3 rounded-md
+             border border-gray-900 focus:outline-none
+               focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+              '
+              type={passwordShown1 ? 'text' : 'password'}
+              placeholder='Password'
+              name='password'
+              minLength='6'
+              value={password}
+              onChange={(e) => onChange(e)}
+              required
+            />
+            <span
+              className=' absolute text-md text-blue-500  cursor-pointer
+              md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
+              aria-hidden='true'
+              onClick={() => togglePasswordVisiblity1()}
+            >
+              {passwordShown1 ? 'hide' : 'show'}
+            </span>
+          </div>
+          <div className='relative mx-auto  mt-6'>
+            <input
+              className='block mx-auto mt-6  w-4/5 p-3 rounded-md
+              border border-gray-900 focus:outline-none
+              focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+              '
+              type={passwordShown2 ? 'text' : 'password'}
+              placeholder='Confirm Password'
+              name='password2'
+              minLength='6'
+              value={password2}
+              onChange={(e) => onChange(e)}
+              required
+            />
+            <span
+              className=' absolute text-md text-blue-500  cursor-pointer
+             md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
+              aria-hidden='true'
+              onClick={() => togglePasswordVisiblity2()}
+            >
+              {passwordShown2 ? 'hide' : 'show'}
+            </span>
+          </div>
           <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={(e) => onChange(e)}
-            required
+            type='submit'
+            className=' block mx-auto mt-12 mb-12  bg-blue-500 hover:bg-blue-800 w-4/5 p-4 rounded-full text-white
+           outline-none
+           shadow-sm cursor-pointer'
+            value='Register'
           />
-        </div>
-        <div className='form-group' style={{position: 'relative'}}>
-          <input
-            type={passwordShown1 ? 'text' : 'password'}
-            placeholder='Password'
-            name='password'
-            minLength='6'
-            value={password}
-            onChange={(e) => onChange(e)}
-            required
-          />
-          {eye1}
-        </div>
-        <div className='form-group' style={{position: 'relative'}}>
-          <input
-            type={passwordShown2 ? 'text' : 'password'}
-            placeholder='Confirm Password'
-            name='password2'
-            minLength='6'
-            value={password2}
-            onChange={(e) => onChange(e)}
-            required
-          />
-          {eye2}
-        </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
-      </form>
-      <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
-      </p>
-    </div>
+        </form>
+        <p className=' block text-center mt-12 mb-12'>
+          Already on Soul?{' '}
+          <span className=' text-blue-500  font-bold '>
+            <Link to='/login'>Sign In</Link>
+          </span>
+        </p>
+      </div>
+    </>
   );
 };
 

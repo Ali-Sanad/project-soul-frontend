@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {login} from '../../actions/auth';
+import {setAlert} from '../../actions/alert';
 
-const Login = ({login, isAuthenticated, user}) => {
+const Login = ({login, isAuthenticated, user, setAlert}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -23,17 +24,24 @@ const Login = ({login, isAuthenticated, user}) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+
     login(formData);
   };
 
   if (isAuthenticated && user) {
-    return <Redirect to='/' />;
+    if (user.isAdmin === false) {
+      setAlert('User logged in successfully', 'success');
+      return <Redirect to='/' />;
+    } else if (user.isAdmin === true) {
+      setAlert('Admin logged in successfully', 'success');
+      return <Redirect to='/admin-dashboard' />;
+    }
   }
   return (
     <>
-      <div className=' mx-auto card rounded-md  mt-24 md:w-4/12 w-4/6  '>
+      <div className=' mx-auto card rounded-lg  mt-24 mb-12 sm:w-4/5 md:w-1/2 lg:w-2/6 w-5/6  '>
         <div className='mx-auto mt-6 ml-12 w-4/5'>
-          <h4 className=' text-3xl bold my-2'>Sign In</h4>
+          <h4 className=' text-4xl bold my-2 text-blue-500'>Sign In</h4>
           <p className='text-sm'>Stay updated in your mintal world</p>
         </div>
 
@@ -45,7 +53,7 @@ const Login = ({login, isAuthenticated, user}) => {
              focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
             '
               type='email'
-              placeholder='Email Address'
+              placeholder='Email'
               name='email'
               value={email}
               onChange={(e) => onChange(e)}
@@ -69,7 +77,7 @@ const Login = ({login, isAuthenticated, user}) => {
             />
             <span
               className=' absolute text-md text-blue-500  cursor-pointer
-            md:top-3 md:right-13 lg:right-14   top-3   right-14  '
+            md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
               aria-hidden='true'
               onClick={() => togglePasswordVisiblity()}
             >
@@ -85,16 +93,16 @@ const Login = ({login, isAuthenticated, user}) => {
             value='Sign in'
           />
         </form>
-      </div>
 
-      <p className=' block text-center mt-12'>
-        New to Soul?
-        <span className=' text-blue-500  font-bold '>
-          <Link to='/register'>
-            <span> </span>Join now
-          </Link>
-        </span>
-      </p>
+        <p className=' block text-center mt-12 mb-12'>
+          New to Soul?
+          <span className=' text-blue-500  font-bold '>
+            <Link to='/register'>
+              <span> </span>Join now
+            </Link>
+          </span>
+        </p>
+      </div>
     </>
   );
 };
@@ -103,6 +111,7 @@ Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
+  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -112,4 +121,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(mapStateToProps, {login, setAlert})(Login);

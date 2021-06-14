@@ -2,14 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-const Alert = ({alerts}) =>
-  alerts !== null &&
-  alerts.length > 0 &&
-  alerts.map((alert) => (
-    <div key={alert.id} className={`alert bg-${alert.alertType}-500`}>
-      {alert.msg}
-    </div>
-  ));
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import {makeStyles} from '@material-ui/core/styles';
+
+function AlertUI(props) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
+const Alert = ({alerts}) => {
+  const classes = useStyles();
+
+  return (
+    <>
+      {alerts !== null &&
+        alerts.length > 0 &&
+        alerts.map((alert) => (
+          <div className={classes.root}>
+            <Snackbar
+              open={true}
+              autoHideDuration={alert.timeout}
+              anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+            >
+              <AlertUI severity={alert.alertType}>{alert.msg}</AlertUI>
+            </Snackbar>
+          </div>
+        ))}
+    </>
+  );
+};
 
 Alert.propTypes = {
   alerts: PropTypes.array.isRequired,
