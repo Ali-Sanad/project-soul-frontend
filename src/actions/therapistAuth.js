@@ -57,7 +57,6 @@ export const register =
         payload: res.data,
       });
       // console.log('res', res);
-      dispatch(setAlert('Account created successfully', 'success'));
       dispatch(loadTherapist());
     } catch (err) {
       if (err.response) {
@@ -101,7 +100,6 @@ export const login =
         payload: res.data,
       });
       dispatch(loadTherapist());
-      dispatch(setAlert('Therapist logged in successfully ', 'success'));
     } catch (err) {
       console.log('errrr', err);
       if (err.response) {
@@ -125,6 +123,6 @@ export const login =
 
 // // Logout
 export const therapist_logout = () => (dispatch) => {
-  dispatch({type: THERAPIST_LOGOUT});
   dispatch(setAlert('Logged out successfully', 'success'));
+  dispatch({type: THERAPIST_LOGOUT});
 };
