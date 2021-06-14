@@ -20,5 +20,9 @@ store.subscribe(() => {
     const token = currentState.auth.token;
     setAuthToken(token);
   }
+  if (previousState.therapistAuth.token !== currentState.therapistAuth.token) {
+    const token = currentState.therapistAuth.token;
+    setAuthToken(token);
+  }
 });
 export default store;

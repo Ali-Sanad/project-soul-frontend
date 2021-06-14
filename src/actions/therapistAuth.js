@@ -1,23 +1,43 @@
-import api from "../utils/api";
-import Alert from "@material-ui/lab/Alert";
+import axios from '../utils/api';
+// import Alert from '@material-ui/lab/Alert';
 
-import { setAlert } from "./alert";
+import {setAlert} from './alert';
 
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from "./types";
+  THERAPIST_REGISTER_SUCCESS,
+  THERAPIST_REGISTER_FAIL,
+  THERAPIST_LOGIN_SUCCESS,
+  THERAPIST_LOGIN_FAIL,
+  THERAPIST_LOADED,
+  THERAPIST_LOGOUT,
+  THERAPIST_AUTH_ERROR,
+} from './types';
 
-// Register User
+//load therapist
+export const loadTherapist = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/therapist/me');
+    console.log(res.data);
+
+    dispatch({
+      type: THERAPIST_LOADED,
+      payload: res.data,
+    });
+  } catch (err) {
+    // console.log(123);
+    dispatch({
+      type: THERAPIST_AUTH_ERROR,
+    });
+  }
+};
+
+// Register therapist
 export const register =
-  ({ fname, lname, email, password, confirmPassword }) =>
+  ({fname, lname, email, password, confirmPassword}) =>
   async (dispatch) => {
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
     const body = JSON.stringify({
@@ -27,85 +47,84 @@ export const register =
       password,
       confirmPassword,
     });
-    console.log("body", body);
+    // console.log('body', body);
     try {
-      console.log("try");
-      const res = await api.post("/therapist/signup", body, config);
-      console.log("res.data", res);
+      // console.log('try');
+      const res = await axios.post('/therapist/signup', body, config);
+      // console.log('res.data', res);
       dispatch({
-        type: REGISTER_SUCCESS,
+        type: THERAPIST_REGISTER_SUCCESS,
         payload: res.data,
       });
-      console.log("res", res);
-      dispatch(setAlert("sucess", "primary"));
+      // console.log('res', res);
+      dispatch(setAlert('Account created successfully', 'success'));
+      dispatch(loadTherapist());
     } catch (err) {
       if (err.response) {
-        console.log("err.response", err.response.data.errors);
-        console.log("err");
-        console.log("e", err);
+        // console.log('err.response', err.response.data.errors);
+        // console.log('err');
+        // console.log('e', err);
         const error = err.response.data.errors.err;
 
         console.log(error);
 
         if (error) {
-          dispatch(setAlert(error, "danger"));
+          dispatch(setAlert(error.message, 'error'));
         }
         dispatch({
-          type: REGISTER_FAIL,
+          type: THERAPIST_REGISTER_FAIL,
         });
       }
     }
   };
 
-// Login User
+// Login therapist
 export const login =
-  ({ email, password }) =>
+  ({email, password}) =>
   async (dispatch) => {
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
     const body = JSON.stringify({
       email,
       password,
     });
-    console.log("body", body);
+    // console.log('body', body);
 
     try {
-      const res = await api.post("/therapist/login", body, config);
-      //<Alert sverity="success">SUCESS</Alert>;
+      const res = await axios.post('/therapist/login', body, config);
 
-      dispatch(<Alert severity="success">SUCESS</Alert>);
-      // dispatch(setAlert("sucess", "primary"), 5);
       dispatch({
-        type: LOGIN_SUCCESS,
+        type: THERAPIST_LOGIN_SUCCESS,
         payload: res.data,
       });
+      dispatch(loadTherapist());
+      dispatch(setAlert('Therapist logged in successfully ', 'success'));
     } catch (err) {
-      console.log("errrr", err);
+      console.log('errrr', err);
       if (err.response) {
-        console.log("err.response", err.response.data.err);
-        console.log("err");
-        console.log("e", err);
+        // console.log('err.response', err.response.data.err);
+        // console.log('err');
+        // console.log('e', err);
         const error = err.response.data.errors.err;
 
-        console.log(error);
+        // console.log(error);
 
         if (error) {
-          dispatch(<Alert severity="error">{error}</Alert>);
-
-          //  dispatch(setAlert(error, "danger"));
+          dispatch(setAlert(error, 'error'));
         }
 
         dispatch({
-          type: LOGIN_FAIL,
+          type: THERAPIST_LOGIN_FAIL,
         });
       }
     }
   };
 
 // // Logout
-export const logout = () => (dispatch) => {
-  dispatch({ type: LOGOUT });
+export const therapist_logout = () => (dispatch) => {
+  dispatch({type: THERAPIST_LOGOUT});
+  dispatch(setAlert('Logged out successfully', 'success'));
 };

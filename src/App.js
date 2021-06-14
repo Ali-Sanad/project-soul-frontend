@@ -7,12 +7,13 @@ import Alert from './components/layout/Alert';
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
 // import AllRoutes from './components/routes/AllRoutes';
-import {LOGOUT} from './actions/types';
+import {LOGOUT, THERAPIST_LOGOUT} from './actions/types';
 //state redux
 import {Provider} from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import {loadUser} from './actions/auth';
+import {loadTherapist} from './actions/therapistAuth';
 //components
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -26,11 +27,15 @@ const App = () => {
       setAuthToken(localStorage.token);
     }
 
+    store.dispatch(loadTherapist());
     store.dispatch(loadUser());
 
     //logout user from all tabes if he logged out from one tabe
     window.addEventListener('storage', () => {
-      if (!localStorage.token) store.dispatch({type: LOGOUT});
+      if (!localStorage.token) {
+        store.dispatch({type: THERAPIST_LOGOUT});
+        store.dispatch({type: LOGOUT});
+      }
     });
   }, []);
 
