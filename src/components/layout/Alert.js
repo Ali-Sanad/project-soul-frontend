@@ -26,14 +26,16 @@ const Alert = ({alerts}) => {
     <>
       {alerts !== null &&
         alerts.length > 0 &&
-        alerts.map((alert) => (
-          <div className={classes.root}>
+        alerts.map((alert, idx) => (
+          <div className={classes.root} key={idx}>
             <Snackbar
               open={true}
               autoHideDuration={alert.timeout}
               anchorOrigin={{vertical: 'top', horizontal: 'right'}}
             >
-              <AlertUI severity={alert.alertType}>{alert.msg}</AlertUI>
+              <AlertUI key={alert.id} severity={alert.alertType}>
+                {alert.msg}
+              </AlertUI>
             </Snackbar>
           </div>
         ))}
@@ -42,7 +44,7 @@ const Alert = ({alerts}) => {
 };
 
 Alert.propTypes = {
-  alerts: PropTypes.array.isRequired,
+  alerts: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {
