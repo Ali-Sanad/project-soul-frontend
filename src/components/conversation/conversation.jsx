@@ -33,7 +33,7 @@ const Conversation = ({ conversationMembers: { members }, currentUser }) => {
           className="conversationImg"
           alt=""
         />
-        <span className="conversationName">{user ? user.name : "m"}</span>
+        <span className="conversationName">{user ? user.name : ""}</span>
       </div>
     </>
   );

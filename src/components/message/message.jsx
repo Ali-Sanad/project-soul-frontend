@@ -1,6 +1,7 @@
 import "./message.css";
+import { format } from "timeago.js";
 
-const Message = ({ own }) => {
+const Message = ({ message, own }) => {
   return (
     <>
       <div className={own ? "message own" : "message"}>
@@ -10,14 +11,9 @@ const Message = ({ own }) => {
             className="messageImg"
             alt=""
           />
-          <p className="messageText">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sit
-            dolor quas omnis recusandae, debitis molestiae optio eum, distinctio
-            ad voluptatem ex perferendis voluptatum facilis minima excepturi
-            adipisci illum in.
-          </p>
+          <p className="messageText">{message.Text}</p>
         </div>
-        <div className="messageBottom"> 1 hour ago</div>
+        <div className="messageBottom"> {format(message.createdAt)}</div>
       </div>
     </>
   );

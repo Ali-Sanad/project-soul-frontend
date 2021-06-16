@@ -20,6 +20,7 @@ import Register from "./components/auth/Register";
 import LoginTherapist from "./components/auth/loginTherapist";
 import RegisterThreapist from "./components/auth/registerTherapist";
 import Messenger from "../src/components/layout/messenger/messenger";
+import Video from "./components/video/video";
 
 const App = () => {
   useEffect(() => {
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/register" exact component={Register} />
           <Route path="/admin-dashboard" exact component={AdminDashboard} />
           <Route exact path="/logintherapist" component={LoginTherapist} />
+          <Route exact path="/video" component={Video}/>
           <Route
             exact
             path="/registertherapist"
