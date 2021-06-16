@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
@@ -12,7 +12,10 @@ const Messenger = ({ user }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
+  const scrollRef = useRef();
+
   // determine user => will be fetched from redux
+
   console.log(user);
 
   useEffect(() => {
@@ -68,6 +71,10 @@ const Messenger = ({ user }) => {
     }
   };
 
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <>
       <div className="messenger">
@@ -94,7 +101,7 @@ const Messenger = ({ user }) => {
                 <div className="chatBoxTop">
                   {messages.map((message) => {
                     return (
-                      <div>
+                      <div ref={scrollRef}>
                         <Message
                           message={message}
                           own={message.Sender === user._id}
