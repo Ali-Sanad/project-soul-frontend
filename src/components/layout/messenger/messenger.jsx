@@ -10,6 +10,7 @@ const Messenger = ({ user }) => {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
 
   // determine user => will be fetched from redux
   console.log(user);
@@ -47,6 +48,25 @@ const Messenger = ({ user }) => {
     getMessages();
   }, [currentChat]);
   console.log(messages);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const message = {
+      Sender: user._id,
+      Text: newMessage,
+      ConversationId: currentChat._id,
+    };
+    try {
+      const res = await axios.post(
+        "https://project-soul-api.herokuapp.com/api/messages/",
+        message
+      );
+      setMessages([...messages, res.data]);
+      setNewMessage("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -88,9 +108,13 @@ const Messenger = ({ user }) => {
                     rows="3"
                     placeholder="Write Some Thing..."
                     className="chatMessageInput"
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    value={newMessage}
                   ></textarea>
 
-                  <button className="chatSubmitButton">Send</button>
+                  <button className="chatSubmitButton" onClick={handleSubmit}>
+                    Send
+                  </button>
                 </div>{" "}
               </>
             ) : (
