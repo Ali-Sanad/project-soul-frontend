@@ -24,7 +24,6 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    // console.log(123);
     dispatch({
       type: AUTH_ERROR,
     });
@@ -40,8 +39,12 @@ export const register = (formData) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
-    dispatch(loadUser());
+    dispatch(setAlert('Account created successfully', 'success'));
   } catch (err) {
+    if (!err.response) {
+      return dispatch(setAlert('Account registeration failed', 'error'));
+    }
+
     const errors = err.response.data.errors;
 
     if (errors) {
@@ -57,7 +60,7 @@ export const register = (formData) => async (dispatch) => {
 export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/auth', formData);
-    // console.log(res.data);
+    console.log(res.data);
 
     dispatch({
       type: LOGIN_SUCCESS,

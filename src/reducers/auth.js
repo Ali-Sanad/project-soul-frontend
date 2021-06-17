@@ -30,6 +30,10 @@ const reducer = (state = initialState, action) => {
       };
 
     case REGISTER_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,

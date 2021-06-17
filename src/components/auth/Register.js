@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 
-const Register = ({setAlert, register, isAuthenticated}) => {
+const Register = ({history, setAlert, register, auth}) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,12 +35,11 @@ const Register = ({setAlert, register, isAuthenticated}) => {
       setAlert('Passwords do not match', 'error');
     } else {
       register({name, email, password});
-      setAlert('Account created successfully', 'success');
     }
   };
 
-  if (isAuthenticated) {
-    return <Redirect to='/' />;
+  if (auth.status === 'Pending') {
+    history.replace('/pending-verification');
   }
 
   return (
@@ -147,12 +146,12 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated,
+    auth: state.auth,
   };
 };
 

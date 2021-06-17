@@ -24,7 +24,6 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-
     login(formData);
   };
 
