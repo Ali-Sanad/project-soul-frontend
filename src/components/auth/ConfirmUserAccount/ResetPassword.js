@@ -11,14 +11,18 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
     setAuthToken(match.params.id);
   }, [match.params.id]);
 
+<<<<<<< HEAD
   const [formData, setFormData] = useState({
     password: "",
     newPassword: "",
   });
+=======
+  const [newPassword, setNewPassword] = useState('');
+>>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
 
-  const [passwordShown1, setPasswordShown1] = useState(false);
-  const [passwordShown2, setPasswordShown2] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
 
+<<<<<<< HEAD
   const { password, newPassword } = formData;
 
   const togglePasswordVisiblity1 = () => {
@@ -34,6 +38,18 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     resetPassword({ password, newPassword });
+=======
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
+
+  const onChange = (e) => {
+    setNewPassword(e.target.value);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    resetPassword({newPassword});
+>>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
   };
 
   if (auth.redirect === true) {
@@ -54,6 +70,7 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
               className="block mx-auto mt-6  w-4/5 p-3 rounded-md
             border border-gray-900 focus:outline-none
               focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+<<<<<<< HEAD
              "
               type={passwordShown1 ? "text" : "password"}
               placeholder="Password"
@@ -83,17 +100,33 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
               placeholder="New Password"
               name="newPassword"
               minLength="6"
+=======
+             '
+              type={passwordShown ? 'text' : 'password'}
+              placeholder='New Password'
+              name='password'
+              minLength='6'
+>>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
               value={newPassword}
               onChange={(e) => onChange(e)}
               required
             />
             <span
+<<<<<<< HEAD
               className=" absolute text-md text-blue-500  cursor-pointer
             md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14"
               aria-hidden="true"
               onClick={() => togglePasswordVisiblity2()}
             >
               {passwordShown2 ? "hide" : "show"}
+=======
+              className=' absolute text-md text-blue-500  cursor-pointer
+            md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
+              aria-hidden='true'
+              onClick={() => togglePasswordVisiblity()}
+            >
+              {passwordShown ? 'hide' : 'show'}
+>>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
             </span>
           </div>
 

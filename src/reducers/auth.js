@@ -60,8 +60,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: true,
-        user: null,
         redirect: true,
       };
     case FORGOT_PASSWORD:
