@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { resetPassword } from "../../../actions/auth";
+import { resetPassword } from "../../../actions/therapistAuth";
 import { Redirect } from "react-router-dom";
 
 import setAuthToken from "../../../utils/setAuthToken";
 
-const ResetPassword = ({ match, resetPassword, auth }) => {
+const TherapistResetPassword = ({ match, resetPassword, auth }) => {
   useEffect(() => {
     setAuthToken(match.params.id);
   }, [match.params.id]);
 
   const [formData, setFormData] = useState({
     password: "",
-    newPassword: "",
+    confirmPassword: "",
   });
 
   const [passwordShown1, setPasswordShown1] = useState(false);
   const [passwordShown2, setPasswordShown2] = useState(false);
 
-  const { password, newPassword } = formData;
+  const { password, confirmPassword } = formData;
 
   const togglePasswordVisiblity1 = () => {
     setPasswordShown1(!passwordShown1);
@@ -33,11 +33,11 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    resetPassword({ password, newPassword });
+    resetPassword(match.params.id, { password, confirmPassword });
   };
-
+  console.log("auth", auth);
   if (auth.redirect === true) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/logintherapist" />;
   }
 
   return (
@@ -80,10 +80,10 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
               focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
              "
               type={passwordShown2 ? "text" : "password"}
-              placeholder="New Password"
-              name="newPassword"
+              placeholder="confirm Password"
+              name="confirmPassword"
               minLength="6"
-              value={newPassword}
+              value={confirmPassword}
               onChange={(e) => onChange(e)}
               required
             />
@@ -109,13 +109,15 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
     </>
   );
 };
-ResetPassword.propTypes = {
+TherapistResetPassword.propTypes = {
   resetPassword: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.therapistAuth,
 });
 
-export default connect(mapStateToProps, { resetPassword })(ResetPassword);
+export default connect(mapStateToProps, { resetPassword })(
+  TherapistResetPassword
+);
