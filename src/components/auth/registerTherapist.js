@@ -52,7 +52,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RegisterTherapist = ({ register, setAlert, isAuthenticated }) => {
+const RegisterTherapist = ({
+  history,
+  register,
+  setAlert,
+  isAuthenticated,
+  auth,
+  therapist,
+}) => {
+  //  console.log("isauth", isAuthenticated);
   const classes = useStyles();
   const [formData, setFormData] = useState({
     fname: "",
@@ -72,12 +80,19 @@ const RegisterTherapist = ({ register, setAlert, isAuthenticated }) => {
       setAlert("password dont match", "error");
     } else {
       register({ fname, lname, email, password, confirmPassword });
-      setAlert("Account created successfully", "success");
+      // setAlert("Account created successfully", "success");
+      //  console.log("success");
+      //history.replace("/therapist-pending-verification");
     }
   };
-  if (isAuthenticated) {
-    return <h1>home</h1>;
+  // history.replace("/pending-therapist-verification");
+  console.log("ther", therapist);
+  console.log("isAurh", isAuthenticated);
+  console.log("auth", auth);
+  if (therapist) {
+    history.replace("/therapist-pending-verification");
   }
+  //if(auth.status==)
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -195,7 +210,11 @@ RegisterTherapist.propTypes = {
   isAuthenticated: propTypes.bool,
 };
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.therapistAuthReducer?.isAuthenticated,
+  auth: state.therapistAuth,
+
+  isAuthenticated: state.therapistAuth.isAuthenticated,
+  therapist: state.therapistAuth.therapist,
+  // isAuthenticated: state.therapistAuthReducer?.isAuthenticated,
 });
 export default connect(mapStateToProps, { setAlert, register })(
   RegisterTherapist

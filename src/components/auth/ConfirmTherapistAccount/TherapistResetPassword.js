@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { resetPassword } from "../../../actions/auth";
+import { resetPassword } from "../../../actions/therapistAuth";
 import { Redirect } from "react-router-dom";
 
 import setAuthToken from "../../../utils/setAuthToken";
 
-const ResetPassword = ({ match, resetPassword, auth }) => {
+const TherapistResetPassword = ({ match, resetPassword, auth }) => {
   useEffect(() => {
     setAuthToken(match.params.id);
   }, [match.params.id]);
 
-<<<<<<< HEAD
   const [formData, setFormData] = useState({
     password: "",
-    newPassword: "",
+    confirmPassword: "",
   });
-=======
-  const [newPassword, setNewPassword] = useState('');
->>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
 
-  const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordShown1, setPasswordShown1] = useState(false);
+  const [passwordShown2, setPasswordShown2] = useState(false);
 
-<<<<<<< HEAD
-  const { password, newPassword } = formData;
+  const { password, confirmPassword } = formData;
 
   const togglePasswordVisiblity1 = () => {
     setPasswordShown1(!passwordShown1);
@@ -37,23 +33,11 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    resetPassword({ password, newPassword });
-=======
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(!passwordShown);
+    resetPassword(match.params.id, { password, confirmPassword });
   };
-
-  const onChange = (e) => {
-    setNewPassword(e.target.value);
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    resetPassword({newPassword});
->>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
-  };
-
+  console.log("auth", auth);
   if (auth.redirect === true) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/logintherapist" />;
   }
 
   return (
@@ -70,7 +54,6 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
               className="block mx-auto mt-6  w-4/5 p-3 rounded-md
             border border-gray-900 focus:outline-none
               focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
-<<<<<<< HEAD
              "
               type={passwordShown1 ? "text" : "password"}
               placeholder="Password"
@@ -97,36 +80,20 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
               focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
              "
               type={passwordShown2 ? "text" : "password"}
-              placeholder="New Password"
-              name="newPassword"
+              placeholder="confirm Password"
+              name="confirmPassword"
               minLength="6"
-=======
-             '
-              type={passwordShown ? 'text' : 'password'}
-              placeholder='New Password'
-              name='password'
-              minLength='6'
->>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
-              value={newPassword}
+              value={confirmPassword}
               onChange={(e) => onChange(e)}
               required
             />
             <span
-<<<<<<< HEAD
               className=" absolute text-md text-blue-500  cursor-pointer
             md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14"
               aria-hidden="true"
               onClick={() => togglePasswordVisiblity2()}
             >
               {passwordShown2 ? "hide" : "show"}
-=======
-              className=' absolute text-md text-blue-500  cursor-pointer
-            md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
-              aria-hidden='true'
-              onClick={() => togglePasswordVisiblity()}
-            >
-              {passwordShown ? 'hide' : 'show'}
->>>>>>> e5312ffbd27becc5f42bbbc70969c98d460e539f
             </span>
           </div>
 
@@ -142,13 +109,15 @@ const ResetPassword = ({ match, resetPassword, auth }) => {
     </>
   );
 };
-ResetPassword.propTypes = {
+TherapistResetPassword.propTypes = {
   resetPassword: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.therapistAuth,
 });
 
-export default connect(mapStateToProps, { resetPassword })(ResetPassword);
+export default connect(mapStateToProps, { resetPassword })(
+  TherapistResetPassword
+);

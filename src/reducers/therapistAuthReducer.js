@@ -5,17 +5,19 @@ import {
   THERAPIST_LOGIN_SUCCESS,
   THERAPIST_LOGOUT,
   THERAPIST_LOADED,
-} from '../actions/types';
+  THERAPIST_FORGOT_PASSWORD,
+  THERAPIST_RESET_PASSWORD,
+} from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
   therapist: null,
 };
 
 function therapistAuthReducer(state = initialState, action) {
-  const {type, payload} = action;
+  const { type, payload } = action;
   // console.log('Action', action);
 
   switch (type) {
@@ -24,16 +26,17 @@ function therapistAuthReducer(state = initialState, action) {
         ...state,
         isAuthenticated: true,
         loading: false,
-        therapist: payload,
+        therapist: payload.therapist,
       };
     case THERAPIST_REGISTER_SUCCESS:
     case THERAPIST_LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
+      localStorage.setItem("token", payload.token);
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
         loading: false,
+        therapist: payload.therapist,
       };
 
     case THERAPIST_REGISTER_FAIL:
@@ -43,10 +46,23 @@ function therapistAuthReducer(state = initialState, action) {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: false,
+        loading: true,
         therapist: null,
       };
-
+    case THERAPIST_RESET_PASSWORD:
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: true,
+        therapist: null,
+        redirect: true,
+      };
+    case THERAPIST_FORGOT_PASSWORD:
+      return {
+        ...state,
+        note: true,
+      };
     default:
       return state;
   }
