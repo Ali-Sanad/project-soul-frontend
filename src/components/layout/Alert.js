@@ -26,8 +26,8 @@ const Alert = ({alerts}) => {
     <>
       {alerts !== null &&
         alerts.length > 0 &&
-        alerts.map((alert, idx) => (
-          <div className={classes.root} key={idx}>
+        alerts.map((alert) => (
+          <div className={classes.root} key={alert.id}>
             <Snackbar
               open={true}
               autoHideDuration={alert.timeout}
@@ -44,7 +44,7 @@ const Alert = ({alerts}) => {
 };
 
 Alert.propTypes = {
-  alerts: PropTypes.array,
+  alerts: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => {

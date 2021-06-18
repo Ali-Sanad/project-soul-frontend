@@ -64,6 +64,12 @@ export const login = (formData) => async (dispatch) => {
     const res = await axios.post('/auth', formData);
     console.log(res.data);
 
+    if (res.data.isAdmin) {
+      dispatch(setAlert('Admin logged in successfully', 'success'));
+    } else {
+      dispatch(setAlert('User logged in successfully', 'success'));
+    }
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,

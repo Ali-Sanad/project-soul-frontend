@@ -29,10 +29,8 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
 
   if (isAuthenticated && user) {
     if (user.isAdmin === false) {
-      setAlert('User logged in successfully', 'success');
       return <Redirect to='/' />;
     } else if (user.isAdmin === true) {
-      setAlert('Admin logged in successfully', 'success');
       return <Redirect to='/admin-dashboard' />;
     }
   }
