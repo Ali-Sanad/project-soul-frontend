@@ -92,9 +92,10 @@ export const logout = () => (dispatch) => {
 //reset password
 export const resetPassword = (formData) => async (dispatch) => {
   try {
-    const res = await axios.put('/users/change-password', formData);
+    const res = await axios.put('/users/reset-password', formData);
     dispatch(setAlert(res.data.msg, 'success'));
     //after reseting the password the user must login again with the new password
+    localStorage.removeItem('token');
     dispatch({
       type: RESET_PASSWORD,
     });

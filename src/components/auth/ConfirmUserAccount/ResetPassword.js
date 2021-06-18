@@ -11,29 +11,20 @@ const ResetPassword = ({match, resetPassword, auth}) => {
     setAuthToken(match.params.id);
   }, [match.params.id]);
 
-  const [formData, setFormData] = useState({
-    password: '',
-    newPassword: '',
-  });
+  const [newPassword, setNewPassword] = useState('');
 
-  const [passwordShown1, setPasswordShown1] = useState(false);
-  const [passwordShown2, setPasswordShown2] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
 
-  const {password, newPassword} = formData;
-
-  const togglePasswordVisiblity1 = () => {
-    setPasswordShown1(!passwordShown1);
-  };
-  const togglePasswordVisiblity2 = () => {
-    setPasswordShown2(!passwordShown2);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
   };
 
   const onChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setNewPassword(e.target.value);
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    resetPassword({password, newPassword});
+    resetPassword({newPassword});
   };
 
   if (auth.redirect === true) {
@@ -55,33 +46,9 @@ const ResetPassword = ({match, resetPassword, auth}) => {
             border border-gray-900 focus:outline-none
               focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
              '
-              type={passwordShown1 ? 'text' : 'password'}
-              placeholder='Password'
-              name='password'
-              minLength='6'
-              value={password}
-              onChange={(e) => onChange(e)}
-              required
-            />
-            <span
-              className=' absolute text-md text-blue-500  cursor-pointer
-            md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
-              aria-hidden='true'
-              onClick={() => togglePasswordVisiblity1()}
-            >
-              {passwordShown1 ? 'hide' : 'show'}
-            </span>
-          </div>
-
-          <div className='relative mx-auto  mt-6'>
-            <input
-              className='block mx-auto mt-6  w-4/5 p-3 rounded-md
-            border border-gray-900 focus:outline-none
-              focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
-             '
-              type={passwordShown2 ? 'text' : 'password'}
+              type={passwordShown ? 'text' : 'password'}
               placeholder='New Password'
-              name='newPassword'
+              name='password'
               minLength='6'
               value={newPassword}
               onChange={(e) => onChange(e)}
@@ -91,9 +58,9 @@ const ResetPassword = ({match, resetPassword, auth}) => {
               className=' absolute text-md text-blue-500  cursor-pointer
             md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
               aria-hidden='true'
-              onClick={() => togglePasswordVisiblity2()}
+              onClick={() => togglePasswordVisiblity()}
             >
-              {passwordShown2 ? 'hide' : 'show'}
+              {passwordShown ? 'hide' : 'show'}
             </span>
           </div>
 
