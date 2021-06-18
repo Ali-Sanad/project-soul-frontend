@@ -23,6 +23,8 @@ import LoginTherapist from './components/auth/loginTherapist';
 import RegisterThreapist from './components/auth/registerTherapist';
 import Messenger from '../src/components/layout/messenger/messenger';
 import Video from './components/video/video';
+import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
+import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
 
 const App = () => {
   useEffect(() => {
@@ -51,6 +53,9 @@ const App = () => {
           <Route path='/' exact component={LandingPage} />
           <Route path='/login' exact component={Login} />
           <Route path='/register' exact component={Register} />
+          <Route path='/forgot-password' exact component={ForgotPassword} />
+          <Route path='/reset-password/:id' exact component={ResetPassword} />
+
           <Route
             path='/pending-verification'
             exact

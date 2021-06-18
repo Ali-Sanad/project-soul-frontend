@@ -82,6 +82,9 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
             >
               {passwordShown ? 'hide' : 'show'}
             </span>
+            <p className='text-blue-500 mt-6 ml-12 cursor-pointer'>
+              <Link to='/forgot-password'>Forgot password ?</Link>
+            </p>
           </div>
 
           <input

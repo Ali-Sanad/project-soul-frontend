@@ -8,6 +8,8 @@ import {
   USER_LOADED,
   LOGOUT,
   AUTH_ERROR,
+  RESET_PASSWORD,
+  FORGOT_PASSWORD,
   //   PROFILE_ERROR,
   //   USER_IMAGE,
 } from './types';
@@ -81,8 +83,44 @@ export const login = (formData) => async (dispatch) => {
 
 //logout
 export const logout = () => (dispatch) => {
-  dispatch(setAlert('Logged out successfully', 'success'));
   dispatch({
     type: LOGOUT,
   });
+  dispatch(setAlert('Logged out successfully', 'success'));
+};
+
+//reset password
+export const resetPassword = (formData) => async (dispatch) => {
+  try {
+    const res = await axios.put('/users/change-password', formData);
+    dispatch(setAlert(res.data.msg, 'success'));
+    //after reseting the password the user must login again with the new password
+    dispatch({
+      type: RESET_PASSWORD,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
+    }
+  }
+};
+
+//forgot password action
+export const forgotPassword = (formData) => async (dispatch) => {
+  try {
+    const res = await axios.post('/users/forgot-password', formData);
+    console.log(res.data);
+
+    dispatch(setAlert(res.data.msg, 'success'));
+    dispatch({
+      type: FORGOT_PASSWORD,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
+    }
+  }
 };

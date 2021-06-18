@@ -6,6 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  RESET_PASSWORD,
+  FORGOT_PASSWORD,
   // ACCOUNT_DELETED,
   // USER_IMAGE,
 } from '../actions/types';
@@ -52,6 +54,20 @@ const reducer = (state = initialState, action) => {
         isAuthenticated: false,
         loading: true,
         user: null,
+      };
+    case RESET_PASSWORD:
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: true,
+        user: null,
+        redirect: true,
+      };
+    case FORGOT_PASSWORD:
+      return {
+        ...state,
+        note: true,
       };
 
     default:
