@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./conversation.css";
-// import img
-import noAvatar from "../../images/noAvatar.gif";
+
 const Conversation = ({ conversationMembers: { members }, currentUser }) => {
   console.log("members", members);
 
@@ -29,7 +28,7 @@ const Conversation = ({ conversationMembers: { members }, currentUser }) => {
     <>
       <div className="conversation">
         <img
-          src={(user && user.userImg) || noAvatar}
+          src={(user && user.userImg) || "\noAvatar.gif"}
           className="conversationImg"
           alt=""
         />
