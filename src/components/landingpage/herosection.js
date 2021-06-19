@@ -1,19 +1,17 @@
 import React from 'react';
 
-import './herosection.css';
-
 const HeroSection = () => {
 	return (
 		<>
 			<div className="herosection">
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-5">
-							<h2>Talk</h2>
+						<div className="col-6 herosection__data">
+							<h4>Talk to your therapist online privately anytime anywhere !</h4>
+							<button className="mainbtn">Get Started</button>
 						</div>
-						<div className="col-lg-5">
-							<h2>uu</h2>
-							{/* <img src='../../../public/images/herosection.png' alt=""></img> */}
+						<div className="col-6 herosection__image">
+							<img src="./images/herosection.png" alt="" />
 						</div>
 					</div>
 				</div>

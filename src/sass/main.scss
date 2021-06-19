@@ -1,8 +1,10 @@
 //--------------------------abstracts--------------------
 @import "abstracts/variables";
 //--------------------------base-------------------------
-@import "base/reset"
+@import "base/reset";
 //--------------------------component---------------------
-
+@import "components/mainbtn";
+@import "components/herosection";
+@import "components/navbar";
 //--------------------------layout---------------------
 

@@ -1,0 +1,16 @@
+.herosection {
+    background-image: url('../images/herosectionbg.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h4 {
+            padding: 2rem 0rem;
+        }
+    }
+}

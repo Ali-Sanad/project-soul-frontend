@@ -33,6 +33,7 @@ import TherapistAccountConfirmed from "./components/auth/ConfirmTherapistAccount
 import TherapistForgotPassword from "./components/auth/ConfirmTherapistAccount/TherapistForgotPassword";
 import TherapistResetPassword from "./components/auth/ConfirmTherapistAccount/TherapistResetPassword";
 import TherapistDataForm from "./components/therapistDataForm";
+import Home from "./components/landingpage/home";
 
 const App = () => {
   useEffect(() => {
@@ -58,8 +59,11 @@ const App = () => {
       <BrowserRouter>
         <Alert />
         <Switch>
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/login" exact component={Login} />
+          {/* <Route path="/" exact component={LandingPage} />
+          <Route path="/login" exact component={Login} /> */}
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/" exact component={Login}/>
           <Route path="/register" exact component={Register} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/reset-password/:id" exact component={ResetPassword} />
