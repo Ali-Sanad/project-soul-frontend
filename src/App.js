@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+//import sass
+import './sass/main.scss'
+
 // import Navbar from './components/layout/Navbar';
 import LandingPage from "./components/layout/LandingPage";
 import Alert from "./components/layout/Alert";
