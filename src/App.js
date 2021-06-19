@@ -7,6 +7,8 @@ import './sass/main.scss'
 // import Navbar from './components/layout/Navbar';
 import LandingPage from "./components/layout/LandingPage";
 import Alert from "./components/layout/Alert";
+import Article from "./components/layout/articles/article";
+
 import AdminDashboard from "./components/adminDashboard/AdminDashboard";
 
 // import AllRoutes from './components/routes/AllRoutes';
@@ -25,7 +27,7 @@ import AccountConfirmed from "./components/auth/ConfirmUserAccount/AccountConfir
 import LoginTherapist from "./components/auth/loginTherapist";
 import RegisterThreapist from "./components/auth/registerTherapist";
 import Messenger from "../src/components/layout/messenger/messenger";
-import Video from "./components/video/video";
+// import Video from "./components/video/video";
 import ForgotPassword from "./components/auth/ConfirmUserAccount/ForgotPassword";
 import ResetPassword from "./components/auth/ConfirmUserAccount/ResetPassword";
 import TherapistConfirmUserAccount from "./components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount";
@@ -76,7 +78,7 @@ const App = () => {
           <Route path="/user-email-confirmed" component={AccountConfirmed} />
 
           <Route path="/admin-dashboard" exact component={AdminDashboard} />
-          <Route exact path="/video" component={Video} />
+          {/* <Route exact path="/video" component={Video} /> */}
           <Route
             exact
             path="/registertherapist"
@@ -111,6 +113,9 @@ const App = () => {
           <Route path="/messenger">
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}
+          </Route>
+          <Route path="/articles">
+            <Article />
           </Route>
         </Switch>
       </BrowserRouter>
