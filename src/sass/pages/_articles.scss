@@ -3,6 +3,7 @@
   justify-content: center;
 
   grid-template-columns: 45% 45%;
+  margin-top: 5rem;
 
   &__text {
     margin-top: 6rem;
@@ -59,7 +60,7 @@
     div {
       margin: 0.5rem;
       small {
-        color: #aaaaaa;
+        color: #aaaaaa !important;
       }
       h4,
       p {
