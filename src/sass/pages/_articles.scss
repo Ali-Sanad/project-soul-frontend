@@ -1,0 +1,66 @@
+.heroSection__article {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: 45% 45%;
+
+  &__text {
+    margin-top: 6rem;
+    margin-left: 3rem;
+    h4 {
+      font-family: "Reem Kufi";
+      font-weight: 700;
+    }
+    p,
+    a {
+      font-family: Roboto;
+    }
+    a {
+      background-color: $colmain;
+      padding: 0.6rem;
+      border-radius: 5rem;
+      text-decoration: none;
+      color: black;
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+.Articles__header {
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: large;
+
+  span {
+    border-bottom: 0.3rem solid $colmain;
+  }
+}
+
+.articles {
+  .article {
+    background-color: white;
+    display: flex;
+    margin: 2rem;
+    border-radius: 1rem;
+
+    div {
+      img {
+        width: 13rem;
+      }
+    }
+
+    div {
+      margin: 0.5rem;
+      small {
+        color: #aaaaaa;
+      }
+      h4,
+      p {
+        font-family: Roboto;
+      }
+      p {
+      }
+    }
+  }
+}
