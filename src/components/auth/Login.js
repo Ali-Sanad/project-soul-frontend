@@ -6,7 +6,7 @@ import {login} from '../../actions/auth';
 import {setAlert} from '../../actions/alert';
 import loginImage from './../../assets/images/login.png';
 import logo from './../../assets/images/logo.png';
-import '../../index.css';
+import '../../index.css'; //tailwind
 const Login = ({login, isAuthenticated, user, setAlert}) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -43,7 +43,7 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
           <div className='w-44 h-24 mx-auto'>
             <img src={logo} alt='' />
           </div>
-          <h4 className='text-4xl font-bold  text-center'>Login</h4>
+          <h4 className='text-4xl mt-2 bold  text-center'>Login</h4>
           <div className='flex justify-center mt-12 mb-12'>
             <h2 className='text-2xl   inline-block mx-3 cursor-pointer '>
               {' '}
