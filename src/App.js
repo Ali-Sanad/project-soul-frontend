@@ -1,5 +1,5 @@
-import {useEffect} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //import sass
 import './sass/main.scss';
@@ -12,13 +12,13 @@ import Article from './components/layout/articles/article';
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
 // import AllRoutes from './components/routes/AllRoutes';
-import {LOGOUT, THERAPIST_LOGOUT} from './actions/types';
+import { LOGOUT, THERAPIST_LOGOUT } from './actions/types';
 //state redux
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
-import {loadUser} from './actions/auth';
-import {loadTherapist} from './actions/therapistAuth';
+import { loadUser } from './actions/auth';
+import { loadTherapist } from './actions/therapistAuth';
 //components
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -50,8 +50,8 @@ const App = () => {
     //logout user from all tabes if he logged out from one tabe
     window.addEventListener('storage', () => {
       if (!localStorage.token) {
-        store.dispatch({type: THERAPIST_LOGOUT});
-        store.dispatch({type: LOGOUT});
+        store.dispatch({ type: THERAPIST_LOGOUT });
+        store.dispatch({ type: LOGOUT });
       }
     });
   }, []);
