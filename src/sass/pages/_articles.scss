@@ -7,9 +7,10 @@
   &__text {
     margin-top: 6rem;
     margin-left: 3rem;
-    h4 {
+    h2 {
       font-family: "Reem Kufi";
-      font-weight: 700;
+      font-weight: 900;
+      font-size: large;
     }
     p,
     a {
@@ -22,6 +23,11 @@
       text-decoration: none;
       color: black;
       scroll-behavior: smooth;
+    }
+    h2,
+    p,
+    a {
+      margin: 0.8rem;
     }
   }
 }
@@ -59,7 +65,10 @@
       p {
         font-family: Roboto;
       }
+      small,
+      h4,
       p {
+        margin: 0.8rem;
       }
     }
   }

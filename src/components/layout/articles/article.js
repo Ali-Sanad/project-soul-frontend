@@ -15,7 +15,7 @@ const Article = ({ getArticles, article }) => {
     <div className="container">
       <div className="heroSection__article">
         <div className="heroSection__article__text">
-          <h4>Explore Our Articles</h4>
+          <h2>Explore Our Articles</h2>
           <p>Take a quick review what our doctors say</p>
           <a href="#articleScroll">Explore</a>
         </div>
