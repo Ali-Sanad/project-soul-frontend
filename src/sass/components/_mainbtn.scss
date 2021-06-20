@@ -1,6 +1,11 @@
 .mainbtn{
     background-color: $colmain;
     border-radius: 5rem;
-    padding: .5rem 1rem;
+    padding: .3rem 1rem;
     width: fit-content;
+    font-weight: 500;
+    &:hover{
+        background-color: $colsecondary;
+        cursor: pointer;
+    }
 }

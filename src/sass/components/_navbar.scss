@@ -1,14 +1,50 @@
-.navbar {
-    background-color: $colbg;
-    &__logo {
-        img {
-            width: 100px;
-            height: 50px;
-        }
+.navBar {
+    background-color: transparent;
+    position: absolute !important;
+    top: 0;
+    width: 100%;
+    &__image {
+      width: 150px;
+      height: 40px;
+      &__user {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        border-radius: 50%;
+      }
     }
-
-    // &__content{
-    // }
-    // &__btn{
-    // }
-}
+    &__span {
+      position: "fixed";
+      top: "6px";
+      left: "5px";
+      color: $colfont;
+    }
+    &__list {
+      margin: 0 auto;
+      &__item {
+        &__link {
+          color: $colfont !important;
+          font-family: sans-serif;
+          &:hover{
+            color: $colmain !important;
+          }
+          &--active {
+            color: $colfont;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  .navbar-toggler-icon{
+    width: fit-content !important;
+    height: fit-content !important;
+    color: $colmain;
+  }
+  .navbar-toggler:focus{
+    box-shadow: 0 0 0 0.1rem $colmain !important;
+  }
+  .navbar-collapse{
+    justify-content: flex-end;
+  }

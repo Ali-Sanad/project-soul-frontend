@@ -1,66 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+	const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+	const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
 	return (
 		<>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<nav className="navBar navbar navbar-expand-lg">
 				<div className="container">
-					<a class="navbar-brand navbar__logo" href="#">
-						<img src="./images/logo.png" />
+					<a className="navbar-brand" href="/">
+						<img className="navBar__image" src="/images/logo.png" alt="logo"></img>
 					</a>
 					<button
-						class="navbar-toggler"
+						className="custom-toggler navbar-toggler"
 						type="button"
 						data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
+						data-target="#navbarsExample09"
+						aria-controls="navbarsExample09"
+						aria-expanded={!isNavCollapsed ? true : false}
 						aria-label="Toggle navigation"
+						onClick={handleNavCollapse}
 					>
-						<span class="navbar-toggler-icon"></span>
+						<span className="navbar-toggler-icon">
+							<i className="fas fa-bars"></i>
+						</span>
 					</button>
-
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									HOME
-								</a>
+					<div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}>
+						<ul className="navBar__list navbar-nav" id="navbarsExample09">
+							<li className="navBar__list__item nav-item">
+								<NavLink
+									className="navBar__list__item__link navBar__list__item__link--active nav-link"
+									aria-current="page"
+									to="/home"
+								>
+									Home
+								</NavLink>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link disabled" href="#">
-									Disabled
-								</a>
+							<li className="navBar__list__item nav-item">
+								<NavLink className="navBar__list__item__link nav-link" to="/">
+									About
+								</NavLink>
+							</li>
+							<li className="navBar__list__item nav-item">
+								<NavLink className="navBar__list__item__link nav-link" to="/">
+									How It Work
+								</NavLink>
+							</li>
+							<li className="navBar__list__item nav-item">
+								<NavLink className="navBar__list__item__link nav-link" to="/">
+									Article
+								</NavLink>
+							</li>
+							<li className="navBar__list__item nav-item">
+								<NavLink className="navBar__list__item__link nav-link" to="/">
+									Community
+								</NavLink>
+							</li>
+							<li className="navBar__list__item nav-item">
+								<NavLink className="navBar__list__item__link nav-link" to="/">
+									Contact Us
+								</NavLink>
 							</li>
 						</ul>
-						<form class="form-inline my-2 my-lg-0 navbar__login">
-							<button className="mainbtn">LOGIN</button>
-						</form>
+						<button className="button btn">
+							<span className="mainbtn">Login</span>
+						</button>
 					</div>
 				</div>
 			</nav>
-
-			{/* <nav className="navbar">
-				<div className="container">
-					<div className="row">
-						<div className="navbar__logo">
-							<img src="./images/logo.png" />
-						</div>
-						<div className="navbar__content">
-				
-								<span>HOME</span>
-								<span>ABOUT</span>
-								<span>HOW IT WORK</span>
-								<span>ARTICLE</span>
-								<span>COMMUNITY</span>
-								<span>CONTACT US</span>
-						</div>
-						<div className="navbar__btn">
-							<button className="mainbtn">LOGIN</button>
-						</div>
-					</div>
-				</div>
-			</nav> */}
 		</>
 	);
 };

@@ -1,0 +1,15 @@
+.contact {
+    margin: 3rem 0rem;
+    .row{
+        padding: 3rem 0rem;
+    }
+    &__header {
+        display: grid;
+        justify-content: center;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

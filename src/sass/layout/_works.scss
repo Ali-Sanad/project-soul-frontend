@@ -1,0 +1,20 @@
+.works {
+    margin: 3rem 0rem;
+    .row{
+        padding: 3rem 0rem;
+    }
+    &__header {
+        display: grid;
+        justify-content: center;
+    }
+    &__image{
+        text-align: center;
+        img{
+            display: inline-block;
+        }
+        p{
+            padding: 1rem 0rem;
+            font-weight: 500;
+        }
+    }
+}
