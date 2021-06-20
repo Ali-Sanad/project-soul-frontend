@@ -4,7 +4,9 @@ import {Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {login} from '../../actions/auth';
 import {setAlert} from '../../actions/alert';
-
+import loginImage from './../../assets/images/login.png';
+import logo from './../../assets/images/logo.png';
+import '../../index.css';
 const Login = ({login, isAuthenticated, user, setAlert}) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -36,72 +38,93 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
   }
   return (
     <>
-      <div className=' mx-auto card rounded-lg  mt-24 mb-12 sm:w-4/5 md:w-1/2 lg:w-2/6 w-5/6  '>
-        <div className='mx-auto mt-6 ml-12 w-4/5'>
-          <h4 className=' text-4xl bold my-2 text-blue-500'>Sign In</h4>
-          <p className='text-sm'>Stay updated in your mintal world</p>
-        </div>
-
-        <form className='mt-6 ' onSubmit={(e) => onSubmit(e)}>
-          <div className=' mt-6 '>
-            <input
-              className='block mx-auto mt-6  w-4/5 p-3 rounded-md
-            border border-gray-900  focus:outline-none
-             focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+      <div className='grid sm:grid-cols-2 grid-cols-1  h-screen bg-soul_bg font-Nunito'>
+        <div className=''>
+          <div className='w-44 h-24 mx-auto'>
+            <img src={logo} alt='' />
+          </div>
+          <h4 className='text-4xl font-bold  text-center'>Login</h4>
+          <div className='flex justify-center mt-12 mb-12'>
+            <h2 className='text-2xl   inline-block mx-3 cursor-pointer '>
+              {' '}
+              <Link to='/login' className='hover:text-soul-300 hover:underline'>
+                User
+              </Link>
+            </h2>
+            <h2 className='text-2xl inline-block mx-3 cursor-pointer '>
+              <Link
+                to='/logintherapist'
+                className='hover:text-soul-300
+               hover:underline'
+              >
+                Therapist
+              </Link>
+            </h2>
+          </div>
+          <form className='mt-2' onSubmit={(e) => onSubmit(e)}>
+            <div className=' mt-6 '>
+              <input
+                className='block mx-auto mt-2  w-4/5 p-3 rounded-full
+                border focus:outline-none
+                focus:ring-1 focus:to-soul focus:border-transparent 
             '
-              type='email'
-              placeholder='Email'
-              name='email'
-              value={email}
-              onChange={(e) => onChange(e)}
-              required
-            />
-          </div>
-          {/* password field and toggle password visibility */}
-          <div className='relative mx-auto  mt-6'>
-            <input
-              className='block mx-auto mt-6  w-4/5 p-3 rounded-md
-            border border-gray-900 focus:outline-none
-              focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm
+                type='email'
+                placeholder='Email'
+                name='email'
+                value={email}
+                onChange={(e) => onChange(e)}
+                required
+              />
+            </div>
+            <div className='relative mx-auto  mt-6'>
+              <input
+                className='block mx-auto mt-2  w-4/5 p-3 rounded-full
+                border focus:outline-none 
+                focus:ring-1 focus:to-soul focus:border-transparent 
              '
-              type={passwordShown ? 'text' : 'password'}
-              placeholder='Password'
-              name='password'
-              minLength='6'
-              value={password}
-              onChange={(e) => onChange(e)}
-              required
-            />
-            <span
-              className=' absolute text-md text-blue-500  cursor-pointer
-            md:top-3 sm:right-16 md:right-14 lg:right-14   top-3   right-14'
-              aria-hidden='true'
-              onClick={() => togglePasswordVisiblity()}
-            >
-              {passwordShown ? 'hide' : 'show'}
-            </span>
-            <p className='text-blue-500 mt-6 ml-12 cursor-pointer'>
-              <Link to='/forgot-password'>Forgot password ?</Link>
-            </p>
-          </div>
-
-          <input
-            type='submit'
-            className=' block mx-auto mt-12 mb-12  bg-blue-500 hover:bg-blue-800 w-4/5 p-4 rounded-full text-white
-            outline-none
-            shadow-sm cursor-pointer'
-            value='Sign in'
-          />
-        </form>
-
-        <p className=' block text-center mt-12 mb-12'>
-          New to Soul?
-          <span className=' text-blue-500  font-bold '>
-            <Link to='/register'>
-              <span> </span>Join now
-            </Link>
-          </span>
-        </p>
+                type={passwordShown ? 'text' : 'password'}
+                placeholder='Password'
+                name='password'
+                minLength='6'
+                value={password}
+                onChange={(e) => onChange(e)}
+                required
+              />
+              <span
+                className=' absolute text-md text-soul-300  cursor-pointer
+                md:top-4 sm:right-16 md:right-14 lg:right-20   top-4   right-20'
+                aria-hidden='true'
+                onClick={() => togglePasswordVisiblity()}
+              >
+                {passwordShown ? 'hide' : 'show'}
+              </span>
+              <div className='grid grid-cols-2 lg:ml-20 md:ml-16 sm:ml-10 ml-16 '>
+                <p className=' inline-block mt-6    cursor-pointer'>
+                  <Link to='/forgot-password' className='hover:text-soul-300'>
+                    Forgot password ?
+                  </Link>
+                </p>
+                <p className=' inline-block mt-6   cursor-pointer'>
+                  <Link to='/register' className='hover:text-soul-300'>
+                    Don't have an account ?
+                  </Link>
+                </p>
+              </div>
+            </div>
+            <div className='mt-8 sm:ml-2'>
+              <input
+                type='submit'
+                className=' block  bg-soul-100 hover:bg-soul-300  sm:ml-10 md:ml-16 ml-16  py-2 px-4 rounded-full
+                outline-none
+                shadow-sm cursor-pointer'
+                value='Sign in'
+              />
+            </div>
+          </form>
+        </div>
+        <div className=' h-screen sm:block hidden'>
+          <img src={loginImage} alt='' className='h-screen object-cover' />
+        </div>
       </div>
     </>
   );

@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
+import logo from './../../assets/images/logo.png';
+import userRegister from './../../assets/images/user-register.png';
+import '../../index.css';
 
 const Register = ({history, setAlert, register, auth}) => {
   const [formData, setFormData] = useState({
@@ -47,7 +50,7 @@ const Register = ({history, setAlert, register, auth}) => {
       <div className='grid sm:grid-cols-2 grid-cols-1 h-screen bg-soul_bg font-Nunito'>
         <div className=''>
           <div className='w-44 h-24 mx-auto'>
-            <img src='./images/logo.png' alt='' />
+            <img src={logo} alt='' />
           </div>
           <h4 className='text-4xl bold  text-center'>Register</h4>
           <form className='mt-2' onSubmit={(e) => onSubmit(e)}>
@@ -137,18 +140,16 @@ const Register = ({history, setAlert, register, auth}) => {
             <p className=' block sm:ml-12 md:ml-20 ml-16 mt-4  '>
               Already on Soul?{' '}
               <span className=' text-soul-300 font-bold '>
-                <Link to='/login'>Sign In</Link>
+                <Link to='/login' className='hover:text-soul-300'>
+                  Sign In
+                </Link>
               </span>
             </p>
           </form>
         </div>
 
         <div className=' h-screen sm:block hidden'>
-          <img
-            src='./images/user-register.png'
-            alt=''
-            className='h-screen object-contain'
-          />
+          <img src={userRegister} alt='' className='h-screen object-cover' />
         </div>
       </div>
     </>

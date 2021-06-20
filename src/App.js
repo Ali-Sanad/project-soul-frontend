@@ -5,13 +5,11 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './sass/main.scss';
 
 // import Navbar from './components/layout/Navbar';
-import LandingPage from './components/layout/LandingPage';
 import Alert from './components/layout/Alert';
 import Article from './components/layout/articles/article';
 
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
-// import AllRoutes from './components/routes/AllRoutes';
 import {LOGOUT, THERAPIST_LOGOUT} from './actions/types';
 //state redux
 import {Provider} from 'react-redux';
@@ -36,6 +34,7 @@ import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/T
 import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/TherapistResetPassword';
 import TherapistDataForm from './components/therapistDataForm';
 import Home from './components/landingpage/home';
+import UserProfile from './components/user/UserProfile';
 
 const App = () => {
   useEffect(() => {
@@ -61,12 +60,11 @@ const App = () => {
       <BrowserRouter>
         <Alert />
         <Switch>
-          {/* <Route path="/" exact component={LandingPage} /> */}
-          <Route path='/login' exact component={Login} />
           <Route path='/' exact component={Home} />
           <Route path='/home' exact component={Home} />
-          <Route path='/' exact component={Login} />
+          <Route path='/login' exact component={Login} />
           <Route path='/register' exact component={Register} />
+          <Route path='/user-profile' exact component={UserProfile} />
           <Route path='/forgot-password' exact component={ForgotPassword} />
           <Route path='/reset-password/:id' exact component={ResetPassword} />
 
