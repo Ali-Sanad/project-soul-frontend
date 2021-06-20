@@ -51,6 +51,7 @@ const Article = ({ getArticles, article }) => {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 };
