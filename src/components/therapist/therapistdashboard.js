@@ -2,6 +2,7 @@ import React from 'react';
 
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
+import TherapistFiles from './therapistfiles';
 
 const TherapistDashboard = () => {
 	return (
@@ -16,7 +17,7 @@ const TherapistDashboard = () => {
                         <SideNav></SideNav>
                     </div>
                     <div className="col-8">
-                        content
+                        <TherapistFiles></TherapistFiles>
                     </div>
                 </div>
             </div>

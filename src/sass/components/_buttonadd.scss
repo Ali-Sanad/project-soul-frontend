@@ -1,0 +1,16 @@
+.buttonadd{
+    background-color: $colmain;
+    border: none;
+    outline: none;
+    color: $colfont;
+    border-radius: 5rem;
+    width: 40px;
+    height: 40px;
+    font-weight: 2rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin: 2rem 0rem;
+}
