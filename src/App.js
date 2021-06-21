@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 //import sass
 import "./sass/main.scss";
@@ -36,6 +36,7 @@ import TherapistResetPassword from "./components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from "./components/therapistDataForm";
 import Home from "./components/landingpage/home";
 import UserProfile from "./components/user/UserProfile";
+import Error from "./components/shared/error";
 
 const App = () => {
   if (localStorage.token) {
@@ -116,6 +117,8 @@ const App = () => {
           <Route path="/articles">
             <Article />
           </Route>
+          <Route path="/error" component={Error} />
+          <Redirect to="/error" />
         </Switch>
       </BrowserRouter>
     </Provider>
