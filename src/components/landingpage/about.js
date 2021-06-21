@@ -9,10 +9,10 @@ const About = () => {
 						<h2 className="headers">What We Do?</h2>
 					</div>
 					<div className="row">
-						<div className="col-6 about__image">
+						<div className="col-12 col-md-6 about__image">
 							<img src="./images/about.png" alt="" />
 						</div>
-						<div className="col-6 about__data">
+						<div className="col-12 col-md-6 about__data">
 							<p>
 								Just like any muscle, your personality requires strengthening and your heart, mind and
 								soul deserve specialized care. With Shezlong, you’ll get personalized treatment from a

@@ -1,0 +1,32 @@
+.therapistfiles{
+    background-color: $colwhite;
+    border-radius: 2rem;
+    padding: 2rem 0rem;
+    .headers{
+        margin-bottom: 2rem;
+    }
+    .inputstyle{
+        display: inline-block;
+        width: 70%;
+    }
+    &__icon{
+        display: inline-block;
+        width: 30%;
+        text-align: end;
+    }
+    &__pdf{
+        width: 35px;
+        display: inline-block;
+    }
+    &__download{
+        width: 35px;
+        display: inline-block;
+        
+    }
+    &__delete{
+        width: 35px;
+        margin-left: 1rem;
+        display: inline-block;
+
+    }
+}

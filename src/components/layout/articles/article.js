@@ -4,14 +4,19 @@ import { connect } from "react-redux";
 import { getArticles } from "../../../actions/article";
 import { Link } from "react-router-dom";
 
-import NavBar from "../../shared/navbar";
 import Footer from "../../shared/footer";
-const Article = ({ getArticles, article }) => {
+import NavBar from "../../shared/navbar";
+import Message from "../../shared/message";
+import ToTop from "../../shared/totop";
+
+//article
+const Article = ({ getArticles, article, therapist }) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
   console.log(article);
+  console.log(therapist);
 
   return (
     <div className="container-fluid">
@@ -19,7 +24,7 @@ const Article = ({ getArticles, article }) => {
       <div className="container">
         <div className="heroSection__article">
           <div className="heroSection__article__text">
-            <h2>Explore Our Articles</h2>
+            <h3>Explore Our Articles</h3>
             <p>Take a quick review what our doctors say</p>
             <a href="#articleScroll">Explore</a>
           </div>
@@ -31,7 +36,7 @@ const Article = ({ getArticles, article }) => {
           </div>
         </div>
         <div className="Articles__header">
-          <span id="articleScroll">Articles</span>
+          <h2 id="articleScroll">Articles</h2>
         </div>
         <div className="articles">
           {article?.articles.map((article) => {
@@ -59,12 +64,15 @@ const Article = ({ getArticles, article }) => {
         </div>
       </div>
       <Footer />
+      <Message></Message>
+      <ToTop></ToTop>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   article: state.article,
+  therapist: state.therapistAuth,
 });
 
 export default connect(mapStateToProps, {

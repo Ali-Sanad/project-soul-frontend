@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 //import sass
 import './sass/main.scss';
@@ -10,6 +10,7 @@ import Article from './components/layout/articles/article';
 
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
+// import AllRoutes from './components/routes/AllRoutes';
 import {LOGOUT, THERAPIST_LOGOUT} from './actions/types';
 //state redux
 import {Provider} from 'react-redux';
@@ -22,13 +23,12 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import ConfirmUserAccount from './components/auth/ConfirmUserAccount/ConfirmUserAccount';
 import AccountConfirmed from './components/auth/ConfirmUserAccount/AccountConfirmed';
-import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
-import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
-
 import LoginTherapist from './components/auth/loginTherapist';
 import RegisterThreapist from './components/auth/registerTherapist';
 import Messenger from '../src/components/layout/messenger/messenger';
 // import Video from "./components/video/video";
+import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
+import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
 import TherapistConfirmUserAccount from './components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount';
 import TherapistAccountConfirmed from './components/auth/ConfirmTherapistAccount/TherapistAccountConfirmed';
 import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/TherapistForgotPassword';
@@ -36,6 +36,8 @@ import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from './components/therapistDataForm';
 import Home from './components/landingpage/home';
 import UserProfile from './components/user/UserProfile';
+import Error from './components/shared/error';
+import TherapistDashboard from './components/therapist/therapistdashboard';
 
 const App = () => {
   useEffect(() => {
@@ -67,7 +69,12 @@ const App = () => {
           <Route path='/register' exact component={Register} />
           <Route path='/user-profile' exact component={UserProfile} />
           <Route path='/forgot-password' exact component={ForgotPassword} />
-          <Route path='/reset-password/:id' exact component={ResetPassword} />
+          <Route path='/reset-password' exact component={ResetPassword} />
+          <Route
+            path='/therapistdashboard'
+            exact
+            component={TherapistDashboard}
+          />
 
           <Route
             path='/pending-verification'
@@ -116,6 +123,8 @@ const App = () => {
           <Route path='/articles'>
             <Article />
           </Route>
+          <Route path='/error' component={Error} />
+          <Redirect to='/error' />
         </Switch>
       </BrowserRouter>
     </Provider>

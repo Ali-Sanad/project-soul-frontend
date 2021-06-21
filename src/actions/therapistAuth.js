@@ -102,8 +102,10 @@ export const login =
         type: THERAPIST_LOGIN_SUCCESS,
         payload: res.data,
       });
+      // console.log(res.data);
+      // console.log(res.data.token);
+      // setAuthToken(res.data.token);
       dispatch(loadTherapist());
-      setAuthToken(res.data.token);
     } catch (err) {
       console.log("errrr", err);
       if (err.response) {

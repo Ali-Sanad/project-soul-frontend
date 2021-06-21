@@ -7,7 +7,9 @@ import {
   THERAPIST_LOADED,
   THERAPIST_FORGOT_PASSWORD,
   THERAPIST_RESET_PASSWORD,
+  THERAPIST_AUTH_ERROR,
 } from "../actions/types";
+import setAuthToken from "../utils/setAuthToken";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -26,22 +28,23 @@ function therapistAuthReducer(state = initialState, action) {
         ...state,
         isAuthenticated: true,
         loading: false,
-        therapist: payload.therapist,
+        therapist: payload,
       };
     case THERAPIST_REGISTER_SUCCESS:
     case THERAPIST_LOGIN_SUCCESS:
-      localStorage.setItem("token", payload.token);
+      // localStorage.setItem("token", payload.token);
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false,
-        therapist: payload.therapist,
+        loading: true,
+        // therapist: payload.therapist,
       };
 
     case THERAPIST_REGISTER_FAIL:
     case THERAPIST_LOGIN_FAIL:
     case THERAPIST_LOGOUT:
+    case THERAPIST_AUTH_ERROR:
       return {
         ...state,
         token: null,

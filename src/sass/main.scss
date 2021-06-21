@@ -10,10 +10,17 @@
 @import "components/input";
 @import "components/message";
 @import "components/totop";
+@import "components/sidenav";
+@import "components/fileupload";
+@import "components/formstyle";
+@import "components/buttonadd";
 //--------------------------layout---------------------
 @import "layout/about";
 @import "layout/works";
 @import "layout/contact";
 @import "layout/footer";
-
+@import "layout/error";
+@import "layout/therapistdashboard";
+@import "layout/therapistfiles";
+//--------------------------pages---------------------
 @import "pages/articles";
