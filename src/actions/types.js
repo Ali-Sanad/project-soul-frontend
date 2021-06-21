@@ -28,3 +28,6 @@ export const THERAPIST_RESET_PASSWORD = "THERAPIST_RESET_PASSWORD";
 
 export const GET_ARTICLES = "GET_ARTICLES";
 export const ARTICLES_ERROR = "ARTICLES_ERROR";
+
+
+//post action

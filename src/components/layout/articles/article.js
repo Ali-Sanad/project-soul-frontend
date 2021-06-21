@@ -8,7 +8,6 @@ import Footer from "../../shared/footer";
 import NavBar from "../../shared/navbar";
 import Message from "../../shared/message";
 import ToTop from "../../shared/totop";
-
 //article
 const Article = ({ getArticles, article, therapist }) => {
   useEffect(() => {
@@ -63,6 +62,7 @@ const Article = ({ getArticles, article, therapist }) => {
           })}
         </div>
       </div>
+      {/* <Footer /> */}
       <Footer />
       <Message></Message>
       <ToTop></ToTop>

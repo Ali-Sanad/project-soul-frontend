@@ -36,6 +36,8 @@ import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from './components/therapistDataForm';
 import Home from './components/landingpage/home';
 import UserProfile from './components/user/UserProfile';
+import Post from './components/posts/Post';
+
 import Error from './components/shared/error';
 import TherapistDashboard from './components/therapist/therapistdashboard';
 
@@ -116,6 +118,9 @@ const App = () => {
             component={TherapistDataForm}
           />
 
+          <Route exact path='/posts'>
+            <Post />
+          </Route>
           <Route path='/messenger'>
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}
