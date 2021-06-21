@@ -45,6 +45,7 @@ const App = () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
+
     store.dispatch(loadTherapist());
     store.dispatch(loadUser());
 

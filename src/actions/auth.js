@@ -19,7 +19,7 @@ import { setAlert } from "./alert";
 export const loadUser = () => async (dispatch) => {
   try {
     const res = await axios.get("/auth");
-    // console.log(res.data);
+    console.log(res.data);
 
     dispatch({
       type: USER_LOADED,

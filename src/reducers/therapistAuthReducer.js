@@ -32,7 +32,7 @@ function therapistAuthReducer(state = initialState, action) {
       };
     case THERAPIST_REGISTER_SUCCESS:
     case THERAPIST_LOGIN_SUCCESS:
-      localStorage.setItem("token", payload.token);
+      // localStorage.setItem("token", payload.token);
       return {
         ...state,
         ...payload,

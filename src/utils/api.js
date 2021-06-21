@@ -15,15 +15,16 @@ const instance = axios.create({
  if the token has expired or not to logout the user
 **/
 
-// instance.interceptors.response.use(
-//   (res) => res,
-//   (err) => {
-//     if (err.response.status === 401) { // if normal user we will get 401 auth error which will log out both user & therapist
-//       store.dispatch({ type: LOGOUT });
-//       store.dispatch({ type: THERAPIST_LOGOUT });
-//     }
-//     return Promise.reject(err);
-//   }
-// );
+instance.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    // if (err.response.status === 401) {
+    //   // if therapist we will get 401 auth error of user which will log out both user & therapist
+    //   store.dispatch({ type: LOGOUT });
+    //   store.dispatch({ type: THERAPIST_LOGOUT });
+    // }
+    return Promise.reject(err);
+  }
+);
 
 export default instance;
