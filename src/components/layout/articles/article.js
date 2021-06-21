@@ -35,7 +35,7 @@ const Article = ({ getArticles, article }) => {
           </div>
         </div>
         <div className="Articles__header">
-          <span id="articleScroll">Articles</span>
+          <h2 id="articleScroll">Articles</h2>
         </div>
         <div className="articles">
           {article?.articles.map((article) => {
