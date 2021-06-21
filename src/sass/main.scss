@@ -1,19 +1,20 @@
 //--------------------------abstracts--------------------
-@import "abstracts/variables";
+@import 'abstracts/variables';
 //--------------------------base-------------------------
-@import "base/reset";
+@import 'base/reset';
 //--------------------------component---------------------
-@import "components/mainbtn";
-@import "components/headers";
-@import "components/herosection";
-@import "components/navbar";
-@import "components/input";
-@import "components/message";
-@import "components/totop";
+@import 'components/mainbtn';
+@import 'components/headers';
+@import 'components/herosection';
+@import 'components/navbar';
+@import 'components/input';
+@import 'components/message';
+@import 'components/totop';
 //--------------------------layout---------------------
-@import "layout/about";
-@import "layout/works";
-@import "layout/contact";
-@import "layout/footer";
+@import 'layout/about';
+@import 'layout/works';
+@import 'layout/contact';
+@import 'layout/footer';
 
-@import "pages/articles";
+@import 'pages/articles';
+@import 'pages/posts';

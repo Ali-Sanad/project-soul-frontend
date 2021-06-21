@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getArticles } from '../../../actions/article';
 import { Link } from 'react-router-dom';
+import Footer from '../../shared/footer';
 //article
 const Article = ({ getArticles, article }) => {
   useEffect(() => {
@@ -51,6 +52,7 @@ const Article = ({ getArticles, article }) => {
           );
         })}
       </div>
+      {/* <Footer /> */}
       <Footer />
     </div>
   );

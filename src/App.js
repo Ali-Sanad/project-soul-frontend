@@ -36,7 +36,7 @@ import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from './components/therapistDataForm';
 import Home from './components/landingpage/home';
 import UserProfile from './components/user/UserProfile';
-
+import Post from './components/posts/Post';
 const App = () => {
   useEffect(() => {
     //attach the token to every axios request
@@ -109,6 +109,9 @@ const App = () => {
             component={TherapistDataForm}
           />
 
+          <Route exact path='/posts'>
+            <Post />
+          </Route>
           <Route path='/messenger'>
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}

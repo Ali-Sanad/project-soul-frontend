@@ -1,0 +1,89 @@
+.heroSection__post {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: 45% 45%;
+  margin-top: 5rem;
+
+  &__text {
+    margin-top: 6rem;
+    margin-left: 3rem;
+    h2 {
+      font-family: 'Reem Kufi';
+      font-weight: 900;
+      font-size: large;
+    }
+    p,
+    a {
+      font-family: Roboto;
+    }
+    a {
+      background-color: $colmain;
+      padding: 0.6rem;
+      border-radius: 5rem;
+      text-decoration: none;
+      color: black;
+      scroll-behavior: smooth;
+    }
+    h2,
+    p,
+    a {
+      margin: 0.8rem;
+    }
+  }
+}
+
+.Posts__header {
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: large;
+
+  span {
+    border-bottom: 0.3rem solid $colmain;
+  }
+}
+
+.posts {
+  .post {
+    background-color: white;
+    display: flex;
+    margin: 2rem;
+    border-radius: 1rem;
+
+    div {
+      img {
+        width: 13rem;
+      }
+    }
+
+    div {
+      margin: 0.5rem;
+      small {
+        color: #aaaaaa !important;
+      }
+      h4,
+      p {
+        font-family: Roboto;
+      }
+      small,
+      h4,
+      p {
+        margin: 0.8rem;
+      }
+    }
+  }
+}
+
+.postForm {
+  input {
+    width: 70%;
+    height: 5rem;
+    border-radius: 90px;
+    margin: 3rem;
+  }
+  img {
+    width: 3rem;
+    height: 2rem;
+  }
+}
