@@ -8,22 +8,24 @@ import {
   LOGOUT,
   RESET_PASSWORD,
   FORGOT_PASSWORD,
+  THERAPIST_LOGOUT,
   // ACCOUNT_DELETED,
   // USER_IMAGE,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
   user: null,
 };
 
 const reducer = (state = initialState, action) => {
-  const {type, payload} = action;
+  const { type, payload } = action;
 
   switch (type) {
     case USER_LOADED:
+    case THERAPIST_LOGOUT:
       return {
         ...state,
         isAuthenticated: true,

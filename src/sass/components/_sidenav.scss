@@ -1,0 +1,57 @@
+.sidenav {
+    background-color: $colwhite;
+    border-radius: 2rem;
+    padding: 2rem 0rem;
+    text-align: center;
+
+    &__image {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        &__user {
+            width: 100px;
+            height: 100px;
+        }
+
+        &__upload {
+            width: 40px;
+            position: relative;
+            top: -6rem;
+            right: -2.5rem;
+        }
+    }
+
+    &__name {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1rem;
+
+        h4 {
+            border-bottom: 3px solid $colmain;
+            width: fit-content;
+            padding-bottom: 1rem;
+        }
+    }
+
+    &__menu {
+        ul {
+            li {
+                margin: .5rem 0rem;
+                font-weight: 500;
+
+                &:hover {
+                    border-left: 2px solid $colmain;
+                    color: $colmain;
+                    cursor: pointer;
+                }
+            }
+
+            .active {
+                border-left: 2px solid $colmain;
+                color: $colmain;
+
+            }
+        }
+    }
+}

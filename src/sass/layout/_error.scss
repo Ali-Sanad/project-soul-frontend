@@ -1,0 +1,15 @@
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h2 {
+        font-size: 5rem;
+        color: $colmain;
+    }
+
+    img {
+        height: 60vh;
+    }
+}
