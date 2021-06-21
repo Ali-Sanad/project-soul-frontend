@@ -39,11 +39,11 @@ import UserProfile from "./components/user/UserProfile";
 import Error from "./components/shared/error";
 
 const App = () => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
   useEffect(() => {
     //attach the token to every axios request
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
 
     store.dispatch(loadTherapist());
     store.dispatch(loadUser());
