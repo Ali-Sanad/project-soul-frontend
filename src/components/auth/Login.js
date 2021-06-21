@@ -3,11 +3,10 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {login} from '../../actions/auth';
-import {setAlert} from '../../actions/alert';
 import loginImage from './../../assets/images/login.png';
 import logo from './../../assets/images/logo.png';
 import '../../index.css'; //tailwind
-const Login = ({login, isAuthenticated, user, setAlert}) => {
+const Login = ({login, isAuthenticated, user}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -145,7 +144,6 @@ Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
-  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -155,4 +153,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {login, setAlert})(Login);
+export default connect(mapStateToProps, {login})(Login);
