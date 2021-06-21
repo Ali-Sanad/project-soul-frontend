@@ -22,12 +22,13 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import ConfirmUserAccount from './components/auth/ConfirmUserAccount/ConfirmUserAccount';
 import AccountConfirmed from './components/auth/ConfirmUserAccount/AccountConfirmed';
+import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
+import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
+
 import LoginTherapist from './components/auth/loginTherapist';
 import RegisterThreapist from './components/auth/registerTherapist';
 import Messenger from '../src/components/layout/messenger/messenger';
 // import Video from "./components/video/video";
-import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
-import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
 import TherapistConfirmUserAccount from './components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount';
 import TherapistAccountConfirmed from './components/auth/ConfirmTherapistAccount/TherapistAccountConfirmed';
 import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/TherapistForgotPassword';
