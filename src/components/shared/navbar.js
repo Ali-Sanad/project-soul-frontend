@@ -9,13 +9,13 @@ const Navbar = () => {
     <>
       <nav className="navBar navbar navbar-expand-lg">
         <div className="container">
-          <a className="navbar-brand" href="/">
+          <NavLink className="navbar-brand" to="/home">
             <img
               className="navBar__image"
               src="/images/logo.png"
               alt="logo"
             ></img>
-          </a>
+          </NavLink>
           <button
             className="custom-toggler navbar-toggler"
             type="button"

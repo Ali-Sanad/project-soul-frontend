@@ -10,12 +10,13 @@ import Message from "../../shared/message";
 import ToTop from "../../shared/totop";
 
 //article
-const Article = ({ getArticles, article }) => {
+const Article = ({ getArticles, article, therapist }) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
   console.log(article);
+  console.log(therapist);
 
   return (
     <div className="container-fluid">
@@ -71,6 +72,7 @@ const Article = ({ getArticles, article }) => {
 
 const mapStateToProps = (state) => ({
   article: state.article,
+  therapist: state.therapistAuth,
 });
 
 export default connect(mapStateToProps, {
