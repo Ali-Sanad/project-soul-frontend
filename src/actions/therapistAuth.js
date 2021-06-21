@@ -104,8 +104,8 @@ export const login =
       });
       // console.log(res.data);
       // console.log(res.data.token);
-      dispatch(loadTherapist());
       // setAuthToken(res.data.token);
+      dispatch(loadTherapist());
     } catch (err) {
       console.log("errrr", err);
       if (err.response) {
