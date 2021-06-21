@@ -34,6 +34,21 @@
         }
       }
     }
+    &__login{
+      display: flex;
+      align-items: center;
+      &__user{
+        width: 40px;
+        height: 40px;
+      }
+      &__span{
+        margin: 0rem .5rem;
+      }
+      &__logout{
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
   
   
