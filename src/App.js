@@ -27,18 +27,6 @@ import LoginTherapist from "./components/auth/loginTherapist";
 import RegisterThreapist from "./components/auth/registerTherapist";
 import Messenger from "../src/components/layout/messenger/messenger";
 // import Video from "./components/video/video";
-<<<<<<< HEAD
-import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
-import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
-import TherapistConfirmUserAccount from './components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount';
-import TherapistAccountConfirmed from './components/auth/ConfirmTherapistAccount/TherapistAccountConfirmed';
-import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/TherapistForgotPassword';
-import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/TherapistResetPassword';
-import TherapistDataForm from './components/therapistDataForm';
-import Home from './components/landingpage/home';
-import UserProfile from './components/user/UserProfile';
-import Post from './components/posts/Post';
-=======
 import ForgotPassword from "./components/auth/ConfirmUserAccount/ForgotPassword";
 import ResetPassword from "./components/auth/ConfirmUserAccount/ResetPassword";
 import TherapistConfirmUserAccount from "./components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount";
@@ -48,10 +36,11 @@ import TherapistResetPassword from "./components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from "./components/therapistDataForm";
 import Home from "./components/landingpage/home";
 import UserProfile from "./components/user/UserProfile";
+import Post from "./components/posts/Post";
+
 import Error from "./components/shared/error";
 import TherapistDashboard from "./components/therapist/therapistdashboard";
 
->>>>>>> b2a2026ce08b1b1e9b7c7881fae2e53b9068f0b2
 const App = () => {
   useEffect(() => {
     //attach the token to every axios request
@@ -83,7 +72,11 @@ const App = () => {
           <Route path="/user-profile" exact component={UserProfile} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
-          <Route path="/therapistdashboard" exact component={TherapistDashboard} />
+          <Route
+            path="/therapistdashboard"
+            exact
+            component={TherapistDashboard}
+          />
 
           <Route
             path="/pending-verification"
@@ -125,14 +118,10 @@ const App = () => {
             component={TherapistDataForm}
           />
 
-<<<<<<< HEAD
-          <Route exact path='/posts'>
+          <Route exact path="/posts">
             <Post />
           </Route>
-          <Route path='/messenger'>
-=======
           <Route path="/messenger">
->>>>>>> b2a2026ce08b1b1e9b7c7881fae2e53b9068f0b2
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}
           </Route>

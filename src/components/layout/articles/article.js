@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import Moment from 'react-moment';
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { getArticles } from '../../../actions/article';
-import { Link } from 'react-router-dom';
-import Footer from '../../shared/footer';
-=======
 import Moment from "react-moment";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -16,8 +8,6 @@ import Footer from "../../shared/footer";
 import NavBar from "../../shared/navbar";
 import Message from "../../shared/message";
 import ToTop from "../../shared/totop";
-
->>>>>>> b2a2026ce08b1b1e9b7c7881fae2e53b9068f0b2
 //article
 const Article = ({ getArticles, article, therapist }) => {
   useEffect(() => {
