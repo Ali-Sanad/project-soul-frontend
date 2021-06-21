@@ -1,8 +1,12 @@
 .navBar {
     background-color: transparent;
-    position: absolute !important;
+    position: fixed !important;
     top: 0;
     width: 100%;
+    &.color{
+      background-color: $colbg;
+      box-shadow: 0px 0px 5px $colmain;
+    }
     &__image {
       width: 150px;
       height: 40px;

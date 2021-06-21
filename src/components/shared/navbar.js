@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import userimg from './../../assets/images/user.png';
 import logoutimg from './../../assets/images/logout.png';
 
 const Navbar = () => {
+	/* scroll nav */
 	const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 	const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
+	/* color nav */
+	const [colnavbar, setColNavbar] = useState(false);
+	const changeBackground = () => {
+		console.log(window.scrollY);
+		if (window.scrollY >= 80 || window.innerWidth < 992) {
+			setColNavbar(true);
+		} else {
+			setColNavbar(false);
+		}
+	};
+	useEffect(() => {
+		changeBackground();
+		window.addEventListener('scroll', changeBackground);
+	});
+
 	return (
 		<>
-			<nav className="navBar navbar navbar-expand-lg">
+			<nav className={colnavbar ? 'navBar navbar navbar-expand-lg color' : 'navBar navbar navbar-expand-lg'}>
 				<div className="container">
 					<NavLink className="navbar-brand" to="/home">
 						<img className="navBar__image" src="/images/logo.png" alt="logo"></img>
