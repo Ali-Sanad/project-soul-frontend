@@ -15,9 +15,12 @@ import { LOGOUT, THERAPIST_LOGOUT } from './actions/types';
 //state redux
 import { Provider } from 'react-redux';
 import store from './store';
-import setAuthToken from './utils/setAuthToken';
-import { loadUser } from './actions/auth';
+// import setAuthToken from './utils/setAuthToken';
+// import { loadUser } from './actions/auth';
 import { loadTherapist } from './actions/therapistAuth';
+import { setAuthToken, setTherapistAuthToken } from './utils/setAuthToken';
+import { loadAdmin, loadUser } from './actions/auth';
+
 //components
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -49,19 +52,40 @@ import TherapistDashboard from './components/therapist/therapistdashboard';
 
 const App = () => {
   useEffect(() => {
-    //attach the token to every axios request
+    console.log(store.getState().auth.isAdmin);
+    //attach the token to every axios request ##USER
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
 
-    store.dispatch(loadTherapist());
-    store.dispatch(loadUser());
+    //attach the token to every axios request ##Therapist
+    if (localStorage.therapistToken) {
+      setTherapistAuthToken(localStorage.therapistToken);
+    }
 
-    //logout user from all tabes if he logged out from one tabe
+    //if user or admin logged in load his/her data
+    if (store.getState().auth.token) {
+      if (store.getState().auth.isAdmin) {
+        store.dispatch(loadAdmin());
+      } else {
+        store.dispatch(loadUser());
+      }
+    }
+
+    //if therapist logged in load his/her data
+    if (store.getState().therapistAuth.therapistToken) {
+      store.dispatch(loadTherapist());
+    }
+
+    //logout user or therapist from all tabes if he/she logged out from one tabe
     window.addEventListener('storage', () => {
       if (!localStorage.token) {
         store.dispatch({ type: THERAPIST_LOGOUT });
         store.dispatch({ type: LOGOUT });
+        store.dispatch({ type: LOGOUT });
+      }
+      if (!localStorage.therapistToken) {
+        store.dispatch({ type: THERAPIST_LOGOUT });
       }
     });
   }, []);

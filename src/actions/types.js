@@ -8,6 +8,7 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 
 export const USER_LOADED = 'USER_LOADED';
+export const ADMIN_LOADED = 'ADMIN_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
 export const SET_ALERT = 'SET_ALERT';

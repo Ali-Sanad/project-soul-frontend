@@ -2,7 +2,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
-import setAuthToken from './utils/setAuthToken';
+import {setAuthToken, setTherapistAuthToken} from './utils/setAuthToken';
 
 const store = createStore(
   rootReducer,
@@ -20,9 +20,13 @@ store.subscribe(() => {
     const token = currentState.auth.token;
     setAuthToken(token);
   }
-  if (previousState.therapistAuth.token !== currentState.therapistAuth.token) {
-    const token = currentState.therapistAuth.token;
-    setAuthToken(token);
+  if (
+    previousState.therapistAuth.therapistToken !==
+    currentState.therapistAuth.therapistToken
+  ) {
+    const therapistToken = currentState.therapistAuth.therapistToken;
+    setTherapistAuthToken(therapistToken);
   }
 });
+
 export default store;

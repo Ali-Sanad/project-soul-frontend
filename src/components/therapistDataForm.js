@@ -56,7 +56,7 @@ const TherapistDataForm = ({
   therapistProfile: { therapistProfile },
   createTherapistProfile,
   // setAlert,
-  isAuthenticated,
+  //isAuthenticated,
   match,
 }) => {
   const classes = useStyles();
