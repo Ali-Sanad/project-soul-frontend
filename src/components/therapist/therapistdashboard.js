@@ -6,6 +6,7 @@ import TherapistFiles from './therapistfiles';
 import TherapistProfile from "./therapistprofile"
 import TherapistSummary from './therapistsummary';
 
+
 const TherapistDashboard = () => {
 	return (
 		<React.Fragment>
@@ -20,8 +21,8 @@ const TherapistDashboard = () => {
                     </div>
                     <div className="col-8">
                         {/* <TherapistFiles></TherapistFiles> */}
-                        {/* <TherapistProfile></TherapistProfile> */}
-                        <TherapistSummary></TherapistSummary>
+                        <TherapistProfile></TherapistProfile>
+                        {/* <TherapistSummary></TherapistSummary> */}
                     </div>
                 </div>
             </div>
