@@ -3,11 +3,10 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {login} from '../../actions/auth';
-import {setAlert} from '../../actions/alert';
 import loginImage from './../../assets/images/login.png';
 import logo from './../../assets/images/logo.png';
-import '../../index.css'; //tailwind
-const Login = ({login, isAuthenticated, user, setAlert}) => {
+import '../../index.css'; //tailwind import
+const Login = ({login, isAuthenticated, user}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -41,20 +40,25 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
       <div className='grid sm:grid-cols-2 grid-cols-1  h-screen bg-soul_bg font-Nunito'>
         <div className=''>
           <div className='w-44 h-24 mx-auto'>
-            <img src={logo} alt='' />
+            <Link to='/'>
+              <img src={logo} alt='' />
+            </Link>
           </div>
-          <h4 className='text-4xl mt-2 bold  text-center'>Login</h4>
+          <h4 className='text-4xl   text-center'>Login</h4>
           <div className='flex justify-center mt-12 mb-12'>
             <h2 className='text-2xl   inline-block mx-3 cursor-pointer '>
               {' '}
-              <Link to='/login' className='hover:text-soul-300 hover:underline'>
+              <Link
+                to='/login'
+                className='text-black no-underline hover:text-soul-300  hover:underline'
+              >
                 User
               </Link>
             </h2>
             <h2 className='text-2xl inline-block mx-3 cursor-pointer '>
               <Link
                 to='/logintherapist'
-                className='hover:text-soul-300
+                className='text-black no-underline hover:text-soul-300
                hover:underline'
               >
                 Therapist
@@ -100,12 +104,18 @@ const Login = ({login, isAuthenticated, user, setAlert}) => {
               </span>
               <div className='grid grid-cols-2 lg:ml-20 md:ml-16 sm:ml-10 ml-16 '>
                 <p className=' inline-block mt-6    cursor-pointer'>
-                  <Link to='/forgot-password' className='hover:text-soul-300'>
+                  <Link
+                    to='/forgot-password'
+                    className=' text-black no-underline hover:text-soul-300'
+                  >
                     Forgot password ?
                   </Link>
                 </p>
                 <p className=' inline-block mt-6   cursor-pointer'>
-                  <Link to='/register' className='hover:text-soul-300'>
+                  <Link
+                    to='/register'
+                    className=' text-black no-underline hover:text-soul-300'
+                  >
                     Don't have an account ?
                   </Link>
                 </p>
@@ -134,7 +144,6 @@ Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
-  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -144,4 +153,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {login, setAlert})(Login);
+export default connect(mapStateToProps, {login})(Login);

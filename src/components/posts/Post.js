@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Footer from '../shared/footer';
 import Navbar from '../shared/navbar';
 import HeroSectionPost from './HeroSectionPost';

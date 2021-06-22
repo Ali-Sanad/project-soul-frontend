@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {NavLink} from 'react-router-dom';
 
 import userimg from './../../assets/images/user.png';
 import logoutimg from './../../assets/images/logout.png';
 
 const Navbar = () => {
-	/* scroll nav */
-	const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-	const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+  /* scroll nav */
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
-	/* color nav */
-	const [colnavbar, setColNavbar] = useState(false);
-	const changeBackground = () => {
-		console.log(window.scrollY);
-		if (window.scrollY >= 80 || window.innerWidth < 992) {
-			setColNavbar(true);
-		} else {
-			setColNavbar(false);
-		}
-	};
-	useEffect(() => {
-		changeBackground();
-		window.addEventListener('scroll', changeBackground);
-	});
+  /* color nav */
+  const [colnavbar, setColNavbar] = useState(false);
+  const changeBackground = () => {
+    console.log(window.scrollY);
+    if (window.scrollY >= 80 || window.innerWidth < 992) {
+      setColNavbar(true);
+    } else {
+      setColNavbar(false);
+    }
+  };
+  useEffect(() => {
+    changeBackground();
+    window.addEventListener('scroll', changeBackground);
+  });
 
 	return (
 		<>
@@ -88,16 +88,16 @@ const Navbar = () => {
 							<img className="navBar__login__logout" src={logoutimg}></img>
 						</div>
 
-						{/* <button className="button btn">
+            {/* <button className="button btn">
 							<span className="mainbtn">
 								<NavLink to="/login">Login</NavLink>
 							</span>
 						</button> */}
-					</div>
-				</div>
-			</nav>
-		</>
-	);
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 };
 
 export default Navbar;
