@@ -56,7 +56,7 @@ const RegisterTherapist = ({
   history,
   register,
   setAlert,
-  isAuthenticated,
+  isAuthenticated_therapist,
   auth,
   therapist,
 }) => {
@@ -87,9 +87,9 @@ const RegisterTherapist = ({
   };
   // history.replace("/pending-therapist-verification");
   console.log("ther", therapist);
-  console.log("isAurh", isAuthenticated);
+  console.log("isAurh", isAuthenticated_therapist);
   console.log("auth", auth);
-  if (therapist) {
+  if (isAuthenticated_therapist) {
     history.replace("/therapist-pending-verification");
   }
   //if(auth.status==)
@@ -207,12 +207,12 @@ const RegisterTherapist = ({
 RegisterTherapist.propTypes = {
   setAlert: propTypes.func.isRequired,
   register: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool,
+  isAuthenticated_therapist: propTypes.bool,
 };
 const mapStateToProps = (state) => ({
   auth: state.therapistAuth,
 
-  isAuthenticated: state.therapistAuth.isAuthenticated,
+  isAuthenticated_therapist: state.therapistAuth.isAuthenticated_therapist,
   therapist: state.therapistAuth.therapist,
   // isAuthenticated: state.therapistAuthReducer?.isAuthenticated,
 });
