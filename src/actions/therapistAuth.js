@@ -83,7 +83,7 @@ export const register =
 export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/therapist/login', formData);
-    //console.log(res.data);
+    console.log(res.data);
     dispatch(setAlert('Therapist logged in successfully', 'success'));
 
     dispatch({
