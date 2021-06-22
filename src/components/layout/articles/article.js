@@ -4,18 +4,30 @@ import { connect } from "react-redux";
 import { getArticles } from "../../../actions/article";
 import { Link } from "react-router-dom";
 
+import ArticleForm from "./articleForm";
 import Footer from "../../shared/footer";
 import NavBar from "../../shared/navbar";
 import Message from "../../shared/message";
 import ToTop from "../../shared/totop";
+import setAuthToken from "../../../utils/setAuthToken";
 //article
-const Article = ({ getArticles, article, therapist }) => {
+const Article = ({
+  getArticles,
+  article,
+  therapist: { isAuthenticated, therapist, token },
+}) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
   console.log(article);
-  console.log(therapist);
+  console.log("thera", therapist);
+  console.log("thera", isAuthenticated);
+  console.log("thera", token);
+
+  if (therapist && isAuthenticated && token) {
+    localStorage.setItem("token", token);
+  }
 
   return (
     <div className="container-fluid">
@@ -37,6 +49,7 @@ const Article = ({ getArticles, article, therapist }) => {
         <div className="Articles__header">
           <h2 id="articleScroll">Articles</h2>
         </div>
+        {isAuthenticated && therapist ? <ArticleForm /> : ""}
         <div className="articles">
           {article?.articles.map((article) => {
             return (
@@ -62,7 +75,6 @@ const Article = ({ getArticles, article, therapist }) => {
           })}
         </div>
       </div>
-      {/* <Footer /> */}
       <Footer />
       <Message></Message>
       <ToTop></ToTop>

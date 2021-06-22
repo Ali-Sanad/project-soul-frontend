@@ -1,4 +1,4 @@
-import { ARTICLES_ERROR, GET_ARTICLES } from "../actions/types";
+import { ARTICLES_ERROR, GET_ARTICLES, ADD_ARTICLE } from "../actions/types";
 
 const initialState = {
   articles: [],
@@ -13,11 +13,12 @@ const article = (state = initialState, action) => {
         ...state,
         articles: payload,
       };
-    // case "ADD_POST":
-    //   return {
-    //     ...state,
-    //     posts: [payload, ...state.posts],
-    //   };
+
+    case ADD_ARTICLE:
+      return {
+        ...state,
+        articles: [payload, ...state.articles],
+      };
 
     // case "GET_POST":
     //   return {
