@@ -7,3 +7,11 @@
     padding: .5rem 1rem;
     outline: none;
 }
+.linkstyle{
+    text-decoration: none;
+    color: $colfont;
+    &:hover{
+        color: $colfont;
+        cursor: pointer;
+    }
+}

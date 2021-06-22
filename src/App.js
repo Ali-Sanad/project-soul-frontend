@@ -44,6 +44,11 @@ import Post from "./components/posts/Post";
 
 import Error from "./components/shared/error";
 import TherapistDashboard from "./components/therapist/therapistdashboard";
+// import Post from "./components/posts/Post";
+import RegisterOptions from './components/auth/registeroptions';
+import HeroSection from "./components/landingpage/herosection";
+import Works from "./components/landingpage/works";
+import Contact from "./components/landingpage/contact";
 
 const App = () => {
   useEffect(() => {
@@ -91,7 +96,11 @@ const App = () => {
 
           <Route path='/' exact component={Home} />
           <Route path='/home' exact component={Home} />
+          <Route path='/about' exact component={HeroSection} />
+          <Route path='/works' exact component={Works} />
+          <Route path='/contact' exact component={Contact} />
           <Route path='/login' exact component={Login} />
+          <Route path='/registeroptions' exact component={RegisterOptions} />
           <Route path='/register' exact component={Register} />
           <Route path='/user-profile' exact component={UserProfile} />
           <Route path='/forgot-password' exact component={ForgotPassword} />

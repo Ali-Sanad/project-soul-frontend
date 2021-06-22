@@ -8,7 +8,7 @@ const HeroSectionPost = () => {
           <div className='heroSection_post_text'>
             <h2>Explore Our Community</h2>
             <p>feel free to share your ideas.</p>
-            <a href='#postScroll'>Explore</a>
+            <a href='#postScroll' className="mainbtn linkstyle">Explore</a>
           </div>
           <div className='heroSection_post_image'>
             <img className='heroSection_postimage_img' src={ImageHero} />
