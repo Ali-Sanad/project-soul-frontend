@@ -2,30 +2,38 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
+  ADMIN_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
   RESET_PASSWORD,
   FORGOT_PASSWORD,
-  THERAPIST_LOGOUT,
   // ACCOUNT_DELETED,
   // USER_IMAGE,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem('token'),
+  isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
   isAuthenticated: null,
   loading: true,
   user: null,
 };
 
 const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
+  const {type, payload} = action;
 
   switch (type) {
     case USER_LOADED:
-    case THERAPIST_LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload,
+      };
+
+    case ADMIN_LOADED:
       return {
         ...state,
         isAuthenticated: true,
@@ -41,7 +49,8 @@ const reducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        ...payload,
+        token: payload.token,
+        isAdmin: payload.isAdmin,
         isAuthenticated: true,
         loading: false,
       };

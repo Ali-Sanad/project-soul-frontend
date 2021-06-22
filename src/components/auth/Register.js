@@ -6,7 +6,7 @@ import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import logo from './../../assets/images/logo.png';
 import userRegister from './../../assets/images/user-register.png';
-import '../../index.css';
+// import '../../index.css'; //tailwind
 
 const Register = ({history, setAlert, register, auth}) => {
   const [formData, setFormData] = useState({

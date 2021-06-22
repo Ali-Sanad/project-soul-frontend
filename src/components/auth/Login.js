@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {login} from '../../actions/auth';
 import loginImage from './../../assets/images/login.png';
 import logo from './../../assets/images/logo.png';
-import '../../index.css'; //tailwind
+import '../../index.css'; //tailwind import
 const Login = ({login, isAuthenticated, user}) => {
   const [formData, setFormData] = useState({
     email: '',

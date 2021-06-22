@@ -6,6 +6,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
+  ADMIN_LOADED,
   LOGOUT,
   AUTH_ERROR,
   RESET_PASSWORD,
@@ -18,11 +19,28 @@ import {setAlert} from './alert';
 //load user
 export const loadUser = () => async (dispatch) => {
   try {
-    const res = await axios.get('/auth');
+    const res = await axios.get('/auth/loadUser');
     console.log(res.data);
 
     dispatch({
       type: USER_LOADED,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
+
+//load admin
+export const loadAdmin = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/auth/loadAdmin');
+    console.log(res.data);
+
+    dispatch({
+      type: ADMIN_LOADED,
       payload: res.data,
     });
   } catch (err) {
@@ -66,15 +84,21 @@ export const login = (formData) => async (dispatch) => {
 
     if (res.data.isAdmin) {
       dispatch(setAlert('Admin logged in successfully', 'success'));
+      localStorage.setItem('isAdmin', true);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data,
+      });
+      dispatch(loadAdmin());
     } else {
       dispatch(setAlert('User logged in successfully', 'success'));
+      localStorage.setItem('isAdmin', false);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data,
+      });
+      dispatch(loadUser());
     }
-
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: res.data,
-    });
-    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
 

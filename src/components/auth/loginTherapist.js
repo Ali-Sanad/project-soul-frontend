@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { setAlert } from "../../actions/alert";
 import { login } from "../../actions/therapistAuth";
 import propTypes from "prop-types";
 
@@ -10,8 +9,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
+
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -53,13 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginTherapist = ({
-  login,
-  setAlert,
-  isAuthenticated,
-  therapist,
-  auth,
-}) => {
+const LoginTherapist = ({ login, isAuthenticated_therapist, therapist }) => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     email: "",
@@ -73,14 +65,13 @@ const LoginTherapist = ({
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setAlert("all fields required", "error");
+      // setAlert('all fields required', 'error');
     } else {
       login(formData);
     }
   };
-  console.log("auth", auth);
-  if (isAuthenticated && therapist) {
-    setAlert("Therapist logged in successfully", "success");
+
+  if (isAuthenticated_therapist && therapist) {
     return <Redirect to="/" />;
   }
   return (
@@ -120,10 +111,7 @@ const LoginTherapist = ({
             value={password}
             onChange={(e) => onChange(e)}
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
+
           <Button
             type="submit"
             fullWidth
@@ -154,15 +142,12 @@ const LoginTherapist = ({
   );
 };
 LoginTherapist.propTypes = {
-  setAlert: propTypes.func.isRequired,
   login: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool,
+  isAuthenticated_therapist: propTypes.bool,
   therapist: propTypes.object,
 };
 const mapStateToProps = (state) => ({
-  auth: state.therapistAuth,
-
-  isAuthenticated: state.therapistAuth.isAuthenticated,
+  isAuthenticated_therapist: state.therapistAuth.isAuthenticated_therapist,
   therapist: state.therapistAuth.therapist,
 });
-export default connect(mapStateToProps, { setAlert, login })(LoginTherapist);
+export default connect(mapStateToProps, { login })(LoginTherapist);

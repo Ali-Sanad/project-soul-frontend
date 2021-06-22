@@ -21,6 +21,7 @@ const Navbar = () => {
   };
   useEffect(() => {
     changeBackground();
+
     window.addEventListener("scroll", changeBackground);
   });
 
@@ -91,7 +92,7 @@ const Navbar = () => {
                   className="navBar__list__item__link nav-link"
                   to="/therapistslist"
                 >
-                  Therapist List
+                  Therpist List
                 </NavLink>
               </li>
               <li className="navBar__list__item nav-item">

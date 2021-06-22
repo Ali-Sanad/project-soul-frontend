@@ -5,7 +5,7 @@ import {resetPassword} from '../../../actions/auth';
 import {Link, Redirect} from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 
-import setAuthToken from '../../../utils/setAuthToken';
+import {setAuthToken} from '../../../utils/setAuthToken';
 
 const ResetPassword = ({match, resetPassword, auth}) => {
   useEffect(() => {
