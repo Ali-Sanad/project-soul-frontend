@@ -5,6 +5,7 @@ import SideNav from "../shared/sidenav";
 import TherapistFiles from './therapistfiles';
 import TherapistProfile from "./therapistprofile"
 import TherapistSummary from './therapistsummary';
+import TherapistReview from './therapistreview';
 
 
 const TherapistDashboard = () => {
@@ -21,8 +22,9 @@ const TherapistDashboard = () => {
                     </div>
                     <div className="col-8">
                         {/* <TherapistFiles></TherapistFiles> */}
-                        <TherapistProfile></TherapistProfile>
+                        {/* <TherapistProfile></TherapistProfile> */}
                         {/* <TherapistSummary></TherapistSummary> */}
+                        <TherapistReview></TherapistReview>
                     </div>
                 </div>
             </div>

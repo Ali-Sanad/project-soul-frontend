@@ -1,0 +1,28 @@
+.therapistreview{
+    background-color: $colwhite;
+    border-radius: 2rem;
+    padding: 2rem 0rem;
+    text-align: center;
+    .headers{
+        margin-bottom: 2rem;
+    }
+    &__data{
+        background-color: #ccf2f43d;
+        border-radius: 1rem;
+        padding: 1rem;
+    }
+
+    &__userimg {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+    &__rating{
+        margin-bottom: 0rem;
+    }
+}
+
+.MuiBox-root.MuiBox-root-2{
+    margin-bottom: 0;
+}
