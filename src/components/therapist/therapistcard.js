@@ -1,7 +1,8 @@
 import React from 'react';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
 import userimg from '../../assets/images/user.png';
-import starimg from '../../assets/images/star.png';
 
 const TherapistCard = () => {
 	return (
@@ -10,11 +11,9 @@ const TherapistCard = () => {
 				<img src={userimg} alt="" className="therapistcard__userimg"></img>
 				<p>Menna Omar</p>
 				<div className="therapistcard__rate">
-					<img src={starimg} alt="" className="therapistcard__rate__starimg"></img>
-					<img src={starimg} alt="" className="therapistcard__rate__starimg"></img>
-					<img src={starimg} alt="" className="therapistcard__rate__starimg"></img>
-					<img src={starimg} alt="" className="therapistcard__rate__starimg"></img>
-					<img src={starimg} alt="" className="therapistcard__rate__starimg"></img>
+					<Box component="fieldset" mb={3} borderColor="transparent">
+						<Rating name="read-only" value={3} readOnly />
+					</Box>
 				</div>
 				<div className="therapistcard__btn">
 					<button className="mainbtn">Book Now</button>
