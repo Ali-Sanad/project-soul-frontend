@@ -11,9 +11,11 @@ export const getTherapists = () => async (dispatch) => {
       "array of Therapist from therapist action",
       res.data.therapists
     );
+    const acceptedTherapist=res.data.therapists.filter(th=>th.isAccepted==true)
+    console.log("accepted",acceptedTherapist)
     dispatch({
       type: GET_THERAPISTS,
-      payload: res.data.therapists,
+      payload: acceptedTherapist,
     });
   } catch (error) {
     console.log(error);
