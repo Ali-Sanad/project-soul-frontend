@@ -113,7 +113,7 @@ const Login = ({login, isAuthenticated, user}) => {
                 </p>
                 <p className=' inline-block mt-6   cursor-pointer'>
                   <Link
-                    to='/register'
+                    to='/registeroptions'
                     className=' text-black no-underline hover:text-soul-300'
                   >
                     Don't have an account ?

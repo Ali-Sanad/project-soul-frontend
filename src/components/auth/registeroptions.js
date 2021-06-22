@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import logo from './../../assets/images/logo.png';
 import therapist from './../../assets/images/therapist.png';
@@ -14,11 +15,19 @@ const RegisterOptions = () => {
 					<div className="row">
 						<div className="col-6">
 							<img src={therapist} alt=""></img>
-							<h4>Therapist</h4>
+							<h4>
+								<Link to="/register" className="linkstyle">
+									Therapist
+								</Link>
+							</h4>
 						</div>
 						<div className="col-6">
 							<img src={users} alt=""></img>
-							<h4>User</h4>
+							<h4>
+								<Link to="/registeroptions" className="linkstyle">
+									User
+								</Link>
+							</h4>
 						</div>
 					</div>
 				</div>
