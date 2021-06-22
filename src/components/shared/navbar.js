@@ -25,6 +25,7 @@ const Navbar = () => {
     window.addEventListener("scroll", changeBackground);
   });
 
+
   return (
     <>
       <nav
@@ -111,6 +112,7 @@ const Navbar = () => {
               <span className="navBar__login__span">Menna Omar</span>
               <img className="navBar__login__logout" src={logoutimg}></img>
             </div>
+
 
             {/* <button className="button btn">
 							<span className="mainbtn">

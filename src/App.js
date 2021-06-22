@@ -36,6 +36,7 @@ import TherapistAccountConfirmed from "./components/auth/ConfirmTherapistAccount
 import TherapistForgotPassword from "./components/auth/ConfirmTherapistAccount/TherapistForgotPassword";
 import TherapistResetPassword from "./components/auth/ConfirmTherapistAccount/TherapistResetPassword";
 import TherapistDataForm from "./components/therapistDataForm";
+
 import TherapistsList from "./components/therapistsList/therapistList";
 import Home from "./components/landingpage/home";
 import UserProfile from "./components/user/UserProfile";
@@ -87,13 +88,16 @@ const App = () => {
       <BrowserRouter>
         <Alert />
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/home" exact component={Home} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/register" exact component={Register} />
-          <Route path="/user-profile" exact component={UserProfile} />
-          <Route path="/forgot-password" exact component={ForgotPassword} />
-          <Route path="/reset-password" exact component={ResetPassword} />
+
+          <Route path='/' exact component={Home} />
+          <Route path='/home' exact component={Home} />
+          <Route path='/login' exact component={Login} />
+          <Route path='/register' exact component={Register} />
+          <Route path='/user-profile' exact component={UserProfile} />
+          <Route path='/forgot-password' exact component={ForgotPassword} />
+          <Route path='/reset-password' exact component={ResetPassword} />
+          <Route path="/posts" exact component={Post} />
+
           <Route
             path="/therapistdashboard"
             exact
