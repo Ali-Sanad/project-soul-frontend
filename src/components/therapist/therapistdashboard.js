@@ -18,8 +18,8 @@ const TherapistDashboard = () => {
                         <SideNav></SideNav>
                     </div>
                     <div className="col-8">
-                        <TherapistFiles></TherapistFiles>
-                        {/* <TherapistProfile></TherapistProfile> */}
+                        {/* <TherapistFiles></TherapistFiles> */}
+                        <TherapistProfile></TherapistProfile>
                     </div>
                 </div>
             </div>
