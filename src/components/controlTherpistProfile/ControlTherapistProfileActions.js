@@ -93,11 +93,11 @@ const ControlTherapistProfileActions = () => {
       <Link to={`/therapist-data-form/${id}`} variant="body2">
         Edit Your Profile
       </Link>
-      <Link to="/addTherapistExperience" variant="body2">
-        Add Experience
-      </Link>
-      <Link to="/addTherapistEducation" variant="body2">
+      <Link to={`/addTherapistEducation/${id}`} variant="body2">
         Add Education
+      </Link>
+      <Link to={`/addTherapistExperience/${id}`} variant="body2">
+        Add Experience
       </Link>
     </>
   );

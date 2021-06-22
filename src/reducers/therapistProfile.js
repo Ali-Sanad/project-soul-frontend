@@ -8,7 +8,7 @@ const initialState = {
   therapistProfile: null,
   therapistProfiles: [],
   repos: [],
-  loading: true,
+  loading_therapist: true,
   error: {},
 };
 
@@ -21,14 +21,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         therapistProfile: payload,
-        loading: false,
+        loading_therapist: false,
       };
 
     case THERAPIST_PROFILE_ERROR:
       return {
         ...state,
         error: payload,
-        loading: false,
+        loading_therapist: false,
       };
     // case THERAPIST_CLEAR_PROFILE:
     //   return {

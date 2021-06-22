@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddTherapistEducation = ({ addEducation, history }) => {
+const AddTherapistEducation = ({ addEducation, history, match }) => {
   const [formData, setFormData] = useState({
     title: '',
     location: '',
@@ -60,8 +60,10 @@ const AddTherapistEducation = ({ addEducation, history }) => {
 
   const { title, location, from, to } = formData;
 
-  const onChange = (e) =>
+  const onChange = (e) => {
+    console.log(e.target.name, e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const classes = useStyles();
   return (
@@ -79,8 +81,16 @@ const AddTherapistEducation = ({ addEducation, history }) => {
           noValidate
           // onSubmit={(e) => onSubmit(e)}
           onSubmit={(e) => {
+            let id = match.params.id.trim();
+            console.log(id);
+
             e.preventDefault();
-            addEducation(formData, history);
+            addEducation(
+              {
+                ...formData,
+              },
+              id
+            );
           }}
         >
           <Grid container spacing={2}>
@@ -117,7 +127,9 @@ const AddTherapistEducation = ({ addEducation, history }) => {
               id="from"
               label="From Date"
               type="date"
-              defaultValue="2017-05-24"
+              name="from"
+              value={from}
+              onChange={(e) => onChange(e)}
               className={classes.textField}
               InputLabelProps={{
                 shrink: true,
@@ -129,7 +141,9 @@ const AddTherapistEducation = ({ addEducation, history }) => {
               id="to"
               label="To"
               type="date"
-              defaultValue="2019-05-24"
+              name="to"
+              value={to}
+              onChange={(e) => onChange(e)}
               className={classes.textField}
               InputLabelProps={{
                 shrink: true,

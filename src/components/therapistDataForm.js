@@ -53,10 +53,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TherapistDataForm = ({
-  therapistProfile: { therapistProfile },
+  // therapistProfile: { therapistProfile },
+  // therapistProfile,
   createTherapistProfile,
   // setAlert,
-  //isAuthenticated,
+  isAuthenticated_therapist,
   match,
 }) => {
   const classes = useStyles();
@@ -376,7 +377,7 @@ const TherapistDataForm = ({
 TherapistDataForm.propTypes = {
   createTherapistProfile: PropTypes.func.isRequired,
 
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated_therapist: PropTypes.bool,
 };
 const mapStateToProps = (state) => ({
   therapistProfile: state.therapistProfile,

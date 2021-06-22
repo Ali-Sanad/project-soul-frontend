@@ -11,15 +11,17 @@ import Article from './components/layout/articles/article';
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
 // import AllRoutes from './components/routes/AllRoutes';
-import { LOGOUT, THERAPIST_LOGOUT } from './actions/types';
+
 //state redux
 import { Provider } from 'react-redux';
 import store from './store';
-// import setAuthToken from './utils/setAuthToken';
-// import { loadUser } from './actions/auth';
-import { loadTherapist } from './actions/therapistAuth';
+
 import { setAuthToken, setTherapistAuthToken } from './utils/setAuthToken';
 import { loadAdmin, loadUser } from './actions/auth';
+import { LOGOUT, THERAPIST_LOGOUT } from './actions/types';
+//state redux
+
+import { loadTherapist } from './actions/therapistAuth';
 
 //components
 import Login from './components/auth/Login';
@@ -49,6 +51,8 @@ import AddTherapistEducation from './components/therapistProfile-form/AddTherapi
 
 import Error from './components/shared/error';
 import TherapistDashboard from './components/therapist/therapistdashboard';
+
+import TherapistsList from './components/therapistsList/therapistList';
 
 const App = () => {
   useEffect(() => {
@@ -166,13 +170,13 @@ const App = () => {
 
           <Route
             exact
-            path="/addTherapistExperience"
+            path="/addTherapistExperience/:id"
             component={AddTherapistExperience}
           />
 
           <Route
             exact
-            path="/addTherapistEducation"
+            path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
 
@@ -185,6 +189,9 @@ const App = () => {
           </Route>
           <Route path="/articles">
             <Article />
+          </Route>
+          <Route path="/therapistslist">
+            <TherapistsList />
           </Route>
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
