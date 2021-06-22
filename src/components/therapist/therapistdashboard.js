@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
 import TherapistFiles from './therapistfiles';
+import TherapistProfile from "./therapistprofile"
 
 const TherapistDashboard = () => {
 	return (
@@ -18,6 +19,7 @@ const TherapistDashboard = () => {
                     </div>
                     <div className="col-8">
                         <TherapistFiles></TherapistFiles>
+                        {/* <TherapistProfile></TherapistProfile> */}
                     </div>
                 </div>
             </div>

@@ -72,7 +72,7 @@ const Navbar = () => {
 								</NavLink>
 							</li>
 							<li className="navBar__list__item nav-item">
-								<NavLink className="navBar__list__item__link nav-link" to="/">
+								<NavLink className="navBar__list__item__link nav-link" to="/posts">
 									Community
 								</NavLink>
 							</li>

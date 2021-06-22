@@ -38,6 +38,7 @@ import Home from "./components/landingpage/home";
 import UserProfile from "./components/user/UserProfile";
 import Error from "./components/shared/error";
 import TherapistDashboard from "./components/therapist/therapistdashboard";
+import Post from "./components/posts/Post";
 
 const App = () => {
   useEffect(() => {
@@ -71,6 +72,7 @@ const App = () => {
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/therapistdashboard" exact component={TherapistDashboard} />
+          <Route path="/posts" exact component={Post} />
 
           <Route
             path="/pending-verification"
