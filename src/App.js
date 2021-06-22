@@ -47,7 +47,7 @@ import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/T
 import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/TherapistResetPassword';
 import TherapistDataForm from './components/therapistDataForm';
 
-import TherapistsList from './components/therapistsList/therapistList';
+// import TherapistsList from './components/therapistsList/therapistList';
 import Home from './components/landingpage/home';
 import UserProfile from './components/user/UserProfile';
 import Post from './components/posts/Post';
@@ -59,6 +59,7 @@ import RegisterOptions from './components/auth/registeroptions';
 import HeroSection from './components/landingpage/herosection';
 import Works from './components/landingpage/works';
 import Contact from './components/landingpage/contact';
+import TherapistList from './components/therapist/therapistlist';
 
 const App = () => {
   useEffect(() => {
@@ -117,6 +118,7 @@ const App = () => {
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/reset-password" exact component={ResetPassword} />
           <Route path="/posts" exact component={Post} />
+          <Route path="/therapistlist" exact component={TherapistList} />
 
           <Route
             path="/therapistdashboard"
@@ -202,9 +204,9 @@ const App = () => {
           <Route path="/articles">
             <Article />
           </Route>
-          <Route path="/therapistslist">
+          {/* <Route path="/therapistslist">
             <TherapistsList />
-          </Route>
+          </Route> */}
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
         </Switch>

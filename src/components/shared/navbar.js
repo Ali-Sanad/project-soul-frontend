@@ -91,7 +91,7 @@ const Navbar = () => {
               <li className="navBar__list__item nav-item">
                 <NavLink
                   className="navBar__list__item__link nav-link"
-                  to="/therapistslist"
+                  to="/therapistlist"
                 >
                   Therpist List
                 </NavLink>

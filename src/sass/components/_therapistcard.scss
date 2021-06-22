@@ -1,0 +1,30 @@
+.therapistcard {
+    background-color: $colwhite;
+    border-radius: 2rem;
+    margin: .5rem 0rem;
+    padding: 2rem;
+    text-align: center;
+
+    &__userimg {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+
+    &__rate {
+        display: flex;
+        justify-content: center;
+        &__starimg {
+            width: 20px;
+        }
+    }
+    &__btn{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        button{
+            font-size: .7rem;
+        }
+    }
+}
