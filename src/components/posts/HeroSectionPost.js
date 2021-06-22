@@ -1,17 +1,17 @@
 import React from 'react';
-import ImageHero from '../../assets/images/Group therapy-bro 1 (1).png';
+import ImageHero from '../../assets/images/Group therapy-bro 1.png';
 const HeroSectionPost = () => {
   return (
     <>
       <div className='container'>
         <div className='heroSection__post'>
-          <div className='heroSection__post__text'>
+          <div className='heroSection_post_text'>
             <h2>Explore Our Community</h2>
             <p>feel free to share your ideas.</p>
-            <a href='#postScroll'>Explore</a>
+            <a href='#postScroll' className="mainbtn linkstyle">Explore</a>
           </div>
-          <div className='heroSection__post__image'>
-            <img className='heroSection__post__image__img' src={ImageHero} />
+          <div className='heroSection_post_image'>
+            <img className='heroSection_postimage_img' src={ImageHero} />
           </div>
         </div>
         <div className='Posts__header'>

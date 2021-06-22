@@ -32,16 +32,6 @@ import LoginTherapist from './components/auth/loginTherapist';
 import RegisterThreapist from './components/auth/registerTherapist';
 import Messenger from '../src/components/layout/messenger/messenger';
 // import Video from "./components/video/video";
-import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
-import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
-import TherapistConfirmUserAccount from './components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount';
-import TherapistAccountConfirmed from './components/auth/ConfirmTherapistAccount/TherapistAccountConfirmed';
-import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/TherapistForgotPassword';
-import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/TherapistResetPassword';
-import TherapistDataForm from './components/therapistDataForm';
-import Home from './components/landingpage/home';
-import UserProfile from './components/user/UserProfile';
-import Post from './components/posts/Post';
 
 import ControlTherapistProfile from './components/controlTherpistProfile/ControlTherapistProfile';
 //import CreateTherapistProfile from './components/therapistProfile-form/CreateTherapistProfile';
@@ -49,10 +39,26 @@ import ControlTherapistProfileActions from './components/controlTherpistProfile/
 import AddTherapistExperience from './components/therapistProfile-form/AddTherapistExperience';
 import AddTherapistEducation from './components/therapistProfile-form/AddTherapistEducation';
 
-import Error from './components/shared/error';
-import TherapistDashboard from './components/therapist/therapistdashboard';
+import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
+import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
+import TherapistConfirmUserAccount from './components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount';
+import TherapistAccountConfirmed from './components/auth/ConfirmTherapistAccount/TherapistAccountConfirmed';
+import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/TherapistForgotPassword';
+import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/TherapistResetPassword';
+import TherapistDataForm from './components/therapistDataForm';
 
 import TherapistsList from './components/therapistsList/therapistList';
+import Home from './components/landingpage/home';
+import UserProfile from './components/user/UserProfile';
+import Post from './components/posts/Post';
+
+import Error from './components/shared/error';
+import TherapistDashboard from './components/therapist/therapistdashboard';
+// import Post from "./components/posts/Post";
+import RegisterOptions from './components/auth/registeroptions';
+import HeroSection from './components/landingpage/herosection';
+import Works from './components/landingpage/works';
+import Contact from './components/landingpage/contact';
 
 const App = () => {
   useEffect(() => {
@@ -101,11 +107,17 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
+          <Route path="/about" exact component={HeroSection} />
+          <Route path="/works" exact component={Works} />
+          <Route path="/contact" exact component={Contact} />
           <Route path="/login" exact component={Login} />
+          <Route path="/registeroptions" exact component={RegisterOptions} />
           <Route path="/register" exact component={Register} />
           <Route path="/user-profile" exact component={UserProfile} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/reset-password" exact component={ResetPassword} />
+          <Route path="/posts" exact component={Post} />
+
           <Route
             path="/therapistdashboard"
             exact
