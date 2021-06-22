@@ -41,5 +41,13 @@ export const THERAPISTS_ERROR = 'THERAPISTS_ERROR';
 export const GET_ARTICLES = 'GET_ARTICLES';
 export const ARTICLES_ERROR = 'ARTICLES_ERROR';
 export const ADD_ARTICLE = 'ADD_ARTICLE';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const REVIEW_ERROR = 'REVIEW_ERROR';
+export const GET_REVIEWS = 'GET_REVIEWS';
+export const UPDATE_REVIEW = 'UPDATE_REVIEW ';
+export const DELETE_REVIEW = 'DELETE_REVIEW';
+
+
+
 
 //post action

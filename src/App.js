@@ -59,6 +59,8 @@ import RegisterOptions from './components/auth/registeroptions';
 import HeroSection from './components/landingpage/herosection';
 import Works from './components/landingpage/works';
 import Contact from './components/landingpage/contact';
+import ReviewForm from "./components/reviews/createReveiw"
+import Review from "./components/reviews/reviews"
 
 const App = () => {
   useEffect(() => {
@@ -131,7 +133,7 @@ const App = () => {
           />
           <Route path="/user-email-confirmed" component={AccountConfirmed} />
 
-          <Route path="/admin-dashboard" exact component={AdminDashboard} />
+          <Route path="/admin-dashboard/:id" exact component={AdminDashboard} />
           {/* <Route exact path="/video" component={Video} /> */}
           <Route
             exact
@@ -163,6 +165,16 @@ const App = () => {
             path="/therapist-data-form/:id"
             component={TherapistDataForm}
           />
+          {/* <Route
+            path="/addreview"
+            exact
+            component={ReviewForm}
+          />
+            <Route
+            path="/reviews"
+            exact
+            component={Review}
+          /> */}
 
           <Route
             exact
