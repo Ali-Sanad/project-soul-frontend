@@ -16,9 +16,11 @@ const TherapistReview = ({
   review,
   deleteReview,
   auth,
-  //therapist,
+  therapist,
 }) => {
   console.log("isAuth", isAuth);
+  console.log("the", therapist);
+
   useEffect(() => {
     //getTherapist(id);
     getReviews(id);
@@ -47,12 +49,20 @@ const TherapistReview = ({
                   alt=""
                   className="therapistreview__userimg"
                 ></img>
-                <h6>Menna Omar</h6>
+                <h6>
+                  {therapist.therapist.fname} {therapist.therapist.lname}
+                </h6>
                 <div className="therapistreview__rate">
                   <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Rating name="read-only" value={3} readOnly />
+                    <Rating
+                      name="read-only"
+                      value={therapist.therapist.ratingsAverage ?? 0}
+                      readOnly
+                    />
                   </Box>
-                  <p>24 Total Reviews</p>
+                  <p>
+                    {therapist.therapist.ratingsQunatity ?? 0} Total Reviews
+                  </p>
                 </div>
               </div>
               <div className="col-12 col-md-6">
@@ -109,7 +119,7 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuthenticated,
   review: state.review,
   auth: state.auth,
-  // therapist: state.therapists,
+  therapist: state.therapist,
 });
 export default connect(mapStateToProps, {
   // getTherapist,
