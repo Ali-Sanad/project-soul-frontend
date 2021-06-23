@@ -16,4 +16,11 @@
     //     img{
     //     }
     // }
+    .MuiFormControl-root{
+        background-color: $colwhite;
+        margin: 1rem 0rem !important;
+        padding: .5rem !important;
+        border-radius: .5rem;
+        border: 1px solid $colsecondary !important;
+    }
 }

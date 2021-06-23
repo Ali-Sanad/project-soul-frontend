@@ -1,10 +1,25 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
 
 import Navbar from '../shared/navbar'
 
 import bookimg from '../../assets/images/booktherapist.png'
 
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200
+  }
+}))
+
 const BookTherapist = () => {
+  const classes = useStyles()
   return (
     <React.Fragment>
       <Navbar></Navbar>
@@ -15,7 +30,16 @@ const BookTherapist = () => {
             <div className='col-6 booktherapist__form'>
               <form>
                 <h5> Date </h5>
-                <input type='text' className='input'></input>
+                {/* <input type='text' className='input'></input> */}
+                <TextField
+                  id='date'
+                  type='date'
+                  defaultValue='2021-10-15'
+                  className='input'
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />
                 <div className='booktherapist__form__fromto'>
                   <div>
                     <h5> From </h5>
