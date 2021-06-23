@@ -7,13 +7,13 @@ import Box from '@material-ui/core/Box';
 const ReviewForm = ({ addReview ,id}) => {
 
     const [formData, setFormData] = useState({
-        rate: 0,
+        rating: 0,
         review: "",
       });
     
 
   console.log(formData);
-const {rate,review}=formData;
+const {rating,review}=formData;
 const onChange = (e) =>
 setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -22,7 +22,7 @@ setFormData({ ...formData, [e.target.name]: e.target.value });
       e.preventDefault();
 
 addReview(formData,id);
-setFormData({rate:0,review:""})
+setFormData({rating:0,review:""})
   };
 
   return (
@@ -33,8 +33,8 @@ setFormData({rate:0,review:""})
 								<form onSubmit={(e) => onSubmit(e)}>
 									<Box component="fieldset" mb={3} borderColor="transparent">
 										<Rating
-											name="rate"
-											value={rate}
+											name="rating"
+											value={rating}
                                             onChange={(e) => onChange(e)}
 										/>
 									</Box>
