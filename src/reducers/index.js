@@ -7,6 +7,7 @@ import therapists from "./therapistsReducer";
 import therapist from "./therapist";
 
 import review from "./review";
+import post from "./post";
 
 export default combineReducers({
   alert,
@@ -16,4 +17,5 @@ export default combineReducers({
   review,
   therapists,
   therapist,
+  post,
 });

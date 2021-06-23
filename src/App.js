@@ -63,6 +63,7 @@ import Contact from './components/landingpage/contact';
 
 
 import TherapistList from './components/therapist/therapistlist';
+import BookTherapist from './components/therapist/booktherapist';
 
 
 const App = () => {
@@ -126,6 +127,7 @@ const App = () => {
 
 					<Route path="/therapistdashboard" exact component={TherapistDashboard} />
 					<Route path="/therapistdashboard/:id" exact component={TherapistDashboard} />
+					<Route path="/booktherapist/:id" exact component={BookTherapist} />
 
 
 					<Route path="/pending-verification" exact component={ConfirmUserAccount} />

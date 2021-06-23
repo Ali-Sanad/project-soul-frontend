@@ -14,20 +14,13 @@ import setAuthToken from "../../../utils/setAuthToken";
 const Article = ({
   getArticles,
   article,
-  therapist: { isAuthenticated, therapist, token },
+  therapist: { isAuthenticated_therapist, therapist, token },
 }) => {
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
   console.log(article);
-  console.log("thera", therapist);
-  console.log("thera", isAuthenticated);
-  console.log("thera", token);
-
-  if (therapist && isAuthenticated && token) {
-    localStorage.setItem("token", token);
-  }
 
   return (
     <div className="container-fluid">
@@ -49,7 +42,7 @@ const Article = ({
         <div className="Articles__header">
           <h2 id="articleScroll">Articles</h2>
         </div>
-        {isAuthenticated && therapist ? <ArticleForm /> : ""}
+        {isAuthenticated_therapist && therapist ? <ArticleForm /> : ""}
         <div className="articles">
           {article?.articles.map((article) => (
             <div className="article" key={article._id}>

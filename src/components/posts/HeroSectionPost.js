@@ -5,13 +5,13 @@ const HeroSectionPost = () => {
     <>
       <div className='container'>
         <div className='heroSection__post'>
-          <div className='heroSection_post_text'>
+          <div className='heroSection__post__text'>
             <h2>Explore Our Community</h2>
             <p>feel free to share your ideas.</p>
             <a href='#postScroll' className="mainbtn linkstyle">Explore</a>
           </div>
-          <div className='heroSection_post_image'>
-            <img className='heroSection_postimage_img' src={ImageHero} />
+          <div className='heroSection__post__image'>
+            <img className='heroSection__postimage__img' src={ImageHero} />
           </div>
         </div>
         <div className='Posts__header'>
