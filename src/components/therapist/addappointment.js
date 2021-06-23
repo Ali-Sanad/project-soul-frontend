@@ -2,8 +2,6 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
-import Navbar from '../shared/navbar'
-
 import bookimg from '../../assets/images/booktherapist.png'
 
 const useStyles = makeStyles(theme => ({
@@ -18,46 +16,45 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const BookTherapist = () => {
+const AddAppointment = () => {
   const classes = useStyles()
   return (
     <React.Fragment>
-      <Navbar></Navbar>
-      <div className='booktherapist'>
+      <div className='addappointment'>
         <div className='container'>
-          <h2 className='headers'> Book Therapist </h2>
+          <h4 className='headers'> Add Appointment </h4>
           <div className='row'>
-            <div className='col-6 booktherapist__form'>
+            <div className='col-12 col-md-6 addappointment__form'>
               <form>
-                <h5> Date </h5>
+                <h6> Date </h6>
                 {/* <input type='text' className='input'></input> */}
                 <TextField
                   id='date'
                   type='date'
-                  defaultValue='2021-10-15'
+                  defaultValue='2021-10-16'
                   className='input'
                   InputLabelProps={{
                     shrink: true
                   }}
                 />
-                <div className='booktherapist__form__fromto'>
+                <div className='addappointment__form__fromto'>
                   <div>
-                    <h5> From </h5>
+                    <h6> From </h6>
                     <input type='text' className='input'></input>
                   </div>
                   <div>
-                    <h5> To </h5>
+                    <h6> To </h6>
                     <input type='text' className='input'></input>
                   </div>
                 </div>
-                <h5> Diration </h5>
+                <h6> Duration </h6>
                 <input type='text' className='input'></input>
                 <h5> Fees </h5>
                 <input type='text' className='input'></input>
-                <button className='mainbtn'> Book Now </button>
+                <button className='mainbtn'> Add Appointment </button>
               </form>
             </div>
-            <div className='col-6 booktherapist__image'>
+            <div className='col-12 col-md-6 addappointment__image'>
               <img src={bookimg} alt=''></img>
             </div>
           </div>
@@ -67,4 +64,4 @@ const BookTherapist = () => {
   )
 }
 
-export default BookTherapist
+export default AddAppointment

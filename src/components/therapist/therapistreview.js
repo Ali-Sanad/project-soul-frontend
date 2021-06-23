@@ -7,7 +7,8 @@ import userimg from "../../assets/images/user.png";
 import ReviewForm from "./createReview";
 import { useEffect } from "react";
 import { getReviews, deleteReview } from "../../actions/review";
-//import { getTherapist } from "../../actions/therapists";
+
+// import { getTherapist } from '../../actions/therapist'
 
 const TherapistReview = ({
   isAuth,
@@ -16,13 +17,14 @@ const TherapistReview = ({
   review,
   deleteReview,
   auth,
+
   therapist,
 }) => {
   console.log("isAuth", isAuth);
   console.log("the", therapist);
 
   useEffect(() => {
-    //getTherapist(id);
+    // getTherapist(id)
     getReviews(id);
   }, []);
 
@@ -37,6 +39,7 @@ const TherapistReview = ({
   //   }
   return (
     <React.Fragment>
+      {console.log(therapist)}
       <div className="therapistreview">
         <div className="container">
           <h2 className="headers">Reviews</h2>
@@ -49,6 +52,7 @@ const TherapistReview = ({
                   alt=""
                   className="therapistreview__userimg"
                 ></img>
+
                 <h6>
                   {therapist.therapist.fname} {therapist.therapist.lname}
                 </h6>
@@ -87,7 +91,7 @@ const TherapistReview = ({
                 <p>{review.review}</p>
               </div>
 
-              <h5>{review.user.name}</h5>
+              {/* <h5>{review.user.name}</h5> */}
               {auth.isAuthenticated && auth.user._id === review.user._id && (
                 <button onClick={() => handleDelete(id, review._id)}>
                   Delete
@@ -121,6 +125,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   therapist: state.therapist,
 });
+
 export default connect(mapStateToProps, {
   // getTherapist,
   getReviews,

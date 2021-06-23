@@ -1,5 +1,7 @@
-.booktherapist{
-    margin: 3rem 0rem;
+.addappointment{
+    background-color: $colwhite;
+    border-radius: 2rem;
+    padding: 2rem 1rem;
     .headers{
         margin-bottom: 2rem;
     }
@@ -10,6 +12,9 @@
         &__fromto{
             display: flex;
             justify-content: space-between;
+            .input{
+                width: 90%;
+            }
         }
     }
     // &__image{

@@ -35,7 +35,7 @@ const TherapistCard = ({ therapist }) => {
           </Box>
         </div>
         <div className='therapistcard__btn'>
-          <button className='mainbtn' onClick={() => bookTherapistHandler(1)}>
+          <button className='mainbtn' onClick={() => bookTherapistHandler(therapist._id)}>
             Book Now
           </button>
           <button

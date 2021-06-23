@@ -1,5 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
+import { connect } from "react-redux";
+
+import { getTherapist } from "../../actions/therapist";
 
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
@@ -7,15 +10,14 @@ import TherapistFiles from "./therapistfiles";
 //import TherapistProfile from "./therapistprofile";
 import TherapistSummary from "./therapistsummary";
 import TherapistReview from "./therapistreview";
-import { connect } from "react-redux";
-import { getTherapist } from "../../actions/therapist";
+import AddAppointment from "./addappointment";
+
 import TherapistProfile from "./therapistprofile";
 const TherapistDashboard = ({ match }) => {
   let id = match.params.id.trim();
-  // console.log("isAuth",isAuth);
-  console.log("iddddd", id);
 
-  //console.log("therapistttt", therapist);
+  // console.log("isAuth",isAuth);
+  // console.log("iddddd", id);
 
   return (
     <React.Fragment>
@@ -34,6 +36,8 @@ const TherapistDashboard = ({ match }) => {
               {/* <TherapistSummary></TherapistSummary> */}
               <TherapistReview id={id}></TherapistReview>
               <TherapistProfile id={id} />
+
+              <AddAppointment></AddAppointment>
             </div>
           </div>
         </div>
