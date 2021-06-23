@@ -1,4 +1,4 @@
-import { THERAPISTS_ERROR, GET_THERAPISTS } from "../actions/types";
+import { THERAPISTS_ERROR, GET_THERAPISTS,GET_THERAPIST } from "../actions/types";
 
 const initialState = {
   therapists: [],
@@ -15,7 +15,13 @@ const therapists = (state = initialState, action) => {
         ...state,
         therapists: payload,
       };
-
+      case GET_THERAPIST:
+        console.log("gettherapist");
+        return {
+          ...state,
+          oneTherapist: payload,
+        };
+  
     case THERAPISTS_ERROR:
       console.log("therapist error");
 

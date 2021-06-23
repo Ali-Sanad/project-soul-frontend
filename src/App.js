@@ -59,8 +59,12 @@ import RegisterOptions from './components/auth/registeroptions';
 import HeroSection from './components/landingpage/herosection';
 import Works from './components/landingpage/works';
 import Contact from './components/landingpage/contact';
+
+
+
 import TherapistList from './components/therapist/therapistlist';
 import BookTherapist from './components/therapist/booktherapist';
+
 
 const App = () => {
 	useEffect(() => {

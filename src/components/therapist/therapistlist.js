@@ -1,9 +1,22 @@
 import React from 'react';
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getTherapists } from "../../actions/therapists";
 
-import Navbar from '../shared/navbar';
 import TherapistCard from './therapistcard';
+import Footer from "../shared/footer";
+import Navbar from "../shared/navbar";
+import Message from "../shared/message";
+import ToTop from "../shared/totop";
 
-const TherapistList = () => {
+const TherapistList = ({ getTherapists, therapists, state }) => {
+
+	useEffect(() => {
+		getTherapists();
+	  }, [getTherapists]);
+	  console.log("state", state);
+	  console.log("therapists", therapists);
+
 	return (
 		<React.Fragment>
 			<Navbar></Navbar>
@@ -11,32 +24,27 @@ const TherapistList = () => {
 				<h2 className="headers">Our Therapists</h2>
 				<div className="container">
 					<div className="row">
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
+					{therapists.therapists.map((therapist) =>
+						<div className="col-6 col-md-3" key={therapist._id}>
+							<TherapistCard therapist={therapist}></TherapistCard>
 						</div>
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
-						</div>
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
-						</div>
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
-						</div>
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
-						</div>
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
-						</div>
-						<div className="col-6 col-md-3">
-							<TherapistCard></TherapistCard>
-						</div>
+					
+					)}
+						
 					</div>
 				</div>
 			</div>
+			<Footer />
+      <Message />
+      <ToTop />
 		</React.Fragment>
 	);
 };
-
-export default TherapistList;
+const mapStateToProps = (state) => ({
+	state: state,
+	//  oneTherapist: state.oneTherapist,
+	therapists: state.therapists,
+	// therapist: state.therapistAuth,
+  });
+  
+export default connect(mapStateToProps,{getTherapists}) (TherapistList);

@@ -12,8 +12,8 @@ const Sidenav = () => {
 					<div className="sidenav__image">
 						<img src={userimg} alt="" className="sidenav__image__user"></img>
 						{/* <input type="file"></input> */}
-						<div class="file-upload">
-							<label for="file-input">
+						<div className="file-upload">
+							<label htmlFor="file-input">
 								<img src={iconimg} className="sidenav__image__upload"/>
 							</label>
 

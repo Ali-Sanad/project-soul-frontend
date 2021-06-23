@@ -8,18 +8,15 @@
   &__text {
     margin-top: 6rem;
     margin-left: 3rem;
-
     h2 {
       font-family: 'Reem Kufi';
       font-weight: 900;
       font-size: large;
     }
-
     p,
     a {
       font-family: Roboto;
     }
-
     a {
       background-color: $colmain;
       padding: 0.6rem;
@@ -28,7 +25,6 @@
       color: black;
       scroll-behavior: smooth;
     }
-
     h2,
     p,
     a {
@@ -45,7 +41,6 @@
 
   span {
     border-bottom: 0.3rem solid $colmain;
-    font-size: 2rem;
   }
 }
 
@@ -64,16 +59,13 @@
 
     div {
       margin: 0.5rem;
-
       small {
         color: #aaaaaa !important;
       }
-
       h4,
       p {
         font-family: Roboto;
       }
-
       small,
       h4,
       p {
@@ -86,41 +78,29 @@
 .postForm {
   &__form {
     display: flex;
-    align-items: center;
   }
-
   &__input {
     width: 70%;
-    height: 1rem;
+    height: 2rem;
     border-radius: 90px;
     margin: 2rem;
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     margin-left: auto;
-
     &:focus {
       outline: none;
     }
   }
+  // &__imageUpload,
+  // &__imageSent {
 
-  &__imageUpload {
-    width: 30px;
-    position: relative;
-    left: -7.5rem;
+  // }
+  a {
+    cursor: pointer;
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
   }
-
-  &__imageSent {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    left: -7rem;
-  }
-
-  &__imageSearch {
-    width: 30px;
-    position: relative;
-    left: -2.5rem;
-  }
-
   &__inputs {
     display: flex !important;
     margin: 0 auto;
@@ -140,7 +120,6 @@
     }
   }
 }
-
 .postCard {
   &__card {
     display: flex !important;
@@ -148,7 +127,6 @@
     align-items: center;
     width: 50% !important;
   }
-
   &__inputs {
     &__category {
       display: flex !important;

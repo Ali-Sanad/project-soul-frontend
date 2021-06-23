@@ -12,7 +12,7 @@ const Navbar = () => {
   /* color nav */
   const [colnavbar, setColNavbar] = useState(false);
   const changeBackground = () => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     if (window.scrollY >= 80 || window.innerWidth < 992) {
       setColNavbar(true);
     } else {

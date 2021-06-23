@@ -17,7 +17,6 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
   }, [getTherapists]);
   console.log("state", state);
   console.log("therapists", therapists);
-
   return (
     <>
       <NavBar />
@@ -44,7 +43,7 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
               </p>
               <span className="text-center">By Matt Fraser</span>
 
-              <div class="grid grid-cols-2 gap-0">
+              <div className="grid grid-cols-2 gap-0">
                 <div>
                   {/* <a className="rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider">
                     BOOK
@@ -56,7 +55,7 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
                   {/* <a className="rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider">
                     Profile
                   </a> */}
-                  <a className="btn">PROFILE</a>
+                  <Link className="btn" to={`/admin-dashboard/${therapist._id}`}>PROFILE</Link>
                 </div>
               </div>
 
