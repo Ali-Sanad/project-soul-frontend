@@ -5,4 +5,13 @@
     background-color: $colbg;
     border-radius: 2rem;
     padding: .5rem 1rem;
+    outline: none;
+}
+.linkstyle{
+    text-decoration: none;
+    color: $colfont;
+    &:hover{
+        color: $colfont;
+        cursor: pointer;
+    }
 }
