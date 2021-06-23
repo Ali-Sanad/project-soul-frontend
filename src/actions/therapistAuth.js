@@ -56,7 +56,7 @@ export const register =
       console.log('res.data', res.data);
       dispatch({
         type: THERAPIST_REGISTER_SUCCESS,
-        payload: res.data,
+        payload: res.data.token,
       });
       // console.log('res', res);
       // dispatch(loadTherapist());

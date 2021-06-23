@@ -1,0 +1,17 @@
+.userprofile{
+    background-color: $colwhite;
+    border-radius: 2rem;
+    padding: 2rem 0rem;
+    .headers{
+        margin-bottom: 2rem;
+    }
+    h6{
+        margin: 1rem 0rem;
+    }
+    input{
+        width: 100%;
+    }
+    button{
+        margin-top: 2rem;
+    }
+}

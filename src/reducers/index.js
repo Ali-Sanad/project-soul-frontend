@@ -4,11 +4,18 @@ import auth from "./auth";
 import therapistAuth from "./therapistAuthReducer";
 import article from "./article";
 import therapists from "./therapistsReducer";
+import therapist from "./therapist";
+
+import review from "./review";
+import post from "./post";
 
 export default combineReducers({
   alert,
   auth,
   therapistAuth,
   article,
+  review,
   therapists,
+  therapist,
+  post,
 });

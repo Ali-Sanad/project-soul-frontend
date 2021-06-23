@@ -11,13 +11,16 @@ import Article from './components/layout/articles/article';
 import AdminDashboard from './components/adminDashboard/AdminDashboard';
 
 // import AllRoutes from './components/routes/AllRoutes';
+
+//state redux
+import {Provider} from 'react-redux';
+import store from './store';
+
+import {setAuthToken, setTherapistAuthToken} from './utils/setAuthToken';
+import {loadAdmin, loadUser} from './actions/auth';
 import {LOGOUT, THERAPIST_LOGOUT} from './actions/types';
 //state redux
 
-import {Provider} from 'react-redux';
-import store from './store';
-import {setAuthToken, setTherapistAuthToken} from './utils/setAuthToken';
-import {loadAdmin, loadUser} from './actions/auth';
 import {loadTherapist} from './actions/therapistAuth';
 
 //components
@@ -29,6 +32,13 @@ import LoginTherapist from './components/auth/loginTherapist';
 import RegisterThreapist from './components/auth/registerTherapist';
 import Messenger from '../src/components/layout/messenger/messenger';
 // import Video from "./components/video/video";
+
+import ControlTherapistProfile from './components/controlTherpistProfile/ControlTherapistProfile';
+//import CreateTherapistProfile from './components/therapistProfile-form/CreateTherapistProfile';
+import ControlTherapistProfileActions from './components/controlTherpistProfile/ControlTherapistProfileActions';
+import AddTherapistExperience from './components/therapistProfile-form/AddTherapistExperience';
+import AddTherapistEducation from './components/therapistProfile-form/AddTherapistEducation';
+
 import ForgotPassword from './components/auth/ConfirmUserAccount/ForgotPassword';
 import ResetPassword from './components/auth/ConfirmUserAccount/ResetPassword';
 import TherapistConfirmUserAccount from './components/auth/ConfirmTherapistAccount/ConfirmTherapistAccount';
@@ -37,7 +47,7 @@ import TherapistForgotPassword from './components/auth/ConfirmTherapistAccount/T
 import TherapistResetPassword from './components/auth/ConfirmTherapistAccount/TherapistResetPassword';
 import TherapistDataForm from './components/therapistDataForm';
 
-import TherapistsList from './components/therapistsList/therapistList';
+// import TherapistsList from './components/therapistsList/therapistList';
 import Home from './components/landingpage/home';
 import UserProfile from './components/user/UserProfile';
 import Post from './components/posts/Post';
@@ -46,6 +56,11 @@ import Error from './components/shared/error';
 import TherapistDashboard from './components/therapist/therapistdashboard';
 // import Post from "./components/posts/Post";
 import RegisterOptions from './components/auth/registeroptions';
+import HeroSection from './components/landingpage/herosection';
+import Works from './components/landingpage/works';
+import Contact from './components/landingpage/contact';
+
+import TherapistList from './components/therapist/therapistlist';
 
 const App = () => {
   useEffect(() => {
@@ -92,6 +107,9 @@ const App = () => {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/home' exact component={Home} />
+          <Route path='/about' exact component={HeroSection} />
+          <Route path='/works' exact component={Works} />
+          <Route path='/contact' exact component={Contact} />
           <Route path='/login' exact component={Login} />
           <Route path='/registeroptions' exact component={RegisterOptions} />
           <Route path='/register' exact component={Register} />
@@ -99,9 +117,15 @@ const App = () => {
           <Route path='/forgot-password' exact component={ForgotPassword} />
           <Route path='/reset-password' exact component={ResetPassword} />
           <Route path='/posts' exact component={Post} />
+          <Route path='/therapistlist' exact component={TherapistList} />
 
           <Route
             path='/therapistdashboard'
+            exact
+            component={TherapistDashboard}
+          />
+          <Route
+            path='/therapistdashboard/:id'
             exact
             component={TherapistDashboard}
           />
@@ -146,6 +170,34 @@ const App = () => {
             component={TherapistDataForm}
           />
 
+          <Route
+            exact
+            path='/controlTherapistProfile'
+            component={ControlTherapistProfile}
+          />
+          {/* <Route
+            exact
+            path="/createTherapistProfile"
+            component={CreateTherapistProfile}
+          /> */}
+          <Route
+            exact
+            path='/controlTherapistProfileActions'
+            component={ControlTherapistProfileActions}
+          />
+
+          <Route
+            exact
+            path='/addTherapistExperience/:id'
+            component={AddTherapistExperience}
+          />
+
+          <Route
+            exact
+            path='/addTherapistEducation/:id'
+            component={AddTherapistEducation}
+          />
+
           <Route exact path='/posts'>
             <Post />
           </Route>
@@ -156,9 +208,10 @@ const App = () => {
           <Route path='/articles'>
             <Article />
           </Route>
-          <Route path='/therapistslist'>
+          {/* <Route path="/therapistslist">
             <TherapistsList />
-          </Route>
+          </Route> */}
+
           <Route path='/error' component={Error} />
           <Redirect to='/error' />
         </Switch>

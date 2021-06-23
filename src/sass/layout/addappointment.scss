@@ -1,0 +1,31 @@
+.addappointment{
+    background-color: $colwhite;
+    border-radius: 2rem;
+    padding: 2rem 1rem;
+    .headers{
+        margin-bottom: 2rem;
+    }
+    &__form{
+        .input{
+            width: 100%;
+        }
+        &__fromto{
+            display: flex;
+            justify-content: space-between;
+            .input{
+                width: 90%;
+            }
+        }
+    }
+    // &__image{
+    //     img{
+    //     }
+    // }
+    .MuiFormControl-root{
+        background-color: $colwhite;
+        margin: 1rem 0rem !important;
+        padding: .5rem !important;
+        border-radius: .5rem;
+        border: 1px solid $colsecondary !important;
+    }
+}

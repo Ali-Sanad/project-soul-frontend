@@ -6,6 +6,7 @@ import PostForm from './PostForm';
 import ToTop from '../shared/totop';
 import Message from '../shared/message';
 import PostCard from './PostList';
+
 //posts
 const Post = () => {
   return (

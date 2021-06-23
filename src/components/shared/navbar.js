@@ -12,7 +12,7 @@ const Navbar = () => {
   /* color nav */
   const [colnavbar, setColNavbar] = useState(false);
   const changeBackground = () => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     if (window.scrollY >= 80 || window.innerWidth < 992) {
       setColNavbar(true);
     } else {
@@ -71,12 +71,12 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="navBar__list__item nav-item">
-                <NavLink className="navBar__list__item__link nav-link" to="/">
+                <NavLink className="navBar__list__item__link nav-link" to="/about">
                   About
                 </NavLink>
               </li>
               <li className="navBar__list__item nav-item">
-                <NavLink className="navBar__list__item__link nav-link" to="/">
+                <NavLink className="navBar__list__item__link nav-link" to="/works">
                   How It Work
                 </NavLink>
               </li>
@@ -91,34 +91,36 @@ const Navbar = () => {
               <li className="navBar__list__item nav-item">
                 <NavLink
                   className="navBar__list__item__link nav-link"
-                  to="/therapistslist"
+                  to="/therapistlist"
                 >
                   Therpist List
                 </NavLink>
               </li>
               <li className="navBar__list__item nav-item">
-                <NavLink className="navBar__list__item__link nav-link" to="/">
+                <NavLink className="navBar__list__item__link nav-link" to="/posts">
                   Community
                 </NavLink>
               </li>
               <li className="navBar__list__item nav-item">
-                <NavLink className="navBar__list__item__link nav-link" to="/">
+                <NavLink className="navBar__list__item__link nav-link" to="/contact">
                   Contact Us
                 </NavLink>
               </li>
             </ul>
-            <div className="navBar__login">
+
+
+            {/* <div className="navBar__login">
               <img className="navBar__login__user" src={userimg}></img>
               <span className="navBar__login__span">Menna Omar</span>
               <img className="navBar__login__logout" src={logoutimg}></img>
-            </div>
+            </div> */}
 
 
-            {/* <button className="button btn">
+            <button className="button btn">
 							<span className="mainbtn">
-								<NavLink to="/login">Login</NavLink>
+								<NavLink to="/login" className="linkstyle">Login</NavLink>
 							</span>
-						</button> */}
+						</button>
           </div>
         </div>
       </nav>

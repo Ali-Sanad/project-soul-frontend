@@ -1,144 +1,150 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect ,Link} from "react-router-dom";
 
 import { login } from "../../actions/therapistAuth";
 import propTypes from "prop-types";
+import loginImage from './../../assets/images/login.png';
+import logo from './../../assets/images/logo.png';
+import '../../index.css'; //tailwind import
 
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Soul
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
 
 const LoginTherapist = ({ login, isAuthenticated_therapist, therapist }) => {
-  const classes = useStyles();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [passwordShown, setPasswordShown] = useState(false);
+
   const { email, password } = formData;
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      // setAlert('all fields required', 'error');
-    } else {
+    if (email &&password) {
       login(formData);
-    }
+     
+    } 
   };
 
   if (isAuthenticated_therapist && therapist) {
     return <Redirect to="/" />;
   }
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={(e) => onSubmit(e)}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            onChange={(e) => onChange(e)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="/therapist-forgot-password" variant="body2">
-                Forgot password?
+
+<>
+      <div className='grid sm:grid-cols-2 grid-cols-1  h-screen bg-soul_bg font-Nunito'>
+        <div className=''>
+          <div className='w-44 h-24 mx-auto'>
+            <Link to='/'>
+              <img src={logo} alt='' />
+            </Link>
+          </div>
+          <h4 className='text-4xl   text-center'>Login</h4>
+          <div className='flex justify-center mt-12 mb-12'>
+            <h2 className='text-2xl   inline-block mx-3 cursor-pointer '>
+              {' '}
+              <Link
+                to='/login'
+                className='text-black no-underline hover:text-soul-300  hover:underline'
+              >
+                User
               </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/registertherapist" variant="body2">
-                {"Don't have an account? Sign Up"}
+            </h2>
+            <h2 className='text-2xl inline-block mx-3 cursor-pointer '>
+              <Link
+                to='/logintherapist'
+                className='text-black no-underline hover:text-soul-300
+               hover:underline'
+              >
+                Therapist
               </Link>
-            </Grid>
-          </Grid>
-        </form>
+            </h2>
+          </div>
+          <form className='mt-2' onSubmit={(e) => onSubmit(e)}>
+            <div className=' mt-6 '>
+              <input
+                className='block mx-auto mt-2  w-4/5 p-3 rounded-full
+                border focus:outline-none
+                focus:ring-1 focus:to-soul focus:border-transparent 
+            '
+                type='email'
+                placeholder='Email'
+                name='email'
+                value={email}
+                onChange={(e) => onChange(e)}
+                required
+              />
+            </div>
+            <div className='relative mx-auto  mt-6'>
+              <input
+                className='block mx-auto mt-2  w-4/5 p-3 rounded-full
+                border focus:outline-none 
+                focus:ring-1 focus:to-soul focus:border-transparent 
+             '
+                type={passwordShown ? 'text' : 'password'}
+                placeholder='Password'
+                name='password'
+                minLength='6'
+                value={password}
+                onChange={(e) => onChange(e)}
+                required
+              />
+              <span
+                className=' absolute text-md text-soul-300  cursor-pointer
+                md:top-4 sm:right-16 md:right-14 lg:right-20   top-4   right-20'
+                aria-hidden='true'
+                onClick={() => togglePasswordVisiblity()}
+              >
+                {passwordShown ? 'hide' : 'show'}
+              </span>
+              <div className='grid grid-cols-2 lg:ml-20 md:ml-16 sm:ml-10 ml-16 '>
+                <p className=' inline-block mt-6    cursor-pointer'>
+                  <Link
+                    to='/therapist-forgot-password'
+                    className=' text-black no-underline hover:text-soul-300'
+                  >
+                    Forgot password ?
+                  </Link>
+                </p>
+                <p className=' inline-block mt-6   cursor-pointer'>
+                  <Link
+                    to='/registertherapist'
+                    className=' text-black no-underline hover:text-soul-300'
+                  >
+                    Don't have an account ?
+                  </Link>
+                </p>
+              </div>
+            </div>
+            <div className='mt-8 sm:ml-2'>
+              <input
+                type='submit'
+                className=' block  bg-soul-100 hover:bg-soul-300  sm:ml-10 md:ml-16 ml-16  py-2 px-4 rounded-full
+                outline-none
+                shadow-sm cursor-pointer'
+                value='Sign in'
+              />
+            </div>
+          </form>
+        </div>
+        <div className=' h-screen sm:block hidden'>
+          <img src={loginImage} alt='' className='h-screen object-cover' />
+        </div>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
+    </>
+
+
+
+    
   );
 };
 LoginTherapist.propTypes = {
