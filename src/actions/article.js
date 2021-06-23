@@ -22,11 +22,7 @@ export const getArticles = () => async (dispatch) => {
 
 export const addArticle = (body) => async (dispatch) => {
   try {
-    const res = await axios.post("/article", body, {
-      headers: {
-        Authorization: localStorage.token,
-      },
-    });
+    const res = await axios.post("/article", body);
     console.log(res.data);
     dispatch({
       type: ADD_ARTICLE,
