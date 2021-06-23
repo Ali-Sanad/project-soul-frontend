@@ -1,0 +1,19 @@
+.booktherapist{
+    margin: 3rem 0rem;
+    .headers{
+        margin-bottom: 2rem;
+    }
+    &__form{
+        .input{
+            width: 100%;
+        }
+        &__fromto{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    // &__image{
+    //     img{
+    //     }
+    // }
+}
