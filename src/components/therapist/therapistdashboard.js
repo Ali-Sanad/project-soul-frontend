@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from "react";
 
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
@@ -6,9 +7,20 @@ import TherapistFiles from './therapistfiles';
 import TherapistProfile from "./therapistprofile"
 import TherapistSummary from './therapistsummary';
 import TherapistReview from './therapistreview';
+import { connect } from "react-redux";
+import {getTherapist} from "../../actions/therapists"
 
+const TherapistDashboard = ({match,therapist}) => {
 
-const TherapistDashboard = () => {
+    let id = match.params.id.trim();
+   // console.log("isAuth",isAuth);
+   console.log("iddddd", id)
+
+   useEffect(() => {
+       
+       getTherapist(id);
+   });
+   console.log("therapistttt",therapist)
 	return (
 		<React.Fragment>
 			<div className="therapistdashboard">
@@ -24,7 +36,7 @@ const TherapistDashboard = () => {
                         {/* <TherapistFiles></TherapistFiles> */}
                         {/* <TherapistProfile></TherapistProfile> */}
                         {/* <TherapistSummary></TherapistSummary> */}
-                        <TherapistReview></TherapistReview>
+                        <TherapistReview id={id}></TherapistReview>
                     </div>
                 </div>
             </div>
@@ -32,5 +44,13 @@ const TherapistDashboard = () => {
 		</React.Fragment>
 	);
 };
-
-export default TherapistDashboard;
+const mapStateToProps = (state) => ({
+   
+    therapist:state.therapists
+  
+  
+  });
+  
+export default  connect(mapStateToProps, {
+    getTherapist
+  }) (TherapistDashboard);

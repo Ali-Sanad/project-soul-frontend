@@ -12,7 +12,7 @@ const AdminDashboard = ({match,isAuth}) => {
   return (
     <div className='text-center font-bold text-soul-300  text-lg font-Nunito mt-24'>
       Admin Dashboard
-id{id}
+
 {isAuth&&
        <AddReview id={id}/> }
 

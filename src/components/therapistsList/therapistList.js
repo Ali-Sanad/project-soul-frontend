@@ -43,7 +43,7 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
               </p>
               <span className="text-center">By Matt Fraser</span>
 
-              <div class="grid grid-cols-2 gap-0">
+              <div className="grid grid-cols-2 gap-0">
                 <div>
                   {/* <a className="rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider">
                     BOOK

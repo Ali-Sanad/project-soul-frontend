@@ -32,7 +32,7 @@ export const getReviews = (id) => async (dispatch) => {
     try {
 
       const res = await axios.get(`/therapist/${id}/reviews`);
-      console.log("array of articles from article action", res.data);
+      console.log("array of reviews from review action", res.data);
       dispatch({
         type: GET_REVIEWS,
         payload: res.data,

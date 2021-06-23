@@ -37,7 +37,7 @@ const ArticleForm = ({ addArticle }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
-        <label for="image">Choose an Article image:</label>
+        <label htmlFor="image">Choose an Article image:</label>
         <input
           type="file"
           id="image"

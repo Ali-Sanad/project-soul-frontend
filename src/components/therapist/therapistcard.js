@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-
+import {Link} from "react-router-dom"
 import userimg from '../../assets/images/user.png';
 
 const TherapistCard = ({therapist}) => {
@@ -18,7 +18,7 @@ const TherapistCard = ({therapist}) => {
 				</div>
 				<div className="therapistcard__btn">
 					<button className="mainbtn">Book Now</button>
-					<button className="mainbtn">View Profile</button>
+					<Link className="mainbtn" to={`/therapistdashboard/${therapist._id}`}> View Profile</Link>
 				</div>
 			</div>
 		</React.Fragment>

@@ -39,11 +39,11 @@ const PostForm = () => {
               </a>
             </div>
             <div className='col-lg-12 postForm__inputs'>
-              <div class='dropdown'>
-                <button onclick={(e) => myFunction(e)} class='dropbtn'>
+              <div className='dropdown'>
+                <button onclick={(e) => myFunction(e)} className='dropbtn'>
                   Dropdown
                 </button>
-                <div class='myDropdown dropdown-content'>
+                <div className='myDropdown dropdown-content'>
                   <a href='#'>Link 1</a>
                   <a href='#'>Link 2</a>
                   <a href='#'>Link 3</a>
