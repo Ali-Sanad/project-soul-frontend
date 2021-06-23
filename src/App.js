@@ -59,12 +59,11 @@ import RegisterOptions from './components/auth/registeroptions';
 import HeroSection from './components/landingpage/herosection';
 import Works from './components/landingpage/works';
 import Contact from './components/landingpage/contact';
-<<<<<<< HEAD
-import ReviewForm from "./components/reviews/createReveiw"
-import Review from "./components/reviews/reviews"
-=======
+
+
+
 import TherapistList from './components/therapist/therapistlist';
->>>>>>> 020e023cb85503961dc81715c60e91bb77212233
+
 
 const App = () => {
   useEffect(() => {

@@ -4,15 +4,16 @@ import Box from '@material-ui/core/Box';
 
 import userimg from '../../assets/images/user.png';
 
-const TherapistCard = () => {
+const TherapistCard = ({therapist}) => {
+	console.log("therapist",therapist)
 	return (
 		<React.Fragment>
 			<div className="therapistcard">
 				<img src={userimg} alt="" className="therapistcard__userimg"></img>
-				<p>Menna Omar</p>
+				<p>{therapist.fname}  {therapist.lname}</p>
 				<div className="therapistcard__rate">
 					<Box component="fieldset" mb={3} borderColor="transparent">
-						<Rating name="read-only" value={3} readOnly />
+						<Rating name="read-only" value={therapist.ratingsAverage} readOnly />
 					</Box>
 				</div>
 				<div className="therapistcard__btn">
