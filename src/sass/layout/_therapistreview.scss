@@ -1,15 +1,17 @@
-.therapistreview{
+.therapistreview {
     background-color: $colwhite;
     border-radius: 2rem;
     padding: 2rem 0rem;
     text-align: center;
-    .headers{
+
+    .headers {
         margin-bottom: 2rem;
     }
-    &__data{
+
+    &__data {
         background-color: #ccf2f43d;
         border-radius: 1rem;
-        padding: 1rem;
+        padding: 3rem 0rem;
     }
 
     &__userimg {
@@ -18,11 +20,37 @@
         margin: auto;
         margin-bottom: 1rem;
     }
-    &__rating{
-        margin-bottom: 0rem;
+
+    h5 {
+        margin-bottom: 2rem;
+    }
+    h4{
+        margin: 2rem auto;
+    }
+
+    // allreviews
+    &__allreview {
+        background-color: $colsecondary;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem 0rem;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                color: $colfontsecondary;
+            }
+        }
+
+        &__body {
+            text-align: start;
+        }
     }
 }
 
-.MuiBox-root.MuiBox-root-2{
+.MuiBox-root.MuiBox-root-2,
+.MuiBox-root.MuiBox-root-4 {
     margin-bottom: 0;
 }

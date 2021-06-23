@@ -30,6 +30,7 @@ const Sidenav = () => {
 							<li>Appointments</li>
 							<li>Educational</li>
 							<li>Documnents</li>
+							<li>Reviews</li>
 						</ul>
 					</div>
 				</div>
