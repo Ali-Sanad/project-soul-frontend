@@ -51,7 +51,7 @@ import TherapistDataForm from './components/therapistDataForm';
 import Home from './components/landingpage/home';
 import UserProfile from './components/user/UserProfile';
 import Post from './components/posts/Post';
-
+import PostItem from './components/posts/postComment/PostItem';
 import Error from './components/shared/error';
 import TherapistDashboard from './components/therapist/therapistdashboard';
 // import Post from "./components/posts/Post";
@@ -198,9 +198,7 @@ const App = () => {
             path='/addTherapistEducation/:id'
             component={AddTherapistEducation}
           />
-          <Route exact path='/posts'>
-            <Post />
-          </Route>
+
           <Route path='/messenger'>
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}
