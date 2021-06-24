@@ -66,7 +66,7 @@ const Article = ({
                   <h4>{article.title}</h4>
                   <p>{article.content}</p>
                   <Link to={`/article/${article._id}`}>Learn More</Link>
-                  {article.therapist === therapist?._id ? (
+                  {therapist && article.therapist === therapist._id ? (
                     <>
                       <Button
                         variant="contained"
