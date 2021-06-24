@@ -35,8 +35,6 @@
 .Articles__header {
   text-align: center;
   font-family: Roboto;
-  // font-weight: 700;
-  // font-size: large;
 
   h2 {
     display: inline;
@@ -49,28 +47,47 @@
   .article {
     background-color: white;
     display: flex;
-    margin: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
 
     div {
       img {
-        width: 13rem;
+        max-width: 15rem;
+        margin-right: 0.2rem;
       }
     }
 
     div {
       margin: 0.5rem;
+      font-family: Roboto;
       small {
         color: #aaaaaa !important;
       }
       h4,
       p {
-        font-family: Roboto;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       small,
       h4,
-      p {
+      p,
+      a {
         margin: 0.8rem;
+      }
+      a {
+        display: block;
+        color: navy;
+        text-align: right;
+        cursor: pointer;
+        font-weight: bolder;
+
+        &:hover {
+          color: $colmain;
+        }
       }
     }
   }

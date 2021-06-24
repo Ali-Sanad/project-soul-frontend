@@ -1,4 +1,10 @@
-import { ARTICLES_ERROR, GET_ARTICLES, ADD_ARTICLE } from "../actions/types";
+import {
+  ARTICLES_ERROR,
+  GET_ARTICLES,
+  ADD_ARTICLE,
+  GET_ARTICLE,
+  DELETE_ARTICLE,
+} from "../actions/types";
 
 const initialState = {
   articles: [],
@@ -20,22 +26,22 @@ const article = (state = initialState, action) => {
         articles: [payload, ...state.articles],
       };
 
-    // case "GET_POST":
-    //   return {
-    //     ...state,
-    //     post: payload,
-    //   };
+    case GET_ARTICLE:
+      return {
+        ...state,
+        article: payload,
+      };
 
     case ARTICLES_ERROR:
       return {
         ...state,
       };
 
-    // case "DELETE_POST":
-    //   return {
-    //     ...state,
-    //     posts: state.posts.filter((post) => post._id !== payload),
-    //   };
+    case DELETE_ARTICLE:
+      return {
+        ...state,
+        articles: state.articles.filter((article) => article._id !== payload),
+      };
 
     default:
       return state;

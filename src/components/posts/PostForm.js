@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
-  const [text, setText] = useState('');
-  const [image, setImage] = useState('');
+  const [text, setText] = useState("");
+  const [image, setImage] = useState("");
 
   const onImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -18,7 +18,7 @@ const PostForm = ({ addPost }) => {
 
     if (!image) {
       addPost({ text });
-      setText('');
+      setText("");
       setImage(null);
     } else {
       const reader = new FileReader();
@@ -28,10 +28,10 @@ const PostForm = ({ addPost }) => {
         console.log({ data: reader.result, text: text });
       };
       reader.onerror = () => {
-        console.error('Image upload failed');
+        console.error("Image upload failed");
       };
 
-      setText('');
+      setText("");
       setImage(null);
     }
   };
@@ -39,32 +39,32 @@ const PostForm = ({ addPost }) => {
   const fileInput = useRef(null);
   return (
     <>
-      <div className='postForm'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-12 postForm__form'>
+      <div className="postForm">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 postForm__form">
               <form>
                 <input
-                  type='text'
-                  placeholder='What do you think about?'
-                  className='postForm__input'
+                  type="text"
+                  placeholder="What do you think about?"
+                  className="postForm__input"
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   required
                 />
                 <input
-                  type='file'
-                  name='image'
-                  accept='image/png, image/jpeg'
+                  type="file"
+                  name="image"
+                  accept="image/png, image/jpeg"
                   onChange={(e) => onImageChange(e)}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   ref={fileInput}
                 />
                 <a onClick={() => fileInput.current.click()}>
-                  <img src={ImageUpload} className='postForm__imageUpload' />
+                  <img src={ImageUpload} className="postForm__imageUpload" />
                 </a>
                 <a onSubmit={(e) => onSubmit(e)}>
-                  <img src={ImageSent} className='postForm__imageSent' />
+                  <img src={ImageSent} className="postForm__imageSent" />
                 </a>
               </form>
             </div>

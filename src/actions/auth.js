@@ -11,6 +11,8 @@ import {
   AUTH_ERROR,
   RESET_PASSWORD,
   FORGOT_PASSWORD,
+  UPDATE_USER_PROFILE,
+  UPDATE_USER_PROFILE_ERROR
   //   PROFILE_ERROR,
   //   USER_IMAGE,
 } from './types';
@@ -29,6 +31,29 @@ export const loadUser = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: AUTH_ERROR,
+    });
+  }
+};
+
+//update user
+export const updateProfile = (userId, body) => async (dispatch) => {
+  try {
+    console.log("update");
+    const res = await axios.patch("/auth", body, {
+      headers: {
+        Authorization: localStorage.token,
+      },
+    });
+    //console.log(res.data)
+    console.log("update user res,data", res.data);
+    dispatch({
+      type: UPDATE_USER_PROFILE,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: UPDATE_USER_PROFILE_ERROR,
     });
   }
 };

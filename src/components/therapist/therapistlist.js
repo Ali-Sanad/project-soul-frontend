@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+
 import { getTherapists } from "../../actions/therapists";
 
 import TherapistCard from './therapistcard';

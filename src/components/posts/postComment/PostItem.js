@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import Spinner from '../Spinner';
 import PostCard from '../PostList';
@@ -20,6 +20,7 @@ const PostItem = ({ getPost, post: { post, loading }, match }) => {
     <Fragment>
        <Navbar/>
        <HeroSectionPost/>
+       {console.log(post)}
       <PostCard post={post} showActions={false} />
       <CommentForm postId={post._id} />
       <div className='comments'>

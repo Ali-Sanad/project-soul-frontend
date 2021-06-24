@@ -1,7 +1,7 @@
 import Moment from "react-moment";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getArticles } from "../../../actions/article";
+import { deleteArticle, getArticles } from "../../../actions/article";
 import { Link } from "react-router-dom";
 
 import ArticleForm from "./articleForm";
@@ -9,12 +9,18 @@ import Footer from "../../shared/footer";
 import NavBar from "../../shared/navbar";
 import Message from "../../shared/message";
 import ToTop from "../../shared/totop";
-import setAuthToken from "../../../utils/setAuthToken";
+
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from "@material-ui/core/Button";
+
+import articleImg from "../../../assets/images/article.png";
+
 //article
 const Article = ({
   getArticles,
   article,
   therapist: { isAuthenticated_therapist, therapist, token },
+  deleteArticle,
 }) => {
   useEffect(() => {
     getArticles();
@@ -35,30 +41,49 @@ const Article = ({
           <div className="heroSection__article__image">
             <img
               className="heroSection__article__image__img"
-              src="/images/article.png"
+              src={articleImg}
             />
           </div>
         </div>
         <div className="Articles__header">
           <h2 id="articleScroll">Articles</h2>
         </div>
-        {isAuthenticated_therapist && therapist ? <ArticleForm /> : ""}
+        <div style={{ textAlign: "right" }}>
+          {isAuthenticated_therapist && therapist ? <ArticleForm /> : ""}
+        </div>
+
         <div className="articles">
           {article?.articles.map((article) => (
-            <div className="article" key={article._id}>
-              <div>
-                <img
-                  src={article.ArticleImg || "/images/defaultArticleImg.png"}
-                />
+            <>
+              <div className="article" key={article._id}>
+                <div>
+                  <img src={article.ArticleImg} />
+                </div>
+                <div>
+                  <small>
+                    <Moment format="YYYY/MM/DD">{article.date}</Moment>
+                  </small>
+                  <h4>{article.title}</h4>
+                  <p>{article.content}</p>
+                  <Link to={`/article/${article._id}`}>Learn More</Link>
+                  {article.therapist === therapist._id ? (
+                    <>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => {
+                          deleteArticle(article._id);
+                        }}
+                      >
+                        Delete
+                      </Button>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-              <div>
-                <small>
-                  <Moment format="YYYY/MM/DD">{article.date}</Moment>
-                </small>
-                <h4>{article.title}</h4>
-                <p>{article.content}</p>
-              </div>
-            </div>
+            </>
           ))}
         </div>
       </div>
@@ -76,4 +101,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getArticles,
+  deleteArticle,
 })(Article);
