@@ -2,7 +2,7 @@ import {
   THERAPISTS_ERROR,
   GET_THERAPISTS,
   GET_THERAPIST,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   therapists: [],
@@ -10,32 +10,32 @@ const initialState = {
 };
 
 const therapists = (state = initialState, action) => {
-  const { type, payload } = action;
-  console.log("action", action);
+  const {type, payload} = action;
+  console.log('action', action);
   switch (type) {
     case GET_THERAPISTS:
-      console.log("gettherapist");
+      console.log('gettherapist');
       return {
         ...state,
         therapists: payload,
         // oneTherapist:payload.length
       };
-    // case GET_THERAPIST:
-    //   console.log("gettherapist");
-    //   return {
-    //     ...state,
-    //     oneTherapist: payload,
-    //   };
+    case GET_THERAPIST:
+      console.log('gettherapist');
+      return {
+        ...state,
+        oneTherapist: payload,
+      };
 
     case THERAPISTS_ERROR:
-      console.log("therapist error");
+      console.log('therapist error');
 
       return {
         ...state,
       };
 
     default:
-      console.log(" defult");
+      console.log(' defult');
 
       return state;
   }
