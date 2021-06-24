@@ -19,7 +19,7 @@ import {addAppointment} from '../../actions/therapistAuth';
 //   },
 // }));
 
-const AddAppointment = ({addAppointment}) => {
+const AddAppointment = ({therapistAuth, addAppointment}) => {
   // const classes = useStyles();
 
   const [formData, setFormData] = useState({
@@ -45,6 +45,9 @@ const AddAppointment = ({addAppointment}) => {
       fees: 0,
     });
   };
+
+  //condition only therapist can add appointment to his/her profile
+
   return (
     <React.Fragment>
       <div className='addappointment'>
@@ -124,4 +127,8 @@ const AddAppointment = ({addAppointment}) => {
   );
 };
 
-export default connect(null, {addAppointment})(AddAppointment);
+const mapStateTopProps = (state) => ({
+  therapistAuth: state.therapistAuth,
+});
+
+export default connect(mapStateTopProps, {addAppointment})(AddAppointment);
