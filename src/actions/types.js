@@ -43,6 +43,7 @@ export const THERAPIST_ERROR = "THERAPIST_ERROR";
 export const GET_ARTICLES = "GET_ARTICLES";
 export const ARTICLES_ERROR = "ARTICLES_ERROR";
 export const ADD_ARTICLE = "ADD_ARTICLE";
+export const GET_ARTICLE = "GET_ARTICLE";
 export const ADD_REVIEW = "ADD_REVIEW";
 export const REVIEW_ERROR = "REVIEW_ERROR";
 export const GET_REVIEWS = "GET_REVIEWS";
@@ -50,11 +51,11 @@ export const UPDATE_REVIEW = "UPDATE_REVIEW ";
 export const DELETE_REVIEW = "DELETE_REVIEW";
 
 //post action
-export const GET_POSTS = 'GET_POSTS';
-export const GET_POST = 'GET_POST';
-export const POST_ERROR = 'POST_ERROR';
-export const DELETE_POST = 'DELETE_POST';
-export const ADD_POST = 'ADD_POST';
-export const ADD_COMMENT = 'ADD_COMMENT';
-export const REMOVE_COMMENT = 'REMOVE_COMMENT';
-export const UPDATE_LIKES = 'UPDATE_LIKES';
+export const GET_POSTS = "GET_POSTS";
+export const GET_POST = "GET_POST";
+export const POST_ERROR = "POST_ERROR";
+export const DELETE_POST = "DELETE_POST";
+export const ADD_POST = "ADD_POST";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const UPDATE_LIKES = "UPDATE_LIKES";

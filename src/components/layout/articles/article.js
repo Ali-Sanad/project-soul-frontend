@@ -9,7 +9,7 @@ import Footer from "../../shared/footer";
 import NavBar from "../../shared/navbar";
 import Message from "../../shared/message";
 import ToTop from "../../shared/totop";
-import setAuthToken from "../../../utils/setAuthToken";
+
 //article
 const Article = ({
   getArticles,
@@ -57,6 +57,7 @@ const Article = ({
                 </small>
                 <h4>{article.title}</h4>
                 <p>{article.content}</p>
+                <Link to={`/article/${article._id}`}>Learn More</Link>
               </div>
             </div>
           ))}

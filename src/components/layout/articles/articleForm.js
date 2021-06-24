@@ -6,26 +6,25 @@ import { addArticle } from "../../../actions/article";
 const ArticleForm = ({ addArticle }) => {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
 
   console.log(content);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // addArticle({ content, title: "testtttttttttt" });
-    // const formData = { content, image, title: "testtttttttttt" };
-    // console.log(formData);
 
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {
-      addArticle({ data: reader.result, content, title: "new" });
-      console.log({ data: reader.result, content: content, title: "new" });
+      addArticle({ data: reader.result, content, title });
+      console.log({ data: reader.result, content: content, title: title });
     };
     reader.onerror = () => {
       console.error("Article failed");
     };
 
     setContent("");
+    setTitle("");
     setImage("");
   };
 
@@ -37,6 +36,11 @@ const ArticleForm = ({ addArticle }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <label htmlFor="image">Choose an Article image:</label>
         <input
           type="file"
@@ -44,7 +48,6 @@ const ArticleForm = ({ addArticle }) => {
           name="image"
           onChange={(e) => setImage(e.target.files[0])}
         />
-
         <button type="submit" onClick={handleSubmit}>
           Submit
         </button>
