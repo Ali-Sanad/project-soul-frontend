@@ -9,20 +9,22 @@ import {
   LOGOUT,
   RESET_PASSWORD,
   FORGOT_PASSWORD,
+  UPDATE_USER_PROFILE_ERROR,
+  UPDATE_USER_PROFILE,
   // ACCOUNT_DELETED,
   // USER_IMAGE,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
-  isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
+  token: localStorage.getItem("token"),
+  isAdmin: localStorage.getItem("isAdmin") === "true" ? true : false,
   isAuthenticated: null,
   loading: true,
   user: null,
 };
 
 const reducer = (state = initialState, action) => {
-  const {type, payload} = action;
+  const { type, payload } = action;
 
   switch (type) {
     case USER_LOADED:
@@ -78,7 +80,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         note: true,
       };
-
+    case UPDATE_USER_PROFILE:
+      return {
+        ...state,
+      };
+    case UPDATE_USER_PROFILE_ERROR:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createTherapistProfile } from "../../actions/therapistProfile";
-const TherapistProfile = ({ therapist, id, createTherapistProfile }) => {
+const TherapistProfile = ({ therapist, id, createTherapistProfile, auth }) => {
   const [disable, setDisable] = useState(true);
   const [formData, setFormData] = useState({
-    fname: therapist.therapist.fname,
-    lname: therapist.therapist.lname,
-    email: therapist.therapist.email,
-    yearsofEeperience: therapist.therapist.yearsofEeperience || 1,
-    licenseNo: therapist.therapist.licenseNo,
+    fname: therapist.fname,
+    lname: therapist.lname,
+    email: therapist.email,
+    yearsofEeperience: therapist.yearsofEeperience || 1,
+    licenseNo: therapist.licenseNo,
   });
   const { fname, lname, email, yearsofEeperience, licenseNo } = formData;
-
+  console.log("Auth", auth);
   //  var { fname, lname, email, yearsofEeperience, licenseNo } =
   //therapist.therapist;
 
@@ -87,11 +87,13 @@ const TherapistProfile = ({ therapist, id, createTherapistProfile }) => {
                   onChange={(e) => onChange(e)}
                 ></input>
               </div>
-              {disable && (
-                <div className="col-12">
-                  <button className="mainbtn">edit</button>
-                </div>
-              )}
+              {auth.isAuthenticated_therapist &&
+                auth.therapist._id === id &&
+                disable && (
+                  <div className="col-12">
+                    <button className="mainbtn">edit</button>
+                  </div>
+                )}
               {!disable && (
                 <div className="col-12">
                   <button className="mainbtn">save</button>
@@ -106,7 +108,8 @@ const TherapistProfile = ({ therapist, id, createTherapistProfile }) => {
 };
 const mapStateToProps = (state) => ({
   state: state,
-  therapist: state.therapist,
+  therapist: state.therapists.oneTherapist,
+  auth: state.therapistAuth,
 });
 export default connect(mapStateToProps, { createTherapistProfile })(
   TherapistProfile

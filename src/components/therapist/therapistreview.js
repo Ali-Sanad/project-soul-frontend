@@ -13,7 +13,7 @@ import { getReviews, deleteReview } from "../../actions/review";
 const TherapistReview = ({
   isAuth,
   id,
-  getReviews,
+  //getReviews,
   review,
   deleteReview,
   auth,
@@ -23,10 +23,10 @@ const TherapistReview = ({
   console.log("isAuth", isAuth);
   console.log("the", therapist);
 
-  useEffect(() => {
-    // getTherapist(id)
-    getReviews(id);
-  }, []);
+  // useEffect(() => {
+  //   // getTherapist(id)
+  //   getReviews(id);
+  // }, [getReviews, id]);
 
   console.log("review", review);
   // console.log("therapist in ", therapist);
@@ -54,19 +54,17 @@ const TherapistReview = ({
                 ></img>
 
                 <h6>
-                  {therapist.therapist.fname} {therapist.therapist.lname}
+                  {therapist.fname} {therapist.lname}
                 </h6>
                 <div className="therapistreview__rate">
                   <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating
                       name="read-only"
-                      value={therapist.therapist.ratingsAverage ?? 0}
+                      value={therapist.ratingsAverage ?? 0}
                       readOnly
                     />
                   </Box>
-                  <p>
-                    {therapist.therapist.ratingsQunatity ?? 0} Total Reviews
-                  </p>
+                  <p>{therapist.ratingsQunatity ?? 0} Total Reviews</p>
                 </div>
               </div>
               <div className="col-12 col-md-6">
@@ -75,10 +73,8 @@ const TherapistReview = ({
             </div>
           </div>
           {/* all reviews */}
-          {review.reviews.length > 0 && (
-            <h4 className="headers">All Reviews</h4>
-          )}
-          {review.reviews.map((review) => (
+          {review.length > 0 && <h4 className="headers">All Reviews</h4>}
+          {review.map((review) => (
             <div className="therapistreview__allreview" key="review._id">
               <div className="therapistreview__allreview__header">
                 <Box component="fieldset" mb={3} borderColor="transparent">
@@ -121,13 +117,13 @@ const TherapistReview = ({
 };
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuthenticated,
-  review: state.review,
+  review: state.therapists.oneTherapist.reviews,
   auth: state.auth,
-  therapist: state.therapist,
+  therapist: state.therapists.oneTherapist,
 });
 
 export default connect(mapStateToProps, {
   // getTherapist,
-  getReviews,
+  //getReviews,
   deleteReview,
 })(TherapistReview);

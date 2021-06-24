@@ -6,7 +6,7 @@ import SideNav from "../shared/sidenav";
 import Sidenavuser from "../shared/sidenavuser";
 import UserDate from "./userData";
 
-
+import UserUpdateForm from "./userUpdateForm";
 const UserProfile = (props) => {
   return (
     <>
@@ -21,14 +21,15 @@ const UserProfile = (props) => {
             </div>
             <div className="col-8">
               <UserDate></UserDate>
+              <UserUpdateForm></UserUpdateForm>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
 };
- 
+
 UserProfile.propTypes = {};
 
 export default UserProfile;

@@ -3,15 +3,15 @@ import React, { useEffect } from "react";
 import userimg from "./../../assets/images/user.png";
 import iconimg from "./../../assets/images/iconimg.png";
 import { connect } from "react-redux";
-import { getTherapist } from "../../actions/therapist";
+//import { getTherapist } from "../../actions/therapist";
 
-const Sidenav = ({ getTherapist, id, therapist, state }) => {
+const Sidenav = ({ id }) => {
   console.log("id in sidnav", id);
-  useEffect(() => {
-    getTherapist(id);
-  }, []);
-  console.log("thera", therapist);
-  console.log("state", state);
+  // useEffect(() => {
+  //   getTherapist(id);
+  // }, [getTherapist, id]);
+  // console.log("thera", therapist);
+  // console.log("state", state);
 
   return (
     <React.Fragment>
@@ -30,9 +30,7 @@ const Sidenav = ({ getTherapist, id, therapist, state }) => {
             </div>
           </div>
           <div className="sidenav__name">
-            <h4>
-              {/* {therapist.therapist.fname} {therapist.therapist.lname} */}
-            </h4>
+            <h4>{/* {therapist.fname} {therapist.lname} */}</h4>
           </div>
           <div className="sidenav__menu">
             <ul>
@@ -51,7 +49,6 @@ const Sidenav = ({ getTherapist, id, therapist, state }) => {
 };
 
 const mapStateToProps = (state) => ({
-  state: state,
-  therapist: state.therapist,
+  therapist: state.therapists.oneTherapist,
 });
-export default connect(mapStateToProps, { getTherapist })(Sidenav);
+export default connect(mapStateToProps)(Sidenav);
