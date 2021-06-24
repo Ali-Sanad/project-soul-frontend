@@ -1,4 +1,3 @@
-import "./message.css";
 import { format } from "timeago.js";
 
 const Message = ({ message, own }) => {
@@ -9,7 +8,7 @@ const Message = ({ message, own }) => {
           <img
             src="https://i.pinimg.com/564x/9b/59/6d/9b596d304c2d0816c49a3e031ff2b48f.jpg"
             className="messageImg"
-            alt=""
+            alt="sender"
           />
           <p className="messageText">{message.Text}</p>
         </div>

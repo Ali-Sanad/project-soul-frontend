@@ -1,25 +1,24 @@
-import Moment from 'react-moment';
-import {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {deleteArticle, getArticles} from '../../../actions/article';
-import {Link} from 'react-router-dom';
+import Moment from "react-moment";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { deleteArticle, getArticles } from "../../../actions/article";
+import { Link } from "react-router-dom";
 
-import ArticleForm from './articleForm';
-import Footer from '../../shared/footer';
-import NavBar from '../../shared/navbar';
-import Message from '../../shared/message';
-import ToTop from '../../shared/totop';
+import ArticleForm from "./articleForm";
+import Footer from "../../shared/footer";
+import NavBar from "../../shared/navbar";
+import Message from "../../shared/message";
+import ToTop from "../../shared/totop";
 
-import DeleteIcon from '@material-ui/icons/Delete';
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
-import articleImg from '../../../assets/images/article.png';
+import articleImg from "../../../assets/images/article.png";
 
 //article
 const Article = ({
   getArticles,
   article,
-  therapist: {isAuthenticated_therapist, therapist, token},
+  therapist: { isAuthenticated_therapist, therapist, token },
   deleteArticle,
 }) => {
   useEffect(() => {
@@ -29,40 +28,40 @@ const Article = ({
   console.log(article);
 
   return (
-    <div className='container-fluid'>
+    <div className="container-fluid">
       <NavBar />
-      <div className='container'>
-        <div className='heroSection__article'>
-          <div className='heroSection__article__text'>
+      <div className="container">
+        <div className="heroSection__article">
+          <div className="heroSection__article__text">
             <h3>Explore Our Articles</h3>
             <p>Take a quick review what our doctors say</p>
-            <a href='#articleScroll'>Explore</a>
+            <a href="#articleScroll">Explore</a>
           </div>
-          <div className='heroSection__article__image'>
+          <div className="heroSection__article__image">
             <img
-              className='heroSection__article__image__img'
+              className="heroSection__article__image__img"
               src={articleImg}
-              alt=''
+              alt="articleImage"
             />
           </div>
         </div>
-        <div className='Articles__header'>
-          <h2 id='articleScroll'>Articles</h2>
+        <div className="Articles__header">
+          <h2 id="articleScroll">Articles</h2>
         </div>
-        <div style={{textAlign: 'right'}}>
-          {isAuthenticated_therapist && therapist ? <ArticleForm /> : ''}
+        <div style={{ textAlign: "right" }}>
+          {isAuthenticated_therapist && therapist ? <ArticleForm /> : ""}
         </div>
 
-        <div className='articles'>
+        <div className="articles">
           {article?.articles.map((article) => (
             <>
-              <div className='article' key={article._id}>
+              <div className="article" key={article._id}>
                 <div>
-                  <img src={article.ArticleImg} alt='' />
+                  <img src={article.ArticleImg} alt="SingleArticleImage" />
                 </div>
                 <div>
                   <small>
-                    <Moment format='YYYY/MM/DD'>{article.date}</Moment>
+                    <Moment format="YYYY/MM/DD">{article.date}</Moment>
                   </small>
                   <h4>{article.title}</h4>
                   <p>{article.content}</p>
@@ -70,8 +69,8 @@ const Article = ({
                   {therapist && article.therapist === therapist._id ? (
                     <>
                       <Button
-                        variant='contained'
-                        color='secondary'
+                        variant="contained"
+                        color="secondary"
                         onClick={() => {
                           deleteArticle(article._id);
                         }}
@@ -80,7 +79,7 @@ const Article = ({
                       </Button>
                     </>
                   ) : (
-                    ''
+                    ""
                   )}
                 </div>
               </div>

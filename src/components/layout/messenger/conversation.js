@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./conversation.css";
 
 const Conversation = ({ conversationMembers: { members }, currentUser }) => {
   console.log("members", members);

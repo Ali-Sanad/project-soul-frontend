@@ -1,14 +1,13 @@
 import React from "react";
 
-const Message = () => {
+const MessageIcon = () => {
+  return (
+    <React.Fragment>
+      <div className="message__icon">
+        <img src="./images/message.png" alt=""></img>
+      </div>
+    </React.Fragment>
+  );
+};
 
-    return ( 
-        <React.Fragment>
-            <div className="message">
-                <img src="./images/message.png"></img>
-            </div>
-        </React.Fragment>
-    );
-}
- 
-export default Message;
+export default MessageIcon;
