@@ -119,7 +119,14 @@ const App = () => {
           <Route path='/reset-password' exact component={ResetPassword} />
           <Route path='/posts' exact component={Post} />
           <Route path='/therapistlist' exact component={TherapistList} />
+
           <Route
+            path='/therapistlist/:id'
+            exact
+            component={TherapistDashboard}
+          />
+
+          {/* <Route
             path='/therapistdashboard'
             exact
             component={TherapistDashboard}
@@ -128,7 +135,7 @@ const App = () => {
             path='/therapistdashboard/:id'
             exact
             component={TherapistDashboard}
-          />
+          /> */}
           <Route
             path='/pending-verification'
             exact

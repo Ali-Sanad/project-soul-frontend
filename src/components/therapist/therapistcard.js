@@ -14,7 +14,8 @@ const TherapistCard = ({therapist}) => {
   };
 
   const viewProfileHandler = (id) => {
-    history.push(`/therapistdashboard/${id}`);
+    // history.push(`/therapistdashboard/${id}`);
+    history.push(`therapistlist/${id}`);
   };
 
   console.log('therapist', therapist);

@@ -29,18 +29,18 @@ const TherapistDashboard = ({match, therapist, getTherapist}) => {
             <div className='col-12'>
               <Navbar className='therapistdashboard__navbar'></Navbar>
             </div>
-            (
-            <div className='col-3'>
-              <SideNav id={id} />
-            </div>
-            )
+            <>
+              <div className='col-3'>
+                <SideNav id={id} therapist={therapist} />
+              </div>
+            </>
             <div className='col-8'>
               {/* <TherapistFiles></TherapistFiles> */}
               {/* <TherapistProfile></TherapistProfile> */}
               {/* <TherapistSummary></TherapistSummary> */}
 
-              <TherapistReview id={id}></TherapistReview>
-              <TherapistProfile id={id} />
+              {/* <TherapistReview id={id}></TherapistReview> */}
+              {/* <TherapistProfile id={id} /> */}
 
               <AddAppointment></AddAppointment>
               <Appointments id={id}></Appointments>
