@@ -14,8 +14,8 @@ export default combineReducers({
   auth,
   therapistAuth,
   article,
-  review,
+  //  review,
   therapists,
-  therapist,
+  //therapist,
   post,
 });

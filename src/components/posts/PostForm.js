@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
-import ImageSent from "../../assets/images/icons8_Sent 1.png";
-import ImageUpload from "../../assets/images/surface1.png";
-import ImageSearch from "../../assets/images/icons8_Search_4 3.png";
-import { Dropdown } from "react-bootstrap";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { addPost } from "../../actions/post";
+import React, { useRef, useState } from 'react';
+import ImageSent from '../../assets/images/icons8_Sent 1.png';
+import ImageUpload from '../../assets/images/surface1.png';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState("");
@@ -70,31 +68,7 @@ const PostForm = ({ addPost }) => {
                 </a>
               </form>
             </div>
-            <div className="col-lg-12 postForm__inputs">
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Category
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Another action
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <input
-                type="text"
-                placeholder="Search"
-                className="postForm__inputs__search"
-              />
-              <a>
-                <img src={ImageSearch} className="postForm__imageSearch" />
-              </a>
-            </div>
+           
           </div>
         </div>
       </div>

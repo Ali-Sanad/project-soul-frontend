@@ -415,7 +415,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Create Your Profile', ' Add your Education', 'Add your Experience'];
 }
 
 function getStepContent(step) {
@@ -425,7 +425,7 @@ function getStepContent(step) {
     case 1:
       return <AddTherapistEducation />;
     case 2:
-      return <AddTherapistEducation />;
+      return <AddTherapistExperience />;
     default:
       return 'Unknown step';
   }
@@ -486,9 +486,7 @@ export default function HorizontalLinearStepper() {
           const stepProps = {};
           const labelProps = {};
           if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
+            labelProps.optional = <Typography variant="caption"></Typography>;
           }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
@@ -506,7 +504,6 @@ export default function HorizontalLinearStepper() {
             <Typography className={classes.instructions}>
               {/* All steps completed - you&apos;re finished */}
               All steps completed
-              <Link to="/therapistdashboard">YourProfile</Link>
             </Typography>
             <Button onClick={handleReset} className={classes.button}>
               Reset
@@ -548,6 +545,7 @@ export default function HorizontalLinearStepper() {
           </div>
         )}
       </div>
+      <Link to="/therapistdashboard">let’ go to your Profile</Link>
     </div>
   );
 }

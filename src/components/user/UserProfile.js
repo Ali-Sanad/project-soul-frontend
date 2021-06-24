@@ -7,7 +7,6 @@ import Sidenavuser from "../shared/sidenavuser";
 import UserDate from "./userData";
 import UserUpdateForm from "./userUpdateForm";
 
-
 const UserProfile = (props) => {
   return (
     <>
@@ -26,11 +25,11 @@ const UserProfile = (props) => {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
 };
- 
+
 UserProfile.propTypes = {};
 
 export default UserProfile;

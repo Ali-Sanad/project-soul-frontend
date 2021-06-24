@@ -1,7 +1,14 @@
-import { THERAPIST_ERROR, GET_THERAPIST } from "../actions/types";
+import {
+  THERAPIST_ERROR,
+  GET_THERAPIST,
+  UPATE_THERAPIST_ERROR,
+  UPATE_THERAPIST_DATA,
+} from "../actions/types";
 
 const initialState = {
   therapist: null,
+  error: null,
+  loading_therapist: true,
 };
 
 const therapist = (state = initialState, action) => {
@@ -21,6 +28,19 @@ const therapist = (state = initialState, action) => {
       return {
         ...state,
       };
+    // case UPATE_THERAPIST_DATA:
+    //   return {
+    //     ...state,
+    //     therapist: payload,
+    //     loading_therapist: false,
+    //   };
+
+    // case UPATE_THERAPIST_ERROR:
+    //   return {
+    //     ...state,
+    //     error: payload,
+    //     loading_therapist: false,
+    //   };
 
     default:
       console.log(" defult");

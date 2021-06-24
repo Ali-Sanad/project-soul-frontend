@@ -48,12 +48,12 @@ import TherapistResetPassword from "./components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from "./components/therapistDataForm";
 
 // import TherapistsList from './components/therapistsList/therapistList';
-import Home from "./components/landingpage/home";
-import UserProfile from "./components/user/UserProfile";
-import Post from "./components/posts/Post";
-
-import Error from "./components/shared/error";
-import TherapistDashboard from "./components/therapist/therapistdashboard";
+import Home from './components/landingpage/home';
+import UserProfile from './components/user/UserProfile';
+import Post from './components/posts/Post';
+import PostItem from './components/posts/postComment/PostItem'
+import Error from './components/shared/error';
+import TherapistDashboard from './components/therapist/therapistdashboard';
 // import Post from "./components/posts/Post";
 import RegisterOptions from "./components/auth/registeroptions";
 import HeroSection from "./components/landingpage/herosection";
@@ -118,6 +118,9 @@ const App = () => {
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/reset-password" exact component={ResetPassword} />
           <Route path="/posts" exact component={Post} />
+          <Route path='/posts/:id' exact component={PostItem} />
+
+
           <Route path="/therapistlist" exact component={TherapistList} />
           <Route
             path="/therapistdashboard"
@@ -191,9 +194,7 @@ const App = () => {
             path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
-          <Route exact path="/posts">
-            <Post />
-          </Route>
+    
           <Route path="/messenger">
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}
