@@ -6,6 +6,7 @@ import PostForm from './PostForm';
 import ToTop from '../shared/totop';
 import Message from '../shared/message';
 import PostCard from './PostList';
+import SearchPost from './SearchPost';
 
 //posts
 const Post = () => {
@@ -14,6 +15,7 @@ const Post = () => {
       <Navbar />
       <HeroSectionPost />
       <PostForm />
+      <SearchPost/>
       <PostCard />
       <Message />
       <ToTop></ToTop>

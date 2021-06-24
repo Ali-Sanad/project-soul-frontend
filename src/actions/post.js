@@ -51,7 +51,7 @@ export const deletePost = (id) => async (dispatch) => {
 export const addPost = (formData) => async (dispatch) => {
   try {
     const res = await api.post(`/posts`, formData);
-
+     console.log(res)
     dispatch({
       type: ADD_POST,
       payload: res.data,

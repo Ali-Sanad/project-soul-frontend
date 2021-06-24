@@ -11,7 +11,6 @@ const PostCard = ({
   addLike,
   removeLike,
   deletePost,
-  auth,
   auth: { user, isAuthenticated },
   post: { posts, loading },
   showActions,
@@ -39,7 +38,7 @@ const PostCard = ({
                       alt=''
                     />
                     <div className='card-body'>
-                      <h5 className='card-title'>{post.category}</h5>
+                      {/* <h5 className='card-title'>{post.category}</h5> */}
                       <p className='card-text'>{post.text}</p>
                       <p className='card-text'>
                         <small className='text-muted'>
@@ -80,7 +79,7 @@ const PostCard = ({
                             </span>
                           )}
                         </Link>
-                        {!auth.loading && user === auth.user._id && (
+                        {isAuthenticated && post.user === user._id && (
                           <button
                             onClick={() => deletePost(post._id)}
                             type='button'
