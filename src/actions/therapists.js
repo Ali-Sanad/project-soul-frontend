@@ -32,7 +32,6 @@ export const getTherapists = () => async (dispatch) => {
   }
 };
 
-//get therapist by id
 export const getTherapist = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/therapist/${id}`);

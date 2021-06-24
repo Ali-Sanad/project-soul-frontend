@@ -13,16 +13,14 @@ import TherapistReview from './therapistreview';
 import AddAppointment from './addappointment';
 import Appointments from './appointments';
 
-const TherapistDashboard = ({match, therapist}) => {
-  let id = match.params.id;
-  // console.log("isAuth",isAuth);
-  console.log(id);
+const TherapistDashboard = ({match, therapist, getTherapist}) => {
+  let id = match.params.id.trim();
 
+  // console.log("isAuth",isAuth);
+  // console.log("iddddd", id);
   useEffect(() => {
     getTherapist(id);
-  }, [id]);
-  console.log('therapistttt', therapist);
-
+  }, [getTherapist, id]);
   return (
     <React.Fragment>
       <div className='therapistdashboard'>
@@ -31,14 +29,19 @@ const TherapistDashboard = ({match, therapist}) => {
             <div className='col-12'>
               <Navbar className='therapistdashboard__navbar'></Navbar>
             </div>
+            (
             <div className='col-3'>
-              <SideNav></SideNav>
+              <SideNav id={id} />
             </div>
+            )
             <div className='col-8'>
-              {/* <TherapistFiles></TherapistFiles>
-              <TherapistProfile></TherapistProfile>
-              <TherapistSummary></TherapistSummary>
-              <TherapistReview id={id}></TherapistReview> */}
+              {/* <TherapistFiles></TherapistFiles> */}
+              {/* <TherapistProfile></TherapistProfile> */}
+              {/* <TherapistSummary></TherapistSummary> */}
+
+              <TherapistReview id={id}></TherapistReview>
+              <TherapistProfile id={id} />
+
               <AddAppointment></AddAppointment>
               <Appointments id={id}></Appointments>
             </div>
@@ -52,6 +55,4 @@ const mapStateToProps = (state) => ({
   therapist: state.therapists.oneTherapist,
 });
 
-export default connect(mapStateToProps, {
-  getTherapist,
-})(TherapistDashboard);
+export default connect(mapStateToProps, {getTherapist})(TherapistDashboard);
