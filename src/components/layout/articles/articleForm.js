@@ -34,17 +34,18 @@ const ArticleForm = ({ addArticle }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onloadend = () => {
-      addArticle({ data: reader.result, content, title });
-      console.log({ data: reader.result, content: content, title: title });
-    };
-    reader.onerror = () => {
-      console.error("Article failed");
-    };
-
-    handleClose();
+    if (image && title && content) {
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onloadend = () => {
+        addArticle({ data: reader.result, content, title });
+        console.log({ data: reader.result, content: content, title: title });
+      };
+      reader.onerror = () => {
+        console.error("Article failed");
+      };
+      handleClose();
+    }
   };
 
   return (
