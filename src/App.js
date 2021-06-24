@@ -118,19 +118,24 @@ const App = () => {
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/reset-password" exact component={ResetPassword} />
           <Route path="/posts" exact component={Post} />
-          <Route path="/posts/:id" exact component={PostItem} />
-
           <Route path="/therapistlist" exact component={TherapistList} />
+
           <Route
-            path="/therapistdashboard"
+            path="/therapistlist/:id"
+            exact
+            component={TherapistDashboard}
+          />
+
+          {/* <Route
+            path='/therapistdashboard'
             exact
             component={TherapistDashboard}
           />
           <Route
-            path="/therapistdashboard/:id"
+            path='/therapistdashboard/:id'
             exact
             component={TherapistDashboard}
-          />
+          /> */}
           <Route
             path="/pending-verification"
             exact

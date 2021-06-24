@@ -1,51 +1,49 @@
 import React from 'react';
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 
-import { getTherapists } from "../../actions/therapists";
+import {getTherapists} from '../../actions/therapists';
 
 import TherapistCard from './therapistcard';
-import Footer from "../shared/footer";
-import Navbar from "../shared/navbar";
-import Message from "../shared/message";
-import ToTop from "../shared/totop";
+import Footer from '../shared/footer';
+import Navbar from '../shared/navbar';
+import Message from '../shared/message';
+import ToTop from '../shared/totop';
 
-const TherapistList = ({ getTherapists, therapists, state }) => {
+const TherapistList = ({getTherapists, therapists, state}) => {
+  useEffect(() => {
+    getTherapists();
+  }, [getTherapists]);
+  console.log('state', state);
+  console.log('therapists', therapists);
 
-	useEffect(() => {
-		getTherapists();
-	  }, [getTherapists]);
-	  console.log("state", state);
-	  console.log("therapists", therapists);
-
-	return (
-		<React.Fragment>
-			<Navbar></Navbar>
-			<div className="therapistlist">
-				<h2 className="headers">Our Therapists</h2>
-				<div className="container">
-					<div className="row">
-					{therapists.therapists.map((therapist) =>
-						<div className="col-6 col-md-3" key={therapist._id}>
-							<TherapistCard therapist={therapist}></TherapistCard>
-						</div>
-					
-					)}
-						
-					</div>
-				</div>
-			</div>
-			<Footer />
+  return (
+    <React.Fragment>
+      <Navbar></Navbar>
+      <div className='therapistlist'>
+        <h2 className='headers'>Our Therapists</h2>
+        <div className='container'>
+          <div className='row'>
+            {therapists &&
+              therapists.therapists.map((therapist) => (
+                <div className='col-6 col-md-3' key={therapist._id}>
+                  <TherapistCard therapist={therapist}></TherapistCard>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+      <Footer />
       <Message />
       <ToTop />
-		</React.Fragment>
-	);
+    </React.Fragment>
+  );
 };
 const mapStateToProps = (state) => ({
-	state: state,
-	//  oneTherapist: state.oneTherapist,
-	therapists: state.therapists,
-	// therapist: state.therapistAuth,
-  });
-  
-export default connect(mapStateToProps,{getTherapists}) (TherapistList);
+  state: state,
+  //  oneTherapist: state.oneTherapist,
+  therapists: state.therapists,
+  // therapist: state.therapistAuth,
+});
+
+export default connect(mapStateToProps, {getTherapists})(TherapistList);

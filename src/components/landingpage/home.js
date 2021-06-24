@@ -6,13 +6,16 @@ import About from "./about";
 import Works from "./works";
 import Contact from "./contact";
 import Footer from "../shared/footer";
-import ToTop from "../shared/totop";
 import MessageIcon from "../shared/message";
-
-const Home = () => {
+import ToTop from "../shared/totop";
+//redux
+import { connect } from "react-redux";
+import { therapist_logout } from "../../actions/therapistAuth";
+import { logout } from "../../actions/auth";
+const Home = (props) => {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar {...props}></Navbar>
       <HeroSection></HeroSection>
       <About></About>
       <Works></Works>
@@ -23,5 +26,10 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+    therapistAuth: state.therapistAuth,
+  };
+};
+export default connect(mapStateToProps, { logout, therapist_logout })(Home);

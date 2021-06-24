@@ -1,25 +1,25 @@
-import axios from "../utils/api";
+import axios from '../utils/api';
 
 import {
   GET_THERAPISTS,
   THERAPISTS_ERROR,
   GET_THERAPIST,
   THERAPIST_ERROR,
-} from "./types";
-import { setAlert } from "./alert";
+} from './types';
+import {setAlert} from './alert';
 
 //GET ALL Therapists
 export const getTherapists = () => async (dispatch) => {
   try {
-    const res = await axios.get("/therapist");
+    const res = await axios.get('/therapist');
     console.log(
-      "array of Therapist from therapist action",
+      'array of Therapist from therapist action',
       res.data.therapists
     );
     const acceptedTherapist = res.data.therapists.filter(
       (th) => th.isAccepted == true
     );
-    console.log("accepted", acceptedTherapist);
+    console.log('accepted', acceptedTherapist);
     dispatch({
       type: GET_THERAPISTS,
       payload: acceptedTherapist,
@@ -35,7 +35,7 @@ export const getTherapists = () => async (dispatch) => {
 export const getTherapist = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/therapist/${id}`);
-    console.log(" Therapist from therapist action", res.data.therapist);
+    console.log(' Therapist from therapist action', res.data.therapist);
 
     dispatch({
       type: GET_THERAPIST,

@@ -54,7 +54,7 @@ const Register = ({history, setAlert, register, auth}) => {
               <img src={logo} alt='' />
             </Link>
           </div>
-          <h4 className='text-4xl mt-2 bold  text-center'>Register</h4>
+          <h4 className='text-4xl mt-2 bold  text-center'>User register</h4>
           <form className='mt-2' onSubmit={(e) => onSubmit(e)}>
             <div className=' mt-6 '>
               <input
