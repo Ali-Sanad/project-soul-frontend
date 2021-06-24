@@ -30,7 +30,7 @@ import ConfirmUserAccount from "./components/auth/ConfirmUserAccount/ConfirmUser
 import AccountConfirmed from "./components/auth/ConfirmUserAccount/AccountConfirmed";
 import LoginTherapist from "./components/auth/loginTherapist";
 import RegisterThreapist from "./components/auth/registerTherapist";
-import Messenger from "../src/components/layout/messenger/messenger";
+import Messenger from "./components/layout/messenger/messenger";
 // import Video from "./components/video/video";
 
 import ControlTherapistProfile from "./components/controlTherpistProfile/ControlTherapistProfile";
@@ -48,12 +48,12 @@ import TherapistResetPassword from "./components/auth/ConfirmTherapistAccount/Th
 import TherapistDataForm from "./components/therapistDataForm";
 
 // import TherapistsList from './components/therapistsList/therapistList';
-import Home from './components/landingpage/home';
-import UserProfile from './components/user/UserProfile';
-import Post from './components/posts/Post';
-import PostItem from './components/posts/postComment/PostItem'
-import Error from './components/shared/error';
-import TherapistDashboard from './components/therapist/therapistdashboard';
+import Home from "./components/landingpage/home";
+import UserProfile from "./components/user/UserProfile";
+import Post from "./components/posts/Post";
+import PostItem from "./components/posts/postComment/PostItem";
+import Error from "./components/shared/error";
+import TherapistDashboard from "./components/therapist/therapistdashboard";
 // import Post from "./components/posts/Post";
 import RegisterOptions from "./components/auth/registeroptions";
 import HeroSection from "./components/landingpage/herosection";
@@ -118,8 +118,7 @@ const App = () => {
           <Route path="/forgot-password" exact component={ForgotPassword} />
           <Route path="/reset-password" exact component={ResetPassword} />
           <Route path="/posts" exact component={Post} />
-          <Route path='/posts/:id' exact component={PostItem} />
-
+          <Route path="/posts/:id" exact component={PostItem} />
 
           <Route path="/therapistlist" exact component={TherapistList} />
           <Route
@@ -194,7 +193,7 @@ const App = () => {
             path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
-    
+
           <Route path="/messenger">
             <Messenger />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}

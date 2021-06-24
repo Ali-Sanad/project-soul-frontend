@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
-import Conversation from "../../conversation/conversation";
-import Message from "../..//message/message";
-import "./messenger.css";
+import Conversation from "./conversation";
+import Message from "./message";
 
 const Messenger = ({ user }) => {
   const [conversations, setConversations] = useState([]);

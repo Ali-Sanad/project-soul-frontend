@@ -1,17 +1,38 @@
-.message{
-    position: fixed;
-    z-index: 1;
-    right: 0;
-    bottom: 0;
-    margin: .5rem;
-    margin-bottom: 4.5rem;
-    &:hover {
-        cursor: pointer;
-        transform: translateY(-10px);
-        transition: 200ms linear all;
-    }
-    img{
-        width: 50px;
-        height: 50px;
-    }
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.8rem;
+}
+
+.messageTop {
+  display: flex;
+  margin: 0.3rem;
+}
+
+.messageImg {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+
+.messageText {
+  background-color: #1877f2;
+  padding: 0.6rem;
+  color: white;
+  border-radius: 1rem;
+}
+
+.messageBottom {
+  margin-top: 0.3rem;
+  font-size: small;
+}
+
+.own {
+  align-items: flex-end;
+}
+
+.own .messageText {
+  background-color: rgb(235, 235, 235);
+  color: black;
 }

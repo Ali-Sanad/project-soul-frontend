@@ -1,0 +1,17 @@
+.message__icon {
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  margin: 0.5rem;
+  margin-bottom: 4.5rem;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-10px);
+    transition: 200ms linear all;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
