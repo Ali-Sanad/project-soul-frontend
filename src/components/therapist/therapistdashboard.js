@@ -42,8 +42,8 @@ const TherapistDashboard = ({match, therapist, getTherapist}) => {
               {/* <TherapistReview id={id}></TherapistReview> */}
               {/* <TherapistProfile id={id} /> */}
 
-              <AddAppointment></AddAppointment>
-              <Appointments id={id}></Appointments>
+              {/* <AddAppointment></AddAppointment> */}
+              <Appointments></Appointments>
             </div>
           </div>
         </div>
