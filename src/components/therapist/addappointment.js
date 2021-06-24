@@ -26,11 +26,10 @@ const AddAppointment = ({addAppointment}) => {
     date: '',
     from: '',
     to: '',
-    duration: 0,
     fees: 0,
   });
 
-  const {date, from, to, duration, fees} = formData;
+  const {date, from, to, fees} = formData;
   const onChange = (e) => {
     console.log(e.target.value);
     setFormData({...formData, [e.target.name]: e.target.value});
@@ -43,7 +42,6 @@ const AddAppointment = ({addAppointment}) => {
       date: '',
       from: '',
       to: '',
-      duration: 0,
       fees: 0,
     });
   };
@@ -79,7 +77,7 @@ const AddAppointment = ({addAppointment}) => {
                   <div>
                     <h6> From </h6>
                     <input
-                      type='text'
+                      type='time'
                       name='from'
                       value={from}
                       onChange={(e) => onChange(e)}
@@ -90,7 +88,7 @@ const AddAppointment = ({addAppointment}) => {
                   <div>
                     <h6> To </h6>
                     <input
-                      type='text'
+                      type='time'
                       name='to'
                       value={to}
                       onChange={(e) => onChange(e)}
@@ -99,15 +97,7 @@ const AddAppointment = ({addAppointment}) => {
                     ></input>
                   </div>
                 </div>
-                <h6> Duration </h6>
-                <input
-                  type='number'
-                  name='duration'
-                  value={duration}
-                  onChange={(e) => onChange(e)}
-                  className='input'
-                  required
-                ></input>
+
                 <h5> Fees </h5>
                 <input
                   type='number'
