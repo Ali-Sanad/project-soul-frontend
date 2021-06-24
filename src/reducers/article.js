@@ -3,6 +3,7 @@ import {
   GET_ARTICLES,
   ADD_ARTICLE,
   GET_ARTICLE,
+  DELETE_ARTICLE,
 } from "../actions/types";
 
 const initialState = {
@@ -36,11 +37,11 @@ const article = (state = initialState, action) => {
         ...state,
       };
 
-    // case "DELETE_POST":
-    //   return {
-    //     ...state,
-    //     posts: state.posts.filter((post) => post._id !== payload),
-    //   };
+    case DELETE_ARTICLE:
+      return {
+        ...state,
+        articles: state.articles.filter((article) => article._id !== payload),
+      };
 
     default:
       return state;

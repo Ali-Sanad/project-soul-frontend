@@ -46,6 +46,7 @@ export const GET_ARTICLES = "GET_ARTICLES";
 export const ARTICLES_ERROR = "ARTICLES_ERROR";
 export const ADD_ARTICLE = "ADD_ARTICLE";
 export const GET_ARTICLE = "GET_ARTICLE";
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
 export const ADD_REVIEW = "ADD_REVIEW";
 export const REVIEW_ERROR = "REVIEW_ERROR";
 export const GET_REVIEWS = "GET_REVIEWS";

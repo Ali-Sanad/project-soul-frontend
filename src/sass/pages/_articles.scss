@@ -35,8 +35,6 @@
 .Articles__header {
   text-align: center;
   font-family: Roboto;
-  // font-weight: 700;
-  // font-size: large;
 
   h2 {
     display: inline;
@@ -49,7 +47,8 @@
   .article {
     background-color: white;
     display: flex;
-    margin: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
 
     div {
