@@ -35,6 +35,29 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
+//update user
+export const updateProfile = (userId, body) => async (dispatch) => {
+  try {
+    console.log("update");
+    const res = await axios.patch("/auth", body, {
+      headers: {
+        Authorization: localStorage.token,
+      },
+    });
+    //console.log(res.data)
+    console.log("update user res,data", res.data);
+    dispatch({
+      type: UPDATE_USER_PROFILE,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: UPDATE_USER_PROFILE_ERROR,
+    });
+  }
+};
+
 //load admin
 export const loadAdmin = () => async (dispatch) => {
   try {
@@ -156,27 +179,5 @@ export const forgotPassword = (formData) => async (dispatch) => {
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "error")));
     }
-  }
-};
-
-export const updateProfile = (userId, body) => async (dispatch) => {
-  try {
-    console.log("update");
-    const res = await axios.patch("/auth", body, {
-      headers: {
-        Authorization: localStorage.token,
-      },
-    });
-    //console.log(res.data)
-    console.log("update user res,data", res.data);
-    dispatch({
-      type: UPDATE_USER_PROFILE,
-      payload: res.data,
-    });
-  } catch (error) {
-    console.log(error);
-    dispatch({
-      type: UPDATE_USER_PROFILE_ERROR,
-    });
   }
 };

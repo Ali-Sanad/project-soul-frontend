@@ -8,17 +8,20 @@ import {
   THERAPIST_FORGOT_PASSWORD,
   THERAPIST_RESET_PASSWORD,
   THERAPIST_AUTH_ERROR,
-} from "../actions/types";
+  ADD_THERAPIST_APPOINTMENT,
+  UPDATE_THERAPIST_APPOINTMENT,
+  DELETE_THERAPIST_APPOINTMENT,
+} from '../actions/types';
 
 const initialState = {
-  therapistToken: localStorage.getItem("therapistToken"),
+  therapistToken: localStorage.getItem('therapistToken'),
   isAuthenticated_therapist: null,
   loading_therapist: true,
   therapist: null,
 };
 
 function therapistAuthReducer(state = initialState, action) {
-  const { type, payload } = action;
+  const {type, payload} = action;
 
   switch (type) {
     case THERAPIST_LOADED:
@@ -62,6 +65,13 @@ function therapistAuthReducer(state = initialState, action) {
       return {
         ...state,
         note: true,
+      };
+    case ADD_THERAPIST_APPOINTMENT:
+      let updatedAppointments = [...state.therapist.appointments];
+      updatedAppointments.push(payload);
+      return {
+        ...state,
+        therapist: {...state.therapist, appointments: updatedAppointments},
       };
     default:
       return state;

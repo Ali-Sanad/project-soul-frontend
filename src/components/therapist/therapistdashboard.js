@@ -2,18 +2,15 @@ import React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
-//import { getTherapist } from "../../actions/therapist";
+import { getTherapist } from "../../actions/therapist";
 
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
 import TherapistFiles from "./therapistfiles";
-//import TherapistProfile from "./therapistprofile";
+import TherapistProfile from "./therapistprofile";
 import TherapistSummary from "./therapistsummary";
 import TherapistReview from "./therapistreview";
 import AddAppointment from "./addappointment";
-
-import TherapistProfile from "./therapistprofile";
-import { getTherapist } from "../../actions/therapists";
 
 const TherapistDashboard = ({ match, therapist, getTherapist }) => {
   let id = match.params.id.trim();

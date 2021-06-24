@@ -5,8 +5,8 @@ import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
 import Sidenavuser from "../shared/sidenavuser";
 import UserDate from "./userData";
-
 import UserUpdateForm from "./userUpdateForm";
+
 const UserProfile = (props) => {
   return (
     <>
