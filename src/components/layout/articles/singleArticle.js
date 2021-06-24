@@ -54,7 +54,7 @@ const SingleArticle = ({ article: { article }, getArticle }) => {
                 <CardHeader
                   avatar={
                     <Avatar
-                      aria-label="recipe"
+                      aria-label="therapistImg"
                       src={article.therapistImg}
                     ></Avatar>
                   }
@@ -66,7 +66,7 @@ const SingleArticle = ({ article: { article }, getArticle }) => {
                 <CardMedia
                   className={classes.media}
                   image={article.ArticleImg}
-                  title="Paella dish"
+                  title="ArticleImg"
                 />
                 <CardContent>
                   <Typography variant="body2" component="p">

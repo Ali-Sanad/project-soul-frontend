@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-
-const UserData = ({ auth }) => {
+import { updateProfile } from "../../actions/auth";
+const UserUpdateForm = ({ auth, updateProfile }) => {
   // console.log("auth", auth);
-  const [disable, setDisable] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,28 +21,40 @@ const UserData = ({ auth }) => {
   //   }
   //   data();
   // }
+
   const { name, email, gender, dob } = formData;
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onSubmit = async (e) => {
+    console.log("on submit");
+    e.preventDefault();
+    updateProfile();
+  };
   return (
     <>
       {auth.user && (
         <div className="userprofile">
           <div className="container">
             <h2 className="headers">Profile</h2>
-            <form>
+            <form onSubmit={(e) => onSubmit(e)}>
               <div className="row">
                 <div className=" col-12 col-md-6">
                   <h6>Name</h6>
                   <input
                     type="text"
                     className="inputstyle"
-                    value={auth.user.name}
+                    value={name}
+                    name="name"
+                    onChange={(e) => onChange(e)}
                   ></input>
 
                   <h6>Email</h6>
                   <input
                     type="text"
                     className="inputstyle"
-                    value={auth.user.email}
+                    value={email}
+                    name="email"
+                    onChange={(e) => onChange(e)}
                   ></input>
 
                   {/* <h6>Password</h6>
@@ -57,14 +68,18 @@ const UserData = ({ auth }) => {
                   <input
                     type="text"
                     className="inputstyle"
-                    value={auth.user.gender}
+                    value={gender}
+                    name="gender"
+                    onChange={(e) => onChange(e)}
                   ></input>
 
                   <h6>Date Of Birth</h6>
                   <input
                     type="text"
                     className="inputstyle"
-                    value={auth.user.dob}
+                    value={dob}
+                    name="dob"
+                    onChange={(e) => onChange(e)}
                   ></input>
 
                   <button className="button btn">
@@ -83,4 +98,4 @@ const UserData = ({ auth }) => {
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps)(UserData);
+export default connect(mapStateToProps, { updateProfile })(UserUpdateForm);

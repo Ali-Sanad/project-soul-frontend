@@ -93,8 +93,6 @@ const App = () => {
     //logout user or therapist from all tabes if he/she logged out from one tabe
     window.addEventListener("storage", () => {
       if (!localStorage.token) {
-        store.dispatch({ type: THERAPIST_LOGOUT });
-        store.dispatch({ type: LOGOUT });
         store.dispatch({ type: LOGOUT });
       }
       if (!localStorage.therapistToken) {
@@ -206,6 +204,7 @@ const App = () => {
           <Route path="/article/:id">
             <SingleArticle />
           </Route>
+
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
         </Switch>

@@ -9,6 +9,8 @@ import {
   LOGOUT,
   RESET_PASSWORD,
   FORGOT_PASSWORD,
+  UPDATE_USER_PROFILE,
+  UPDATE_USER_PROFILE_ERROR,
   // ACCOUNT_DELETED,
   // USER_IMAGE,
 } from '../actions/types';
@@ -73,6 +75,14 @@ const reducer = (state = initialState, action) => {
         isAuthenticated: false,
         redirect: true,
       };
+      case UPDATE_USER_PROFILE:
+        return {
+          ...state,
+        };
+      case UPDATE_USER_PROFILE_ERROR:
+        return {
+          ...state,
+        };
     case FORGOT_PASSWORD:
       return {
         ...state,
