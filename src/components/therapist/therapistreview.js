@@ -1,81 +1,89 @@
-import React from 'react'
-import Rating from '@material-ui/lab/Rating'
-import Box from '@material-ui/core/Box'
-import { connect } from 'react-redux'
+import React from "react";
+import Rating from "@material-ui/lab/Rating";
+import Box from "@material-ui/core/Box";
+import { connect } from "react-redux";
 
-import userimg from '../../assets/images/user.png'
-import ReviewForm from './createReview'
-import { useEffect } from 'react'
-import { getReviews, deleteReview } from '../../actions/review'
+import userimg from "../../assets/images/user.png";
+import ReviewForm from "./createReview";
+import { useEffect } from "react";
+import { getReviews, deleteReview } from "../../actions/review";
 
 // import { getTherapist } from '../../actions/therapist'
 
 const TherapistReview = ({
   isAuth,
   id,
-  getReviews,
+  //getReviews,
   review,
   deleteReview,
   auth,
-  therapist
-}) => {
-  console.log('isAuth', isAuth)
-  useEffect(() => {
-    // getTherapist(id)
-    getReviews(id)
-  }, [])
 
-  console.log('review', review)
+  therapist,
+}) => {
+  console.log("isAuth", isAuth);
+  console.log("the", therapist);
+
+  // useEffect(() => {
+  //   // getTherapist(id)
+  //   getReviews(id);
+  // }, [getReviews, id]);
+
+  console.log("review", review);
   // console.log("therapist in ", therapist);
 
   const handleDelete = (id, reviewId) => {
-    deleteReview(id, reviewId)
-  }
+    deleteReview(id, reviewId);
+  };
   //   const handleUpdate = (id, reviewId) => {
   //     deleteReview(id, reviewId);
   //   }
   return (
     <React.Fragment>
       {console.log(therapist)}
-      <div className='therapistreview'>
-        <div className='container'>
-          <h2 className='headers'>Reviews</h2>
+      <div className="therapistreview">
+        <div className="container">
+          <h2 className="headers">Reviews</h2>
           {/* review form */}
-          <div className='therapistreview__data'>
-            <div className='row'>
-              <div className='col-12 col-md-6'>
+          <div className="therapistreview__data">
+            <div className="row">
+              <div className="col-12 col-md-6">
                 <img
                   src={userimg}
-                  alt=''
-                  className='therapistreview__userimg'
+                  alt=""
+                  className="therapistreview__userimg"
                 ></img>
-                <h6>Menna Omar</h6>
-                <div className='therapistreview__rate'>
-                  <Box component='fieldset' mb={3} borderColor='transparent'>
-                    <Rating name='read-only' value={3} readOnly />
+
+                <h6>
+                  {therapist.fname} {therapist.lname}
+                </h6>
+                <div className="therapistreview__rate">
+                  <Box component="fieldset" mb={3} borderColor="transparent">
+                    <Rating
+                      name="read-only"
+                      value={therapist.ratingsAverage ?? 0}
+                      readOnly
+                    />
                   </Box>
-                  <p>24 Total Reviews</p>
+                  <p>{therapist.ratingsQunatity ?? 0} Total Reviews</p>
                 </div>
               </div>
-              <div className='col-12 col-md-6'>
+              <div className="col-12 col-md-6">
                 {isAuth && <ReviewForm id={id} />}
               </div>
             </div>
           </div>
           {/* all reviews */}
-          {review.reviews.length > 0 && (
-            <h4 className='headers'>All Reviews</h4>
-          )}
-          {review.reviews.map(review => (
-            <div className='therapistreview__allreview' key='review._id'>
-              <div className='therapistreview__allreview__header'>
-                <Box component='fieldset' mb={3} borderColor='transparent'>
-                  <Rating name='read-only' value={review.rating} readOnly />
+          {review.length > 0 && <h4 className="headers">All Reviews</h4>}
+          {review.map((review) => (
+            <div className="therapistreview__allreview" key="review._id">
+              <div className="therapistreview__allreview__header">
+                <Box component="fieldset" mb={3} borderColor="transparent">
+                  <Rating name="read-only" value={review.rating} readOnly />
                 </Box>
                 <span>{review.createdAt}</span>
                 {/* {review._id} */}
               </div>
-              <div className='therapistreview__allreview__body'>
+              <div className="therapistreview__allreview__body">
                 <p>{review.review}</p>
               </div>
 
@@ -105,25 +113,17 @@ const TherapistReview = ({
         </div>
       </div>
     </React.Fragment>
-  )
-}
-const mapStateToProps = state => {
-  console.log(state)
-  return {
-    isAuth: state.auth.isAuthenticated,
-    review: state.review,
-    auth: state.auth,
-    // therapist: state.therapists
-  }
-}
-// ({
-//   isAuth: state.auth.isAuthenticated,
-//   review: state.review,
-//   auth: state.auth,
-//   therapist: state.therapists,
-// });
+  );
+};
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuthenticated,
+  review: state.therapists.oneTherapist.reviews,
+  auth: state.auth,
+  therapist: state.therapists.oneTherapist,
+});
+
 export default connect(mapStateToProps, {
   // getTherapist,
-  getReviews,
-  deleteReview
-})(TherapistReview)
+  //getReviews,
+  deleteReview,
+})(TherapistReview);

@@ -2,6 +2,7 @@ import {
   THERAPISTS_ERROR,
   GET_THERAPISTS,
   GET_THERAPIST,
+  THERAPIST_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,19 @@ const therapists = (state = initialState, action) => {
     //     oneTherapist: payload,
     //   };
 
+    case GET_THERAPIST:
+      console.log("gettherapist");
+      return {
+        ...state,
+        oneTherapist: payload,
+      };
+
+    case THERAPIST_ERROR:
+      console.log("therapist error");
+
+      return {
+        ...state,
+      };
     case THERAPISTS_ERROR:
       console.log("therapist error");
 

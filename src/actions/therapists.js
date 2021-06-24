@@ -1,6 +1,11 @@
 import axios from "../utils/api";
 
-import { GET_THERAPISTS, THERAPISTS_ERROR, GET_THERAPIST } from "./types";
+import {
+  GET_THERAPISTS,
+  THERAPISTS_ERROR,
+  GET_THERAPIST,
+  THERAPIST_ERROR,
+} from "./types";
 import { setAlert } from "./alert";
 
 //GET ALL Therapists
@@ -23,6 +28,23 @@ export const getTherapists = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: THERAPISTS_ERROR,
+    });
+  }
+};
+
+export const getTherapist = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/therapist/${id}`);
+    console.log(" Therapist from therapist action", res.data.therapist);
+
+    dispatch({
+      type: GET_THERAPIST,
+      payload: res.data.therapist,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: THERAPIST_ERROR,
     });
   }
 };
