@@ -5,7 +5,7 @@ import iconimg from "./../../assets/images/iconimg.png";
 import { connect } from "react-redux";
 import { addTherapistProfileImage } from "../../actions/therapists";
 
-const Sidenav = ({ id, therapist, addTherapistProfileImage }) => {
+const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
   // console.log('id in sidnav', id);
   // useEffect(() => {
   //   getTherapist(id);
@@ -48,21 +48,27 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage }) => {
                 className="sidenav__image__user"
               ></img>
             )}
-
-            <div className="file-upload">
-              <label htmlFor="file-input">
-                <img src={iconimg} className="sidenav__image__upload" alt="" />
-              </label>
-              <input
-                id="file-input"
-                type="file"
-                name="image"
-                onChange={(e) => {
-                  uploadTherapistImage(e);
-                }}
-              />
-            </div>
+            {id == authId && (
+              <div className="file-upload">
+                <label htmlFor="file-input">
+                  <img
+                    src={iconimg}
+                    className="sidenav__image__upload"
+                    alt=""
+                  />
+                </label>
+                <input
+                  id="file-input"
+                  type="file"
+                  name="image"
+                  onChange={(e) => {
+                    uploadTherapistImage(e);
+                  }}
+                />
+              </div>
+            )}
           </div>
+
           <div className="sidenav__name">
             <h4>
               {therapist && therapist.fname} {therapist && therapist.lname}
@@ -86,5 +92,6 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage }) => {
 
 const mapStateToProps = (state) => ({
   therapist: state.therapists.oneTherapist,
+  authId: state.therapistAuth?.therapist?._id,
 });
 export default connect(mapStateToProps, { addTherapistProfileImage })(Sidenav);
