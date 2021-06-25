@@ -104,21 +104,6 @@ const TherapistReview = ({
                     )}
                 </div>
               ))}
-            {/* <div className="therapistreview__allreview">
-						<div className="therapistreview__allreview__header">
-							<Box component="fieldset" mb={3} borderColor="transparent">
-								<Rating name="read-only" value={3} readOnly />
-							</Box>
-							<p>15-10-2021</p>
-						</div>
-						<div className="therapistreview__allreview__body">
-							<p>
-								Just like any muscle, your personality requires strengthening and your heart, mind and
-								soul deserve specialized care. With Shezlong, you’ll get personalized treatment from a
-								prescriber trained in mental health care.
-							</p>
-						</div>
-					</div> */}
           </div>
         </div>
       )}
