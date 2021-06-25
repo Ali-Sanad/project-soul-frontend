@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {NavLink, Redirect} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Redirect } from 'react-router-dom';
 import userimg from './../../assets/images/user-image.svg';
 import therapistimg from './../../assets/images/user.png';
 import logoutimg from './../../assets/images/logout.png';
 
-const Navbar = ({logout, therapist_logout, auth, therapistAuth}) => {
+const Navbar = ({ logout, therapist_logout, auth, therapistAuth }) => {
   /* scroll nav */
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
@@ -101,14 +101,17 @@ const Navbar = ({logout, therapist_logout, auth, therapistAuth}) => {
                   Therpist List
                 </NavLink>
               </li>
-              <li className='navBar__list__item nav-item'>
-                <NavLink
-                  className='navBar__list__item__link nav-link'
-                  to='/posts'
-                >
-                  Community
-                </NavLink>
-              </li>
+              {((auth && auth.isAuthenticated) ||
+                (therapistAuth && therapistAuth.isAuthenticated_therapist)) && (
+                <li className='navBar__list__item nav-item'>
+                  <NavLink
+                    className='navBar__list__item__link nav-link'
+                    to='/posts'
+                  >
+                    Community
+                  </NavLink>
+                </li>
+              )}
               <li className='navBar__list__item nav-item'>
                 <NavLink
                   className='navBar__list__item__link nav-link'

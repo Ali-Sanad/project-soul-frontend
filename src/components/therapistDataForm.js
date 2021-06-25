@@ -511,10 +511,12 @@ export default function HorizontalLinearStepper() {
           </div>
         ) : (
           <div>
+          <div className="registertherapist__content">
             <Typography className={classes.instructions}>
               {getStepContent(activeStep)}
             </Typography>
-            <div>
+            </div>
+            <div  className="registertherapist__btns">
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
@@ -525,9 +527,10 @@ export default function HorizontalLinearStepper() {
               {isStepOptional(activeStep) && (
                 <Button
                   variant="contained"
-                  color="primary"
+                  // color="primary"
                   onClick={handleSkip}
-                  className={classes.button}
+                  // className={classes.button}
+                  className="registertherapist__btns__mainbtn"
                 >
                   Skip
                 </Button>
@@ -535,9 +538,11 @@ export default function HorizontalLinearStepper() {
 
               <Button
                 variant="contained"
-                color="primary"
+                // color="primary"
                 onClick={handleNext}
-                className={classes.button}
+                // className={classes.button}
+                  className="registertherapist__btns__mainbtn"
+
               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
@@ -545,7 +550,7 @@ export default function HorizontalLinearStepper() {
           </div>
         )}
       </div>
-      <Link to="/therapistdashboard">let’ go to your Profile</Link>
+      {/* <Link to="/therapistdashboard">let’ go to your Profile</Link> */}
     </div>
   );
 }

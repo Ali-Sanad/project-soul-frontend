@@ -21,9 +21,9 @@ const PostItem = ({ getPost, post: { post, loading }, match }) => {
     <Spinner />
   ) : (
     <Fragment>
-       <Navbar/>
-       <HeroSectionPost/>
-       {console.log(post)}
+      <Navbar />
+      <HeroSectionPost />
+      {console.log(post)}
       <PostCard post={post} showActions={false} />
 
       <CommentForm postId={post._id} />
@@ -32,9 +32,9 @@ const PostItem = ({ getPost, post: { post, loading }, match }) => {
           <CommentItem key={comment._id} comment={comment} postId={post._id} />
         ))}
       </div>
-    <Message/>
-    <Totop/>
-     <Footer/>
+      <Message />
+      <Totop />
+      <Footer />
     </Fragment>
   );
 };
