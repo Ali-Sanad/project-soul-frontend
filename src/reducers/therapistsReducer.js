@@ -52,7 +52,9 @@ const therapists = (state = initialState, action) => {
     case ADD_REVIEW:
       return {
         ...state,
-        oneTherapist: [therapists.oneTherapist.reviews],
+        //  oneTherapist: [therapists.oneTherapist.reviews],
+
+        oneTherapist: [payload],
       };
     case DELETE_REVIEW:
       return {

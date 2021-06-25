@@ -70,7 +70,7 @@ export const addReview = (body, therapistId) => async (dispatch) => {
       }
     );
     console.log("add review action", res.data);
-    console.log("review res,data", res.data);
+    console.log("review res,data", res.data.therapist);
     dispatch({
       type: ADD_REVIEW,
       payload: res.data,
