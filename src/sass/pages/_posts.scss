@@ -1,139 +1,258 @@
 .heroSection__post {
-  display: grid;
-  justify-content: center;
-
-  grid-template-columns: 45% 45%;
-  margin-top: 5rem;
-
-  &__text {
-    margin-top: 6rem;
-    margin-left: 3rem;
-    h2 {
-      font-family: 'Reem Kufi';
-      font-weight: 900;
-      font-size: large;
-    }
-    p,
-    a {
-      font-family: Roboto;
-    }
-    a {
-      background-color: $colmain;
-      padding: 0.6rem;
-      border-radius: 5rem;
-      text-decoration: none;
-      color: black;
-      scroll-behavior: smooth;
-    }
-    h2,
-    p,
-    a {
-      margin: 0.8rem;
-    }
-  }
-}
-
-.Posts__header {
-  text-align: center;
-  font-family: Roboto;
-  font-weight: 700;
-  font-size: large;
-
-  span {
-    border-bottom: 0.3rem solid $colmain;
-  }
-}
-
-.posts {
-  .post {
-    background-color: white;
-    display: flex;
-    margin: 2rem;
-    border-radius: 1rem;
-
-    div {
-      img {
-        width: 13rem;
-      }
-    }
-
-    div {
-      margin: 0.5rem;
-      small {
-        color: #aaaaaa !important;
-      }
-      h4,
-      p {
-        font-family: Roboto;
-      }
-      small,
-      h4,
-      p {
-        margin: 0.8rem;
-      }
-    }
-  }
+	&__text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	&__blogs {
+		text-align: center;
+		span {
+			border-bottom: 3px solid $colmain;
+			width: fit-content;
+			font-size: 2rem;
+			font-weight: 500;
+		}
+	}
 }
 
 .postForm {
-  &__form {
-    display: flex;
-  }
-  &__input {
-    width: 70%;
-    height: 2rem;
-    border-radius: 90px;
-    margin: 2rem;
-    padding: 2rem;
-    margin-left: auto;
-    &:focus {
-      outline: none;
-    }
-  }
-  // &__imageUpload,
-  // &__imageSent {
-
-  // }
-  a {
-    cursor: pointer;
-    img {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
-  &__inputs {
-    display: flex !important;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-
-    &__search {
-      width: 40% !important;
-      height: 2rem;
-      border-radius: 90px;
-      padding: 1.5rem !important;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
+	&__form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 2rem 0rem;
+	}
+	&__input {
+		background-color: $colwhite;
+		width: 80%;
+	}
+	&__imageUpload {
+		width: 30px;
+		position: relative;
+		left: -4.5rem;
+	}
+	&__imageSent {
+		width: 30px;
+		position: relative;
+		left: -4rem;
+	}
+	&__inputs {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 2rem;
+		&__search {
+			background-color: $colwhite;
+			width: 40%;
+		}
+	}
+	&__imageSearch {
+		width: 30px;
+		position: relative;
+		left: -2.5rem;
+	}
 }
+
 .postCard {
-  &__card {
-    display: flex !important;
-    margin: 0 auto;
-    align-items: center;
-    width: 50% !important;
+  width: 50%;
+  margin: auto;
+  &__main{
+    margin: 1rem 0rem;
   }
-  &__inputs {
-    &__category {
-      display: flex !important;
-      margin: 0 auto;
-      margin-left: auto;
-      margin-right: auto;
-      align-items: center;
+	&__actions {
+    display: flex;
+    justify-content: space-between;
+	}
+  i{
+    margin: .5rem;
+    font-size: 1.3rem;
+  }
+  .fa-thumbs-up{
+    color: dodgerblue;
+  }
+  .fa-comment{
+    color: $colmain;
+  }
+  .fa-times{
+    color: darkred;
+  }
+}
+
+.post-form{
+  border-radius: .5rem;
+  margin: auto;
+  width: 50%;
+  form{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    .inputstyle{
+      background-color: $colwhite;
+      width: 80%;
     }
   }
 }
+
+.post{
+  background-color: salmon;
+  width: 50%;
+  margin:2rem auto;
+  padding: 1rem;
+  border-radius: .5rem;
+  background-color: $colwhite;
+  &__link{
+    &:hover{
+      text-decoration: none;
+    }
+  }
+  &__name{
+    color: $colmain;
+  }
+  &__date{
+    color: $colfontsecondary;
+  }
+  &__delete{
+    float: right;
+    i{
+      color: firebrick;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// .heroSection__post {
+// 	display: grid;
+// 	justify-content: center;
+
+// 	grid-template-columns: 45% 45%;
+// 	margin-top: 5rem;
+
+// 	&__text {
+// 		margin-top: 6rem;
+// 		margin-left: 3rem;
+// 		h2 {
+// 			font-family: 'Reem Kufi';
+// 			font-weight: 900;
+// 			font-size: large;
+// 		}
+// 		p,
+// 		a {
+// 			font-family: Roboto;
+// 		}
+// 		a {
+// 			background-color: $colmain;
+// 			padding: 0.6rem;
+// 			border-radius: 5rem;
+// 			text-decoration: none;
+// 			color: black;
+// 			scroll-behavior: smooth;
+// 		}
+// 		h2,
+// 		p,
+// 		a {
+// 			margin: 0.8rem;
+// 		}
+// 	}
+// }
+
+// .Posts__header {
+// 	text-align: center;
+// 	font-family: Roboto;
+// 	font-weight: 700;
+// 	font-size: large;
+
+// 	span {
+// 		border-bottom: 0.3rem solid $colmain;
+// 	}
+// }
+
+// .posts {
+// 	.post {
+// 		background-color: white;
+// 		display: flex;
+// 		margin: 2rem;
+// 		border-radius: 1rem;
+
+// 		div {
+// 			img {
+// 				width: 13rem;
+// 			}
+// 		}
+
+// 		div {
+// 			margin: 0.5rem;
+// 			small {
+// 				color: #aaaaaa !important;
+// 			}
+// 			h4,
+// 			p {
+// 				font-family: Roboto;
+// 			}
+// 			small,
+// 			h4,
+// 			p {
+// 				margin: 0.8rem;
+// 			}
+// 		}
+// 	}
+// }
+
+// .postForm {
+//   &__form {
+//     display: flex;
+//   }
+//   &__input {
+//     width: 70%;
+//     height: 2rem;
+//     border-radius: 90px;
+//     margin: 2rem;
+//     padding: 2rem;
+//     margin-left: auto;
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+//   a {
+//     cursor: pointer;
+//     img {
+//       width: 3rem;
+//       height: 3rem;
+//     }
+//   }
+//   &__inputs {
+//     display: flex !important;
+//     margin: 0 auto;
+//     justify-content: center;
+//     align-items: center;
+//     margin-bottom: 2rem;
+
+//     &__search {
+//       width: 40% !important;
+//       height: 2rem;
+//       border-radius: 90px;
+//       padding: 1.5rem !important;
+
+//       &:focus {
+//         outline: none;
+//       }
+//     }
+//   }
+// }
+
+// .postCard {
+// 	&__card {
+// 		display: flex !important;
+// 		margin: 0 auto;
+// 		align-items: center;
+// 		width: 50% !important;
+// 	}
+// 	&__inputs {
+// 		&__category {
+// 			display: flex !important;
+// 			margin: 0 auto;
+// 			margin-left: auto;
+// 			margin-right: auto;
+// 			align-items: center;
+// 		}
+// 	}
+// }

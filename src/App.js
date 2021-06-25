@@ -119,7 +119,7 @@ const App = () => {
           <Route path="/reset-password" exact component={ResetPassword} />
           <Route path="/posts" exact component={Post} />
           <Route path="/therapistlist" exact component={TherapistList} />
-
+          <Route path='/posts/:id' exact component={PostItem} />
           <Route
             path="/therapistlist/:id"
             exact
