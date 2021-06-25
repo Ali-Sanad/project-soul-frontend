@@ -101,14 +101,17 @@ const Navbar = ({ logout, therapist_logout, auth, therapistAuth }) => {
                   Therpist List
                 </NavLink>
               </li>
-              <li className="navBar__list__item nav-item">
-                <NavLink
-                  className="navBar__list__item__link nav-link"
-                  to="/posts"
-                >
-                  Community
-                </NavLink>
-              </li>
+              {((auth && auth.isAuthenticated) ||
+                (therapistAuth && therapistAuth.isAuthenticated_therapist)) && (
+                <li className="navBar__list__item nav-item">
+                  <NavLink
+                    className="navBar__list__item__link nav-link"
+                    to="/posts"
+                  >
+                    Community
+                  </NavLink>
+                </li>
+              )}
               <li className="navBar__list__item nav-item">
                 <NavLink
                   className="navBar__list__item__link nav-link"

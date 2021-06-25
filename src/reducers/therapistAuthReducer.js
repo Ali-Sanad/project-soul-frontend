@@ -8,9 +8,6 @@ import {
   THERAPIST_FORGOT_PASSWORD,
   THERAPIST_RESET_PASSWORD,
   THERAPIST_AUTH_ERROR,
-  ADD_THERAPIST_APPOINTMENT,
-  UPDATE_THERAPIST_APPOINTMENT,
-  DELETE_THERAPIST_APPOINTMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -66,13 +63,7 @@ function therapistAuthReducer(state = initialState, action) {
         ...state,
         note: true,
       };
-    case ADD_THERAPIST_APPOINTMENT:
-      let updatedAppointments = [...state.therapist.appointments];
-      updatedAppointments.push(payload);
-      return {
-        ...state,
-        therapist: {...state.therapist, appointments: updatedAppointments},
-      };
+
     default:
       return state;
   }

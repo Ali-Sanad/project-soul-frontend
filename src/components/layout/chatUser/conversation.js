@@ -2,38 +2,38 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import noAvatar from "../../../assets/images/noAvatar.gif";
 
-const Conversation = ({ conversationMembers: { members }, currentUser }) => {
+const Conversation = ({ members, user }) => {
   console.log("members", members);
 
-  const [user, setUser] = useState(null);
-  console.log(user);
+  const [therapist, setTherapist] = useState(null);
+  console.log(therapist);
 
   useEffect(() => {
-    const therapistId = members.find((member) => member !== currentUser._id);
-    const getUser = async () => {
+    const therapistId = members.find((member) => member !== user._id);
+    const getTherapist = async () => {
       try {
         const res = await axios.get(
           "https://project-soul-api.herokuapp.com/api/therapist/" + therapistId
         );
         console.log(res.data);
-        setUser(res.data.therapist);
+        setTherapist(res.data.therapist);
       } catch (err) {
         console.log(err);
       }
     };
-    getUser();
-  }, [currentUser, members]);
+    getTherapist();
+  }, [user, members]);
 
   return (
     <>
       <div className="conversation">
         <img
-          src={(user && user.therapistImg) || noAvatar}
+          src={(therapist && therapist.therapistImg) || noAvatar}
           className="conversationImg"
-          alt=""
+          alt="conversationsImg"
         />
         <span className="conversationName">
-          {user ? user.fname + user.lname : ""}
+          {therapist ? therapist.fname + therapist.lname : ""}
         </span>
       </div>
     </>

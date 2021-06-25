@@ -6,66 +6,49 @@ import NavBar from "../../shared/navbar";
 import Conversation from "./conversation";
 import Message from "./message";
 import { Redirect } from "react-router-dom";
-import { getConversations } from "../../../actions/chat";
+import {
+  getConversations,
+  setCurrentChatAction,
+  addMessage,
+} from "../../../actions/chat";
+
 const MessengerUser = ({
   auth: { isAuthenticated, user },
   therapistAuth: { isAuthenticated_therapist, therapist },
   conversations,
+  currentChat,
   getConversations,
+  setCurrentChatAction,
+  addMessage,
 }) => {
-  const [currentChat, setCurrentChat] = useState(null);
-  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [conversationId, setConversationId] = useState("");
 
   const scrollRef = useRef();
-
-  console.log(user);
 
   useEffect(() => {
     getConversations(user?._id);
   }, [user]);
 
-  console.log(currentChat);
-
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const res = await axios.get(
-          "https://project-soul-api.herokuapp.com/api/messages/" +
-            currentChat._id
-        );
-        console.log(res.data);
-        setMessages(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getMessages();
-  }, [currentChat]);
-  console.log(messages);
+  const getCurrentChat = async (ConversationId) => {
+    await setCurrentChatAction(ConversationId);
+    setConversationId(ConversationId);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const message = {
       Sender: user._id,
       Text: newMessage,
-      ConversationId: currentChat._id,
+      ConversationId: conversationId,
     };
-    try {
-      const res = await axios.post(
-        "https://project-soul-api.herokuapp.com/api/messages/",
-        message
-      );
-      setMessages([...messages, res.data]);
-      setNewMessage("");
-    } catch (err) {
-      console.log(err);
-    }
+    addMessage(message);
+    setNewMessage("");
   };
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [currentChat]);
 
   return (
     <>
@@ -77,10 +60,10 @@ const MessengerUser = ({
             <div className="chatMenuWrapper">
               {conversations.map((conversation) => {
                 return (
-                  <div onClick={() => setCurrentChat(conversation)}>
+                  <div onClick={() => getCurrentChat(conversation._id)}>
                     <Conversation
-                      conversationMembers={conversation}
-                      currentUser={user}
+                      members={conversation.members}
+                      user={user}
                       key={conversation._id}
                     />
                   </div>
@@ -90,11 +73,10 @@ const MessengerUser = ({
           </div>
           <div className="chatBox">
             <div className="chatBoxWrapper">
-              {currentChat ? (
+              {currentChat && currentChat.length !== 0 ? (
                 <>
-                  {" "}
                   <div className="chatBoxTop">
-                    {messages.map((message) => {
+                    {currentChat.map((message) => {
                       return (
                         <div ref={scrollRef}>
                           <Message
@@ -117,7 +99,7 @@ const MessengerUser = ({
                     <button className="chatSubmitButton" onClick={handleSubmit}>
                       Send
                     </button>
-                  </div>{" "}
+                  </div>
                 </>
               ) : (
                 <span className="NoConversation"> Select Conversation</span>
@@ -134,8 +116,13 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     therapistAuth: state.therapistAuth,
+    currentChat: state.chat?.currentChat,
     conversations: state.chat?.conversations,
   };
 };
 
-export default connect(mapStateToProps, { getConversations })(MessengerUser);
+export default connect(mapStateToProps, {
+  getConversations,
+  setCurrentChatAction,
+  addMessage,
+})(MessengerUser);

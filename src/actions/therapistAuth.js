@@ -13,9 +13,6 @@ import {
   THERAPIST_AUTH_ERROR,
   THERAPIST_FORGOT_PASSWORD,
   THERAPIST_RESET_PASSWORD,
-  ADD_THERAPIST_APPOINTMENT,
-  UPDATE_THERAPIST_APPOINTMENT,
-  DELETE_THERAPIST_APPOINTMENT,
 } from './types';
 
 //load therapist
@@ -158,59 +155,6 @@ export const forgotPassword = (formData) => async (dispatch) => {
   } catch (err) {
     const error = err.response.data.errors.err;
     console.log('err', error);
-    dispatch(setAlert(error, 'error'));
-  }
-};
-
-//therapist appointments######ACTIONS######
-
-//add appointment
-export const addAppointment = (formData) => async (dispatch) => {
-  try {
-    const res = await axios.post('/appointments', formData);
-    console.log(res.data);
-    dispatch({
-      type: ADD_THERAPIST_APPOINTMENT,
-      payload: res.data,
-    });
-    dispatch(setAlert('Appointment added successfully ', 'success'));
-  } catch (err) {
-    const error = err.response.data.errors.err;
-    console.log(error);
-    dispatch(setAlert(error, 'error'));
-  }
-};
-
-//update appointment
-export const updateAppointment = (formData, id) => async (dispatch) => {
-  try {
-    const res = await axios.put(`/appointments/${id}`, formData);
-    console.log(res.data);
-    dispatch({
-      type: UPDATE_THERAPIST_APPOINTMENT,
-      payload: res.data,
-    });
-    dispatch(setAlert('Appointment updated successfully ', 'success'));
-  } catch (err) {
-    const error = err.response.data.errors.err;
-    console.log(error);
-    dispatch(setAlert(error, 'error'));
-  }
-};
-
-//delete appointment
-export const deleteAppointment = (id) => async (dispatch) => {
-  try {
-    const res = await axios.delete(`/appointments/${id}`);
-    console.log(res.data);
-    dispatch({
-      type: DELETE_THERAPIST_APPOINTMENT,
-      payload: id,
-    });
-    dispatch(setAlert('Appointment deleted successfully ', 'success'));
-  } catch (err) {
-    const error = err.response.data.errors.err;
-    console.log(error);
     dispatch(setAlert(error, 'error'));
   }
 };

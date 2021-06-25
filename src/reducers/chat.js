@@ -2,11 +2,17 @@ import {
   GET_CONVERSATIONS,
   CONVERSATIONS_ERROR,
   NEW_CONVERSATION,
+  GET_THERAPIST_CONVERSATION,
+  SET_CURRENT_CHAT,
+  NEW_MESSAGE,
 } from "../actions/types";
 
 const initialState = {
   conversations: [],
+  // therapist: null,
+
   //   article: null,
+  currentChat: [],
 };
 
 const chat = (state = initialState, action) => {
@@ -22,6 +28,24 @@ const chat = (state = initialState, action) => {
       return {
         ...state,
         conversations: [payload, ...state.conversations],
+      };
+    case NEW_MESSAGE: {
+      return {
+        ...state,
+        currentChat: [...state.currentChat, payload],
+      };
+    }
+
+    // case GET_THERAPIST_CONVERSATION:
+    //   return {
+    //     ...state,
+    //     therapist: payload.therapist,
+    //   };
+
+    case SET_CURRENT_CHAT:
+      return {
+        ...state,
+        currentChat: payload,
       };
 
     // case GET_ARTICLE:

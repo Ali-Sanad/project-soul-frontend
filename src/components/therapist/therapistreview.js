@@ -49,7 +49,7 @@ const TherapistReview = ({
               <div className="row">
                 <div className="col-12 col-md-6">
                   <img
-                    src={userimg}
+                    src={therapist?.therapistImg}
                     alt=""
                     className="therapistreview__userimg"
                   ></img>

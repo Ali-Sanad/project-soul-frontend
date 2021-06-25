@@ -3,6 +3,9 @@ import {
   GET_THERAPISTS,
   GET_THERAPIST,
   THERAPIST_ERROR,
+  ADD_THERAPIST_APPOINTMENT,
+  UPDATE_THERAPIST_APPOINTMENT,
+  DELETE_THERAPIST_APPOINTMENT,
   ADD_REVIEW,
   DELETE_REVIEW,
   REVIEW_ERROR,
@@ -19,14 +22,12 @@ const therapists = (state = initialState, action) => {
   console.log("action", action);
   switch (type) {
     case GET_THERAPISTS:
-      console.log("gettherapist");
       return {
         ...state,
         therapists: payload,
         // oneTherapist:payload.length
       };
     case GET_THERAPIST:
-      console.log("gettherapist");
       return {
         ...state,
         oneTherapist: payload,
@@ -37,38 +38,70 @@ const therapists = (state = initialState, action) => {
         oneTherapist: payload,
       };
 
-    case THERAPIST_ERROR:
-      console.log("therapist error");
-
+    case ADD_THERAPIST_APPOINTMENT:
+      let updatedAppointments = [...state.oneTherapist.appointments];
+      updatedAppointments.unshift(payload);
       return {
         ...state,
+        oneTherapist: {
+          ...state.oneTherapist,
+          appointments: updatedAppointments,
+        },
       };
-    case THERAPISTS_ERROR:
-      console.log("therapist error");
-
+    case UPDATE_THERAPIST_APPOINTMENT:
+      let newAppointments = [...state.oneTherapist.appointments];
+      newAppointments.map((app) => (app._id === payload._id ? payload : app));
       return {
         ...state,
+        oneTherapist: { ...state.oneTherapist, appointments: newAppointments },
       };
+    case DELETE_THERAPIST_APPOINTMENT:
+      let clonedAppointments = [...state.oneTherapist.appointments];
+      clonedAppointments.filter((app) => app._id !== payload);
+      return {
+        ...state,
+        oneTherapist: {
+          ...state.oneTherapist,
+          appointments: clonedAppointments,
+        },
+      };
+
     case ADD_REVIEW:
+      let updatedReviews = [...state.oneTherapist.reviews];
+      updatedReviews.unshift(payload);
       return {
         ...state,
-        oneTherapist: [payload, ...state.therapists.oneTherapist.reviews],
+        oneTherapist: {
+          ...state.oneTherapist,
+          reviews: updatedReviews,
+        },
+        //  oneTherapist: [therapists.oneTherapist.reviews],
+
+        // oneTherapist: payload,
       };
     case DELETE_REVIEW:
+      let clonedReviews = [...state.oneTherapist.reviews];
+      clonedReviews.filter((rev) => rev._id !== payload);
       return {
         ...state,
-        oneTherapist: therapists.oneTherapist.reviewsfilter(
-          (review) => review._id !== payload
-        ),
+        oneTherapist: {
+          ...state.oneTherapist,
+          reviews: clonedReviews,
+        },
       };
     case REVIEW_ERROR:
       return {
         ...state,
       };
-
+    case THERAPIST_ERROR:
+      return {
+        ...state,
+      };
+    case THERAPISTS_ERROR:
+      return {
+        ...state,
+      };
     default:
-      console.log(" defult");
-
       return state;
   }
 };
