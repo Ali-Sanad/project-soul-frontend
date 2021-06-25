@@ -10,12 +10,10 @@ import Navbar from '../shared/navbar';
 import Message from '../shared/message';
 import ToTop from '../shared/totop';
 
-const TherapistList = ({getTherapists, therapists, state}) => {
+const TherapistList = ({getTherapists, therapists}) => {
   useEffect(() => {
     getTherapists();
   }, [getTherapists]);
-  console.log('state', state);
-  console.log('therapists', therapists);
 
   return (
     <React.Fragment>
