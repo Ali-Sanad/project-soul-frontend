@@ -38,25 +38,28 @@ const PostCard = ({
                   <Fragment>
                     <div className='postCard__actions'>
                       <div>
-                      <button
-            onClick={() =>
-              auth.user &&
-              auth.isAuthenticated &&
-              (likes.filter((like) => like.user === auth.user._id).length > 0
-                ? removeLike(_id)
-                : addLike(_id))
-            }
-            type='button'
-            className='btn btn-light'
+                        <button
+                          onClick={() =>
+                            auth.user &&
+                            auth.isAuthenticated &&
+                            (likes.filter(like => like.user === auth.user._id)
+                              .length > 0
+                              ? removeLike(_id)
+                              : addLike(_id))
+                          }
+                          type='button'
+                          className='btn'
                         >
-                       <i className='fas fa-thumbs-up' />{' '}
-                        <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-                     </button>
+                          <i className='fas fa-thumbs-up' />{' '}
+                          <span>
+                            {likes.length > 0 && <span>{likes.length}</span>}
+                          </span>
+                        </button>
                       </div>
 
                       <div>
                         <Link to={`/posts/${_id}`} className='btn'>
-                        <i className='fas fa-comment' />
+                          <i className='fas fa-comment' />
                           {comments.length > 0 && (
                             <span className='comment-count'>
                               {comments.length}

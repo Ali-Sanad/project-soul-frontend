@@ -1,0 +1,26 @@
+.admintherapistcard {
+	background-color: $colbg;
+    border-radius: 1rem;
+    padding: 1rem;
+    h5.headers{
+        margin-bottom: 1rem;
+        border-bottom: none;
+        color: $colmain;
+    }
+    p{
+        span{
+            color: $colfontsecondary;
+        }
+    }
+    &__btns{
+        margin-top: 2rem;
+    }
+    &__rejectbtn{
+        background-color: firebrick;
+        color: $colwhite;
+        margin-left: 1rem;
+        &:hover{
+            background-color: rgba(178, 34, 34, 0.712);
+        }
+    }
+}
