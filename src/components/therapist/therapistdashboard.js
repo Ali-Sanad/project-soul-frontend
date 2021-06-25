@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import {getTherapist} from '../../actions/therapist';
+import {getTherapist} from '../../actions/therapists';
 
 import Navbar from '../shared/navbar';
 import SideNav from '../shared/sidenav';
@@ -17,7 +17,7 @@ const TherapistDashboard = ({match, therapist, getTherapist}) => {
   let id = match.params.id.trim();
   useEffect(() => {
     getTherapist(id);
-  }, []);
+  }, [getTherapist, id]);
   return (
     <React.Fragment>
       <div className='therapistdashboard'>

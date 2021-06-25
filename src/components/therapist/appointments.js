@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 //redux
 import {connect} from 'react-redux';
-import {deleteAppointment} from '../../actions/therapistAuth';
+import {deleteAppointment} from '../../actions/therapists';
+import UpdateAppointment from './updateappointment';
+
 // import {bookAppointment} from '../../actions/auth'; //user is booking an appointment @TODO
 
 const Appointments = ({
   therapistAuth,
-  publicTherapist,
+  oneTherapist,
   deleteAppointment,
   auth,
   // bookAppointment,
@@ -21,7 +23,7 @@ const Appointments = ({
     <React.Fragment>
       <div className='addappointment'>
         <h4 className='headers'>Appointments </h4>
-        {publicTherapist && publicTherapist.appointments.length > 0 ? (
+        {oneTherapist && oneTherapist.appointments.length > 0 ? (
           <div className='rounded-t-xl overflow-hidden bg-gradient-to-r  to-teal-100 p-10'>
             <table className='table-auto'>
               <thead>
@@ -43,7 +45,7 @@ const Appointments = ({
                 </tr>
               </thead>
               <tbody>
-                {publicTherapist.appointments.map((app) => (
+                {oneTherapist.appointments.map((app) => (
                   <tr key={app._id} className=' cursor-pointer'>
                     <td className='borde border-4 px-4 py-2 text-soul-200 font-medium'>
                       {app.date}
@@ -80,11 +82,21 @@ const Appointments = ({
                       therapistAuth.therapist._id === id && (
                         <>
                           <td className='borde border-4 px-4 py-2 text-soul-200 font-medium'>
-                            <i className='fas fa-edit fas fa-1x text-soul-200'></i>
+                            <UpdateAppointment
+                              id={app._id}
+                              therapistId={therapistAuth.therapist._id}
+                            >
+                              <i className='fas fa-edit fas fa-1x text-soul-200'></i>
+                            </UpdateAppointment>
                           </td>
                           <td
                             className='borde border-4 px-4 py-2  text-center'
-                            onClick={() => deleteAppointment(app._id)}
+                            onClick={() =>
+                              deleteAppointment(
+                                app._id,
+                                therapistAuth.therapist._id
+                              )
+                            }
                           >
                             <i className='fas fa-trash-alt fas fa-1x text-red-900'></i>
                           </td>
@@ -114,7 +126,7 @@ const Appointments = ({
 
 const mapStateTopProps = (state) => ({
   therapistAuth: state.therapistAuth,
-  publicTherapist: state.therapists.oneTherapist,
+  oneTherapist: state.therapists.oneTherapist,
   auth: state.auth,
 });
 
