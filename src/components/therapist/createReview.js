@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addReview } from "../../actions/review";
+import { addReview } from "../../actions/therapists";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 const ReviewForm = ({ addReview, id }) => {
