@@ -9,6 +9,7 @@ import {
   REVIEW_ERROR,
   DELETE_REVIEW,
   ADD_REVIEW,
+  ADD_THERAPIST_IMAGE,
 } from "./types";
 import { setAlert } from "./alert";
 
@@ -146,6 +147,22 @@ export const deleteReview = (therapistId, reviewId) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: REVIEW_ERROR,
+    });
+  }
+};
+
+export const addTherapistProfileImage = (body) => async (dispatch) => {
+  try {
+    const res = await axios.patch("/therapist/uploadTherapistImage", body);
+    console.log(res.data);
+    dispatch({
+      type: ADD_THERAPIST_IMAGE,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: THERAPISTS_ERROR,
     });
   }
 };

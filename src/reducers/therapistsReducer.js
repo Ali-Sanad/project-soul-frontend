@@ -6,6 +6,7 @@ import {
   ADD_REVIEW,
   DELETE_REVIEW,
   REVIEW_ERROR,
+  ADD_THERAPIST_IMAGE,
 } from "../actions/types";
 
 const initialState = {
@@ -26,6 +27,11 @@ const therapists = (state = initialState, action) => {
       };
     case GET_THERAPIST:
       console.log("gettherapist");
+      return {
+        ...state,
+        oneTherapist: payload,
+      };
+    case ADD_THERAPIST_IMAGE:
       return {
         ...state,
         oneTherapist: payload,
@@ -59,6 +65,7 @@ const therapists = (state = initialState, action) => {
       return {
         ...state,
       };
+
     default:
       console.log(" defult");
 
