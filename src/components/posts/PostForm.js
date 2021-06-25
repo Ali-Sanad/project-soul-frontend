@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react'
-import ImageSent from '../../assets/images/icons8_Sent 1.png'
-import ImageUpload from '../../assets/images/surface1.png'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { addPost } from '../../actions/post'
+import React, { useRef, useState } from 'react';
+import ImageSent from '../../assets/images/icons8_Sent 1.png';
+import ImageUpload from '../../assets/images/surface1.png';
+import { connect } from 'react-redux';
+
+import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('')
@@ -41,7 +41,7 @@ const PostForm = ({ addPost }) => {
     <>
       <div className='postForm'>
         <div className='container'>
-          <form className=' postForm__form'>
+          <form className=' postForm__form'onSubmit={e => onSubmit(e)}>
             <input
               type='text'
               placeholder='What do you think about?'
@@ -58,12 +58,12 @@ const PostForm = ({ addPost }) => {
               style={{ display: 'none' }}
               ref={fileInput}
             />
-            <a onClick={() => fileInput.current.click()}>
+            <button onClick={() => fileInput.current.click()}>
               <img src={ImageUpload} className='postForm__imageUpload' />
-            </a>
-            <a onSubmit={e => onSubmit(e)}>
+            </button>
+            <button  value="Submit">
               <img src={ImageSent} className='postForm__imageSent' />
-            </a>
+            </button>
           </form>
         </div>
       </div>
@@ -71,8 +71,5 @@ const PostForm = ({ addPost }) => {
   )
 }
 
-PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired
-}
 
 export default connect(null, { addPost })(PostForm)
