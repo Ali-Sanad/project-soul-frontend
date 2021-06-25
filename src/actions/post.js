@@ -123,8 +123,8 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
 // Add like
 export const addLike = (id) => async (dispatch) => {
   try {
-    const res = await api.put(`/posts/like/${id}`);
-
+    const res = await api.patch(`/posts/like/${id}`);
+         console.log(res)
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data },
@@ -140,8 +140,9 @@ export const addLike = (id) => async (dispatch) => {
 // Remove like
 export const removeLike = (id) => async (dispatch) => {
   try {
-    const res = await api.put(`/posts/unlike/${id}`);
-
+    const res = await api.patch(`/posts/unlike/${id}`);
+    console.log(res)
+      
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data },

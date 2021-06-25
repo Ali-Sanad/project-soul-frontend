@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import ImageSent from '../../assets/images/icons8_Sent 1.png';
 import ImageUpload from '../../assets/images/surface1.png';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+
 import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost }) => {
@@ -63,9 +63,9 @@ const PostForm = ({ addPost }) => {
                 <a onClick={() => fileInput.current.click()}>
                   <img src={ImageUpload} className="postForm__imageUpload" />
                 </a>
-                <a onSubmit={(e) => onSubmit(e)}>
+                <button onSubmit={(e) => onSubmit(e)}>
                   <img src={ImageSent} className="postForm__imageSent" />
-                </a>
+                </button>
               </form>
             </div>
            
@@ -76,8 +76,6 @@ const PostForm = ({ addPost }) => {
   );
 };
 
-PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired,
-};
+
 
 export default connect(null, { addPost })(PostForm);
