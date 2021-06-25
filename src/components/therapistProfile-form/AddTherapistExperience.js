@@ -279,7 +279,7 @@ const AddTherapistExperience = ({ addExperience, history, match }) => {
               />
             </div>
 
-            <div className="mt-6 sm:ml-2">
+            {/* <div className="mt-6 sm:ml-2">
               <input
                 type="submit"
                 className=" block  bg-soul-100 hover:bg-soul-300  sm:ml-10 md:ml-16 ml-16  py-2 px-4 rounded-full
@@ -287,7 +287,7 @@ const AddTherapistExperience = ({ addExperience, history, match }) => {
                shadow-sm cursor-pointer"
                 value="Save"
               />
-            </div>
+            </div> */}
           </form>
         </div>
 

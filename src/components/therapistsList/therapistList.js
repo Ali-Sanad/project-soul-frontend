@@ -16,14 +16,14 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
     getTherapists();
   }, [getTherapists]);
   console.log("state", state);
-  console.log("therapists", therapists);
+  console.log("therapistsssssss", therapists);
   return (
     <>
       <NavBar />
 
       <div className="mt-8 grid 2xl:grid-cols-4 mx-30 my-20 gap-20 lg:grid-cols-3 mx-20 my-10  gap-10 md:grid-cols-2 gap-8 mx-10  ">
         {therapists &&
-          therapists.therapists.map((therapist) => (
+          therapists.map((therapist) => (
             <div key={therapist._id}>
               <div className="rounded overflow-hidden shadow-2xl relative">
                 <img
@@ -82,7 +82,9 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
 const mapStateToProps = (state) => ({
   state: state,
   //  oneTherapist: state.oneTherapist,
-  therapists: state.therapists,
+  therapists: state.therapists?.therapists.filter(
+    (th) => th.isAccepted == true
+  ),
   // therapist: state.therapistAuth,
 });
 

@@ -19,7 +19,7 @@ const ReviewForm = ({ addReview, id }) => {
     e.preventDefault();
 
     addReview(formData, id);
-    setFormData({ rating: 0, review: "" });
+    setFormData({ rating: "", review: "" });
   };
 
   return (

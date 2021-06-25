@@ -34,7 +34,7 @@ const TherapistDashboard = ({ match, therapist, getTherapist, review }) => {
             <div className="col-8">
               {/* <TherapistFiles></TherapistFiles> */}
               {/* <TherapistProfile></TherapistProfile> */}
-              {/* <TherapistSummary></TherapistSummary> */}
+              <TherapistSummary id={id}></TherapistSummary>
 
               <TherapistReview id={id}></TherapistReview>
               <TherapistProfile id={id} />

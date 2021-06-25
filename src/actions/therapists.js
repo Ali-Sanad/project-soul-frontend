@@ -26,13 +26,13 @@ export const getTherapists = () => async (dispatch) => {
       'array of Therapist from therapist action',
       res.data.therapists
     );
-    const acceptedTherapist = res.data.therapists.filter(
-      (th) => th.isAccepted === true
-    );
-    console.log('accepted', acceptedTherapist);
+    // const acceptedTherapist = res.data.therapists.filter(
+    //   (th) => th.isAccepted == true
+    // );
+    console.log('accepted', res.data.therapists);
     dispatch({
       type: GET_THERAPISTS,
-      payload: acceptedTherapist,
+      payload: res.data.therapists,
     });
   } catch (error) {
     console.log(error);
@@ -164,7 +164,7 @@ export const addReview = (body, therapistId) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(getTherapist(therapistId));
-    dispatch(setAlert('Review updated successfully ', 'success'));
+    dispatch(setAlert('Review created successfully ', 'success'));
   } catch (error) {
     console.log(error);
     dispatch({
@@ -234,7 +234,7 @@ export const deleteReview = (therapistId, reviewId) => async (dispatch) => {
     dispatch(getTherapist(therapistId));
     dispatch(setAlert('review deleted successfully ', 'success'));
   } catch (error) {
-    console.log(error);
+    console.log('error', error);
     dispatch({
       type: REVIEW_ERROR,
     });
