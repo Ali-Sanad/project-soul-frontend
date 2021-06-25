@@ -8,7 +8,7 @@ import "./sass/main.scss";
 import Alert from "./components/layout/Alert";
 import Article from "./components/layout/articles/article";
 
-import AdminDashboard from "./components/adminDashboard/AdminDashboard";
+// import AdminDashboard from "./components/adminDashboard/AdminDashboard";
 
 // import AllRoutes from './components/routes/AllRoutes';
 
@@ -62,6 +62,10 @@ import Contact from "./components/landingpage/contact";
 
 import TherapistList from "./components/therapist/therapistlist";
 import SingleArticle from "./components/layout/articles/singleArticle";
+
+//admin
+import AdminSideNav from "./components/admin/adminsidenav";
+import AdminDashboard from "./components/admin/admindashboard";
 
 const App = () => {
   useEffect(() => {
@@ -120,6 +124,7 @@ const App = () => {
           <Route path="/posts" exact component={Post} />
           <Route path="/therapistlist" exact component={TherapistList} />
           <Route path='/posts/:id' exact component={PostItem} />
+          <Route path='/admindashboard' exact component={AdminDashboard} />
           <Route
             path="/therapistlist/:id"
             exact

@@ -17,6 +17,7 @@
 @import "components/therapistcard";
 @import "components/message";
 @import "components/conversation";
+@import "components/admintherapistcard";
 //--------------------------layout---------------------
 @import "layout/about";
 @import "layout/works";
@@ -32,6 +33,8 @@
 @import "layout/therapistreview";
 @import "layout/userprofile";
 @import "layout/addappointment.scss";
+@import "layout/admindashboard";
+@import "layout/adminverifytherapist";
 //--------------------------pages---------------------
 @import "pages/articles";
 @import "pages/posts";
