@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import noAvatar from "../../../assets/images/noAvatar.gif";
 
 const Conversation = ({ conversationMembers: { members }, currentUser }) => {
   console.log("members", members);
@@ -27,11 +28,13 @@ const Conversation = ({ conversationMembers: { members }, currentUser }) => {
     <>
       <div className="conversation">
         <img
-          src={(user && user.userImg) || "\noAvatar.gif"}
+          src={(user && user.therapistImg) || noAvatar}
           className="conversationImg"
           alt=""
         />
-        <span className="conversationName">{user ? user.fname : ""}</span>
+        <span className="conversationName">
+          {user ? user.fname + user.lname : ""}
+        </span>
       </div>
     </>
   );

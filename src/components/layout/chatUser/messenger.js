@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import NavBar from "../../shared/navbar";
 
 import Conversation from "./conversation";
 import Message from "./message";
 import { Redirect } from "react-router-dom";
-
+import { getConversations } from "../../../actions/chat";
 const MessengerUser = ({
   auth: { isAuthenticated, user },
   therapistAuth: { isAuthenticated_therapist, therapist },
+  conversations,
+  getConversations,
 }) => {
-  const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -20,18 +22,7 @@ const MessengerUser = ({
   console.log(user);
 
   useEffect(() => {
-    const getConversations = async () => {
-      try {
-        const res = await axios.get(
-          "https://project-soul-api.herokuapp.com/api/conversations/" + user._id
-        );
-        console.log(res.data);
-        setConversations(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getConversations();
+    getConversations(user?._id);
   }, [user]);
 
   console.log(currentChat);
@@ -78,57 +69,60 @@ const MessengerUser = ({
 
   return (
     <>
-      <div className="messenger">
-        {!isAuthenticated && !user && <Redirect to="/" />}
-        <div className="chatMenu">
-          <div className="chatMenuWrapper">
-            {conversations.map((conversation) => {
-              return (
-                <div onClick={() => setCurrentChat(conversation)}>
-                  <Conversation
-                    conversationMembers={conversation}
-                    currentUser={user}
-                    key={conversation._id}
-                  />
-                </div>
-              );
-            })}
+      <div className="container">
+        <NavBar />
+        <div className="messenger">
+          {!isAuthenticated && !user && <Redirect to="/" />}
+          <div className="chatMenu">
+            <div className="chatMenuWrapper">
+              {conversations.map((conversation) => {
+                return (
+                  <div onClick={() => setCurrentChat(conversation)}>
+                    <Conversation
+                      conversationMembers={conversation}
+                      currentUser={user}
+                      key={conversation._id}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-        <div className="chatBox">
-          <div className="chatBoxWrapper">
-            {currentChat ? (
-              <>
-                {" "}
-                <div className="chatBoxTop">
-                  {messages.map((message) => {
-                    return (
-                      <div ref={scrollRef}>
-                        <Message
-                          message={message}
-                          own={message.Sender === user._id}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="chatBoxBottom">
-                  <textarea
-                    rows="3"
-                    placeholder="Write Some Thing..."
-                    className="chatMessageInput"
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    value={newMessage}
-                  ></textarea>
+          <div className="chatBox">
+            <div className="chatBoxWrapper">
+              {currentChat ? (
+                <>
+                  {" "}
+                  <div className="chatBoxTop">
+                    {messages.map((message) => {
+                      return (
+                        <div ref={scrollRef}>
+                          <Message
+                            message={message}
+                            own={message.Sender === user._id}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="chatBoxBottom">
+                    <textarea
+                      rows="3"
+                      placeholder="Write Some Thing..."
+                      className="chatMessageInput"
+                      onChange={(e) => setNewMessage(e.target.value)}
+                      value={newMessage}
+                    ></textarea>
 
-                  <button className="chatSubmitButton" onClick={handleSubmit}>
-                    Send
-                  </button>
-                </div>{" "}
-              </>
-            ) : (
-              <span className="NoConversation"> Select Conversation</span>
-            )}
+                    <button className="chatSubmitButton" onClick={handleSubmit}>
+                      Send
+                    </button>
+                  </div>{" "}
+                </>
+              ) : (
+                <span className="NoConversation"> Select Conversation</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -140,7 +134,8 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     therapistAuth: state.therapistAuth,
+    conversations: state.chat?.conversations,
   };
 };
 
-export default connect(mapStateToProps, null)(MessengerUser);
+export default connect(mapStateToProps, { getConversations })(MessengerUser);
