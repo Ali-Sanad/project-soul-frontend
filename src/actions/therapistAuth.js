@@ -186,11 +186,11 @@ export const updateAppointment = (formData, id) => async (dispatch) => {
   try {
     const res = await axios.put(`/appointments/${id}`, formData);
     console.log(res.data);
+    dispatch(setAlert('Appointment updated successfully ', 'success'));
     dispatch({
       type: UPDATE_THERAPIST_APPOINTMENT,
       payload: res.data,
     });
-    dispatch(setAlert('Appointment updated successfully ', 'success'));
   } catch (err) {
     const error = err.response.data.errors.err;
     console.log(error);
@@ -203,11 +203,11 @@ export const deleteAppointment = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/appointments/${id}`);
     console.log(res.data);
+    dispatch(setAlert('Appointment deleted successfully ', 'success'));
     dispatch({
       type: DELETE_THERAPIST_APPOINTMENT,
       payload: id,
     });
-    dispatch(setAlert('Appointment deleted successfully ', 'success'));
   } catch (err) {
     const error = err.response.data.errors.err;
     console.log(error);

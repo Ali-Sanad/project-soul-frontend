@@ -15,12 +15,9 @@ import Appointments from './appointments';
 
 const TherapistDashboard = ({match, therapist, getTherapist}) => {
   let id = match.params.id.trim();
-
-  // console.log("isAuth",isAuth);
-  // console.log("iddddd", id);
   useEffect(() => {
     getTherapist(id);
-  }, [getTherapist, id]);
+  }, []);
   return (
     <React.Fragment>
       <div className='therapistdashboard'>
@@ -42,8 +39,8 @@ const TherapistDashboard = ({match, therapist, getTherapist}) => {
               {/* <TherapistReview id={id}></TherapistReview> */}
               {/* <TherapistProfile id={id} /> */}
 
-              {/* <AddAppointment></AddAppointment> */}
-              <Appointments></Appointments>
+              <AddAppointment></AddAppointment>
+              <Appointments id={id}></Appointments>
             </div>
           </div>
         </div>
