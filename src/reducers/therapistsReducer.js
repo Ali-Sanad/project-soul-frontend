@@ -46,12 +46,12 @@ const therapists = (state = initialState, action) => {
     case ADD_REVIEW:
       return {
         ...state,
-        oneTherapist: [payload, ...state.therapists.oneTherapist.reviews],
+        oneTherapist: [therapists.oneTherapist.reviews],
       };
     case DELETE_REVIEW:
       return {
         ...state,
-        oneTherapist: therapists.oneTherapist.reviewsfilter(
+        oneTherapist: therapists.oneTherapist.reviews.filter(
           (review) => review._id !== payload
         ),
       };

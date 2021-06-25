@@ -74,6 +74,7 @@ export const addReview = (body, therapistId) => async (dispatch) => {
       type: ADD_REVIEW,
       payload: res.data,
     });
+    dispatch(getTherapist(therapistId));
   } catch (error) {
     console.log(error);
     dispatch({
@@ -140,6 +141,7 @@ export const deleteReview = (therapistId, reviewId) => async (dispatch) => {
       type: DELETE_REVIEW,
       //  payload: res.data,
     });
+    dispatch(getTherapist(therapistId));
   } catch (error) {
     console.log(error);
     dispatch({
