@@ -16,20 +16,21 @@ const CommentForm = ({ addComment, postId, auth: { isAuthenticated } }) => {
   };
   return (
     isAuthenticated && (
-      <div className='post-form' style={{ width: '60vw', margin: 'auto' }}>
+      <div className='post-form'>
       
-        <form className='form my-1' onSubmit={(e) => onSubmit(e)}>
+        <form className='form' onSubmit={(e) => onSubmit(e)}>
           <input
           type="text"
             name='text'
             cols='30'
             rows='5'
-            placeholder={`What's in your mind ?`}
+            placeholder={`write your comment...`}
             value={text}
             onChange={(e) => onChange(e)}
             required
+            className="inputstyle"
           />
-          <input type='submit' className='btn btn-dark my-1' value='Publish' />
+          <input type='submit' className='mainbtn' value='comment' />
         </form>
       </div>
     )

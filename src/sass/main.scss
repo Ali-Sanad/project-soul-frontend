@@ -8,13 +8,15 @@
 @import "components/herosection";
 @import "components/navbar";
 @import "components/input";
-@import "components/message";
+@import "components/messageIcon";
 @import "components/totop";
 @import "components/sidenav";
 @import "components/fileupload";
 @import "components/formstyle";
 @import "components/buttonadd";
 @import "components/therapistcard";
+@import "components/message";
+@import "components/conversation";
 //--------------------------layout---------------------
 @import "layout/about";
 @import "layout/works";
@@ -33,3 +35,4 @@
 //--------------------------pages---------------------
 @import "pages/articles";
 @import "pages/posts";
+@import "pages/messenger";

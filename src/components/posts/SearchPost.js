@@ -27,7 +27,7 @@ const SearchPost = () => {
               <input
                 type='text'
                 placeholder='Search'
-                className='postForm__inputs__search'
+                className='postForm__inputs__search inputstyle'
                 value={searchValue}
                 onChange={(e) => setSearch(e.target.value)}
                   required
