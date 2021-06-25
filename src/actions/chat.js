@@ -31,7 +31,7 @@ export const getConversations = (id) => async (dispatch) => {
 export const newConversation = (body) => async (dispatch) => {
   try {
     const res = await axios.post("/conversations", body);
-    console.log(res.data);
+    console.log("new conver", res.data);
     dispatch({
       type: NEW_CONVERSATION,
       payload: res.data,

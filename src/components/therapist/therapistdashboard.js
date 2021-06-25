@@ -24,10 +24,12 @@ const TherapistDashboard = ({
   newConversation,
 }) => {
   let id = match.params.id.trim();
+  const senderId = user;
+  const receiverId = id;
   console.log("user", user);
   useEffect(() => {
     if (id && user) {
-      newConversation(user, id);
+      newConversation({ senderId, receiverId });
     }
     getTherapist(id);
   }, [getTherapist, id, newConversation, user]);
