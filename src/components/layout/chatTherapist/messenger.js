@@ -1,21 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-
+import { Redirect } from "react-router-dom";
 import Conversation from "./conversation";
 import Message from "./message";
 
-const Messenger = ({ user }) => {
+const MessengerTherapist = ({
+  auth: { isAuthenticated, user },
+  therapistAuth: { isAuthenticated_therapist, therapist },
+}) => {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
   const scrollRef = useRef();
-
-  // determine user => will be fetched from redux
-
-  console.log(user);
 
   useEffect(() => {
     const getConversations = async () => {
@@ -77,6 +76,7 @@ const Messenger = ({ user }) => {
   return (
     <>
       <div className="messenger">
+        {!isAuthenticated_therapist && !therapist && <Redirect to="/" />}
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             {conversations.map((conversation) => {
@@ -135,8 +135,9 @@ const Messenger = ({ user }) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user,
+    auth: state.auth,
+    therapistAuth: state.therapistAuth,
   };
 };
 
-export default connect(mapStateToProps, null)(Messenger);
+export default connect(mapStateToProps, null)(MessengerTherapist);

@@ -18,9 +18,13 @@ const TherapistCard = ({therapist, history}) => {
   return (
     <React.Fragment>
       <div className='therapistcard'>
-        <img src={userimg} alt='' className='therapistcard__userimg'></img>
+        <img
+          src={therapist?.therapistImg}
+          alt={therapist?.therapistImg}
+          className='therapistcard__userimg'
+        ></img>
         <p>
-          {therapist.fname} {therapist.lname}
+          {therapist?.fname} {therapist?.lname}
         </p>
         <div className='therapistcard__rate'>
           <Box component='fieldset' mb={3} borderColor='transparent'>

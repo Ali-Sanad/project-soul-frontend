@@ -9,6 +9,9 @@ import CommentItem from './CommentItem';
 import { getPost } from '../../../actions/post';
 import Navbar from '../../shared/navbar';
 import HeroSectionPost from '../HeroSectionPost';
+import Footer from '../../shared/footer';
+import Message from '../../shared/message';
+import Totop from '../../shared/totop';
 const PostItem = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
@@ -22,12 +25,16 @@ const PostItem = ({ getPost, post: { post, loading }, match }) => {
        <HeroSectionPost/>
        {console.log(post)}
       <PostCard post={post} showActions={false} />
+
       <CommentForm postId={post._id} />
       <div className='comments'>
         {post.comments.map((comment) => (
           <CommentItem key={comment._id} comment={comment} postId={post._id} />
         ))}
       </div>
+    <Message/>
+    <Totop/>
+     <Footer/>
     </Fragment>
   );
 };

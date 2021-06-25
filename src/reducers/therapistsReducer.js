@@ -6,6 +6,10 @@ import {
   ADD_THERAPIST_APPOINTMENT,
   UPDATE_THERAPIST_APPOINTMENT,
   DELETE_THERAPIST_APPOINTMENT,
+  ADD_REVIEW,
+  DELETE_REVIEW,
+  REVIEW_ERROR,
+  ADD_THERAPIST_IMAGE,
 } from '../actions/types';
 
 const initialState = {
@@ -18,7 +22,6 @@ const therapists = (state = initialState, action) => {
   console.log('action', action);
   switch (type) {
     case GET_THERAPISTS:
-      console.log('gettherapist');
       return {
         ...state,
         therapists: payload,
@@ -29,16 +32,17 @@ const therapists = (state = initialState, action) => {
         ...state,
         oneTherapist: payload,
       };
+    case ADD_THERAPIST_IMAGE:
+      return {
+        ...state,
+        oneTherapist: payload,
+      };
 
     case THERAPIST_ERROR:
-      console.log('therapist error');
-
       return {
         ...state,
       };
     case THERAPISTS_ERROR:
-      console.log('therapist error');
-
       return {
         ...state,
       };
@@ -65,6 +69,23 @@ const therapists = (state = initialState, action) => {
       return {
         ...state,
         oneTherapist: {...state.oneTherapist, appointments: clonedAppointments},
+      };
+
+    case ADD_REVIEW:
+      return {
+        ...state,
+        oneTherapist: [therapists.oneTherapist.reviews],
+      };
+    case DELETE_REVIEW:
+      return {
+        ...state,
+        oneTherapist: therapists.oneTherapist.reviews.filter(
+          (review) => review._id !== payload
+        ),
+      };
+    case REVIEW_ERROR:
+      return {
+        ...state,
       };
 
     default:

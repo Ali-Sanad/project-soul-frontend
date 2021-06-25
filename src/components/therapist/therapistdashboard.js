@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import {getTherapist} from '../../actions/therapists';
+import {getTherapist} from '../../actions/therapist';
 
 import Navbar from '../shared/navbar';
 import SideNav from '../shared/sidenav';
@@ -13,7 +13,7 @@ import TherapistReview from './therapistreview';
 import AddAppointment from './addappointment';
 import Appointments from './appointments';
 
-const TherapistDashboard = ({match, therapist, getTherapist}) => {
+const TherapistDashboard = ({match, therapist, getTherapist, review}) => {
   let id = match.params.id.trim();
   useEffect(() => {
     getTherapist(id);
@@ -36,8 +36,8 @@ const TherapistDashboard = ({match, therapist, getTherapist}) => {
               {/* <TherapistProfile></TherapistProfile> */}
               {/* <TherapistSummary></TherapistSummary> */}
 
-              {/* <TherapistReview id={id}></TherapistReview> */}
-              {/* <TherapistProfile id={id} /> */}
+              <TherapistReview id={id}></TherapistReview>
+              <TherapistProfile id={id} />
 
               <AddAppointment></AddAppointment>
               <Appointments id={id}></Appointments>
@@ -50,6 +50,7 @@ const TherapistDashboard = ({match, therapist, getTherapist}) => {
 };
 const mapStateToProps = (state) => ({
   therapist: state.therapists.oneTherapist,
+  review: state.therapists?.oneTherapist?.reviews,
 });
 
 export default connect(mapStateToProps, {getTherapist})(TherapistDashboard);
