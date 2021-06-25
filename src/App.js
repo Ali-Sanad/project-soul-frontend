@@ -30,7 +30,8 @@ import ConfirmUserAccount from "./components/auth/ConfirmUserAccount/ConfirmUser
 import AccountConfirmed from "./components/auth/ConfirmUserAccount/AccountConfirmed";
 import LoginTherapist from "./components/auth/loginTherapist";
 import RegisterThreapist from "./components/auth/registerTherapist";
-import Messenger from "./components/layout/messenger/messenger";
+import MessengerUser from "./components/layout/chatUser/messenger";
+import MessengerTherapist from "./components/layout/chatTherapist/messenger";
 // import Video from "./components/video/video";
 
 import ControlTherapistProfile from "./components/controlTherpistProfile/ControlTherapistProfile";
@@ -199,8 +200,11 @@ const App = () => {
             component={AddTherapistEducation}
           />
 
-          <Route path="/messenger">
-            <Messenger />
+          <Route path="/messenger-user">
+            <MessengerUser />
+          </Route>
+          <Route path="/messenger-therapist">
+            <MessengerTherapist />
             {/* {!user ? <Redirect to="/" /> : <Messenger />} */}
           </Route>
           <Route path="/articles">
