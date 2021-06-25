@@ -74,28 +74,36 @@ const TherapistReview = ({
               </div>
             </div>
             {/* all reviews */}
-            {review.length > 0 && <h4 className="headers">All Reviews</h4>}
-            {review.map((review) => (
-              <div className="therapistreview__allreview" key="review._id">
-                <div className="therapistreview__allreview__header">
-                  <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Rating name="read-only" value={review?.rating} readOnly />
-                  </Box>
-                  <span>{review?.createdAt}</span>
-                  {/* {review._id} */}
-                </div>
-                <div className="therapistreview__allreview__body">
-                  <p>{review?.review}</p>
-                </div>
+            {review && review.length > 0 && (
+              <h4 className="headers">All Reviews</h4>
+            )}
+            {review &&
+              review.map((review) => (
+                <div className="therapistreview__allreview" key="review._id">
+                  <div className="therapistreview__allreview__header">
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Rating
+                        name="read-only"
+                        value={review?.rating}
+                        readOnly
+                      />
+                    </Box>
+                    <span>{review?.createdAt}</span>
+                    {/* {review._id} */}
+                  </div>
+                  <div className="therapistreview__allreview__body">
+                    <p>{review?.review}</p>
+                  </div>
 
-                {/* <h5>{review.user.name}</h5> */}
-                {auth.isAuthenticated && auth.user._id === review.user._id && (
-                  <button onClick={() => handleDelete(id, review._id)}>
-                    Delete
-                  </button>
-                )}
-              </div>
-            ))}
+                  {/* <h5>{review.user.name}</h5> */}
+                  {auth.isAuthenticated &&
+                    auth.user._id === review.user._id && (
+                      <button onClick={() => handleDelete(id, review._id)}>
+                        Delete
+                      </button>
+                    )}
+                </div>
+              ))}
             {/* <div className="therapistreview__allreview">
 						<div className="therapistreview__allreview__header">
 							<Box component="fieldset" mb={3} borderColor="transparent">
