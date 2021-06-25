@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import userimg from "../../assets/images/user.png";
 import ReviewForm from "./createReview";
 import { useEffect } from "react";
-import { getReviews, deleteReview } from "../../actions/review";
+import { getReviews, deleteReview } from "../../actions/therapists";
 
 // import { getTherapist } from '../../actions/therapist'
 
@@ -25,8 +25,8 @@ const TherapistReview = ({
 
   // useEffect(() => {
   //   // getTherapist(id)
-  //   getReviews(id);
-  // }, [getReviews, id]);
+  //   // getReviews(id);
+  // }, [review]);
 
   console.log("review", review);
   // console.log("therapist in ", therapist);
@@ -40,62 +40,63 @@ const TherapistReview = ({
   return (
     <React.Fragment>
       {console.log(therapist)}
-      <div className="therapistreview">
-        <div className="container">
-          <h2 className="headers">Reviews</h2>
-          {/* review form */}
-          <div className="therapistreview__data">
-            <div className="row">
-              <div className="col-12 col-md-6">
-                <img
-                  src={userimg}
-                  alt=""
-                  className="therapistreview__userimg"
-                ></img>
+      {therapist && (
+        <div className="therapistreview">
+          <div className="container">
+            <h2 className="headers">Reviews</h2>
+            {/* review form */}
+            <div className="therapistreview__data">
+              <div className="row">
+                <div className="col-12 col-md-6">
+                  <img
+                    src={userimg}
+                    alt=""
+                    className="therapistreview__userimg"
+                  ></img>
 
-                <h6>
-                  {therapist.fname} {therapist.lname}
-                </h6>
-                <div className="therapistreview__rate">
-                  <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Rating
-                      name="read-only"
-                      value={therapist.ratingsAverage ?? 0}
-                      readOnly
-                    />
-                  </Box>
-                  <p>{therapist.ratingsQunatity ?? 0} Total Reviews</p>
+                  <h6>
+                    {therapist?.fname} {therapist?.lname}
+                  </h6>
+                  <div className="therapistreview__rate">
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Rating
+                        name="read-only"
+                        value={therapist?.ratingsAverage ?? 0}
+                        readOnly
+                      />
+                    </Box>
+                    <p>{therapist?.ratingsQunatity ?? 0} Total Reviews</p>
+                  </div>
+                </div>
+                <div className="col-12 col-md-6">
+                  {isAuth && <ReviewForm id={id} />}
                 </div>
               </div>
-              <div className="col-12 col-md-6">
-                {isAuth && <ReviewForm id={id} />}
-              </div>
             </div>
-          </div>
-          {/* all reviews */}
-          {review.length > 0 && <h4 className="headers">All Reviews</h4>}
-          {review.map((review) => (
-            <div className="therapistreview__allreview" key="review._id">
-              <div className="therapistreview__allreview__header">
-                <Box component="fieldset" mb={3} borderColor="transparent">
-                  <Rating name="read-only" value={review.rating} readOnly />
-                </Box>
-                <span>{review.createdAt}</span>
-                {/* {review._id} */}
-              </div>
-              <div className="therapistreview__allreview__body">
-                <p>{review.review}</p>
-              </div>
+            {/* all reviews */}
+            {review.length > 0 && <h4 className="headers">All Reviews</h4>}
+            {review.map((review) => (
+              <div className="therapistreview__allreview" key="review._id">
+                <div className="therapistreview__allreview__header">
+                  <Box component="fieldset" mb={3} borderColor="transparent">
+                    <Rating name="read-only" value={review?.rating} readOnly />
+                  </Box>
+                  <span>{review?.createdAt}</span>
+                  {/* {review._id} */}
+                </div>
+                <div className="therapistreview__allreview__body">
+                  <p>{review?.review}</p>
+                </div>
 
-              {/* <h5>{review.user.name}</h5> */}
-              {auth.isAuthenticated && auth.user._id === review.user._id && (
-                <button onClick={() => handleDelete(id, review._id)}>
-                  Delete
-                </button>
-              )}
-            </div>
-          ))}
-          {/* <div className="therapistreview__allreview">
+                {/* <h5>{review.user.name}</h5> */}
+                {auth.isAuthenticated && auth.user._id === review.user._id && (
+                  <button onClick={() => handleDelete(id, review._id)}>
+                    Delete
+                  </button>
+                )}
+              </div>
+            ))}
+            {/* <div className="therapistreview__allreview">
 						<div className="therapistreview__allreview__header">
 							<Box component="fieldset" mb={3} borderColor="transparent">
 								<Rating name="read-only" value={3} readOnly />
@@ -110,16 +111,17 @@ const TherapistReview = ({
 							</p>
 						</div>
 					</div> */}
+          </div>
         </div>
-      </div>
+      )}
     </React.Fragment>
   );
 };
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuthenticated,
-  review: state.therapists.oneTherapist.reviews,
+  review: state.therapists?.oneTherapist?.reviews,
   auth: state.auth,
-  therapist: state.therapists.oneTherapist,
+  therapist: state.therapists?.oneTherapist,
 });
 
 export default connect(mapStateToProps, {
