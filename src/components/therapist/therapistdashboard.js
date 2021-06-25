@@ -12,12 +12,25 @@ import TherapistSummary from "./therapistsummary";
 import TherapistReview from "./therapistreview";
 import AddAppointment from "./addappointment";
 import Appointments from "./appointments";
+import MessageIcon from "../shared/message";
 
-const TherapistDashboard = ({ match, therapist, getTherapist, review }) => {
+import { newConversation } from "../../actions/chat";
+const TherapistDashboard = ({
+  match,
+  therapist,
+  getTherapist,
+  user,
+  review,
+  newConversation,
+}) => {
   let id = match.params.id.trim();
+  console.log("user", user);
   useEffect(() => {
+    if (id && user) {
+      newConversation(user, id);
+    }
     getTherapist(id);
-  }, [getTherapist, id]);
+  }, [getTherapist, id, newConversation, user]);
   return (
     <React.Fragment>
       <div className="therapistdashboard">
@@ -41,6 +54,7 @@ const TherapistDashboard = ({ match, therapist, getTherapist, review }) => {
 
               <AddAppointment></AddAppointment>
               <Appointments id={id}></Appointments>
+              <MessageIcon></MessageIcon>
             </div>
           </div>
         </div>
@@ -51,6 +65,9 @@ const TherapistDashboard = ({ match, therapist, getTherapist, review }) => {
 const mapStateToProps = (state) => ({
   therapist: state.therapists.oneTherapist,
   review: state.therapists?.oneTherapist?.reviews,
+  user: state.auth?.user?._id,
 });
 
-export default connect(mapStateToProps, { getTherapist })(TherapistDashboard);
+export default connect(mapStateToProps, { getTherapist, newConversation })(
+  TherapistDashboard
+);
