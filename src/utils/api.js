@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 // import store from '../store';
 // import {LOGOUT} from '../actions/types';
 // import {THERAPIST_LOGOUT} from '../actions/types';
 
 //https://project-soul-api.herokuapp.com/api
-const apiConnectionString = "https://project-soul-api.herokuapp.com/api";
+const apiConnectionString = 'http://localhost:4000/api';
 // "http://localhost:5000/api"
 // ;
 

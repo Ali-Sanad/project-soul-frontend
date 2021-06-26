@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-// import { withRouter } from 'react-router-dom';
+//import { withRouter } from 'react-router-dom';
 
 // import { connect } from 'react-redux';
 // import { addExperience } from './../../actions/therapistProfile';
@@ -170,6 +170,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { addExperience } from './../../actions/therapistProfile';
 import logo from './../../assets/images/logo.png';
 import userRegister from './../../assets/images/user-register.png';
@@ -190,15 +192,17 @@ const AddTherapistExperience = ({ addExperience, history, match }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
+    e.preventDefault();
+
     let id = match.params.id.trim();
     console.log(id);
 
-    e.preventDefault();
     addExperience(
       {
         ...formData,
       },
-      id
+      id,
+      history
     );
   };
 
@@ -303,4 +307,6 @@ AddTherapistExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExperience })(AddTherapistExperience);
+export default withRouter(
+  connect(null, { addExperience })(AddTherapistExperience)
+);

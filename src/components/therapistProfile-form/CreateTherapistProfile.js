@@ -417,6 +417,7 @@ const CreateTherapistProfile = ({
     birthOfDate: '',
     specialties: '',
     uploadCv: '',
+    uploadimg: '',
     twitter: '',
     facebook: '',
     linkedin: '',
@@ -434,6 +435,7 @@ const CreateTherapistProfile = ({
     birthOfDate,
     specialties,
     uploadCv,
+    uploadimg,
     twitter,
     facebook,
     linkedin,
@@ -455,7 +457,67 @@ const CreateTherapistProfile = ({
   };
 
   console.log(ID);
+  // const [fileInputState, setFileInputState] = useState('');
+  // const [previewSource, setPreviewSource] = useState('');
+  // const [selectedFile, setSelectedFile] = useState('');
+  // const handleFileInputChange = (e) => {
+  //   const file = e.target.files[0];
+  //   previewFile(file);
+  // };
+  // const previewFile = (file) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     setPreviewSource(reader.result);
+  //   };
+  // };
+  const [fileInputState, setFileInputState] = useState('');
+  const [previewSource, setPreviewSource] = useState('');
+  const [selectedFile, setSelectedFile] = useState('');
+  // const [successMsg, setSuccessMsg] = useState('');
+  // const [errMsg, setErrMsg] = useState('');
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
 
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error('AHHHHHHHH!!');
+    };
+  };
+
+  const uploadImage = async (base64EncodedImage) => {
+    try {
+      await fetch('/api/upload', {
+        method: 'POST',
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      setFileInputState('');
+      setPreviewSource('');
+    } catch (err) {
+      console.error(err);
+      //   setErrMsg('Something went wrong!');
+    }
+  };
   if (
     !summary ||
     !therapist_image_url ||
@@ -467,6 +529,7 @@ const CreateTherapistProfile = ({
     !birthOfDate ||
     !specialties ||
     !uploadCv ||
+    !uploadimg ||
     !twitter ||
     !facebook ||
     !linkedin ||
@@ -487,6 +550,7 @@ const CreateTherapistProfile = ({
       birthOfDate,
       specialties,
       uploadCv,
+      uploadimg,
       twitter,
       facebook,
       linkedin,
@@ -686,6 +750,40 @@ const CreateTherapistProfile = ({
                 onChange={(e) => onChange(e)}
                 required
               />
+            </div>
+
+            <div className=" mt-6 ">
+              <h6 className="block mx-auto mt-2  w-4/5 p-2 rounded-full">
+                Upload your photo
+              </h6>
+
+              <form onSubmit={handleSubmitFile} className="form">
+                <input
+                  id="fileInput"
+                  type="file"
+                  name="uploadimg"
+                  onChange={handleFileInputChange}
+                  value={fileInputState}
+                  className="block mx-auto mt-2  w-4/5 p-3 rounded-full
+                    border focus:outline-none
+                    focus:ring-1 focus:to-soul focus:border-transparent 
+                    "
+                />
+                {/* <button className="btn" type="submit">
+                  Submit
+                </button> */}
+              </form>
+              {previewSource && (
+                <img
+                  src={previewSource}
+                  alt="chosen"
+                  style={{
+                    height: '80px',
+                    paddingLeft: '3rem',
+                    paddingTop: '1rem',
+                  }}
+                />
+              )}
             </div>
 
             <div className="mt-6 sm:ml-2">
