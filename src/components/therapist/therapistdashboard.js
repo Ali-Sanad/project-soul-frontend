@@ -28,9 +28,9 @@ const TherapistDashboard = ({
   const receiverId = id;
   console.log("user", user);
   useEffect(() => {
-    if (id && user) {
-      newConversation({ senderId, receiverId });
-    }
+    // if (id && user) {
+    //   newConversation({ senderId, receiverId });
+    // }
     getTherapist(id);
   }, [getTherapist, id, newConversation, user]);
   return (

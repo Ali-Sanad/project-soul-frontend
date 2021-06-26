@@ -1,32 +1,49 @@
 .messenger {
-  height: 85vh;
+  height: 80vh;
   display: flex;
+  margin-top: 2rem;
+  font-family: Roboto;
+  margin: 1rem;
+
+  .chatMenu {
+    flex: 3;
+    margin: 1rem;
+
+    background-color: white;
+    border-radius: 3rem;
+    // max-height: fit-content;
+    padding: 1rem;
+  }
+  .chatBox {
+    margin: 1rem;
+
+    flex: 10;
+    background-color: white;
+    border-radius: 3rem;
+  }
 }
 
-.chatMenu {
-  flex: 2;
-  border-right: 1px solid gray;
-}
-.chatBox {
-  flex: 10;
-}
 .chatBoxBottom {
-  margin-top: 1rem;
+  margin: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .chatMessageInput {
+  border-radius: 2rem;
   width: 90%;
-  padding: 0.3rem;
+  padding: 1rem;
+  background-color: #f4f9f9;
+  outline: none;
 }
 .chatSubmitButton {
   padding: 0.8rem;
   cursor: pointer;
-  background-color: lightseagreen;
+  background-color: $colmain;
   border: none;
   border-radius: 1rem;
-  color: white;
+  color: $colfont;
+  outline: none;
 }
 /* .chatOnline {
     flex: 3;
@@ -34,7 +51,7 @@
 
 .chatMenuWrapper,
 .chatBoxWrapper {
-  padding: 1.2rem;
+  padding: 0.5rem;
   height: 100%;
 }
 
@@ -53,6 +70,6 @@
   text-align: center;
   font-size: x-large;
   margin-top: 3rem;
-  color: cadetblue;
+  color: $colfont;
   text-transform: uppercase;
 }

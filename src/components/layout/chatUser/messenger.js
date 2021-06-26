@@ -23,6 +23,7 @@ const MessengerUser = ({
 }) => {
   const [newMessage, setNewMessage] = useState("");
   const [conversationId, setConversationId] = useState("");
+  const [members, setMembers] = useState([]);
 
   const scrollRef = useRef();
 
@@ -30,9 +31,10 @@ const MessengerUser = ({
     getConversations(user?._id);
   }, [user]);
 
-  const getCurrentChat = async (ConversationId) => {
-    await setCurrentChatAction(ConversationId);
-    setConversationId(ConversationId);
+  const getCurrentChat = async (conversation) => {
+    await setCurrentChatAction(conversation._id);
+    setConversationId(conversation._id);
+    setMembers(conversation.members);
   };
 
   const handleSubmit = async (e) => {
@@ -60,7 +62,7 @@ const MessengerUser = ({
             <div className="chatMenuWrapper">
               {conversations.map((conversation) => {
                 return (
-                  <div onClick={() => getCurrentChat(conversation._id)}>
+                  <div onClick={() => getCurrentChat(conversation)}>
                     <Conversation
                       members={conversation.members}
                       user={user}
@@ -82,6 +84,8 @@ const MessengerUser = ({
                           <Message
                             message={message}
                             own={message.Sender === user._id}
+                            user={user}
+                            members={members}
                           />
                         </div>
                       );
@@ -89,7 +93,7 @@ const MessengerUser = ({
                   </div>
                   <div className="chatBoxBottom">
                     <textarea
-                      rows="3"
+                      rows="1"
                       placeholder="Write Some Thing..."
                       className="chatMessageInput"
                       onChange={(e) => setNewMessage(e.target.value)}

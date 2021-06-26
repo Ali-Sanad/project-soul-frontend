@@ -23,6 +23,7 @@ const MessengerUser = ({
 }) => {
   const [newMessage, setNewMessage] = useState("");
   const [conversationId, setConversationId] = useState("");
+  const [members, setMembers] = useState([]);
 
   const scrollRef = useRef();
 
@@ -30,9 +31,10 @@ const MessengerUser = ({
     getConversations(therapist?._id);
   }, [therapist]);
 
-  const getCurrentChat = async (ConversationId) => {
-    await setCurrentChatAction(ConversationId);
-    setConversationId(ConversationId);
+  const getCurrentChat = async (conversation) => {
+    await setCurrentChatAction(conversation._id);
+    setConversationId(conversation._id);
+    setMembers(conversation.members);
   };
 
   const handleSubmit = async (e) => {
@@ -52,7 +54,7 @@ const MessengerUser = ({
 
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <NavBar />
         <div className="messenger">
           {!isAuthenticated_therapist && !therapist && <Redirect to="/" />}
@@ -60,7 +62,7 @@ const MessengerUser = ({
             <div className="chatMenuWrapper">
               {conversations.map((conversation) => {
                 return (
-                  <div onClick={() => getCurrentChat(conversation._id)}>
+                  <div onClick={() => getCurrentChat(conversation)}>
                     <Conversation
                       members={conversation.members}
                       therapist={therapist}
@@ -82,6 +84,8 @@ const MessengerUser = ({
                           <Message
                             message={message}
                             own={message.Sender === therapist._id}
+                            therapist={therapist}
+                            members={members}
                           />
                         </div>
                       );
@@ -89,7 +93,7 @@ const MessengerUser = ({
                   </div>
                   <div className="chatBoxBottom">
                     <textarea
-                      rows="3"
+                      rows="1"
                       placeholder="Write Some Thing..."
                       className="chatMessageInput"
                       onChange={(e) => setNewMessage(e.target.value)}
