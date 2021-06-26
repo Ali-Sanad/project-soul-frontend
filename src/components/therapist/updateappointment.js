@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -7,7 +7,7 @@ import booking from '../../assets/images/booktherapist.png';
 
 //redux
 import {connect} from 'react-redux';
-import {updateAppointment} from '../../actions/therapists';
+import {updateAppointment, loadAppointmentById} from '../../actions/therapists';
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -22,7 +22,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UpdateAppointment = ({children, id, therapistId, therapistAuth}) => {
+const UpdateAppointment = ({
+  children,
+  id,
+  therapistId,
+  oneTherapist,
+  updateAppointment,
+  loadAppointmentById,
+  oneAppointment,
+}) => {
+  useEffect(() => {
+    loadAppointmentById(id);
+  }, [loadAppointmentById, id]);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -36,10 +47,10 @@ const UpdateAppointment = ({children, id, therapistId, therapistAuth}) => {
 
   ////////////////////////////////////////
   const [formData, setFormData] = useState({
-    date: '',
-    from: '',
-    to: '',
-    fees: 0,
+    date: oneAppointment && oneAppointment.date,
+    from: oneAppointment && oneAppointment.from.split(' ')[0],
+    to: oneAppointment && oneAppointment.to.split(' ')[0],
+    fees: oneTherapist && (oneTherapist.fees ? oneTherapist.fees : 150),
   });
 
   const {date, from, to, fees} = formData;
@@ -50,12 +61,7 @@ const UpdateAppointment = ({children, id, therapistId, therapistAuth}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     updateAppointment(formData, id, therapistId);
-    setFormData({
-      date: '',
-      from: '',
-      to: '',
-      fees: 0,
-    });
+    handleClose();
   };
 
   return (
@@ -77,14 +83,14 @@ const UpdateAppointment = ({children, id, therapistId, therapistAuth}) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id='transition-modal-title'>Edit Appointment</h2>
+            <h2 id='transition-modal-title headers'>Edit Appointment</h2>
             <p id='transition-modal-description'>
               {/* ************************* */}
 
               <React.Fragment>
                 <div className='addappointment'>
                   <div className='container'>
-                    <h4 className='headers'> Edit Appointment </h4>
+                    <h5 className='headers'>Fees:{fees} EGP</h5>
                     <div className='row'>
                       <div className='col-12 col-md-6 addappointment__form'>
                         <form onSubmit={(e) => onSubmit(e)}>
@@ -122,19 +128,10 @@ const UpdateAppointment = ({children, id, therapistId, therapistAuth}) => {
                             </div>
                           </div>
 
-                          <h5> Fees </h5>
-                          <input
-                            type='number'
-                            name='fees'
-                            value={fees}
-                            onChange={(e) => onChange(e)}
-                            className='input'
-                            required
-                          ></input>
                           <input
                             type='submit'
                             value='Edit Appointment'
-                            className='mainbtn'
+                            className='mainbtn mt-5'
                           />
                         </form>
                       </div>
@@ -156,8 +153,10 @@ const UpdateAppointment = ({children, id, therapistId, therapistAuth}) => {
 };
 
 const mapStateTopProps = (state) => ({
-  therapistAuth: state.therapistAuth,
+  oneAppointment: state.therapists.oneAppointment,
+  oneTherapist: state.therapists.oneTherapist,
 });
-export default connect(mapStateTopProps, {updateAppointment})(
-  UpdateAppointment
-);
+export default connect(mapStateTopProps, {
+  updateAppointment,
+  loadAppointmentById,
+})(UpdateAppointment);

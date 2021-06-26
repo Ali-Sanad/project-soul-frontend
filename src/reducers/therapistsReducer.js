@@ -6,20 +6,23 @@ import {
   ADD_THERAPIST_APPOINTMENT,
   UPDATE_THERAPIST_APPOINTMENT,
   DELETE_THERAPIST_APPOINTMENT,
+  THERAPIST_APPOINTMENT_ACTION_FAILED,
+  LOAD_THERAPIST_APPOINTMENT_BY_ID,
   ADD_REVIEW,
   DELETE_REVIEW,
   REVIEW_ERROR,
   ADD_THERAPIST_IMAGE,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   therapists: [],
   oneTherapist: null,
+  oneAppointment: null,
 };
 
 const therapists = (state = initialState, action) => {
-  const { type, payload } = action;
-  console.log("action", action);
+  const {type, payload} = action;
+  console.log('action', action);
   switch (type) {
     case GET_THERAPISTS:
       return {
@@ -53,7 +56,7 @@ const therapists = (state = initialState, action) => {
       newAppointments.map((app) => (app._id === payload._id ? payload : app));
       return {
         ...state,
-        oneTherapist: { ...state.oneTherapist, appointments: newAppointments },
+        oneTherapist: {...state.oneTherapist, appointments: newAppointments},
       };
     case DELETE_THERAPIST_APPOINTMENT:
       let clonedAppointments = [...state.oneTherapist.appointments];
@@ -64,6 +67,19 @@ const therapists = (state = initialState, action) => {
           ...state.oneTherapist,
           appointments: clonedAppointments,
         },
+      };
+    case THERAPIST_APPOINTMENT_ACTION_FAILED:
+      return {
+        ...state,
+      };
+    case LOAD_THERAPIST_APPOINTMENT_BY_ID:
+      let therapistAppointments = [...state.oneTherapist.appointments];
+      let loadedAppointment = therapistAppointments.filter(
+        (app) => app._id === payload
+      );
+      return {
+        ...state,
+        oneAppointment: loadedAppointment[0],
       };
 
     case ADD_REVIEW:

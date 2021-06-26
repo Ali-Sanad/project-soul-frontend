@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-// import {makeStyles} from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
 
 import booking from '../../assets/images/booktherapist.png';
 //redux
@@ -12,10 +10,10 @@ const AddAppointment = ({therapistAuth, addAppointment}) => {
     date: '',
     from: '',
     to: '',
-    fees: 0,
+    fees: therapistAuth.therapist !== null ? therapistAuth.therapist.fees : 150,
   });
 
-  const {date, from, to, fees} = formData;
+  const {date, from, to} = formData;
   const onChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   };
@@ -23,11 +21,11 @@ const AddAppointment = ({therapistAuth, addAppointment}) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addAppointment(formData, therapistAuth.therapist._id);
+
     setFormData({
       date: '',
       from: '',
       to: '',
-      fees: 0,
     });
   };
 
@@ -76,23 +74,14 @@ const AddAppointment = ({therapistAuth, addAppointment}) => {
                     </div>
                   </div>
 
-                  <h5> Fees </h5>
-                  <input
-                    type='number'
-                    name='fees'
-                    value={fees}
-                    onChange={(e) => onChange(e)}
-                    className='input'
-                    required
-                  ></input>
                   <input
                     type='submit'
                     value='Add Appointment'
-                    className='mainbtn'
+                    className='mainbtn mt-5'
                   />
                 </form>
               </div>
-              <div className='col-12 col-md-6 addappointment__image'>
+              <div className='col-12  col-md-6 addappointment__image'>
                 <img src={booking} alt=''></img>
               </div>
             </div>

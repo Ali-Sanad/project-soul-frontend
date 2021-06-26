@@ -1,31 +1,31 @@
 .message {
   display: flex;
   flex-direction: column;
-  margin-top: 0.8rem;
-}
 
-.messageTop {
-  display: flex;
-  margin: 0.3rem;
-}
+  .messageTop {
+    display: flex;
+  }
 
-.messageImg {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  margin-right: 0.3rem;
-}
+  .messageImg {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin: 0.4rem;
+  }
 
-.messageText {
-  background-color: #1877f2;
-  padding: 0.6rem;
-  color: white;
-  border-radius: 1rem;
+  .messageText {
+    background-color: #f4f9f9;
+    padding: 0.8rem;
+    color: black;
+    border-radius: 1rem;
+    margin: 0%;
+    vertical-align: middle;
+  }
 }
 
 .messageBottom {
-  margin-top: 0.3rem;
   font-size: small;
+  margin: 0.1rem;
 }
 
 .own {
@@ -33,6 +33,6 @@
 }
 
 .own .messageText {
-  background-color: rgb(235, 235, 235);
-  color: black;
+  background-color: #0083fe;
+  color: white;
 }

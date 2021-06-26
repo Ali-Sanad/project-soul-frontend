@@ -1,12 +1,37 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { format } from "timeago.js";
+import noAvatar from "../../../assets/images/noAvatar.gif";
 
-const Message = ({ message, own }) => {
+const Message = ({ message, own, user, members }) => {
+  const [therapist, setTherapist] = useState(null);
+
+  useEffect(() => {
+    const therapistId = members.find((member) => member !== user._id);
+    const getTherapist = async () => {
+      try {
+        const res = await axios.get(
+          "https://project-soul-api.herokuapp.com/api/therapist/" + therapistId
+        );
+        console.log(res.data);
+        setTherapist(res.data.therapist);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getTherapist();
+  }, [user, members]);
+
   return (
     <>
       <div className={own ? "message own" : "message"}>
         <div className="messageTop">
           <img
-            src="https://i.pinimg.com/564x/9b/59/6d/9b596d304c2d0816c49a3e031ff2b48f.jpg"
+            src={
+              own
+                ? user.userImg || noAvatar
+                : (therapist && therapist.therapistImg) || noAvatar
+            }
             className="messageImg"
             alt="sender"
           />

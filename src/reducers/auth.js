@@ -11,20 +11,23 @@ import {
   FORGOT_PASSWORD,
   UPDATE_USER_PROFILE,
   UPDATE_USER_PROFILE_ERROR,
+  ADD_USER_APPOINTMENT,
+  CANCEL_USER_APPOINTMENT,
+  USER_APPOINTMENT_FAILED,
+
   // ACCOUNT_DELETED,
   // USER_IMAGE,
-} from "../actions/types";
-
+} from '../actions/types';
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAdmin: localStorage.getItem("isAdmin") === "true" ? true : false,
+  token: localStorage.getItem('token'),
+  isAdmin: localStorage.getItem('isAdmin') === 'true' ? true : false,
   isAuthenticated: null,
   loading: true,
   user: null,
 };
 
 const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
+  const {type, payload} = action;
 
   switch (type) {
     case USER_LOADED:
@@ -88,14 +91,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         note: true,
       };
-    case UPDATE_USER_PROFILE:
+    case ADD_USER_APPOINTMENT:
       return {
         ...state,
       };
-    case UPDATE_USER_PROFILE_ERROR:
+    case CANCEL_USER_APPOINTMENT:
       return {
         ...state,
       };
+    case USER_APPOINTMENT_FAILED:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }
