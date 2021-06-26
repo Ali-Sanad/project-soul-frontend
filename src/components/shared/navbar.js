@@ -3,8 +3,10 @@ import { NavLink, Redirect } from "react-router-dom";
 import userimg from "./../../assets/images/user-image.svg";
 import therapistimg from "./../../assets/images/user.png";
 import logoutimg from "./../../assets/images/logout.png";
-
-const Navbar = ({ logout, therapist_logout, auth, therapistAuth }) => {
+import noAvatar from "../../assets/images/noAvatar.gif";
+import { connect } from "react-redux";
+import { Link } from "@material-ui/core";
+const Navbar = ({ id, img, logout, therapist_logout, auth, therapistAuth }) => {
   /* scroll nav */
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
@@ -151,11 +153,13 @@ const Navbar = ({ logout, therapist_logout, auth, therapistAuth }) => {
               <>
                 <div className="navBar__login">
                   {auth.isAuthenticated && (
+                    // <Link to={`/therapistlist/${id}`}>
                     <img
                       className="navBar__login__user"
-                      src={userimg}
+                      src={img || noAvatar}
                       alt=""
                     ></img>
+                    // </Link>
                   )}
 
                   {therapistAuth.isAuthenticated_therapist && (
@@ -196,4 +200,8 @@ const Navbar = ({ logout, therapist_logout, auth, therapistAuth }) => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  img: state.therapistAuth?.therapist?.therapistImg,
+  id: state.therapistAuth?.therapist?._id,
+});
+export default connect(mapStateToProps)(Navbar);
