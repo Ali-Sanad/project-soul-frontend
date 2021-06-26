@@ -451,9 +451,22 @@ export default function HorizontalLinearStepper() {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
+    // if (therapistAuth.isAuthenticated == true) {
+    //   <Link to="/therapistdashboard">let’ go to your Profile</Link>;
+    // } else {
+    //   <>
+    //     <div className="mx-auto card rounded-lg mt-2 mb-16 w-8/12">
+    //       <div className="mx-auto  mt-2 ml-9 w-4/5">
+    //         <h6 className="mx-auto  mt-2  ml-9 w-4/5">
+    //           Your information has been added successfully!, Please wait to
+    //           verify your account.
+    //         </h6>
+    //       </div>
+    //     </div>
+    //   </>;
+    // }
   };
 
   const handleBack = () => {
@@ -504,6 +517,23 @@ export default function HorizontalLinearStepper() {
             <Typography className={classes.instructions}>
               {/* All steps completed - you&apos;re finished */}
               All steps completed
+              {/* if({' '}
+              {therapistAuth.isAuthenticated_therapist && (
+                <Link to="/therapistdashboard">let’ go to your Profile</Link>
+              )}
+              ) else{' '}
+              { */}
+              <>
+                <div className="mx-auto card rounded-lg mt-2 mb-16 w-8/12">
+                  <div className="mx-auto  mt-2 ml-9 w-4/5">
+                    <h6 className="mx-auto  mt-2  ml-9 w-4/5">
+                      Your information has been added successfully!, Please wait
+                      to verify your account.
+                    </h6>
+                  </div>
+                </div>
+              </>
+              {/* // } */}
             </Typography>
             <Button onClick={handleReset} className={classes.button}>
               Reset
@@ -511,12 +541,12 @@ export default function HorizontalLinearStepper() {
           </div>
         ) : (
           <div>
-          <div className="registertherapist__content">
-            <Typography className={classes.instructions}>
-              {getStepContent(activeStep)}
-            </Typography>
+            <div className="registertherapist__content">
+              <Typography className={classes.instructions}>
+                {getStepContent(activeStep)}
+              </Typography>
             </div>
-            <div  className="registertherapist__btns">
+            <div className="registertherapist__btns">
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
@@ -541,8 +571,7 @@ export default function HorizontalLinearStepper() {
                 // color="primary"
                 onClick={handleNext}
                 // className={classes.button}
-                  className="registertherapist__btns__mainbtn"
-
+                className="registertherapist__btns__mainbtn"
               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>

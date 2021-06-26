@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-// import { withRouter } from 'react-router-dom';
+//import { withRouter } from 'react-router-dom';
 
 // import { connect } from 'react-redux';
 // import { addExperience } from './../../actions/therapistProfile';
@@ -170,6 +170,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { addExperience } from './../../actions/therapistProfile';
 import logo from './../../assets/images/logo.png';
 import userRegister from './../../assets/images/user-register.png';
@@ -190,15 +192,17 @@ const AddTherapistExperience = ({ addExperience, history, match }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
+    e.preventDefault();
+
     let id = match.params.id.trim();
     console.log(id);
 
-    e.preventDefault();
     addExperience(
       {
         ...formData,
       },
-      id
+      id,
+      history
     );
   };
 
@@ -279,7 +283,7 @@ const AddTherapistExperience = ({ addExperience, history, match }) => {
               />
             </div>
 
-            {/* <div className="mt-6 sm:ml-2">
+            <div className="mt-6 sm:ml-2">
               <input
                 type="submit"
                 className=" block  bg-soul-100 hover:bg-soul-300  sm:ml-10 md:ml-16 ml-16  py-2 px-4 rounded-full
@@ -287,7 +291,7 @@ const AddTherapistExperience = ({ addExperience, history, match }) => {
                shadow-sm cursor-pointer"
                 value="Save"
               />
-            </div> */}
+            </div>
           </form>
         </div>
 
@@ -303,4 +307,6 @@ AddTherapistExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExperience })(AddTherapistExperience);
+export default withRouter(
+  connect(null, { addExperience })(AddTherapistExperience)
+);

@@ -181,6 +181,7 @@ import { addEducation } from './../../actions/therapistProfile';
 import logo from './../../assets/images/logo.png';
 import userRegister from './../../assets/images/user-register.png';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 const AddTherapistEducation = ({ addEducation, history, match }) => {
   const [formData, setFormData] = useState({
@@ -197,15 +198,17 @@ const AddTherapistEducation = ({ addEducation, history, match }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
+    e.preventDefault();
+
     let id = match.params.id.trim();
     console.log(id);
 
-    e.preventDefault();
     addEducation(
       {
         ...formData,
       },
-      id
+      id,
+      history
     );
   };
 
@@ -285,7 +288,8 @@ const AddTherapistEducation = ({ addEducation, history, match }) => {
                 required
               />
             </div>
-            {/* <div className="mt-6 sm:ml-2">
+
+            <div className="mt-6 sm:ml-2">
               <input
                 type="submit"
                 className=" block  bg-soul-100 hover:bg-soul-300  sm:ml-10 md:ml-16 ml-16  py-2 px-4 rounded-full
@@ -293,7 +297,7 @@ const AddTherapistEducation = ({ addEducation, history, match }) => {
                shadow-sm cursor-pointer"
                 value="Save"
               />
-            </div> */}
+            </div>
           </form>
         </div>
 
@@ -309,4 +313,6 @@ AddTherapistEducation.propTypes = {
   addEducation: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEducation })(AddTherapistEducation);
+export default withRouter(
+  connect(null, { addEducation })(AddTherapistEducation)
+);
