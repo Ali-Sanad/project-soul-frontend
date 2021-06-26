@@ -73,7 +73,7 @@ const MessengerUser = ({
           </div>
           <div className="chatBox">
             <div className="chatBoxWrapper">
-              {currentChat && currentChat.length !== 0 ? (
+              {currentChat && conversationId ? (
                 <>
                   <div className="chatBoxTop">
                     {currentChat.map((message) => {

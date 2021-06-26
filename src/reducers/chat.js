@@ -27,7 +27,7 @@ const chat = (state = initialState, action) => {
     case NEW_CONVERSATION:
       return {
         ...state,
-        conversations: [payload, ...state.conversations],
+        conversations: [...state.conversations, payload],
       };
     case NEW_MESSAGE: {
       return {

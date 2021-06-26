@@ -1,131 +1,110 @@
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import NavBar from "../../shared/navbar";
+
 import Conversation from "./conversation";
 import Message from "./message";
+import { Redirect } from "react-router-dom";
+import {
+  getConversations,
+  setCurrentChatAction,
+  addMessage,
+} from "../../../actions/chat";
 
-const MessengerTherapist = ({
+const MessengerUser = ({
   auth: { isAuthenticated, user },
   therapistAuth: { isAuthenticated_therapist, therapist },
+  conversations,
+  currentChat,
+  getConversations,
+  setCurrentChatAction,
+  addMessage,
 }) => {
-  const [conversations, setConversations] = useState([]);
-  const [currentChat, setCurrentChat] = useState(null);
-  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [conversationId, setConversationId] = useState("");
 
   const scrollRef = useRef();
 
   useEffect(() => {
-    const getConversations = async () => {
-      try {
-        const res = await axios.get(
-          "https://project-soul-api.herokuapp.com/api/conversations/" + user._id
-        );
-        console.log(res.data);
-        setConversations(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getConversations();
-  }, [user]);
+    getConversations(therapist?._id);
+  }, [therapist]);
 
-  console.log(currentChat);
-
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const res = await axios.get(
-          "https://project-soul-api.herokuapp.com/api/messages/" +
-            currentChat._id
-        );
-        console.log(res.data);
-        setMessages(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getMessages();
-  }, [currentChat]);
-  console.log(messages);
+  const getCurrentChat = async (ConversationId) => {
+    await setCurrentChatAction(ConversationId);
+    setConversationId(ConversationId);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const message = {
-      Sender: user._id,
+      Sender: therapist?._id,
       Text: newMessage,
-      ConversationId: currentChat._id,
+      ConversationId: conversationId,
     };
-    try {
-      const res = await axios.post(
-        "https://project-soul-api.herokuapp.com/api/messages/",
-        message
-      );
-      setMessages([...messages, res.data]);
-      setNewMessage("");
-    } catch (err) {
-      console.log(err);
-    }
+    addMessage(message);
+    setNewMessage("");
   };
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [currentChat]);
 
   return (
     <>
-      <div className="messenger">
-        {!isAuthenticated_therapist && !therapist && <Redirect to="/" />}
-        <div className="chatMenu">
-          <div className="chatMenuWrapper">
-            {conversations.map((conversation) => {
-              return (
-                <div onClick={() => setCurrentChat(conversation)}>
-                  <Conversation
-                    conversationMembers={conversation}
-                    currentUser={user}
-                    key={conversation._id}
-                  />
-                </div>
-              );
-            })}
+      <div className="container">
+        <NavBar />
+        <div className="messenger">
+          {!isAuthenticated_therapist && !therapist && <Redirect to="/" />}
+          <div className="chatMenu">
+            <div className="chatMenuWrapper">
+              {conversations.map((conversation) => {
+                return (
+                  <div onClick={() => getCurrentChat(conversation._id)}>
+                    <Conversation
+                      members={conversation.members}
+                      therapist={therapist}
+                      key={conversation._id}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-        <div className="chatBox">
-          <div className="chatBoxWrapper">
-            {currentChat ? (
-              <>
-                {" "}
-                <div className="chatBoxTop">
-                  {messages.map((message) => {
-                    return (
-                      <div ref={scrollRef}>
-                        <Message
-                          message={message}
-                          own={message.Sender === user._id}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="chatBoxBottom">
-                  <textarea
-                    rows="3"
-                    placeholder="Write Some Thing..."
-                    className="chatMessageInput"
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    value={newMessage}
-                  ></textarea>
+          <div className="chatBox">
+            <div className="chatBoxWrapper">
+              {currentChat && conversationId ? (
+                <>
+                  <div className="chatBoxTop">
+                    {currentChat.map((message) => {
+                      return (
+                        <div ref={scrollRef}>
+                          <Message
+                            message={message}
+                            own={message.Sender === therapist._id}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="chatBoxBottom">
+                    <textarea
+                      rows="3"
+                      placeholder="Write Some Thing..."
+                      className="chatMessageInput"
+                      onChange={(e) => setNewMessage(e.target.value)}
+                      value={newMessage}
+                    ></textarea>
 
-                  <button className="chatSubmitButton" onClick={handleSubmit}>
-                    Send
-                  </button>
-                </div>{" "}
-              </>
-            ) : (
-              <span className="NoConversation"> Select Conversation</span>
-            )}
+                    <button className="chatSubmitButton" onClick={handleSubmit}>
+                      Send
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <span className="NoConversation"> Select Conversation</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -137,7 +116,13 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     therapistAuth: state.therapistAuth,
+    currentChat: state.chat?.currentChat,
+    conversations: state.chat?.conversations,
   };
 };
 
-export default connect(mapStateToProps, null)(MessengerTherapist);
+export default connect(mapStateToProps, {
+  getConversations,
+  setCurrentChatAction,
+  addMessage,
+})(MessengerUser);
