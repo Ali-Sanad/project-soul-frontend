@@ -2,7 +2,7 @@ import React from "react";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import { withRouter } from "react-router-dom";
-//import noAvatar from "../../../assets/images/noAvatar.gif";
+import noAvatar from "../../assets/images/noAvatar.gif";
 
 import userimg from "../../assets/images/user.png";
 
@@ -20,7 +20,7 @@ const TherapistCard = ({ therapist, history }) => {
     <React.Fragment>
       <div className="therapistcard">
         <img
-          src={therapist?.therapistImg}
+          src={therapist?.therapistImg || noAvatar}
           alt={therapist?.therapistImg}
           className="therapistcard__userimg"
         ></img>

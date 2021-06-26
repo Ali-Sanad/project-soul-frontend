@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import noAvatar from "../../assets/images/noAvatar.gif";
 
 import userimg from "./../../assets/images/user.png";
 import iconimg from "./../../assets/images/iconimg.png";
@@ -42,7 +43,7 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
                 src={
                   therapist && therapist.therapistImg !== ""
                     ? therapist.therapistImg
-                    : userimg
+                    : noAvatar
                 }
                 alt=""
                 className="sidenav__image__user"
