@@ -41,12 +41,6 @@ const TherapistDashboard = ({
   return (
     <React.Fragment>
       <div className='therapistdashboard'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-12 therapistdashboard__topnav'>
-              <Navbar className='therapistdashboard__navbar'></Navbar>
-            </div>
-
             {/* <button
                 className='custom-toggler navbar-toggler'
                 type='button'
@@ -61,6 +55,12 @@ const TherapistDashboard = ({
                   <i className='fas fa-bars'></i>
                 </span>
               </button> */}
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12 therapistdashboard__topnav'>
+              <Navbar className='therapistdashboard__navbar'></Navbar>
+            </div>
+
 
             <>
               <div className='col-12 col-md-3'>
