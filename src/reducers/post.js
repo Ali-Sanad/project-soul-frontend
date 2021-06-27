@@ -7,6 +7,7 @@ import {
   REMOVE_COMMENT,
   UPDATE_LIKES,
   GET_POST,
+  UPDATE_POST
 } from '../actions/types';
 
 const initialState = {
@@ -26,6 +27,11 @@ function postReducer(state = initialState, action) {
         posts: payload,
         loading: false,
       };
+      case UPDATE_POST:
+        return {
+          ...state,
+        
+        };
     case POST_ERROR:
       return {
         ...state,

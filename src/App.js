@@ -67,6 +67,8 @@ import SingleArticle from "./components/layout/articles/singleArticle";
 //admin
 import AdminSideNav from "./components/admin/adminsidenav";
 import AdminDashboard from "./components/admin/admindashboard";
+import AdminTherapistCard from "./components/admin/admintherapistcard"
+import AdminPostCard from "./components/admin/adminpostcard"
 
 const App = () => {
   useEffect(() => {
@@ -125,6 +127,11 @@ const App = () => {
           <Route path="/posts" exact component={Post} />
           <Route path="/therapistlist" exact component={TherapistList} />
           <Route path='/posts/:id' exact component={PostItem} />
+          <Route
+            exact
+            path="/post-card/:id"
+            component={AdminPostCard}
+          />
           <Route path='/admindashboard' exact component={AdminDashboard} />
           <Route
             path="/therapistlist/:id"
@@ -218,7 +225,11 @@ const App = () => {
           <Route path="/article/:id">
             <SingleArticle />
           </Route>
-
+          <Route
+            exact
+            path="/therapist-card/:id"
+            component={AdminTherapistCard}
+          />
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
         </Switch>
