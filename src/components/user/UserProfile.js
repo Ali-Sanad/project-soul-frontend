@@ -21,7 +21,6 @@ const UserProfile = (props) => {
             </div>
             <div className="col-8">
               <UserDate></UserDate>
-              <UserUpdateForm></UserUpdateForm>
             </div>
           </div>
         </div>
