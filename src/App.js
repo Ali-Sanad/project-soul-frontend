@@ -67,7 +67,8 @@ import SingleArticle from './components/layout/articles/singleArticle';
 //admin
 import AdminSideNav from './components/admin/adminsidenav';
 import AdminDashboard from './components/admin/admindashboard';
-import Payment from './components/Payment';
+import AdminTherapistCard from './components/admin/admintherapistcard';
+import AdminPostCard from './components/admin/adminpostcard';
 
 const App = () => {
   useEffect(() => {
@@ -114,7 +115,6 @@ const App = () => {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/home' exact component={Home} />
-          <Route path='/payment' exact component={Payment} />
           <Route path='/about' exact component={HeroSection} />
           <Route path='/works' exact component={Works} />
           <Route path='/contact' exact component={Contact} />
@@ -127,6 +127,7 @@ const App = () => {
           <Route path='/posts' exact component={Post} />
           <Route path='/therapistlist' exact component={TherapistList} />
           <Route path='/posts/:id' exact component={PostItem} />
+          <Route exact path='/post-card/:id' component={AdminPostCard} />
           <Route path='/admindashboard' exact component={AdminDashboard} />
           <Route
             path='/therapistlist/:id'
@@ -220,7 +221,11 @@ const App = () => {
           <Route path='/article/:id'>
             <SingleArticle />
           </Route>
-
+          <Route
+            exact
+            path='/therapist-card/:id'
+            component={AdminTherapistCard}
+          />
           <Route path='/error' component={Error} />
           <Redirect to='/error' />
         </Switch>
