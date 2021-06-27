@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, Link } from "react-router-dom";
 import userimg from "./../../assets/images/user-image.svg";
 import therapistimg from "./../../assets/images/user.png";
 import logoutimg from "./../../assets/images/logout.png";
 import noAvatar from "../../assets/images/noAvatar.gif";
 import { connect } from "react-redux";
-import { Link } from "@material-ui/core";
+//import { Link } from "@material-ui/core";
+
 const Navbar = ({ id, img, logout, therapist_logout, auth, therapistAuth }) => {
   /* scroll nav */
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
@@ -173,12 +174,13 @@ const Navbar = ({ id, img, logout, therapist_logout, auth, therapistAuth }) => {
                       alt=""
                     ></img>
                   )}
-
+                  <Link to="/user-profile">
                   <span className="navBar__login__span">
                     {auth.isAuthenticated && auth.user.name}
                     {therapistAuth.isAuthenticated_therapist &&
                       therapistAuth.therapist.fname}
                   </span>
+                  </Link>
                   <img
                     className="navBar__login__logout"
                     src={logoutimg}
