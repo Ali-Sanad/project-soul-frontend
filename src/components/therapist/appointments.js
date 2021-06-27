@@ -3,22 +3,20 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {deleteAppointment} from '../../actions/therapists';
 import UpdateAppointment from './updateappointment';
-
-import {bookAppointment} from '../../actions/auth'; //user is booking an appointment @TODO
 import {withRouter} from 'react-router-dom';
-
+import Payment from '../Payment';
 const Appointments = ({
   therapistAuth,
   auth,
   oneTherapist,
   deleteAppointment,
-  bookAppointment,
   id,
   history,
 }) => {
   const [inputValue, setInputValue] = useState('');
 
   const onChange = (e) => {
+    console.log(e.target.value);
     setInputValue(e.target.value);
   };
 
@@ -30,10 +28,10 @@ const Appointments = ({
           <>
             <h5 className='headers'>
               Fees:{' '}
-              {oneTherapist && oneTherapist.fees ? oneTherapist.fees : 150} EGP
+              {oneTherapist && oneTherapist.fees ? oneTherapist.fees : 150} USD
             </h5>
             <div className='rounded-t-xl overflow-hidden bg-gradient-to-r  to-teal-100 p-10'>
-              <table className='table-auto '>
+              <table className='table-auto mx-auto'>
                 <thead>
                   <tr>
                     <th className='px-4 py-2 text-soul-300'>Date</th>
@@ -56,7 +54,7 @@ const Appointments = ({
                     <tr
                       key={app._id}
                       className={` cursor-pointer ${
-                        app.booking.isBooked && 'bg-red-300'
+                        app.booking.isBooked && 'bg-red-200'
                       }`}
                     >
                       <td className='borde border-4 px-4 py-2 text-center text-soul-200 font-medium'>
@@ -109,18 +107,21 @@ const Appointments = ({
                 </tbody>
               </table>
             </div>
-            <input
-              type='button'
-              value='Book An Appointment'
-              className='mainbtn block mx-auto '
-              onClick={() => {
-                if (auth && auth.isAuthenticated) {
-                  bookAppointment(inputValue, id);
-                } else {
-                  history.push('/login');
-                }
-              }}
-            />
+
+            {auth && auth.isAuthenticated ? (
+              <Payment
+                appointmentId={inputValue}
+                price={oneTherapist.fees}
+                therapist_id={oneTherapist._id}
+              />
+            ) : (
+              <input
+                type='button'
+                value='Book'
+                className='mainbtn block mx-auto '
+                onClick={() => history.push('/login')}
+              />
+            )}
           </>
         ) : (
           <p className='text-soul-300'>
@@ -140,5 +141,4 @@ const mapStateTopProps = (state) => ({
 
 export default connect(mapStateTopProps, {
   deleteAppointment,
-  bookAppointment,
 })(withRouter(Appointments));

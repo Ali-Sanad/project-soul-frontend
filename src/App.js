@@ -128,7 +128,9 @@ const App = () => {
           <Route path="/therapistlist" exact component={TherapistList} />
           <Route path="/posts/:id" exact component={PostItem} />
           <Route exact path="/post-card" component={AdminPostCard} />
+
           <Route path="/admindashboard" exact component={AdminDashboard} />
+
           <Route
             path="/therapistlist/:id"
             exact

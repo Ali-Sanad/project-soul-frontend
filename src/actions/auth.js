@@ -188,27 +188,53 @@ export const forgotPassword = (formData) => async (dispatch) => {
 
 //users appointments######ACTIONS######
 
-//book an appointment
-export const bookAppointment = (id, therapist_id) => async (dispatch) => {
-  try {
-    await axios.put(`/appointments/user/${id}`);
+// //book an appointment
+// export const bookAppointment = (id, therapist_id) => async (dispatch) => {
+//   try {
+//     await axios.put(`/appointments/user/${id}`);
 
-    dispatch(setAlert('Appointment booked successfully ', 'success'));
-    dispatch({
-      type: ADD_USER_APPOINTMENT,
-    });
-    //optimistic update
-    dispatch(loadUser());
-    dispatch(getTherapist(therapist_id));
-  } catch (err) {
-    console.log(err);
-    dispatch(setAlert('Appointment booking failed ', 'error'));
-    dispatch({
-      type: USER_APPOINTMENT_FAILED,
-    });
-    dispatch(loadUser());
-  }
-};
+//     dispatch(setAlert('Appointment booked successfully ', 'success'));
+//     dispatch({
+//       type: ADD_USER_APPOINTMENT,
+//     });
+//     //optimistic update
+//     dispatch(loadUser());
+//     dispatch(getTherapist(therapist_id));
+//   } catch (err) {
+//     console.log(err);
+//     dispatch(setAlert('Appointment booking failed ', 'error'));
+//     dispatch({
+//       type: USER_APPOINTMENT_FAILED,
+//     });
+//     dispatch(loadUser());
+//   }
+// };
+
+//book an appointment  payment + booking
+export const paymentBookingAction =
+  ({appointmentId, token, therapist_id}) =>
+  async (dispatch) => {
+    try {
+      const res = await axios.post('/payment', {appointmentId, token});
+      // console.log(typeof res.status, res.status);
+      if (res.status === 200) {
+        dispatch(setAlert('Appointment booked successfully ', 'success'));
+      }
+      dispatch({
+        type: ADD_USER_APPOINTMENT,
+      });
+      //optimistic update
+      dispatch(loadUser());
+      dispatch(getTherapist(therapist_id));
+    } catch (err) {
+      console.log(err);
+      dispatch(setAlert('Appointment booking failed ', 'error'));
+      dispatch({
+        type: USER_APPOINTMENT_FAILED,
+      });
+      dispatch(loadUser());
+    }
+  };
 
 //cancel an appointment
 export const cancelAppointment = (id) => async (dispatch) => {
