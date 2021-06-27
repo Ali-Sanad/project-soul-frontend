@@ -40,80 +40,82 @@ const TherapistProfile = ({ therapist, id, createTherapistProfile, auth }) => {
   };
   return (
     <React.Fragment>
-      {therapist && (
-        <div className="therapistprofile" onSubmit={(e) => onSubmit(e)}>
-          <div className="container">
-            <h2 className="headers">Profile</h2>
-            <form>
-              <div className="row">
-                <div className=" col-12 col-md-6">
-                  <h6>First Name</h6>
-                  <input
-                    type="text"
-                    disabled={disable}
-                    className="inputstyle"
-                    value={fname}
-                    name="fname"
-                    onChange={(e) => onChange(e)}
-                  ></input>
+      {therapist &&
+        auth.isAuthenticated_therapist &&
+        auth.therapist._id === id && (
+          <div className="therapistprofile" onSubmit={(e) => onSubmit(e)}>
+            <div className="container">
+              <h2 className="headers">Profile</h2>
+              <form>
+                <div className="row">
+                  <div className=" col-12 col-md-6">
+                    <h6>First Name</h6>
+                    <input
+                      type="text"
+                      disabled={disable}
+                      className="inputstyle"
+                      value={fname}
+                      name="fname"
+                      onChange={(e) => onChange(e)}
+                    ></input>
 
-                  <h6>Email</h6>
-                  <input
-                    type="text"
-                    className="inputstyle"
-                    disabled={disable}
-                    value={email}
-                    name="email"
-                    onChange={(e) => onChange(e)}
-                  ></input>
+                    <h6>Email</h6>
+                    <input
+                      type="text"
+                      className="inputstyle"
+                      disabled={disable}
+                      value={email}
+                      name="email"
+                      onChange={(e) => onChange(e)}
+                    ></input>
 
-                  <h6>Year Of Experience</h6>
-                  <input
-                    type="text"
-                    className="inputstyle"
-                    value={yearsofEeperience}
-                    disabled={disable}
-                    name="yearsofEeperience"
-                    onChange={(e) => onChange(e)}
-                  ></input>
-                </div>
-                <div className="col-12 col-md-6">
-                  <h6>Last Name</h6>
-                  <input
-                    type="text"
-                    className="inputstyle"
-                    value={lname}
-                    disabled={disable}
-                    name="lname"
-                    onChange={(e) => onChange(e)}
-                  ></input>
-                  <h6>Licenece</h6>
-                  <input
-                    type="text"
-                    className="inputstyle"
-                    value={licenseNo}
-                    disabled={disable}
-                    name="licenseNo"
-                    onChange={(e) => onChange(e)}
-                  ></input>
-                </div>
-                {auth.isAuthenticated_therapist &&
-                  auth.therapist._id === id &&
-                  disable && (
+                    <h6>Year Of Experience</h6>
+                    <input
+                      type="text"
+                      className="inputstyle"
+                      value={yearsofEeperience}
+                      disabled={disable}
+                      name="yearsofEeperience"
+                      onChange={(e) => onChange(e)}
+                    ></input>
+                  </div>
+                  <div className="col-12 col-md-6">
+                    <h6>Last Name</h6>
+                    <input
+                      type="text"
+                      className="inputstyle"
+                      value={lname}
+                      disabled={disable}
+                      name="lname"
+                      onChange={(e) => onChange(e)}
+                    ></input>
+                    <h6>Licenece</h6>
+                    <input
+                      type="text"
+                      className="inputstyle"
+                      value={licenseNo}
+                      disabled={disable}
+                      name="licenseNo"
+                      onChange={(e) => onChange(e)}
+                    ></input>
+                  </div>
+                  {auth.isAuthenticated_therapist &&
+                    auth.therapist._id === id &&
+                    disable && (
+                      <div className="col-12">
+                        <button className="mainbtn">edit</button>
+                      </div>
+                    )}
+                  {!disable && (
                     <div className="col-12">
-                      <button className="mainbtn">edit</button>
+                      <button className="mainbtn">save</button>
                     </div>
                   )}
-                {!disable && (
-                  <div className="col-12">
-                    <button className="mainbtn">save</button>
-                  </div>
-                )}
-              </div>
-            </form>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </React.Fragment>
   );
 };

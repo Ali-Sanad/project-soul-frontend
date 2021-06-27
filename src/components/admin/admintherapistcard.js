@@ -147,30 +147,7 @@ const AdminTherapistCard = ({
                         </div>
                       </div>
 
-                      <div className="admintherapistcard__btns">
-                        {/* <button
-                          onClick={() => {
-                            createTherapistProfile(
-                              { isAccepted: "Accepted" },
-                              id
-                            );
-                          }}
-                          className="mainbtn admintherapistcard__verifybtn"
-                        >
-                          Verify
-                        </button>
-                        <button
-                          onClick={() => {
-                            createTherapistProfile(
-                              { isAccepted: "Rejected" },
-                              id
-                            );
-                          }}
-                          className="mainbtn admintherapistcard__rejectbtn"
-                        >
-                          Reject
-                        </button> */}
-                      </div>
+                      <div className="admintherapistcard__btns"></div>
                     </div>
                   </div>
                 )}

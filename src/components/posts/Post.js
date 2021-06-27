@@ -1,19 +1,17 @@
-import React,{useEffect} from 'react';
-import { connect } from 'react-redux';
-import Footer from '../shared/footer';
-import Navbar from '../shared/navbar';
-import HeroSectionPost from './HeroSectionPost';
-import PostForm from './PostForm';
-import ToTop from '../shared/totop';
-import Message from '../shared/message';
-import PostCard from './PostList';
-import SearchPost from './SearchPost';
-import { getPosts } from '../../actions/post';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import Footer from "../shared/footer";
+import Navbar from "../shared/navbar";
+import HeroSectionPost from "./HeroSectionPost";
+import PostForm from "./PostForm";
+import ToTop from "../shared/totop";
+import Message from "../shared/message";
+import PostCard from "./PostList";
+import SearchPost from "./SearchPost";
+import { getPosts } from "../../actions/post";
 
 //posts
-const Post = ({ getPosts,
-  auth: {user, isAuthenticated},
-  post: {posts, loading}}) => {
+const Post = ({ getPosts, auth: { user, isAuthenticated }, posts }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
@@ -22,10 +20,11 @@ const Post = ({ getPosts,
       <Navbar />
       <HeroSectionPost />
       <PostForm />
-      <SearchPost/>
+      <SearchPost />
       {user &&
-              isAuthenticated &&
-              posts.map((post) => ( <PostCard key={post._id} post={post} />))}
+        posts &&
+        isAuthenticated &&
+        posts.map((post) => <PostCard key={post._id} post={post} />)}
       <Message />
       <ToTop></ToTop>
       <Footer />
@@ -34,11 +33,11 @@ const Post = ({ getPosts,
 };
 const mapStateToProps = (state) => {
   return {
-    post: state.post,
+    posts: state.post?.posts.filter((post) => post.isAccepted == "Accepted"),
+    // state.post,
     auth: state.auth,
   };
 };
 export default connect(mapStateToProps, {
   getPosts,
-
 })(Post);

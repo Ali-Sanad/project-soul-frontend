@@ -17,13 +17,13 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
   // const [image, setImage] = useState("");
   const [previewImage, setPreviewImage] = useState(null);
 
-  const uploadTherapistImage = (e) => {
+  const uploadTherapistImage = (e, id) => {
     setPreviewImage(URL.createObjectURL(e.target.files[0]));
 
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
-      addTherapistProfileImage({ data: reader.result });
+      addTherapistProfileImage({ data: reader.result }, id);
       console.log({ data: reader.result });
     };
     reader.onerror = () => {
@@ -63,7 +63,7 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
                   type="file"
                   name="image"
                   onChange={(e) => {
-                    uploadTherapistImage(e);
+                    uploadTherapistImage(e, therapist?._id);
                   }}
                 />
               </div>
@@ -78,7 +78,7 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
           <div className="sidenav__menu">
             <ul>
               <li className="active">Profile</li>
-              <li>Summary</li>
+              <li>{/* <Link to></Link> */}</li>
               <li>Appointments</li>
               <li>Educational</li>
               <li>Documnents</li>

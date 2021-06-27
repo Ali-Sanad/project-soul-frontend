@@ -1,8 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { getTherapists } from "../../actions/therapists";
 import { createTherapistProfile } from "../../actions/therapistProfile";
 import AdminTherapistCard from "./admintherapistcard";

@@ -50,12 +50,19 @@ const UpdateAppointment = ({
 
   ////////////////////////////////////////
   const [formData, setFormData] = useState({
-    date: oneAppointment && oneAppointment.date,
-    from: oneAppointment && oneAppointment.from.split(" ")[0],
-    to: oneAppointment && oneAppointment.to.split(" ")[0],
-    fees: oneTherapist && (oneTherapist.fees ? oneTherapist.fees : 150),
+    date: "",
+    from: "",
+    to: "",
+    fees: "",
   });
-
+  useEffect(() => {
+    setFormData({
+      date: oneAppointment && oneAppointment?.date,
+      from: oneAppointment && oneAppointment?.from?.split(" ")[0],
+      to: oneAppointment && oneAppointment?.to?.split(" ")[0],
+      fees: oneTherapist && (oneTherapist?.fees ? oneTherapist?.fees : 150),
+    });
+  }, [oneAppointment]);
   const { date, from, to, fees } = formData;
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
