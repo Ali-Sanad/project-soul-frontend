@@ -1,55 +1,55 @@
-import Moment from "react-moment";
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { getTherapists } from "../../actions/therapists";
-import { Link } from "react-router-dom";
+import Moment from 'react-moment';
+import {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
+import {getTherapists} from '../../actions/therapists';
+import {Link} from 'react-router-dom';
 
-import Footer from "../shared/footer";
-import NavBar from "../shared/navbar";
-import Message from "../shared/message";
-import ToTop from "../shared/totop";
-import "../../index.css"; //tailwind
+import Footer from '../shared/footer';
+import NavBar from '../shared/navbar';
+import Message from '../shared/message';
+import ToTop from '../shared/totop';
+import '../../index.css'; //tailwind
 
 //article
-const TherapistsList = ({ getTherapists, therapists, state }) => {
+const TherapistsList = ({getTherapists, therapists, state}) => {
   useEffect(() => {
     getTherapists();
   }, [getTherapists]);
-  console.log("state", state);
-  console.log("therapistsssssss", therapists);
+  console.log('state', state);
+  console.log('therapistsssssss', therapists);
   return (
     <>
       <NavBar />
 
-      <div className="mt-8 grid 2xl:grid-cols-4 mx-30 my-20 gap-20 lg:grid-cols-3 mx-20 my-10  gap-10 md:grid-cols-2 gap-8 mx-10  ">
+      <div className='mt-8 grid 2xl:grid-cols-4 mx-30 my-20 gap-20 lg:grid-cols-3 mx-20 my-10  gap-10 md:grid-cols-2 gap-8 mx-10  '>
         {therapists &&
           therapists.map((therapist) => (
             <div key={therapist._id}>
-              <div className="rounded overflow-hidden shadow-2xl relative">
+              <div className='rounded overflow-hidden shadow-2xl relative'>
                 <img
-                  className="w-full h-32 sm:h-48 object-cover"
-                  src="https://www.verywellhealth.com/thmb/UIDXsF5GFy3YYh71-Gg5tjyA_cA=/260x156/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1257279549-4d1b32dcfffa43b0a28754a663d7bab1.jpg"
+                  className='w-full h-32 sm:h-48 object-cover'
+                  src='https://www.verywellhealth.com/thmb/UIDXsF5GFy3YYh71-Gg5tjyA_cA=/260x156/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1257279549-4d1b32dcfffa43b0a28754a663d7bab1.jpg'
                   alt={therapist.fname + therapist.lname}
                 />
-                <h3 className="text-center">
+                <h3 className='text-center'>
                   {therapist.fname + therapist.lname}
                 </h3>
 
-                <p className="text-center leading-relaxed">
+                <p className='text-center leading-relaxed'>
                   In a thread on Reddit which has garnered nearly 10,000
                   replies, people who go to the gym every day (or practice some
                   kind of other daily skill) have been sharing the things that
                   help them stay motivated and proactive in keeping up with
                   their good habits.
                 </p>
-                <span className="text-center">By Matt Fraser</span>
+                <span className='text-center'>By Matt Fraser</span>
 
-                <div className="grid grid-cols-2 gap-0">
+                <div className='grid grid-cols-2 gap-0'>
                   <div>
                     {/* <a className="rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider">
                     BOOK
                   </a> */}
-                    <Link className="btn ">BOOK</Link>
+                    <Link className='btn '>BOOK</Link>
                   </div>
 
                   <div>
@@ -57,7 +57,7 @@ const TherapistsList = ({ getTherapists, therapists, state }) => {
                     Profile
                   </a> */}
                     <Link
-                      className="btn"
+                      className='btn'
                       to={`/admin-dashboard/${therapist._id}`}
                     >
                       PROFILE
