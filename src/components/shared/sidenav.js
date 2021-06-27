@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router";
+
 import noAvatar from "../../assets/images/noAvatar.gif";
 
 import userimg from "./../../assets/images/user.png";
@@ -7,6 +10,7 @@ import { connect } from "react-redux";
 import { addTherapistProfileImage } from "../../actions/therapists";
 
 const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
+  const history = useHistory();
   // console.log('id in sidnav', id);
   // useEffect(() => {
   //   getTherapist(id);
@@ -77,12 +81,53 @@ const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
           </div>
           <div className="sidenav__menu">
             <ul>
-              <li className="active">Profile</li>
-              <li>{/* <Link to></Link> */}</li>
-              <li>Appointments</li>
-              <li>Educational</li>
-              <li>Documnents</li>
-              <li>Reviews</li>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `/therapistlist/${id}/profile`,
+                  }}
+                >
+                  Profile
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `/therapistlist/${id}/summary`,
+                  }}
+                >
+                  Summary
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `/therapistlist/${id}/appointments`,
+                  }}
+                >
+                  Appointments
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `/therapistlist/${id}/addappointment`,
+                  }}
+                >
+                  Add Appointment
+                </NavLink>
+              </li>
+              {/* <li>Educational</li>
+              <li>Documnents</li> */}
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `/therapistlist/${id}/reviews`,
+                  }}
+                >
+                  Reviews
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
