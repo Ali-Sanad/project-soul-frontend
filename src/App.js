@@ -71,6 +71,8 @@ import AdminDashboard from "./components/admin/admindashboard";
 import AdminTherapistCard from "./components/admin/admintherapistcard";
 import AdminPostCard from "./components/admin/adminpostcard";
 
+// import NavBar from "./components/shared/navbar";
+
 const App = () => {
   useEffect(() => {
     console.log(store.getState().auth.isAdmin);
@@ -112,6 +114,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      {/* <NavBar></NavBar> */}
         <Alert />
         <Switch>
           <Route path="/" exact component={Home} />
