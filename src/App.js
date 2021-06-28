@@ -51,6 +51,7 @@ import TherapistDataForm from "./components/therapistDataForm";
 // import TherapistsList from './components/therapistsList/therapistList';
 import Home from "./components/landingpage/home";
 import UserProfile from "./components/user/UserProfile";
+import UserUpdate from "./components/user/userUpdate";
 import Post from "./components/posts/Post";
 import PostItem from "./components/posts/postComment/PostItem";
 import Error from "./components/shared/error";
@@ -67,6 +68,8 @@ import SingleArticle from "./components/layout/articles/singleArticle";
 //admin
 import AdminSideNav from "./components/admin/adminsidenav";
 import AdminDashboard from "./components/admin/admindashboard";
+import AdminTherapistCard from "./components/admin/admintherapistcard";
+import AdminPostCard from "./components/admin/adminpostcard";
 
 const App = () => {
   useEffect(() => {
@@ -124,10 +127,13 @@ const App = () => {
           <Route path="/reset-password" exact component={ResetPassword} />
           <Route path="/posts" exact component={Post} />
           <Route path="/therapistlist" exact component={TherapistList} />
-          <Route path='/posts/:id' exact component={PostItem} />
-          <Route path='/admindashboard' exact component={AdminDashboard} />
+          <Route path="/posts/:id" exact component={PostItem} />
+          <Route exact path="/post-card" component={AdminPostCard} />
+
+          <Route path="/admindashboard" exact component={AdminDashboard} />
+
           <Route
-            path="/therapistlist/:id"
+            path="/therapistlist/:id/:content"
             exact
             component={TherapistDashboard}
           />
@@ -204,6 +210,7 @@ const App = () => {
             path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
+          <Route exact path="/updateUser" component={UserUpdate}/>
 
           <Route path="/messenger-user">
             <MessengerUser />
@@ -218,7 +225,7 @@ const App = () => {
           <Route path="/article/:id">
             <SingleArticle />
           </Route>
-
+          <Route exact path="/therapist-card" component={AdminTherapistCard} />
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
         </Switch>

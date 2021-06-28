@@ -1,38 +1,119 @@
-import React from 'react'
+import React from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+// import postImage from "./../../assets/images/article.png";
+import { getPosts } from "../../actions/post";
+import { updatePost } from "../../actions/post";
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+const AdminPostCard = ({ id, children, getPosts, updatePost, post }) => {
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
 
-import postImage from './../../assets/images/article.png'
+  console.log("postssss", post);
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
-const AdminPostCard = () => {
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <React.Fragment>
-      <div className='adminpostcard'>
-        <div className='postCard'>
-          <div className='card mb-3 postCard__card'>
-            <img
-              src={postImage}
-              className='card-img-top postCard__image'
-              alt=''
-            />
-            <div className='card-body'>
-              <p className='card-text'>menaaaaaaaaaa</p>
-              <p className='card-text'>
-                <small className='text-muted'>15-10-2021</small>
-              </p>
-            </div>
-            <hr></hr>
-          <div className='adminpostcard__btns'>
-            <button className='mainbtn adminpostcard__verifybtn'>
-              Accept
-            </button>
-            <button className='mainbtn adminpostcard__rejectbtn'>
-              Reject
-            </button>
-          </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
-  )
-}
+    <div>
+      <button type="button" onClick={handleOpen}>
+        {children}
+      </button>
 
-export default AdminPostCard
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <h2 id="transition-modal-title headers">More Info</h2>
+            <p id="transition-modal-description">
+              <React.Fragment>
+                <div className="adminpostcard">
+                  <div className="postCard">
+                    <div className="card mb-3 postCard__card">
+                      <img
+                        src={post?.postImage}
+                        className="card-img-top postCard__image"
+                        alt=""
+                      />
+                      <div className="card-body">
+                        <p className="card-text">{post?.name}</p>
+                        <p className="card-text">
+                          <small className="text-muted">{post?.text}</small>
+                        </p>
+                        <p className="card-text">
+                          <small className="text-muted">{post?.date}</small>
+                        </p>
+                      </div>
+                      <hr></hr>
+                      <div className="adminpostcard__btns">
+                        {/* <button
+                          onClick={() => {
+                            updatePost({ isAccepted: "Accepted" }, post?._id);
+                            getPosts();
+                          }}
+                          className="mainbtn adminpostcard__verifybtn"
+                        >
+                          Accept
+                        </button>
+                        <button
+                          onClick={() => {
+                            updatePost({ isAccepted: "Rejected" }, post?._id);
+                            getPosts();
+                          }}
+                          className="mainbtn adminpostcard__rejectbtn"
+                        >
+                          Reject
+                        </button> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </React.Fragment>
+            </p>
+          </div>
+        </Fade>
+      </Modal>
+    </div>
+  );
+};
+const mapStateToProps = (state) => ({
+  state: state,
+  //  oneTherapist: state.oneTherapist,
+  post: state.post.post,
+  // therapist: state.therapistAuth,
+});
+export default connect(null, { getPosts, updatePost })(AdminPostCard);

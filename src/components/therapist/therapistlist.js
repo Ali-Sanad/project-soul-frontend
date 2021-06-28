@@ -40,7 +40,7 @@ const TherapistList = ({ getTherapists, therapists }) => {
 const mapStateToProps = (state) => ({
   state: state,
   therapists: state.therapists?.therapists.filter(
-    (th) => th.isAccepted == true
+    (th) => th.isAccepted === "Accepted"
   ),
   //  oneTherapist: state.oneTherapist,
   // therapists: state.therapists,

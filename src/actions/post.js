@@ -9,6 +9,7 @@ import {
   REMOVE_COMMENT,
   UPDATE_LIKES,
   GET_POST,
+  UPDATE_POST
 } from './types';
 
 // Get posts
@@ -28,6 +29,29 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
+
+export const updatePost=(formData,id)=>async (dispatch)=>{
+  try {
+    const res = await api.patch(`/posts/${id}`, formData);
+    console.log(res.data, 'gg');
+    dispatch({
+      type: UPDATE_POST,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err, 'hh');
+    const errors = err.response.data.errors;
+
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, error)));
+    // }
+
+    dispatch({
+      type: POST_ERROR,
+// payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+}
 // Delete post
 export const deletePost = (id) => async (dispatch) => {
   try {

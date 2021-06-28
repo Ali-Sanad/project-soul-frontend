@@ -1,14 +1,45 @@
-import React ,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageSearch from '../../assets/images/icons8_Search_4 3.png';
 import { Dropdown } from 'react-bootstrap';
-const SearchPost = () => {
-    const [searchValue, setSearch] = useState('');
-    return ( 
-        <>
-       <div className="postForm">
-       <div className="container">
-            <div className="row">
-            <div className='col-lg-12 postForm__inputs'>
+import { getPosts } from '../../actions/post';
+import { connect } from 'react-redux';
+import PostCard from './PostList';
+
+const SearchPost = ({
+  getPosts,
+  auth: { user, isAuthenticated },
+  post: { posts, loading },
+  setfilteredPosts,
+  postList,
+}) => {
+  const [searchValue, setSearch] = useState('');
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const handleInputChange = (e) => {
+    console.log(postList);
+    setSearch(e.target.value);
+
+    let searchPosts;
+    if (e.target.value == '' && !loading) {
+      searchPosts = postList;
+    } else if (!loading) {
+      searchPosts =
+        !loading &&
+        postList.filter((post) => {
+          return post.text.toLowerCase().includes(e.target.value.toLowerCase());
+        });
+    }
+
+    return setfilteredPosts(searchPosts);
+  };
+  return (
+    <>
+      <div className="postForm">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 postForm__inputs">
               {/* <Dropdown>
                 <Dropdown.Toggle variant='success' id='dropdown-basic'>
                   Category
@@ -25,23 +56,29 @@ const SearchPost = () => {
                 </Dropdown.Menu>
               </Dropdown> */}
               <input
-                type='text'
-                placeholder='Search'
-                className='postForm__inputs__search inputstyle'
+                type="text"
+                placeholder="Search"
+                className="postForm__inputs__search inputstyle"
                 value={searchValue}
-                onChange={(e) => setSearch(e.target.value)}
-                  required
+                onChange={(e) => handleInputChange(e)}
+                required
               />
               <a>
-                <img src={ImageSearch} className='postForm__imageSearch' />
+                <img src={ImageSearch} className="postForm__imageSearch" />
               </a>
             </div>
-            </div>
-
+          </div>
         </div>
-       </div>
-        </>
-     );
-}
- 
-export default SearchPost;
+      </div>
+    </>
+  );
+};
+const mapStateToProps = (state) => {
+  return {
+    post: state.post,
+    auth: state.auth,
+  };
+};
+export default connect(mapStateToProps, {
+  getPosts,
+})(SearchPost);

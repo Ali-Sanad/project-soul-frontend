@@ -3,10 +3,8 @@ import axios from 'axios';
 // import {LOGOUT} from '../actions/types';
 // import {THERAPIST_LOGOUT} from '../actions/types';
 
-//https://project-soul-api.herokuapp.com/api
 const apiConnectionString = 'https://project-soul-api.herokuapp.com/api';
-// "http://localhost:5000/api"
-// ;
+// 'http://localhost:5000/api';
 
 const instance = axios.create({
   baseURL: apiConnectionString,

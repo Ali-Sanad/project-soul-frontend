@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Footer from '../shared/footer';
 import Navbar from '../shared/navbar';
@@ -9,23 +9,30 @@ import Message from '../shared/message';
 import PostCard from './PostList';
 import SearchPost from './SearchPost';
 import { getPosts } from '../../actions/post';
+import Spinner from './Spinner';
 
 //posts
-const Post = ({ getPosts,
-  auth: {user, isAuthenticated},
-  post: {posts, loading}}) => {
+const Post = ({ getPosts, auth: { user, isAuthenticated }, posts }) => {
+  const [filteredPosts, setfilteredPosts] = useState(posts);
   useEffect(() => {
     getPosts();
-  }, [getPosts]);
+  }, []);
+
+  useEffect(() => {
+    setfilteredPosts(posts);
+  }, [posts]);
   return (
     <>
       <Navbar />
       <HeroSectionPost />
       <PostForm />
-      <SearchPost/>
-      {user &&
-              isAuthenticated &&
-              posts.map((post) => ( <PostCard key={post._id} post={post} />))}
+      <SearchPost setfilteredPosts={setfilteredPosts} postList={posts} />
+      {user && posts && isAuthenticated ? (
+        filteredPosts.map((post) => <PostCard key={post._id} post={post} />)
+      ) : (
+        <Spinner />
+      )}
+
       <Message />
       <ToTop></ToTop>
       <Footer />
@@ -34,11 +41,11 @@ const Post = ({ getPosts,
 };
 const mapStateToProps = (state) => {
   return {
-    post: state.post,
+    posts: state.post?.posts.filter((post) => post.isAccepted == 'Accepted'),
+    // state.post,
     auth: state.auth,
   };
 };
 export default connect(mapStateToProps, {
   getPosts,
-
 })(Post);
