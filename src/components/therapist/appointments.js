@@ -30,7 +30,7 @@ const Appointments = ({
               Fees:{' '}
               {oneTherapist && oneTherapist.fees ? oneTherapist.fees : 150} USD
             </h5>
-            <div className='rounded-t-xl overflow-hidden bg-gradient-to-r  to-teal-100 p-10'>
+            <div className='rounded-t-xl overflow-auto bg-gradient-to-r  to-teal-100 p-10'>
               <table className='table-auto mx-auto'>
                 <thead>
                   <tr>
@@ -45,6 +45,7 @@ const Appointments = ({
                         <>
                           <th className='px-4 py-2 text-soul-300'>Edit</th>
                           <th className='px-4 py-2 text-soul-300'>Delete</th>
+                          <th className='px-4 py-2 text-soul-300'>Patient</th>
                         </>
                       )}
                   </tr>
@@ -53,9 +54,9 @@ const Appointments = ({
                   {oneTherapist.appointments.map((app) => (
                     <tr
                       key={app._id}
-                      className={` cursor-pointer ${
-                        app.booking.isBooked && 'bg-red-200'
-                      }`}
+                      className={
+                        app.booking.isBooked ? 'bg-red-200' : 'bg-gray-100'
+                      }
                     >
                       <td className='borde border-4 px-4 py-2 text-center text-soul-200 font-medium'>
                         {new Date(app.date).toDateString()}
@@ -89,16 +90,21 @@ const Appointments = ({
                                 <i className='fas fa-edit fas fa-1x text-soul-200'></i>
                               </UpdateAppointment>
                             </td>
-                            <td
-                              className='borde border-4 px-4 py-2  text-center'
-                              onClick={() =>
-                                deleteAppointment(
-                                  app._id,
-                                  therapistAuth.therapist._id
-                                )
-                              }
-                            >
-                              <i className='fas fa-trash-alt fas fa-1x text-red-900'></i>
+                            <td className='borde border-4 px-4 py-2  text-center'>
+                              {!app.booking.isBooked && (
+                                <i
+                                  className='fas fa-trash-alt fas fa-1x text-red-900'
+                                  onClick={() =>
+                                    deleteAppointment(
+                                      app._id,
+                                      therapistAuth.therapist._id
+                                    )
+                                  }
+                                ></i>
+                              )}
+                            </td>
+                            <td className='borde border-4 px-4 py-2  text-center'>
+                              {app.booking.isBooked && app.booking.user.name}
                             </td>
                           </>
                         )}

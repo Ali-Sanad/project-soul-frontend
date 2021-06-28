@@ -83,7 +83,7 @@ const mapStateToProps = (state) => ({
   state: state,
   //  oneTherapist: state.oneTherapist,
   therapists: state.therapists?.therapists.filter(
-    (th) => th.isAccepted == "Accepted"
+    (th) => th.isAccepted === 'Accepted'
   ),
   // therapist: state.therapistAuth,
 });
