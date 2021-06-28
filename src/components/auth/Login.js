@@ -1,38 +1,38 @@
-import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {login} from '../../actions/auth';
-import loginImage from './../../assets/images/login.png';
-import logo from './../../assets/images/logo.png';
-import '../../index.css'; //tailwind import
-const Login = ({login, isAuthenticated, user}) => {
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { Link, NavLink, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { login } from '../../actions/auth'
+import loginImage from './../../assets/images/login.png'
+import logo from './../../assets/images/logo.png'
+import '../../index.css' //tailwind import
+const Login = ({ login, isAuthenticated, user }) => {
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
-  });
+    password: ''
+  })
 
-  const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false)
 
-  const {email, password} = formData;
+  const { email, password } = formData
 
   const togglePasswordVisiblity = () => {
-    setPasswordShown(!passwordShown);
-  };
+    setPasswordShown(!passwordShown)
+  }
 
-  const onChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    login(formData);
-  };
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+  const onSubmit = e => {
+    e.preventDefault()
+    login(formData)
+  }
 
   if (isAuthenticated && user) {
     if (user.isAdmin === false) {
-      return <Redirect to='/' />;
+      return <Redirect to='/' />
     } else if (user.isAdmin === true) {
-      return <Redirect to='/admin-dashboard' />;
+      return <Redirect to='/admin-dashboard' />
     }
   }
   return (
@@ -48,24 +48,24 @@ const Login = ({login, isAuthenticated, user}) => {
           <div className='flex justify-center mt-12 mb-12'>
             <h2 className='text-2xl   inline-block mx-3 cursor-pointer '>
               {' '}
-              <Link
+              <NavLink
                 to='/login'
                 className='text-black no-underline hover:text-soul-300  hover:underline'
               >
                 User
-              </Link>
+              </NavLink>
             </h2>
             <h2 className='text-2xl inline-block mx-3 cursor-pointer '>
-              <Link
+              <NavLink
                 to='/logintherapist'
                 className='text-black no-underline hover:text-soul-300
                hover:underline'
               >
                 Therapist
-              </Link>
+              </NavLink>
             </h2>
           </div>
-          <form className='mt-2' onSubmit={(e) => onSubmit(e)}>
+          <form className='mt-2' onSubmit={e => onSubmit(e)}>
             <div className=' mt-6 '>
               <input
                 className='block mx-auto mt-2  w-4/5 p-3 rounded-full
@@ -76,7 +76,7 @@ const Login = ({login, isAuthenticated, user}) => {
                 placeholder='Email'
                 name='email'
                 value={email}
-                onChange={(e) => onChange(e)}
+                onChange={e => onChange(e)}
                 required
               />
             </div>
@@ -91,7 +91,7 @@ const Login = ({login, isAuthenticated, user}) => {
                 name='password'
                 minLength='6'
                 value={password}
-                onChange={(e) => onChange(e)}
+                onChange={e => onChange(e)}
                 required
               />
               <span
@@ -137,20 +137,20 @@ const Login = ({login, isAuthenticated, user}) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  user: PropTypes.object,
-};
+  user: PropTypes.object
+}
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user,
-  };
-};
+    user: state.auth.user
+  }
+}
 
-export default connect(mapStateToProps, {login})(Login);
+export default connect(mapStateToProps, { login })(Login)

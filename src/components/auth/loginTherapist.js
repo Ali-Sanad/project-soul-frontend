@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link, NavLink } from "react-router-dom";
 
 import { login } from "../../actions/therapistAuth";
 import propTypes from "prop-types";
@@ -32,7 +32,8 @@ const LoginTherapist = ({ login, isAuthenticated_therapist, therapist }) => {
   };
 
   if (isAuthenticated_therapist && therapist) {
-    return <Redirect to={`/therapistlist/${therapist._id}`} />;
+    // return <Redirect to={`/therapistlist/${therapist._id}`} />;
+    return <Redirect to={`/therapistlist/${therapist._id}/profile`} />;
   }
   return (
     <>
@@ -47,21 +48,21 @@ const LoginTherapist = ({ login, isAuthenticated_therapist, therapist }) => {
           <div className="flex justify-center mt-12 mb-12">
             <h2 className="text-2xl   inline-block mx-3 cursor-pointer ">
               {" "}
-              <Link
+              <NavLink
                 to="/login"
                 className="text-black no-underline hover:text-soul-300  hover:underline"
               >
                 User
-              </Link>
+              </NavLink>
             </h2>
             <h2 className="text-2xl inline-block mx-3 cursor-pointer ">
-              <Link
+              <NavLink
                 to="/logintherapist"
                 className="text-black no-underline hover:text-soul-300
                hover:underline"
               >
                 Therapist
-              </Link>
+              </NavLink>
             </h2>
           </div>
           <form className="mt-2" onSubmit={(e) => onSubmit(e)}>
