@@ -471,53 +471,69 @@ const CreateTherapistProfile = ({
   //     setPreviewSource(reader.result);
   //   };
   // };
-  const [fileInputState, setFileInputState] = useState('');
-  const [previewSource, setPreviewSource] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
-  // const [successMsg, setSuccessMsg] = useState('');
-  // const [errMsg, setErrMsg] = useState('');
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    previewFile(file);
-    setSelectedFile(file);
-    setFileInputState(e.target.value);
-  };
+  // const [fileInputState, setFileInputState] = useState('');
+  // const [previewSource, setPreviewSource] = useState('');
+  // const [selectedFile, setSelectedFile] = useState('');
+  // // const [successMsg, setSuccessMsg] = useState('');
+  // // const [errMsg, setErrMsg] = useState('');
+  // const handleFileInputChange = (e) => {
+  //   const file = e.target.files[0];
+  //   previewFile(file);
+  //   setSelectedFile(file);
+  //   setFileInputState(e.target.value);
+  // };
 
-  const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
+  // const previewFile = (file) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     setPreviewSource(reader.result);
+  //   };
+  // };
 
-  const handleSubmitFile = (e) => {
-    e.preventDefault();
-    if (!selectedFile) return;
+  // const handleSubmitFile = (e) => {
+  //   e.preventDefault();
+  //   if (!selectedFile) return;
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(selectedFile);
+  //   reader.onloadend = () => {
+  //     uploadImage(reader.result);
+  //   };
+  //   reader.onerror = () => {
+  //     console.error('AHHHHHHHH!!');
+  //   };
+  // };
+
+  // const uploadImage = async (base64EncodedImage) => {
+  //   try {
+  //     await fetch('/api/upload', {
+  //       method: 'POST',
+  //       body: JSON.stringify({ data: base64EncodedImage }),
+  //       headers: { 'Content-Type': 'application/json' },
+  //     });
+  //     setFileInputState('');
+  //     setPreviewSource('');
+  //   } catch (err) {
+  //     console.error(err);
+  //     //   setErrMsg('Something went wrong!');
+  //   }
+  // };
+  const [previewImage, setPreviewImage] = useState(null);
+  const [image, setImage] = useState('');
+  const uploadTherapistImage = (e) => {
+    setPreviewImage(URL.createObjectURL(e.target.files[0]));
+
     const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
+    reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
-      uploadImage(reader.result);
+      CreateTherapistProfile({ data: reader.result });
+      console.log({ data: reader.result });
     };
     reader.onerror = () => {
-      console.error('AHHHHHHHH!!');
+      console.error('Article failed');
     };
   };
 
-  const uploadImage = async (base64EncodedImage) => {
-    try {
-      await fetch('/api/upload', {
-        method: 'POST',
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      setFileInputState('');
-      setPreviewSource('');
-    } catch (err) {
-      console.error(err);
-      //   setErrMsg('Something went wrong!');
-    }
-  };
   if (
     !summary ||
     !therapist_image_url ||
@@ -757,25 +773,42 @@ const CreateTherapistProfile = ({
                 Upload your photo
               </h6>
 
-              <form onSubmit={handleSubmitFile} className="form">
-                <input
-                  id="fileInput"
-                  type="file"
-                  name="uploadimg"
-                  onChange={handleFileInputChange}
-                  value={fileInputState}
-                  className="block mx-auto mt-2  w-4/5 p-3 rounded-full
+              {/* <input
+                id="fileInput"
+                type="file"
+                name="uploadCv"
+                onChange={uploadTherapistImage}
+                value={uploadCv}
+                className="block mx-auto mt-2  w-4/5 p-3 rounded-full
                     border focus:outline-none
                     focus:ring-1 focus:to-soul focus:border-transparent 
                     "
-                />
-                {/* <button className="btn" type="submit">
-                  Submit
-                </button> */}
-              </form>
-              {previewSource && (
+              /> */}
+
+              <input
+                type="file"
+                id="files"
+                name="uploadCv"
+                onChange={(e) => {
+                  setImage(e.target.files[0]);
+                  setPreviewImage(URL.createObjectURL(e.target.files[0]));
+                }}
+                // style={{ visibility: "hidden" }}
+              />
+              {/* <input
+                id="file-input"
+                type="file"
+                name="uploadCv"
+                onChange={(e) => {
+                  uploadTherapistImage(e);
+                  setImage(e.target.files[0]);
+                  setPreviewImage(URL.createObjectURL(e.target.files[0]));
+                }}
+              /> */}
+
+              {previewImage && (
                 <img
-                  src={previewSource}
+                  src={previewImage}
                   alt="chosen"
                   style={{
                     height: '80px',
