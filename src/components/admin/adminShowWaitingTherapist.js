@@ -1,20 +1,20 @@
-import React from "react";
-import { useEffect } from "react";
+import React from 'react';
+import { useEffect } from 'react';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 // import { Link } from "react-router-dom";
-import { getTherapists } from "../../actions/therapists";
-import { createTherapistProfile } from "../../actions/therapistProfile";
-import AdminTherapistCard from "./admintherapistcard";
+import { getTherapists } from '../../actions/therapists';
+import { createTherapistProfile } from '../../actions/therapistProfile';
+import AdminTherapistCard from './admintherapistcard';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   table: {
@@ -31,7 +31,7 @@ const AdminShowWaitingTherapists = ({
     getTherapists();
   }, [getTherapists]);
 
-  console.log("therapistsssssss", therapists);
+  console.log('therapistsssssss', therapists);
   return (
     <>
       {therapists && therapists.length > 0 && (
@@ -42,6 +42,7 @@ const AdminShowWaitingTherapists = ({
                 <TableCell>IMG</TableCell>
                 <TableCell align="right">First Name</TableCell>
                 <TableCell align="right">Last Name</TableCell>
+                <TableCell align="right">Licence</TableCell>
                 <TableCell align="right">accept</TableCell>
                 <TableCell align="right">Reject</TableCell>
                 <TableCell align="right">More</TableCell>
@@ -51,17 +52,20 @@ const AdminShowWaitingTherapists = ({
               {therapists.map((th) => (
                 <TableRow key={th._id}>
                   <TableCell component="th" scope="row">
-                    {"img"}
+                    {'img'}
                   </TableCell>
                   <TableCell align="right">{th?.fname}</TableCell>
                   <TableCell align="right">{th?.lname}</TableCell>
                   <TableCell align="right">
-                    {" "}
+                    <img src={th?.uploadCv} />
+                  </TableCell>
+                  <TableCell align="right">
+                    {' '}
                     <button
                       className="btn "
                       onClick={() => {
                         createTherapistProfile(
-                          { isAccepted: "Accepted" },
+                          { isAccepted: 'Accepted' },
                           th._id
                         );
                         getTherapists();
@@ -75,7 +79,7 @@ const AdminShowWaitingTherapists = ({
                       className="btn "
                       onClick={() => {
                         createTherapistProfile(
-                          { isAccepted: "Rejected" },
+                          { isAccepted: 'Rejected' },
                           th._id
                         );
                         getTherapists();
@@ -85,7 +89,7 @@ const AdminShowWaitingTherapists = ({
                     </button>
                   </TableCell>
                   <TableCell align="right">
-                    {" "}
+                    {' '}
                     <AdminTherapistCard therapist={th}>
                       <i className="fas fa-edit fas fa-1x text-soul-200"></i>
                     </AdminTherapistCard>
@@ -104,7 +108,7 @@ const mapStateToProps = (state) => ({
   state: state,
   //  oneTherapist: state.oneTherapist,
   therapists: state.therapists?.therapists.filter(
-    (th) => th.isAccepted == "Pending"
+    (th) => th.isAccepted == 'Pending'
   ),
   // therapist: state.therapistAuth,
 });
