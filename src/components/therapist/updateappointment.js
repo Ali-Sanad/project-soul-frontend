@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import booking from "../../assets/images/booktherapist.png";
+import React, {useEffect, useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import booking from '../../assets/images/booktherapist.png';
 
 //redux
-import { connect } from "react-redux";
-import {
-  updateAppointment,
-  loadAppointmentById,
-} from "../../actions/therapists";
+import {connect} from 'react-redux';
+import {updateAppointment, loadAppointmentById} from '../../actions/therapists';
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -36,7 +33,13 @@ const UpdateAppointment = ({
 }) => {
   useEffect(() => {
     loadAppointmentById(id);
-  }, [loadAppointmentById, id]);
+    setFormData({
+      date: oneAppointment && oneAppointment.date,
+      from: oneAppointment && oneAppointment.from.split(' ')[0],
+      to: oneAppointment && oneAppointment.to.split(' ')[0],
+      fees: oneTherapist && (oneTherapist.fees ? oneTherapist.fees : 150),
+    });
+  }, [loadAppointmentById, id, oneAppointment, oneTherapist]);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -50,22 +53,15 @@ const UpdateAppointment = ({
 
   ////////////////////////////////////////
   const [formData, setFormData] = useState({
-    date: "",
-    from: "",
-    to: "",
-    fees: "",
+    date: '',
+    from: '',
+    to: '',
+    fees: 150,
   });
-  useEffect(() => {
-    setFormData({
-      date: oneAppointment && oneAppointment?.date,
-      from: oneAppointment && oneAppointment?.from?.split(" ")[0],
-      to: oneAppointment && oneAppointment?.to?.split(" ")[0],
-      fees: oneTherapist && (oneTherapist?.fees ? oneTherapist?.fees : 150),
-    });
-  }, [oneAppointment]);
-  const { date, from, to, fees } = formData;
+
+  const {date, from, to, fees} = formData;
   const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value});
   };
 
   const onSubmit = (e) => {
@@ -76,12 +72,12 @@ const UpdateAppointment = ({
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <button type='button' onClick={handleOpen}>
         {children}
       </button>
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby='transition-modal-title'
+        aria-describedby='transition-modal-description'
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -93,60 +89,60 @@ const UpdateAppointment = ({
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title headers">Edit Appointment</h2>
-            <p id="transition-modal-description">
+            <h2 id='transition-modal-title headers'>Edit Appointment</h2>
+            <p id='transition-modal-description'>
               {/* ************************* */}
 
               <React.Fragment>
-                <div className="addappointment">
-                  <div className="container">
-                    <h5 className="headers">Fees:{fees} EGP</h5>
-                    <div className="row">
-                      <div className="col-12 col-md-6 addappointment__form">
+                <div className='addappointment'>
+                  <div className='container'>
+                    <h5 className='headers'>Fees:{fees} EGP</h5>
+                    <div className='row'>
+                      <div className='col-12 col-md-6 addappointment__form'>
                         <form onSubmit={(e) => onSubmit(e)}>
                           <h6> Date </h6>
                           <input
-                            type="date"
-                            name="date"
+                            type='date'
+                            name='date'
                             value={date}
                             onChange={(e) => onChange(e)}
-                            className="input"
+                            className='input'
                             required
                           ></input>
-                          <div className="addappointment__form__fromto">
+                          <div className='addappointment__form__fromto'>
                             <div>
                               <h6> From </h6>
                               <input
-                                type="time"
-                                name="from"
+                                type='time'
+                                name='from'
                                 value={from}
                                 onChange={(e) => onChange(e)}
-                                className="input"
+                                className='input'
                                 required
                               ></input>
                             </div>
                             <div>
                               <h6> To </h6>
                               <input
-                                type="time"
-                                name="to"
+                                type='time'
+                                name='to'
                                 value={to}
                                 onChange={(e) => onChange(e)}
-                                className="input"
+                                className='input'
                                 required
                               ></input>
                             </div>
                           </div>
 
                           <input
-                            type="submit"
-                            value="Edit Appointment"
-                            className="mainbtn mt-5"
+                            type='submit'
+                            value='Edit Appointment'
+                            className='mainbtn mt-5'
                           />
                         </form>
                       </div>
-                      <div className="col-12 col-md-6 addappointment__image">
-                        <img src={booking} alt=""></img>
+                      <div className='col-12 col-md-6 addappointment__image'>
+                        <img src={booking} alt=''></img>
                       </div>
                     </div>
                   </div>

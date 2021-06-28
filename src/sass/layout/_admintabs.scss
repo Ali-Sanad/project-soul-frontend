@@ -1,0 +1,27 @@
+.MuiTabs-flexContainer{
+    background-color: $colbg;
+}
+.PrivateTabIndicator-colorSecondary-5{
+    background-color: $colmain !important;
+    width: 2rem;
+}
+.MuiTab-wrapper{
+    color: $colfontsecondary;
+    font-size: 1.2rem;
+}
+.MuiTabs-flexContainer{
+    justify-content: center;
+}
+.MuiAppBar-colorPrimary{
+    box-shadow: 0px 0px 10px $colsecondary !important;
+}
+.MuiBox-root{
+    background-color: $colbg !important;
+}
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-alignRight{
+    color: $colmain;
+}
+.MuiTableCell-root.MuiTableCell-body{
+    color: $colfont;
+}
