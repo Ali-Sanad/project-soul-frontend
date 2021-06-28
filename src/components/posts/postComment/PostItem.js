@@ -34,7 +34,7 @@ const PostItem = ({ getPost, post: { post, loading }, match }) => {
       </div>
       <Message />
       <Totop />
-      <Footer />
+      {/* <Footer /> */}
     </Fragment>
   );
 };
