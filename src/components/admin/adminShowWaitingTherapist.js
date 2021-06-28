@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 
 import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
 import { getTherapists } from "../../actions/therapists";
 import { createTherapistProfile } from "../../actions/therapistProfile";
 import AdminTherapistCard from "./admintherapistcard";
@@ -31,7 +30,6 @@ const AdminShowWaitingTherapists = ({
     getTherapists();
   }, [getTherapists]);
 
-  console.log("therapistsssssss", therapists);
   return (
     <>
       {therapists && therapists.length > 0 && (

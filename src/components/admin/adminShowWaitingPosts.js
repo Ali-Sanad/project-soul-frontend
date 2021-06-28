@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 
 import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
 import { getPosts } from "../../actions/post";
 import { updatePost } from "../../actions/post";
 import AdminPostCard from "./adminpostcard";
@@ -27,7 +26,6 @@ const AdminShowWaitingTherapists = ({ getPosts, updatePost, posts }) => {
     getPosts();
   }, [getPosts]);
 
-  console.log("postsssss", posts);
   return (
     <>
       {posts && posts.length > 0 && (
@@ -92,9 +90,7 @@ const AdminShowWaitingTherapists = ({ getPosts, updatePost, posts }) => {
 
 const mapStateToProps = (state) => ({
   state: state,
-  //  oneTherapist: state.oneTherapist,
   posts: state.post?.posts.filter((post) => post.isAccepted == "Pending"),
-  // therapist: state.therapistAuth,
 });
 export default connect(mapStateToProps, {
   getPosts,

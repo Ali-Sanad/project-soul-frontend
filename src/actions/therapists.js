@@ -164,6 +164,7 @@ export const addReview = (body, therapistId) => async (dispatch) => {
       type: ADD_REVIEW,
       payload: res.data,
     });
+    //dispatch()
     dispatch(getTherapist(therapistId));
     dispatch(setAlert("Review created successfully ", "success"));
   } catch (error) {

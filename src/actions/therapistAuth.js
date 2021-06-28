@@ -18,7 +18,6 @@ import {
 export const loadTherapist = () => async (dispatch) => {
   try {
     const res = await axios.get("/therapist/me");
-    console.log(res.data);
 
     dispatch({
       type: THERAPIST_LOADED,
@@ -50,7 +49,6 @@ export const register =
 
     try {
       const res = await axios.post("/therapist/signup", body, config);
-      console.log("res.data", res.data);
       dispatch({
         type: THERAPIST_REGISTER_SUCCESS,
         payload: res.data.token,
@@ -58,8 +56,6 @@ export const register =
     } catch (err) {
       if (err.response) {
         const error = err.response.data.errors.err;
-
-        console.log(error);
 
         if (error) {
           dispatch(setAlert(error, "error"));
@@ -75,7 +71,6 @@ export const register =
 export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/therapist/login", formData);
-    console.log(res.data);
     dispatch(setAlert("Therapist logged in successfully", "success"));
 
     dispatch({
@@ -85,7 +80,6 @@ export const login = (formData) => async (dispatch) => {
 
     dispatch(loadTherapist());
   } catch (err) {
-    console.log("errrr", err);
     if (err.response) {
       const error = err.response.data.errors.err;
 
@@ -112,11 +106,7 @@ export const resetPassword = (token, formData) => async (dispatch) => {
     if (formData.password !== formData.confirmPassword) {
       dispatch(setAlert("the two psswords must be the same", "error"));
     } else {
-      const res = await axios.put(
-        `/therapist/resetpassword/${token}`,
-        formData
-      );
-      console.log("Resss", res);
+      await axios.put(`/therapist/resetpassword/${token}`, formData);
       //after reseting the password the user must login again with the new password
       dispatch({
         type: THERAPIST_RESET_PASSWORD,
@@ -124,10 +114,6 @@ export const resetPassword = (token, formData) => async (dispatch) => {
       dispatch(setAlert("password Reset Successfully", "success"));
     }
   } catch (err) {
-    console.log("errrrorr", err);
-    const error = err.response.data.errors;
-
-    console.log("errrrr", err);
     dispatch(setAlert("error", "error"));
   }
 };
@@ -136,7 +122,6 @@ export const resetPassword = (token, formData) => async (dispatch) => {
 export const forgotPassword = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/therapist/forgotpassword", formData);
-    console.log(res.data);
 
     dispatch(setAlert(res.data.msg, "success"));
     dispatch({
@@ -144,7 +129,6 @@ export const forgotPassword = (formData) => async (dispatch) => {
     });
   } catch (err) {
     const error = err.response.data.errors.err;
-    console.log("err", error);
     dispatch(setAlert(error, "error"));
   }
 };
