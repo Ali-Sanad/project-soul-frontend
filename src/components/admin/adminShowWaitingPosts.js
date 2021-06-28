@@ -1,8 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { getPosts } from "../../actions/post";
 import { updatePost } from "../../actions/post";
 import AdminPostCard from "./adminpostcard";

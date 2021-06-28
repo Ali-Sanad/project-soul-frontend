@@ -133,7 +133,7 @@ const App = () => {
           <Route path="/admindashboard" exact component={AdminDashboard} />
 
           <Route
-            path="/therapistlist/:id"
+            path="/therapistlist/:id/:content"
             exact
             component={TherapistDashboard}
           />
