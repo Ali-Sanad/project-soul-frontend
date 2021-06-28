@@ -18,7 +18,6 @@ const SearchPost = ({
   }, []);
 
   const handleInputChange = (e) => {
-    console.log(postList);
     setSearch(e.target.value);
 
     let searchPosts;
@@ -36,10 +35,10 @@ const SearchPost = ({
   };
   return (
     <>
-      <div className="postForm">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 postForm__inputs">
+      <div className='postForm'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12 postForm__inputs'>
               {/* <Dropdown>
                 <Dropdown.Toggle variant='success' id='dropdown-basic'>
                   Category
@@ -56,15 +55,15 @@ const SearchPost = ({
                 </Dropdown.Menu>
               </Dropdown> */}
               <input
-                type="text"
-                placeholder="Search"
-                className="postForm__inputs__search inputstyle"
+                type='text'
+                placeholder='Search'
+                className='postForm__inputs__search inputstyle'
                 value={searchValue}
                 onChange={(e) => handleInputChange(e)}
                 required
               />
               <a>
-                <img src={ImageSearch} className="postForm__imageSearch" />
+                <img src={ImageSearch} className='postForm__imageSearch' />
               </a>
             </div>
           </div>
