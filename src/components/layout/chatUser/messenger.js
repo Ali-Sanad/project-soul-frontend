@@ -83,7 +83,7 @@ const MessengerUser = ({
                         <div ref={scrollRef}>
                           <Message
                             message={message}
-                            own={message.Sender === user._id}
+                            own={message.Sender === user?._id}
                             user={user}
                             members={members}
                           />
