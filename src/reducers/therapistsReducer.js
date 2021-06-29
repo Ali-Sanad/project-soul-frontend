@@ -12,7 +12,7 @@ import {
   DELETE_REVIEW,
   REVIEW_ERROR,
   ADD_THERAPIST_IMAGE,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
   therapists: [],
@@ -21,8 +21,8 @@ const initialState = {
 };
 
 const therapists = (state = initialState, action) => {
-  const {type, payload} = action;
-  console.log('action', action);
+  const { type, payload } = action;
+  console.log("action", action);
   switch (type) {
     case GET_THERAPISTS:
       return {
@@ -38,7 +38,7 @@ const therapists = (state = initialState, action) => {
     case ADD_THERAPIST_IMAGE:
       return {
         ...state,
-        oneTherapist: payload,
+        // oneTherapist: payload,
       };
 
     case ADD_THERAPIST_APPOINTMENT:
@@ -56,7 +56,7 @@ const therapists = (state = initialState, action) => {
       newAppointments.map((app) => (app._id === payload._id ? payload : app));
       return {
         ...state,
-        oneTherapist: {...state.oneTherapist, appointments: newAppointments},
+        oneTherapist: { ...state.oneTherapist, appointments: newAppointments },
       };
     case DELETE_THERAPIST_APPOINTMENT:
       let clonedAppointments = [...state.oneTherapist.appointments];
