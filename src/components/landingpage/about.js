@@ -1,6 +1,14 @@
-import React from "react";
+import React,{useEffect} from "react";
+import WOW from 'wowjs';
 
 const About = () => {
+  
+  useEffect(()=>{
+    new WOW.WOW({
+        live: false
+    }).init();
+})
+
   return (
     <>
       <div className="about" id="about">
@@ -9,10 +17,10 @@ const About = () => {
             <h2 className="headers">What We Do?</h2>
           </div>
           <div className="row">
-            <div className="col-12 col-md-6 about__image">
+            <div className="col-12 col-md-6 about__image wow fadeInLeft" data-wow-duration="1s">
               <img src="./images/about.png" alt="" />
             </div>
-            <div className="col-12 col-md-6 about__data">
+            <div className="col-12 col-md-6 about__data wow fadeInRight" data-wow-duration="1s"  data-wow-delay=".1s">
               <p>
                 Just like any muscle, your personality requires strengthening
                 and your heart, mind and soul deserve specialized care. With
