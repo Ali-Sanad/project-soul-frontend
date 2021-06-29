@@ -6,6 +6,7 @@ import { getTherapist } from "../../actions/therapists";
 
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
+import TherapistFiles from "./therapistfiles";
 import TherapistProfile from "./therapistprofile";
 import TherapistSummary from "./therapistsummary";
 import TherapistReview from "./therapistreview";
@@ -19,6 +20,7 @@ const TherapistDashboard = ({
   therapist,
   getTherapist,
   user,
+  review,
   newConversation,
 }) => {
   let content = match.params.content;
@@ -27,6 +29,9 @@ const TherapistDashboard = ({
   const receiverId = id;
   console.log("user", user);
   useEffect(() => {
+    // if (id && user) {
+    //   newConversation({ senderId, receiverId });
+    // }
     getTherapist(id);
   }, [getTherapist, id, newConversation, user]);
 
@@ -71,21 +76,21 @@ const TherapistDashboard = ({
               {/* <TherapistFiles></TherapistFiles> */}
               {/* <TherapistProfile></TherapistProfile> */}
 
-              {content == "profile" && <TherapistProfile id={id} />}
-              {content == "summary" && (
+              {content === "profile" && <TherapistProfile id={id} />}
+              {content === "summary" && (
                 <TherapistSummary id={id}></TherapistSummary>
               )}
-              {content == "appointments" && (
+              {content === "appointments" && (
                 <>
                   <Appointments id={id}></Appointments>
                 </>
               )}
-              {content == "addappointment" && (
+              {content === "addappointment" && (
                 <>
                   <AddAppointment></AddAppointment>
                 </>
               )}
-              {content == "reviews" && (
+              {content === "reviews" && (
                 <TherapistReview id={id}></TherapistReview>
               )}
 
