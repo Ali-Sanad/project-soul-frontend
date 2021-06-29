@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { therapist_logout } from "../../actions/therapistAuth";
 import { Redirect, Link, NavLink } from "react-router-dom";
 
 import { login } from "../../actions/therapistAuth";
@@ -7,8 +8,38 @@ import propTypes from "prop-types";
 import loginImage from "./../../assets/images/login.png";
 import logo from "./../../assets/images/logo.png";
 import "../../index.css"; //tailwind import
-
-const LoginTherapist = ({ login, isAuthenticated_therapist, therapist }) => {
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { autofill } from "redux-form";
+import TherapistPending from "./therapist-pending";
+const useStyles = makeStyles({
+  root: {
+    margin: "auto",
+    minWidth: 275,
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+const LoginTherapist = ({
+  login,
+  isAuthenticated_therapist,
+  therapist,
+  therapist_logout,
+}) => {
+  const classes = useStyles();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,8 +61,23 @@ const LoginTherapist = ({ login, isAuthenticated_therapist, therapist }) => {
       login(formData);
     }
   };
-
-  if (isAuthenticated_therapist && therapist) {
+  if (
+    isAuthenticated_therapist &&
+    therapist &&
+    therapist?.isAccepted == "Pending"
+  ) {
+    return <Redirect to={`/therapistpending`} />;
+  } else if (
+    isAuthenticated_therapist &&
+    therapist &&
+    therapist?.isAccepted == "Rejected"
+  ) {
+    return <Redirect to={`/therapistrejected`} />;
+  } else if (
+    isAuthenticated_therapist &&
+    therapist &&
+    therapist?.isAccepted == "Accepted"
+  ) {
     // return <Redirect to={`/therapistlist/${therapist._id}`} />;
     return <Redirect to={`/therapistlist/${therapist._id}/profile`} />;
   }
@@ -148,4 +194,6 @@ const mapStateToProps = (state) => ({
   isAuthenticated_therapist: state.therapistAuth.isAuthenticated_therapist,
   therapist: state.therapistAuth.therapist,
 });
-export default connect(mapStateToProps, { login })(LoginTherapist);
+export default connect(mapStateToProps, { login, therapist_logout })(
+  LoginTherapist
+);

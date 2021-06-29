@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 //redux
-import {connect} from 'react-redux';
-import {deleteAppointment} from '../../actions/therapists';
-import UpdateAppointment from './updateappointment';
-import {withRouter} from 'react-router-dom';
-import Payment from '../Payment';
-import classes from './appointments.module.css';
+import { connect } from "react-redux";
+
+import {
+  deleteAppointment,
+  loadAppointmentById,
+} from "../../actions/therapists";
+import UpdateAppointment from "./updateappointment";
+import { withRouter } from "react-router-dom";
+import Payment from "../Payment";
+import classes from "./appointments.module.css";
 const Appointments = ({
   therapistAuth,
   auth,
   oneTherapist,
   deleteAppointment,
+  loadAppointmentById,
   id,
   history,
 }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const onChange = (e) => {
     console.log(e.target.value);
@@ -22,35 +27,35 @@ const Appointments = ({
   };
 
   return (
-    <div className='addappointment h-screen '>
+    <div className="addappointment h-screen ">
       <div className={classes.APP}>
-        <h4 className='headers'>Appointments </h4>
+        <h4 className="headers">Appointments </h4>
         {oneTherapist && oneTherapist.appointments.length > 0 ? (
           <>
-            <h5 className='headers'>
-              Fees:{' '}
+            <h5 className="headers">
+              Fees:{" "}
               {oneTherapist && oneTherapist.fees ? oneTherapist.fees : 150} USD
             </h5>
-            <div className='h-full overflow-auto flex items-center justify-center'>
-              <div className='container'>
-                <table className='w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-auto sm:shadow-lg my-5'>
-                  <thead className='text-black bg-soul-100 '>
+            <div className="h-full overflow-auto flex items-center justify-center">
+              <div className="container">
+                <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-auto sm:shadow-lg my-5">
+                  <thead className="text-black bg-soul-100 ">
                     {oneTherapist.appointments.map((_, idx) => (
                       <tr
                         key={idx}
-                        className='bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'
+                        className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
                       >
-                        <th className='p-3 text-left'>Date</th>
-                        <th className='p-3 text-left'>From</th>
-                        <th className='p-3 text-left'>To</th>
-                        <th className='p-3 text-left'>Select</th>
+                        <th className="p-3 text-left">Date</th>
+                        <th className="p-3 text-left">From</th>
+                        <th className="p-3 text-left">To</th>
+                        <th className="p-3 text-left">Select</th>
                         {therapistAuth &&
                           therapistAuth.isAuthenticated_therapist &&
                           therapistAuth.therapist._id === id && (
                             <>
-                              <th className='p-3 text-left'>Edit</th>
-                              <th className='p-3 text-left'>Delete</th>
-                              <th className='p-3 text-left' width='110px'>
+                              <th className="p-3 text-left">Edit</th>
+                              <th className="p-3 text-left">Delete</th>
+                              <th className="p-3 text-left" width="110px">
                                 Patient
                               </th>
                             </>
@@ -58,30 +63,30 @@ const Appointments = ({
                       </tr>
                     ))}
                   </thead>
-                  <tbody className='flex-1 sm:flex-none'>
+                  <tbody className="flex-1 sm:flex-none">
                     {oneTherapist.appointments.map((app) => (
                       <tr
-                        className='flex flex-col flex-no wrap sm:table-row mb-6   sm:mb-0'
+                        className="flex flex-col flex-no wrap sm:table-row mb-6   sm:mb-0"
                         key={app._id}
                       >
-                        <td className='border-grey-light border hover:bg-gray-100 p-3 text-center '>
+                        <td className="border-grey-light border hover:bg-gray-100 p-3 text-center ">
                           {new Date(app.date).toDateString()}
                         </td>
-                        <td className='border-grey-light border hover:bg-gray-100 p-3  text-center'>
+                        <td className="border-grey-light border hover:bg-gray-100 p-3  text-center">
                           {app.from}
                         </td>
-                        <td className='border-grey-light border hover:bg-gray-100 p-3  text-center'>
+                        <td className="border-grey-light border hover:bg-gray-100 p-3  text-center">
                           {app.to}
                         </td>
                         <td
                           className={`${
-                            app?.booking.isBooked && 'bg-red-200'
+                            app?.booking.isBooked && "bg-red-200"
                           } border-grey-light border cursor-pointer p-3  text-center`}
                         >
                           <input
-                            className='cursor-pointer '
-                            type='radio'
-                            name='book'
+                            className="cursor-pointer "
+                            type="radio"
+                            name="book"
                             value={app._id}
                             onChange={(e) => onChange(e)}
                             disabled={app.booking.isBooked ? true : false}
@@ -91,16 +96,19 @@ const Appointments = ({
                           therapistAuth.isAuthenticated_therapist &&
                           therapistAuth.therapist._id === id && (
                             <>
-                              <td className='border-grey-light border hover:bg-gray-100 p-3 truncate text-center'>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate text-center">
                                 <UpdateAppointment
                                   id={app._id}
                                   therapistId={therapistAuth.therapist._id}
                                 >
-                                  <i className='fas fa-edit fas fa-1x text-soul-200 text-center'></i>
+                                  <i
+                                    className="fas fa-edit fas fa-1x text-soul-200 text-center"
+                                    onClick={() => loadAppointmentById(app._id)}
+                                  ></i>
                                 </UpdateAppointment>
                               </td>
 
-                              <td className='border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-bold cursor-pointer text-center'>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-bold cursor-pointer text-center">
                                 {!app.booking.isBooked ? (
                                   <span
                                     onClick={() =>
@@ -116,7 +124,7 @@ const Appointments = ({
                                   <span>Booked</span>
                                 )}
                               </td>
-                              <td className='border-grey-light border hover:bg-gray-100 p-3 text-center '>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3 text-center ">
                                 {app.booking.isBooked && app.booking.user.name}
                               </td>
                             </>
@@ -135,15 +143,15 @@ const Appointments = ({
               />
             ) : (
               <input
-                type='button'
-                value='Book'
-                className='mainbtn block mx-auto '
-                onClick={() => history.push('/login')}
+                type="button"
+                value="Book"
+                className="mainbtn block mx-auto "
+                onClick={() => history.push("/login")}
               />
             )}
           </>
         ) : (
-          <p className='text-soul-300'>
+          <p className="text-soul-300">
             No appointments yet for this therapist
           </p>
         )}
@@ -160,4 +168,5 @@ const mapStateTopProps = (state) => ({
 
 export default connect(mapStateTopProps, {
   deleteAppointment,
+  loadAppointmentById,
 })(withRouter(Appointments));

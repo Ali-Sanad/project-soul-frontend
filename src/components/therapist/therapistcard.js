@@ -9,7 +9,7 @@ import userimg from "../../assets/images/user.png";
 const TherapistCard = ({ therapist, history }) => {
   const bookTherapistHandler = (id) => {
     // history.push(`/booktherapist/${id}`);
-    history.push(`/therapistlist/${id}`);
+    history.push(`/therapistlist/${id}/appointments`);
   };
 
   const viewProfileHandler = (id) => {
@@ -28,10 +28,14 @@ const TherapistCard = ({ therapist, history }) => {
         <p>
           {therapist?.fname} {therapist?.lname}
         </p>
+<<<<<<< HEAD
         <div
           className="therapistcard__rate"
           style={{ backgroundColor: "white !important" }}
         >
+=======
+        <div className="therapistcard__rate">
+>>>>>>> acfcff5239e6fff8f4d6d1e018d2dcdab9d8830b
           <Box component="fieldset" mb={3} borderColor="transparent">
             <Rating
               name="read-only"

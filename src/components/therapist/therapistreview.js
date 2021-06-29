@@ -3,13 +3,15 @@ import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import { connect } from "react-redux";
 
-import userimg from "../../assets/images/user.png";
 import ReviewForm from "./createReview";
+<<<<<<< HEAD
 import { useEffect } from "react";
 import { getReviews, deleteReview } from "../../actions/therapists";
 import Moment from "react-moment";
+=======
+>>>>>>> acfcff5239e6fff8f4d6d1e018d2dcdab9d8830b
 
-// import { getTherapist } from '../../actions/therapist'
+import { deleteReview } from "../../actions/therapists";
 
 const TherapistReview = ({
   isAuth,
@@ -21,23 +23,10 @@ const TherapistReview = ({
 
   therapist,
 }) => {
-  console.log("isAuth", isAuth);
-  console.log("the", therapist);
-
-  // useEffect(() => {
-  //   // getTherapist(id)
-  //   // getReviews(id);
-  // }, [review]);
-
-  console.log("review", review);
-  // console.log("therapist in ", therapist);
-
   const handleDelete = (id, reviewId) => {
     deleteReview(id, reviewId);
   };
-  //   const handleUpdate = (id, reviewId) => {
-  //     deleteReview(id, reviewId);
-  //   }
+
   return (
     <React.Fragment>
       {console.log(therapist)}
@@ -70,7 +59,10 @@ const TherapistReview = ({
                   </div>
                 </div>
                 <div className="col-12 col-md-6">
-                  {isAuth && <ReviewForm id={id} />}
+                  {isAuth &&
+                    therapist?.appointments.some(
+                      (app) => app.booking?.user?._id === auth?.user?._id
+                    ) && <ReviewForm id={id} />}
                 </div>
               </div>
             </div>
@@ -79,8 +71,8 @@ const TherapistReview = ({
               <h4 className="headers">All Reviews</h4>
             )}
             {review &&
-              review.map((review) => (
-                <div className="therapistreview__allreview" key="review._id">
+              review.map((review, i) => (
+                <div className="therapistreview__allreview" key={review._id}>
                   <div className="therapistreview__allreview__header">
                     <Box component="fieldset" mb={3} borderColor="transparent">
                       <Rating
@@ -122,7 +114,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  // getTherapist,
-  //getReviews,
   deleteReview,
 })(TherapistReview);

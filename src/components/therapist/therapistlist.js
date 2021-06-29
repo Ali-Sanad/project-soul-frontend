@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { getTherapists } from "../../actions/therapists";
@@ -14,7 +14,6 @@ const TherapistList = ({ getTherapists, therapists }) => {
   useEffect(() => {
     getTherapists();
   }, [getTherapists]);
-  console.log("therapistss", therapists);
   return (
     <React.Fragment>
       <Navbar></Navbar>
@@ -42,9 +41,6 @@ const mapStateToProps = (state) => ({
   therapists: state.therapists?.therapists.filter(
     (th) => th.isAccepted === "Accepted"
   ),
-  //  oneTherapist: state.oneTherapist,
-  // therapists: state.therapists,
-  // therapist: state.therapistAuth,
 });
 
 export default connect(mapStateToProps, { getTherapists })(TherapistList);

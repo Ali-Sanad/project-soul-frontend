@@ -7,7 +7,7 @@ import booking from '../../assets/images/booktherapist.png';
 
 //redux
 import {connect} from 'react-redux';
-import {updateAppointment, loadAppointmentById} from '../../actions/therapists';
+import {updateAppointment} from '../../actions/therapists';
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -28,18 +28,16 @@ const UpdateAppointment = ({
   therapistId,
   oneTherapist,
   updateAppointment,
-  loadAppointmentById,
   oneAppointment,
 }) => {
   useEffect(() => {
-    loadAppointmentById(id);
     setFormData({
       date: oneAppointment && oneAppointment.date,
-      from: oneAppointment && oneAppointment.from.split(' ')[0],
-      to: oneAppointment && oneAppointment.to.split(' ')[0],
+      from: oneAppointment && oneAppointment.from,
+      to: oneAppointment && oneAppointment.to,
       fees: oneTherapist && (oneTherapist.fees ? oneTherapist.fees : 150),
     });
-  }, [loadAppointmentById, id, oneAppointment, oneTherapist]);
+  }, [oneAppointment, oneTherapist]);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -164,5 +162,4 @@ const mapStateTopProps = (state) => ({
 });
 export default connect(mapStateTopProps, {
   updateAppointment,
-  loadAppointmentById,
 })(UpdateAppointment);

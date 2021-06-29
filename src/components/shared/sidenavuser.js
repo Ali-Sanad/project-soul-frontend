@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import client from "./../../assets/images/client.jpeg";
 import iconimg from "./../../assets/images/iconimg.png";
+import { Link, NavLink } from "react-router-dom";
+import UserAppointments from "../user/userAppointments";
 
 const Sidenavuser = ({ auth }) => {
   return (
@@ -28,9 +30,33 @@ const Sidenavuser = ({ auth }) => {
             </div>
             <div className="sidenav__menu">
               <ul>
-                <li className="active">Profile</li>
-                <li>Appointments</li>
-                <li>Wallet</li>
+                <li>
+                  <NavLink
+                    to={{
+                      pathname: `/user-profile`,
+                    }}
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={{
+                      pathname: `/userAppointments`,
+                    }}
+                  >
+                    Appointments
+                  </NavLink>
+                  </li>
+                  <li>
+                  <NavLink
+                    to={{
+                      pathname: `/userSession`,
+                    }}
+                  >
+                    Session
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>
