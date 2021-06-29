@@ -2,10 +2,10 @@ import React from "react";
 import Navbar from "../shared/navbar";
 import Sidenavuser from "../shared/sidenavuser";
 
-const UserAppointments = () => {
+const UserSession = () => {
   return (
     <>
-    <div className="userdashboard">
+      <div className="userdashboard">
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -15,7 +15,11 @@ const UserAppointments = () => {
               <Sidenavuser></Sidenavuser>
             </div>
             <div className="col-8">
-              <h3>Appointments</h3>
+              <div className="container">
+                <form>
+                  <h3>Session</h3>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -24,4 +28,4 @@ const UserAppointments = () => {
   );
 };
 
-export default UserAppointments;
+export default UserSession;

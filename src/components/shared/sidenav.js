@@ -8,7 +8,7 @@ import userimg from "./../../assets/images/user.png";
 import iconimg from "./../../assets/images/iconimg.png";
 import { connect } from "react-redux";
 import { addTherapistProfileImage } from "../../actions/therapists";
-
+ 
 const Sidenav = ({ id, therapist, addTherapistProfileImage, authId }) => {
   const history = useHistory();
   // console.log('id in sidnav', id);

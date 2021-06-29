@@ -52,6 +52,9 @@ import TherapistDataForm from "./components/therapistDataForm";
 import Home from "./components/landingpage/home";
 import UserProfile from "./components/user/UserProfile";
 import UserUpdate from "./components/user/userUpdate";
+import UserAppointments from "./components/user/userAppointments";
+import UserSession from "./components/user/userSession";
+
 import Post from "./components/posts/Post";
 import PostItem from "./components/posts/postComment/PostItem";
 import Error from "./components/shared/error";
@@ -214,6 +217,8 @@ const App = () => {
             component={AddTherapistEducation}
           />
           <Route exact path="/updateUser" component={UserUpdate}/>
+          <Route exact path="/userAppointments" component={UserAppointments}/>
+          <Route exact path="/userSession" component={UserSession}/>
 
           <Route path="/messenger-user">
             <MessengerUser />
