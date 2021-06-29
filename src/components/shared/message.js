@@ -20,11 +20,11 @@ const MessageIcon = ({
           <img src={msg} alt=""></img>
         </Link>
       )}
-      {!isAuthenticated_therapist && !therapist && !isAuthenticated && !user && (
+      {/* {!isAuthenticated_therapist && !therapist && !isAuthenticated && !user && (
         <Link className="message__icon" to="/">
           <img src={msg} alt=""></img>
         </Link>
-      )}
+      )} */}
     </React.Fragment>
   );
 };

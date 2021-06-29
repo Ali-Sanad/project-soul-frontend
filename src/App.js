@@ -70,6 +70,8 @@ import AdminSideNav from "./components/admin/adminsidenav";
 import AdminDashboard from "./components/admin/admindashboard";
 import AdminTherapistCard from "./components/admin/admintherapistcard";
 import AdminPostCard from "./components/admin/adminpostcard";
+import TherapistPending from "./components/auth/therapist-pending";
+import TherapistRejected from "./components/auth/therapist-rejected";
 
 // import NavBar from "./components/shared/navbar";
 
@@ -114,7 +116,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      {/* <NavBar></NavBar> */}
+        {/* <NavBar></NavBar> */}
         <Alert />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -213,7 +215,7 @@ const App = () => {
             path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
-          <Route exact path="/updateUser" component={UserUpdate}/>
+          <Route exact path="/updateUser" component={UserUpdate} />
 
           <Route path="/messenger-user">
             <MessengerUser />
@@ -229,6 +231,13 @@ const App = () => {
             <SingleArticle />
           </Route>
           <Route exact path="/therapist-card" component={AdminTherapistCard} />
+          <Route exact path="/therapistpending" component={TherapistPending} />
+          <Route
+            exact
+            path="/therapistrejected"
+            component={TherapistRejected}
+          />
+
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
         </Switch>

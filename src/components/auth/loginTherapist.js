@@ -15,6 +15,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { autofill } from "redux-form";
+import TherapistPending from "./therapist-pending";
 const useStyles = makeStyles({
   root: {
     margin: "auto",
@@ -65,65 +66,13 @@ const LoginTherapist = ({
     therapist &&
     therapist?.isAccepted == "Pending"
   ) {
-    return (
-      <Card className={classes.root}>
-        <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Word of the Day
-          </Typography>
-
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" onClick={() => therapist_logout()}>
-            Log Out
-          </Button>
-        </CardActions>
-      </Card>
-    );
+    return <Redirect to={`/therapistpending`} />;
   } else if (
     isAuthenticated_therapist &&
     therapist &&
     therapist?.isAccepted == "Rejected"
   ) {
-    return (
-      <Card className={classes.root}>
-        <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Word of the Day
-          </Typography>
-
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" onClick={() => therapist_logout()}>
-            Log Out
-          </Button>
-        </CardActions>
-      </Card>
-    );
+    return <Redirect to={`/therapistrejected`} />;
   } else if (
     isAuthenticated_therapist &&
     therapist &&
