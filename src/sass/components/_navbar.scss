@@ -1,16 +1,16 @@
 .navBar {
   background-color: transparent;
   // position: fixed !important;
-  // font-family: cursive;
   top: 0;
   width: 100%;
+  // z-index: 1;
   &.color {
     background-color: $colbg;
     box-shadow: 0px 0px 5px $colmain;
   }
   &__image {
-    // width: 150px;
-    // height: 40px;
+    width: 150px;
+    height: 40px;
     &__user {
       width: 40px;
       height: 40px;

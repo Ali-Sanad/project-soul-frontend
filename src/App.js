@@ -124,7 +124,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/home" exact component={Home} />
-          <Route path="/about" exact component={HeroSection} />
+          {/* <Route path="/about" exact component={HeroSection} /> */}
           <Route path="/works" exact component={Works} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/login" exact component={Login} />

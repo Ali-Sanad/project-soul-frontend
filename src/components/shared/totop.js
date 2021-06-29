@@ -1,39 +1,40 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const Totop = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   const toggleVisible = () => {
-    const scrolled = document.documentElement.scrollTop;
+    const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
-      setVisible(true);
+      setVisible(true)
     } else if (scrolled <= 300) {
-      setVisible(false);
+      setVisible(false)
     }
-  };
+  }
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
-    });
-  };
+      behavior: 'smooth',
+      duration: 500,
+    })
+  }
 
-  window.addEventListener("scroll", toggleVisible);
+  window.addEventListener('scroll', toggleVisible)
 
   return (
     <React.Fragment>
       <div
-        className="totop"
+        className='totop'
         onClick={scrollToTop}
-        style={{ display: visible ? "inline" : "none" }}
+        style={{ display: visible ? 'inline' : 'none' }}
       >
-        <div className="totop__arrow">
-          <i className="fas fa-chevron-up"></i>
+        <div className='totop__arrow'>
+          <i className='fas fa-chevron-up'></i>
         </div>
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default Totop;
+export default Totop

@@ -27,7 +27,7 @@ const Appointments = ({
   };
 
   return (
-    <div className="addappointment h-screen ">
+    <div className="addappointment">
       <div className={classes.APP}>
         <h4 className="headers">Appointments </h4>
         {oneTherapist && oneTherapist.appointments.length > 0 ? (
