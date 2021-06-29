@@ -1,24 +1,25 @@
-import axios from '../utils/api';
-import { setAlert } from './alert';
+import axios from "../utils/api";
+import { setAlert } from "./alert";
 
 import {
   THERAPIST_GET_PROFILE,
   THERAPIST_PROFILE_ERROR,
   THERAPIST_UPDATE_PROFILE,
-} from './types';
+  UPDATE_THERAPIST_FORM,
+} from "./types";
 
 //Get current therapist profile
 
 export const getCurrentTherapistProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get('/therapistProfile/getmyprofile');
-    console.log('hhh', res);
+    const res = await axios.get("/therapistProfile/getmyprofile");
+    console.log("hhh", res);
     dispatch({
       type: THERAPIST_GET_PROFILE,
       payload: res.data,
     });
   } catch (err) {
-    console.log('error', err);
+    console.log("error", err);
     dispatch({
       type: THERAPIST_PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
@@ -31,18 +32,40 @@ export const createTherapistProfile = (formData, id) => async (dispatch) => {
   console.log(id, formData);
   try {
     const res = await axios.patch(`/therapist/updatatherapist/${id}`, formData);
-    console.log(res.data, 'gg');
+    console.log(res.data, "gg");
     dispatch({
       type: THERAPIST_UPDATE_PROFILE,
       payload: res.data,
     });
   } catch (err) {
-    console.log(err, 'hh');
+    console.log(err, "hh");
     //  const errors = err.response.data.errors;
 
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, error)));
     // }
+
+    dispatch({
+      type: THERAPIST_PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const updateTherapistForm = (formData, id) => async (dispatch) => {
+  console.log(id, formData);
+  try {
+    const res = await axios.patch(
+      `/therapistProfile/updatatherapist/${id}`,
+      formData
+    );
+    console.log(res.data, "gg");
+    dispatch({
+      type: UPDATE_THERAPIST_FORM,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err, "hh");
 
     dispatch({
       type: THERAPIST_PROFILE_ERROR,
@@ -65,15 +88,15 @@ export const addExperience = (formData, id, history) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Experience Added', 'success'));
+    dispatch(setAlert("Experience Added", "success"));
 
     //   history.push('/');
   } catch (err) {
     // const errors = err.response.data.errors;
-    console.log(err, 'hh');
+    console.log(err, "hh");
     const errors = err.response?.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
@@ -126,7 +149,7 @@ export const addEducation = (formData, id, history) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Education Added', 'success'));
+    dispatch(setAlert("Education Added", "success"));
 
     //   history.push('/');
   } catch (err) {

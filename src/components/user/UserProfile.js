@@ -6,8 +6,17 @@ import SideNav from "../shared/sidenav";
 import Sidenavuser from "../shared/sidenavuser";
 import UserDate from "./userData";
 import UserUpdateForm from "./userUpdateForm";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const UserProfile = (props) => {
+  const { auth } = props;
+  const history = useHistory();
+
+  //make page private and redirect to home if logout
+  if (!auth?.isAuthenticated && !auth?.user) {
+    history.push("/");
+  }
   return (
     <>
       <div className="userdashboard">
@@ -31,4 +40,10 @@ const UserProfile = (props) => {
 
 UserProfile.propTypes = {};
 
-export default UserProfile;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, {})(UserProfile);

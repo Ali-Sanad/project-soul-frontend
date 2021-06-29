@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { createTherapistProfile } from "../../actions/therapistProfile";
+import { updateTherapistForm } from "../../actions/therapistProfile";
 
-const TherapistSummary = ({ therapist, id, createTherapistProfile, auth }) => {
+const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
   const [disable, setDisable] = useState(true);
   const [formData, setFormData] = useState({
     summary: "",
@@ -35,7 +35,7 @@ const TherapistSummary = ({ therapist, id, createTherapistProfile, auth }) => {
     if (disable) {
       setDisable(false);
     } else {
-      createTherapistProfile(formData, id);
+      updateTherapistForm(formData, id);
       setDisable(true);
     }
   };
@@ -137,6 +137,6 @@ const mapStateToProps = (state) => ({
   therapist: state.therapists?.oneTherapist,
   auth: state.therapistAuth,
 });
-export default connect(mapStateToProps, { createTherapistProfile })(
+export default connect(mapStateToProps, { updateTherapistForm })(
   TherapistSummary
 );

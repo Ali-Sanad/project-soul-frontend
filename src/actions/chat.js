@@ -10,7 +10,7 @@ import {
   NEW_MESSAGE,
   NEW_MESSAGE_ERROR,
 } from "./types";
-import { setAlert } from "./alert";
+// import { setAlert } from "./alert";
 
 export const getConversations = (id) => async (dispatch) => {
   try {

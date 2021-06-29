@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 import { connect } from "react-redux";
 import { getTherapists } from "../../actions/therapists";
-import { createTherapistProfile } from "../../actions/therapistProfile";
+import { updateTherapistForm } from "../../actions/therapistProfile";
 import AdminTherapistCard from "./admintherapistcard";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 const AdminShowWaitingTherapists = ({
   getTherapists,
-  createTherapistProfile,
+  updateTherapistForm,
   therapists,
 }) => {
   const classes = useStyles();
@@ -62,34 +62,28 @@ const AdminShowWaitingTherapists = ({
                     <button
                       className="btn "
                       onClick={() => {
-                        createTherapistProfile(
-                          { isAccepted: "Accepted" },
-                          th._id
-                        );
+                        updateTherapistForm({ isAccepted: "Accepted" }, th._id);
                         getTherapists();
                       }}
                     >
-                      Accept
+                      <i className="fas fa-check"></i>
                     </button>
                   </TableCell>
                   <TableCell align="right">
                     <button
                       className="btn "
                       onClick={() => {
-                        createTherapistProfile(
-                          { isAccepted: "Rejected" },
-                          th._id
-                        );
+                        updateTherapistForm({ isAccepted: "Rejected" }, th._id);
                         getTherapists();
                       }}
                     >
-                      Rejected
+                      <i className="fas fa-times"></i>
                     </button>
                   </TableCell>
                   <TableCell align="right">
                     {" "}
                     <AdminTherapistCard therapist={th}>
-                      <i className="fas fa-edit fas fa-1x text-soul-200"></i>
+                      <i className="fas fa-info"></i>
                     </AdminTherapistCard>
                   </TableCell>
                 </TableRow>
@@ -112,5 +106,5 @@ const mapStateToProps = (state) => ({
 });
 export default connect(mapStateToProps, {
   getTherapists,
-  createTherapistProfile,
+  updateTherapistForm,
 })(AdminShowWaitingTherapists);

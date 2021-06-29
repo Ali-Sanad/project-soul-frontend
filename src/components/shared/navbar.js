@@ -5,6 +5,8 @@ import therapistimg from "./../../assets/images/user.png";
 import logoutimg from "./../../assets/images/logout.png";
 import noAvatar from "../../assets/images/noAvatar.gif";
 import { connect } from "react-redux";
+import { Link as LinkScroll } from "react-scroll";
+
 //import { Link } from "@material-ui/core";
 
 import { therapist_logout } from "../../actions/therapistAuth";
@@ -82,20 +84,40 @@ const Navbar = ({
                 </NavLink>
               </li>
               <li className="navBar__list__item nav-item">
-                <NavLink
+                {/* <NavLink
                   className="navBar__list__item__link nav-link"
                   to="/about"
                 >
                   About
-                </NavLink>
+                </NavLink> */}
+                <LinkScroll
+                  to="about"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  className="navBar__list__item__link nav-link"
+                  activeClass="active"
+                >
+                  About
+                </LinkScroll>
               </li>
               <li className="navBar__list__item nav-item">
-                <NavLink
-                  className="navBar__list__item__link nav-link"
-                  to="/works"
+                {/* <NavLink
+                  className='navBar__list__item__link nav-link'
+                  to='/works'
                 >
                   How It Work
-                </NavLink>
+                </NavLink> */}
+                <LinkScroll
+                  to="works"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  className="navBar__list__item__link nav-link"
+                  activeClass="active"
+                >
+                  How It Works
+                </LinkScroll>
               </li>
               <li className="navBar__list__item nav-item">
                 <NavLink
@@ -125,12 +147,22 @@ const Navbar = ({
                 </li>
               )}
               <li className="navBar__list__item nav-item">
-                <NavLink
-                  className="navBar__list__item__link nav-link"
-                  to="/contact"
+                {/* <NavLink
+                  className='navBar__list__item__link nav-link'
+                  to='/contact'
                 >
                   Contact Us
-                </NavLink>
+                </NavLink> */}
+                <LinkScroll
+                  to="contact"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  className="navBar__list__item__link nav-link"
+                  activeClass="active"
+                >
+                  Contact
+                </LinkScroll>
               </li>
             </ul>
 

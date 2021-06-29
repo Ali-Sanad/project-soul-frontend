@@ -12,6 +12,7 @@ import {
   THERAPIST_AUTH_ERROR,
   THERAPIST_FORGOT_PASSWORD,
   THERAPIST_RESET_PASSWORD,
+  UPDATE_THERAPIST_FORM,
 } from "./types";
 
 //load therapist
@@ -51,7 +52,7 @@ export const register =
       const res = await axios.post("/therapist/signup", body, config);
       dispatch({
         type: THERAPIST_REGISTER_SUCCESS,
-        payload: res.data.token,
+        payload: res.data,
       });
     } catch (err) {
       if (err.response) {

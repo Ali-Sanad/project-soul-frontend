@@ -1,27 +1,43 @@
-.MuiTabs-flexContainer{
-    background-color: $colbg;
+.MuiTabs-flexContainer {
+  background-color: $colbg;
 }
-.PrivateTabIndicator-colorSecondary-5{
-    background-color: $colmain !important;
-    width: 2rem;
+.PrivateTabIndicator-colorSecondary-5 {
+  background-color: $colmain !important;
+  width: 2rem;
 }
-.MuiTab-wrapper{
-    color: $colfontsecondary;
-    font-size: 1.2rem;
+.MuiTab-wrapper {
+  color: $colfontsecondary;
+  font-size: 1.2rem;
 }
-.MuiTabs-flexContainer{
-    justify-content: center;
+.MuiTabs-flexContainer {
+  justify-content: center;
 }
-.MuiAppBar-colorPrimary{
-    box-shadow: 0px 0px 10px $colsecondary !important;
+.MuiAppBar-colorPrimary {
+  box-shadow: 0px 0px 10px $colsecondary !important;
 }
-.MuiBox-root{
-    background-color: $colbg !important;
+.therapistcard__rate .MuiBox-root {
+  //   background-color: $colbg !important;
+  background-color: white !important;
 }
 .MuiTableCell-root.MuiTableCell-head,
-.MuiTableCell-alignRight{
-    color: $colmain;
+.MuiTableCell-alignRight {
+  color: $colmain;
 }
-.MuiTableCell-root.MuiTableCell-body{
-    color: $colfont;
+.MuiTableCell-root.MuiTableCell-body {
+  color: $colfont;
+}
+.MuiTableCell-root.MuiTableCell-body.MuiTableCell-alignRight{
+  img{
+    display: unset;
+    height: 100px;
+  }
+  .fas.fa-check{
+    color: green;
+  }
+  .fas.fa-times{
+    color: rgba(255, 0, 0, 0.671);
+  }
+  .fas.fa-info{
+    color: $colmain;
+  }
 }
