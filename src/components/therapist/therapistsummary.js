@@ -10,6 +10,9 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
     mainsFocus: "",
 
     specialties: "",
+    fees: "",
+    birthOfDate: "",
+    yearsofEeperience: 0,
   });
   useEffect(() => {
     setFormData({
@@ -18,9 +21,20 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
       mainsFocus: therapist?.mainsFocus,
 
       specialties: therapist?.specialties,
+      fees: therapist?.fees,
+      birthOfDate: therapist?.birthOfDate,
+      yearsofEeperience: therapist?.yearsofEeperience,
     });
   }, [therapist]);
-  const { summary, prefix, mainsFocus, specialties } = formData;
+  const {
+    summary,
+    prefix,
+    mainsFocus,
+    specialties,
+    yearsofEeperience,
+    fees,
+    birthOfDate,
+  } = formData;
   console.log("Auth", auth);
   //  var { fname, lname, email, yearsofEeperience, licenseNo } =
   //therapist.therapist;
@@ -111,6 +125,35 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
                 className="inputstyle"
                 value={prefix}
                 name="prefix"
+                onChange={(e) => onChange(e)}
+              ></input>
+              <h6>Years of Experience</h6>
+              <input
+                type="text"
+                disabled={disable}
+                className="inputstyle"
+                value={yearsofEeperience}
+                name="yearsofEeperience"
+                onChange={(e) => onChange(e)}
+              ></input>
+              <h6>Date of Birth</h6>
+
+              <input
+                type="text"
+                disabled={disable}
+                className="inputstyle"
+                value={birthOfDate}
+                name="birthOfDate"
+                onChange={(e) => onChange(e)}
+              ></input>
+              <h6>Fees</h6>
+
+              <input
+                type="text"
+                disabled={disable}
+                className="inputstyle"
+                value={fees}
+                name="fees"
                 onChange={(e) => onChange(e)}
               ></input>
               {auth.isAuthenticated_therapist &&

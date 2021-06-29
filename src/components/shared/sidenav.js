@@ -1,53 +1,59 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import noAvatar from '../../assets/images/noAvatar.gif';
+import noAvatar from "../../assets/images/noAvatar.gif";
 
-import iconimg from './../../assets/images/iconimg.png';
-import {connect} from 'react-redux';
-import {addTherapistProfileImage} from '../../actions/therapists';
+import iconimg from "./../../assets/images/iconimg.png";
+import { connect } from "react-redux";
+import { addTherapistProfileImage } from "../../actions/therapists";
 
-const Sidenav = ({id, therapist, addTherapistProfileImage, authId}) => {
+const Sidenav = ({
+  id,
+  isAuth,
+  therapist,
+  addTherapistProfileImage,
+  authId,
+}) => {
   const uploadTherapistImage = (e, id) => {
     // setPreviewImage(URL.createObjectURL(e.target.files[0]));
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
-      addTherapistProfileImage({data: reader.result}, id);
-      console.log({data: reader.result});
+      addTherapistProfileImage({ data: reader.result }, id);
+      console.log({ data: reader.result });
     };
     reader.onerror = () => {
-      console.error('Article failed');
+      console.error("Article failed");
     };
   };
 
   return (
     <React.Fragment>
-      <div className='sidenav'>
-        <div className='container'>
-          <div className='sidenav__image'>
+      <div className="sidenav">
+        <div className="container">
+          <div className="sidenav__image">
             <img
               src={
-                therapist && therapist.therapistImg !== ''
+                therapist && therapist.therapistImg !== ""
                   ? therapist.therapistImg
                   : noAvatar
               }
-              alt=''
-              className='sidenav__image__user'
+              alt=""
+              className="sidenav__image__user"
             />
             {id === authId && (
-              <div className='file-upload'>
-                <label htmlFor='file-input'>
+              <div className="file-upload">
+                <label htmlFor="file-input">
                   <img
                     src={iconimg}
-                    className='sidenav__image__upload'
-                    alt=''
+                    className="sidenav__image__upload"
+                    alt=""
                   />
                 </label>
                 <input
-                  id='file-input'
-                  type='file'
-                  name='image'
+                  id="file-input"
+                  type="file"
+                  name="image"
                   onChange={(e) => {
                     uploadTherapistImage(e, therapist?._id);
                   }}
@@ -56,22 +62,24 @@ const Sidenav = ({id, therapist, addTherapistProfileImage, authId}) => {
             )}
           </div>
 
-          <div className='sidenav__name'>
+          <div className="sidenav__name">
             <h4>
               {therapist && therapist.fname} {therapist && therapist.lname}
             </h4>
           </div>
-          <div className='sidenav__menu'>
+          <div className="sidenav__menu">
             <ul>
-              <li>
-                <NavLink
-                  to={{
-                    pathname: `/therapistlist/${id}/profile`,
-                  }}
-                >
-                  Profile
-                </NavLink>
-              </li>
+              {isAuth && (
+                <li>
+                  <NavLink
+                    to={{
+                      pathname: `/therapistlist/${id}/profile`,
+                    }}
+                  >
+                    Profile
+                  </NavLink>
+                </li>
+              )}
               <li>
                 <NavLink
                   to={{
@@ -121,5 +129,6 @@ const Sidenav = ({id, therapist, addTherapistProfileImage, authId}) => {
 const mapStateToProps = (state) => ({
   therapist: state.therapists.oneTherapist,
   authId: state.therapistAuth?.therapist?._id,
+  isAuth: state.therapistAuth?.isAuthenticated_therapist,
 });
-export default connect(mapStateToProps, {addTherapistProfileImage})(Sidenav);
+export default connect(mapStateToProps, { addTherapistProfileImage })(Sidenav);
