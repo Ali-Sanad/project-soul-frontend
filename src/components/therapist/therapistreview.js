@@ -8,8 +8,6 @@ import { useEffect } from "react";
 import { getReviews, deleteReview } from "../../actions/therapists";
 import Moment from "react-moment";
 
-import { deleteReview } from "../../actions/therapists";
-
 const TherapistReview = ({
   isAuth,
   id,
