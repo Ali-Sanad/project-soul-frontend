@@ -7,6 +7,7 @@ import userimg from "../../assets/images/user.png";
 import ReviewForm from "./createReview";
 import { useEffect } from "react";
 import { getReviews, deleteReview } from "../../actions/therapists";
+import Moment from "react-moment";
 
 // import { getTherapist } from '../../actions/therapist'
 
@@ -88,7 +89,10 @@ const TherapistReview = ({
                         readOnly
                       />
                     </Box>
-                    <span>{review?.createdAt}</span>
+                    <span>
+                      {" "}
+                      <Moment format="YYYY/MM/DD">{review?.createdAt}</Moment>
+                    </span>
                     {/* {review._id} */}
                   </div>
                   <div className="therapistreview__allreview__body">
