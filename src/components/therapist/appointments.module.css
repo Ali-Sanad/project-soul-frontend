@@ -1,0 +1,22 @@
+/* html,
+body {
+  height: 100%;
+} */
+
+@media (min-width: 640px) {
+  .APP table {
+    display: inline-table !important;
+  }
+
+  .APP thead tr:not(:first-child) {
+    display: none;
+  }
+}
+
+.APP td:not(:last-child) {
+  border-bottom: 0;
+}
+
+.APP th:not(:last-child) {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
