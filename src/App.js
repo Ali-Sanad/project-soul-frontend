@@ -117,7 +117,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      {/* <NavBar></NavBar> */}
+        {/* <NavBar></NavBar> */}
         <Alert />
         <Switch>
           <Route path="/" exact component={Home} />
