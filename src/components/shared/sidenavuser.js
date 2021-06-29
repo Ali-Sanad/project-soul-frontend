@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import client from "./../../assets/images/client.jpeg";
+// import client from "./../../assets/images/client.jpeg";
+import noAvatar from "./../../assets/images/noAvatar.gif";
 import iconimg from "./../../assets/images/iconimg.png";
 import { Link, NavLink } from "react-router-dom";
 import UserAppointments from "../user/userAppointments";
@@ -12,15 +13,15 @@ const Sidenavuser = ({ auth }) => {
         <div className="sidenav">
           <div className="container">
             <div className="sidenav__image">
-              <img src={client} alt="" className="sidenav__image__user"></img>
+              <img src={noAvatar} alt="" className="sidenav__image__user"></img>
               <div className="file-upload">
-                <label htmlFor="file-input">
+                {/* <label htmlFor="file-input">
                   <img
                     src={iconimg}
                     className="sidenav__image__upload"
                     alt=""
                   />
-                </label>
+                </label> */}
 
                 <input id="file-input" type="file" />
               </div>
@@ -47,8 +48,8 @@ const Sidenavuser = ({ auth }) => {
                   >
                     Appointments
                   </NavLink>
-                  </li>
-                  <li>
+                </li>
+                <li>
                   <NavLink
                     to={{
                       pathname: `/userSession`,
