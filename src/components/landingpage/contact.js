@@ -1,12 +1,37 @@
-import React,{useEffect} from 'react'
-import WOW from 'wowjs'
-
-const Contact = () => {
+import React, {useEffect, useState} from 'react';
+import WOW from 'wowjs';
+import {connect} from 'react-redux';
+import {contactUsAction} from '../../actions/auth';
+const Contact = ({contactUsAction}) => {
   useEffect(() => {
     new WOW.WOW({
-      live: false
-    }).init()
-  })
+      live: false,
+    }).init();
+  }, []);
+
+  const [formData, setFormData] = useState({
+    subject: '',
+    message: '',
+    name: '',
+    email: '',
+    phone: '',
+  });
+  const {subject, message, name, email, phone} = formData;
+  const onChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    contactUsAction(formData);
+    setFormData({
+      subject: '',
+      message: '',
+      name: '',
+      email: '',
+      phone: '',
+    });
+  };
 
   return (
     <>
@@ -21,18 +46,57 @@ const Contact = () => {
               data-wow-duration='1s'
               data-wow-delay='.1s'
             >
-              <form>
+              <form onSubmit={(e) => onSubmit(e)}>
                 <input
                   type='text'
                   className='input'
                   placeholder='Subject'
-                ></input>
+                  name='subject'
+                  value={subject}
+                  required
+                  onChange={(e) => onChange(e)}
+                />
                 <textarea
+                  required
+                  name='message'
+                  value={message}
+                  onChange={(e) => onChange(e)}
                   rows='7'
                   className='input'
                   placeholder='Leave your message here...'
-                ></textarea>
-                <button className='mainbtn'>Contact Us</button>
+                />
+
+                <input
+                  type='text'
+                  className='input'
+                  placeholder='Name'
+                  required
+                  name='name'
+                  value={name}
+                  onChange={(e) => onChange(e)}
+                />
+                <input
+                  type='text'
+                  className='input'
+                  placeholder='Email'
+                  required
+                  name='email'
+                  value={email}
+                  onChange={(e) => onChange(e)}
+                />
+                <input
+                  type='text'
+                  className='input'
+                  placeholder='Phone number'
+                  required
+                  name='phone'
+                  value={phone}
+                  onChange={(e) => onChange(e)}
+                />
+
+                <button className='mainbtn' type='submit'>
+                  Contact Us
+                </button>
               </form>
             </div>
             <div
@@ -46,7 +110,7 @@ const Contact = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default connect(null, {contactUsAction})(Contact);
