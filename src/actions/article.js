@@ -7,7 +7,7 @@ import {
   GET_ARTICLE,
   DELETE_ARTICLE,
 } from "./types";
-import { setAlert } from "./alert";
+// import { setAlert } from "./alert";
 
 //GET ALL ARTICLES
 export const getArticles = () => async (dispatch) => {

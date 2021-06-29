@@ -69,7 +69,7 @@ import TherapistList from "./components/therapist/therapistlist";
 import SingleArticle from "./components/layout/articles/singleArticle";
 
 //admin
-import AdminSideNav from "./components/admin/adminsidenav";
+// import AdminSideNav from "./components/admin/adminsidenav";
 import AdminDashboard from "./components/admin/admindashboard";
 import AdminTherapistCard from "./components/admin/admintherapistcard";
 import AdminPostCard from "./components/admin/adminpostcard";
@@ -218,9 +218,9 @@ const App = () => {
             path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
-          <Route exact path="/updateUser" component={UserUpdate}/>
-          <Route exact path="/userAppointments" component={UserAppointments}/>
-          <Route exact path="/userSession" component={UserSession}/>
+          <Route exact path="/updateUser" component={UserUpdate} />
+          <Route exact path="/userAppointments" component={UserAppointments} />
+          <Route exact path="/userSession" component={UserSession} />
 
           <Route path="/messenger-user">
             <MessengerUser />
