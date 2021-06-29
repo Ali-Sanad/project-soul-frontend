@@ -40,6 +40,7 @@ const AdminShowWaitingTherapists = ({
                 <TableCell>IMG</TableCell>
                 <TableCell align="right">First Name</TableCell>
                 <TableCell align="right">Last Name</TableCell>
+                <TableCell align="right">Licence</TableCell>
                 <TableCell align="right">accept</TableCell>
                 <TableCell align="right">Reject</TableCell>
                 <TableCell align="right">More</TableCell>
@@ -53,6 +54,9 @@ const AdminShowWaitingTherapists = ({
                   </TableCell>
                   <TableCell align="right">{th?.fname}</TableCell>
                   <TableCell align="right">{th?.lname}</TableCell>
+                  <TableCell align="right">
+                    <img src={th?.uploadCv} />
+                  </TableCell>
                   <TableCell align="right">
                     {" "}
                     <button

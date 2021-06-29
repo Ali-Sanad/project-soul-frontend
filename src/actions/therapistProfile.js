@@ -38,7 +38,7 @@ export const createTherapistProfile = (formData, id) => async (dispatch) => {
     });
   } catch (err) {
     console.log(err, 'hh');
-    const errors = err.response.data.errors;
+    //  const errors = err.response.data.errors;
 
     // if (errors) {
     //   errors.forEach((error) => dispatch(setAlert(error.msg, error)));
@@ -69,8 +69,9 @@ export const addExperience = (formData, id, history) => async (dispatch) => {
 
     //   history.push('/');
   } catch (err) {
-    const errors = err.response.data.errors;
-
+    // const errors = err.response.data.errors;
+    console.log(err, 'hh');
+    const errors = err.response?.data.errors;
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
@@ -131,9 +132,9 @@ export const addEducation = (formData, id, history) => async (dispatch) => {
   } catch (err) {
     const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    // }
 
     dispatch({
       type: THERAPIST_PROFILE_ERROR,

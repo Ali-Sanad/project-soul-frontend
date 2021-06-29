@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ImageSearch from '../../assets/images/icons8_Search_4 3.png';
 import { Dropdown } from 'react-bootstrap';
 import { getPosts } from '../../actions/post';
-import Spinner from './Spinner';
 import { connect } from 'react-redux';
 import PostCard from './PostList';
 
@@ -10,29 +9,30 @@ const SearchPost = ({
   getPosts,
   auth: { user, isAuthenticated },
   post: { posts, loading },
+  setfilteredPosts,
+  postList,
 }) => {
   const [searchValue, setSearch] = useState('');
   useEffect(() => {
     getPosts();
-  }, [getPosts]);
+  }, []);
 
-  let searchPosts = !loading ? (
-    posts
-      .filter((post) => {
-        if (searchValue == '') {
-          return post;
-        } else if (
-          post.text.toLowerCase().includes(searchValue.toLowerCase())
-        ) {
-          return post;
-        }
-      })
-      .map((post) => {
-        <PostCard key={post._id} post={post} />;
-      })
-  ) : (
-    <Spinner />
-  );
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+
+    let searchPosts;
+    if (e.target.value == '' && !loading) {
+      searchPosts = postList;
+    } else if (!loading) {
+      searchPosts =
+        !loading &&
+        postList.filter((post) => {
+          return post.text.toLowerCase().includes(e.target.value.toLowerCase());
+        });
+    }
+
+    return setfilteredPosts(searchPosts);
+  };
   return (
     <>
       <div className='postForm'>
@@ -59,13 +59,12 @@ const SearchPost = ({
                 placeholder='Search'
                 className='postForm__inputs__search inputstyle'
                 value={searchValue}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => handleInputChange(e)}
                 required
               />
               <a>
                 <img src={ImageSearch} className='postForm__imageSearch' />
               </a>
-              {searchPosts}
             </div>
           </div>
         </div>
