@@ -234,7 +234,7 @@ export const forgotPassword = (formData) => async (dispatch) => {
 
 //book an appointment  payment + booking
 export const paymentBookingAction =
-  ({ appointmentId, token, therapist_id }) =>
+  ({ appointmentId, token, therapist_id, user }) =>
   async (dispatch) => {
     try {
       const res = await axios.post("/payment", { appointmentId, token });
