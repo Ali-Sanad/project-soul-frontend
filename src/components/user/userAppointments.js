@@ -3,14 +3,10 @@ import Navbar from "../shared/navbar";
 import { connect } from "react-redux";
 import Sidenavuser from "../shared/sidenavuser";
 import classes from "../therapist/appointments.module.css";
-const UserAppointments = ({
-  auth,
+import {Link} from "react-router-dom";
+const UserAppointments = ({ auth, therapists }) => {
 
-}) => {
-  console.log("app", 
-              (auth.user.appointments[0].therapist.fname)+" " 
-              +(auth.user.appointments[0].therapist.lname));
- 
+
   return (
     <>
       {auth.user && (
@@ -50,7 +46,15 @@ const UserAppointments = ({
                             {app.to}
                           </td>
                           <td className="border-grey-light border hover:bg-gray-100 p-3  text-center">
-                            {app.therapist.fname +" "+app.therapist.lname}
+                            {app.therapist.fname + " " + app.therapist.lname}
+                            <br />
+                            <Link
+                              to={`/therapistlist/${app.therapist._id}/reviews`}
+                            >
+                              <button className="button btn">
+                                <span className="mainbtn">visit</span>
+                              </button>
+                            </Link>
                           </td>
                         </tr>
                       ))}
@@ -70,5 +74,8 @@ const mapStateToProps = (state) => ({
   therapistAuth: state.therapistAuth,
   oneTherapist: state.therapists.oneTherapist,
   auth: state.auth,
+  therapists: state.therapists?.therapists.filter(
+    (th) => th.isAccepted === "Accepted"
+  ),
 });
 export default connect(mapStateToProps)(UserAppointments);
