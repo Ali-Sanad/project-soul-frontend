@@ -1,76 +1,75 @@
 .navBar {
-    background-color: transparent;
-    // position: fixed !important;
-    top: 0;
-    width: 100%;
-    &.color{
-      background-color: $colbg;
-      box-shadow: 0px 0px 5px $colmain;
-    }
-    &__image {
-      width: 150px;
+  background-color: transparent;
+  // position: fixed !important;
+  // font-family: cursive;
+  top: 0;
+  width: 100%;
+  &.color {
+    background-color: $colbg;
+    box-shadow: 0px 0px 5px $colmain;
+  }
+  &__image {
+    // width: 150px;
+    // height: 40px;
+    &__user {
+      width: 40px;
       height: 40px;
-      &__user {
-        width: 40px;
-        height: 40px;
-        display: inline-block;
-        border-radius: 50%;
-      }
+      display: inline-block;
+      border-radius: 50%;
     }
-    &__span {
-      position: "fixed";
-      top: "6px";
-      left: "5px";
-      color: $colfont;
-    }
-    &__list {
-      margin: 0 auto;
-      &__item {
-        &__link {
-          color: $colfont !important;
-          font-family: sans-serif;
-          &:hover{
-            color: $colmain !important;
-          }
-          &--active {
-            color: $colfont;
-          }
+  }
+  &__span {
+    position: "fixed";
+    top: "6px";
+    left: "5px";
+    color: $colfont;
+  }
+  &__list {
+    margin: 0 auto;
+    &__item {
+      &__link {
+        color: $colfont !important;
+        font-family: Roboto;
+        &:hover {
+          color: $colmain !important;
+        }
+        &--active {
+          color: $colfont;
         }
       }
     }
-    &__login{
-      display: flex;
-      align-items: center;
-      &__user{
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-      }
-      &__span{
-        margin: 0rem .5rem;
-      }
-      &__logout{
-        width: 20px;
-        height: 20px;
-      }
+  }
+  &__login {
+    display: flex;
+    align-items: center;
+    &__user {
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+    }
+    &__span {
+      margin: 0rem 0.5rem;
+    }
+    &__logout {
+      width: 20px;
+      height: 20px;
     }
   }
-  
-  
-  .navbar-toggler-icon{
-    width: fit-content !important;
-    height: fit-content !important;
-    color: $colmain;
-  }
-  .navbar-toggler:focus{
-    box-shadow: 0 0 0 0.1rem $colmain !important;
-  }
-  .navbar-collapse{
-    justify-content: flex-end;
-  }
+}
 
-  .active {
-    color:$colmain !important ;
-    font-weight:bold;
- }
- 
+.navbar-toggler-icon {
+  width: fit-content !important;
+  height: fit-content !important;
+  color: $colmain;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.1rem $colmain !important;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+.active {
+  color: $colmain !important ;
+  font-weight: bold;
+}

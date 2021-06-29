@@ -114,7 +114,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      {/* <NavBar></NavBar> */}
+        {/* <NavBar></NavBar> */}
         <Alert />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -213,7 +213,7 @@ const App = () => {
             path="/addTherapistEducation/:id"
             component={AddTherapistEducation}
           />
-          <Route exact path="/updateUser" component={UserUpdate}/>
+          <Route exact path="/updateUser" component={UserUpdate} />
 
           <Route path="/messenger-user">
             <MessengerUser />
