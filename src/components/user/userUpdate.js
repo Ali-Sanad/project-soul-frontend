@@ -26,6 +26,7 @@ const UserUpdate = ({ auth }) => {
         gender: userGender,
         dob: userDob,
       })
+
     );
   };
 
@@ -80,10 +81,14 @@ const UserUpdate = ({ auth }) => {
                     onChange={(e) => setUserDob(e.target.value)}
                     value={userDob}
                   ></input>
-                  <button className="button btn">
+                  <button className="button btn" >
                     <span className="mainbtn">Save</span>
                   </button>
-                 
+                 <Link to="/user-profile">
+                 <button className="button btn" >
+                    <span className="mainbtn">Back</span>
+                  </button>
+                 </Link>
                 </div>
               </div>
             </form>
