@@ -4,12 +4,9 @@ import Box from "@material-ui/core/Box";
 import { connect } from "react-redux";
 
 import ReviewForm from "./createReview";
-<<<<<<< HEAD
 import { useEffect } from "react";
 import { getReviews, deleteReview } from "../../actions/therapists";
 import Moment from "react-moment";
-=======
->>>>>>> acfcff5239e6fff8f4d6d1e018d2dcdab9d8830b
 
 import { deleteReview } from "../../actions/therapists";
 
