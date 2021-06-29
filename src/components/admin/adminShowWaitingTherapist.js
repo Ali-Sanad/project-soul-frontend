@@ -69,7 +69,7 @@ const AdminShowWaitingTherapists = ({
                         getTherapists();
                       }}
                     >
-                      Accept
+                      <i className="fas fa-check"></i>
                     </button>
                   </TableCell>
                   <TableCell align="right">
@@ -83,13 +83,13 @@ const AdminShowWaitingTherapists = ({
                         getTherapists();
                       }}
                     >
-                      Rejected
+                      <i className="fas fa-times"></i>
                     </button>
                   </TableCell>
                   <TableCell align="right">
                     {" "}
                     <AdminTherapistCard therapist={th}>
-                      <i className="fas fa-edit fas fa-1x text-soul-200"></i>
+                    <i className="fas fa-info"></i>
                     </AdminTherapistCard>
                   </TableCell>
                 </TableRow>

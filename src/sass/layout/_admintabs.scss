@@ -26,3 +26,18 @@
 .MuiTableCell-root.MuiTableCell-body {
   color: $colfont;
 }
+.MuiTableCell-root.MuiTableCell-body.MuiTableCell-alignRight{
+  img{
+    display: unset;
+    height: 100px;
+  }
+  .fas.fa-check{
+    color: green;
+  }
+  .fas.fa-times{
+    color: rgba(255, 0, 0, 0.671);
+  }
+  .fas.fa-info{
+    color: $colmain;
+  }
+}
