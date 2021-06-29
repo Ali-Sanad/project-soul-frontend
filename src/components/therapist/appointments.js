@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 //redux
 import {connect} from 'react-redux';
-import {deleteAppointment} from '../../actions/therapists';
+
+import {deleteAppointment, loadAppointmentById} from '../../actions/therapists';
 import UpdateAppointment from './updateappointment';
 import {withRouter} from 'react-router-dom';
 import Payment from '../Payment';
@@ -11,6 +12,7 @@ const Appointments = ({
   auth,
   oneTherapist,
   deleteAppointment,
+  loadAppointmentById,
   id,
   history,
 }) => {
@@ -96,7 +98,10 @@ const Appointments = ({
                                   id={app._id}
                                   therapistId={therapistAuth.therapist._id}
                                 >
-                                  <i className='fas fa-edit fas fa-1x text-soul-200 text-center'></i>
+                                  <i
+                                    className='fas fa-edit fas fa-1x text-soul-200 text-center'
+                                    onClick={() => loadAppointmentById(app._id)}
+                                  ></i>
                                 </UpdateAppointment>
                               </td>
 
@@ -160,4 +165,5 @@ const mapStateTopProps = (state) => ({
 
 export default connect(mapStateTopProps, {
   deleteAppointment,
+  loadAppointmentById,
 })(withRouter(Appointments));

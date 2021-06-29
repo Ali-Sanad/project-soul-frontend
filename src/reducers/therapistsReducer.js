@@ -38,7 +38,6 @@ const therapists = (state = initialState, action) => {
     case ADD_THERAPIST_IMAGE:
       return {
         ...state,
-        oneTherapist: payload,
       };
 
     case ADD_THERAPIST_APPOINTMENT:

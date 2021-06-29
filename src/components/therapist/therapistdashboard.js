@@ -1,47 +1,47 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
 
-import { getTherapist } from '../../actions/therapists'
+import {getTherapist} from '../../actions/therapists';
 
-import Navbar from '../shared/navbar'
-import SideNav from '../shared/sidenav'
-import TherapistFiles from './therapistfiles'
-import TherapistProfile from './therapistprofile'
-import TherapistSummary from './therapistsummary'
-import TherapistReview from './therapistreview'
-import AddAppointment from './addappointment'
-import Appointments from './appointments'
-import MessageIcon from '../shared/message'
+import Navbar from '../shared/navbar';
+import SideNav from '../shared/sidenav';
+import TherapistFiles from './therapistfiles';
+import TherapistProfile from './therapistprofile';
+import TherapistSummary from './therapistsummary';
+import TherapistReview from './therapistreview';
+import AddAppointment from './addappointment';
+import Appointments from './appointments';
+import MessageIcon from '../shared/message';
 
-import { newConversation } from '../../actions/chat'
+import {newConversation} from '../../actions/chat';
 const TherapistDashboard = ({
   match,
   therapist,
   getTherapist,
   user,
   review,
-  newConversation
+  newConversation,
 }) => {
-  let content = match.params.content
-  let id = match.params.id.trim()
-  const senderId = user
-  const receiverId = id
-  console.log('user', user)
+  let content = match.params.content;
+  let id = match.params.id.trim();
+  const senderId = user;
+  const receiverId = id;
+  console.log('user', user);
   useEffect(() => {
     // if (id && user) {
     //   newConversation({ senderId, receiverId });
     // }
-    getTherapist(id)
-  }, [getTherapist, id, newConversation, user])
+    getTherapist(id);
+  }, [getTherapist, id, newConversation, user]);
 
-  const [isNavCollapsed, setIsNavCollapsed] = useState(true)
-  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed)
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
   return (
     <React.Fragment>
       <div className='therapistdashboard'>
-            {/* <button
+        {/* <button
                 className='custom-toggler navbar-toggler'
                 type='button'
                 data-toggle='collapse'
@@ -61,7 +61,6 @@ const TherapistDashboard = ({
               <Navbar className='therapistdashboard__navbar'></Navbar>
             </div>
 
-
             <>
               <div className='col-12 col-md-3'>
                 <div
@@ -77,21 +76,21 @@ const TherapistDashboard = ({
               {/* <TherapistFiles></TherapistFiles> */}
               {/* <TherapistProfile></TherapistProfile> */}
 
-              {content == 'profile' && <TherapistProfile id={id} />}
-              {content == 'summary' && (
+              {content === 'profile' && <TherapistProfile id={id} />}
+              {content === 'summary' && (
                 <TherapistSummary id={id}></TherapistSummary>
               )}
-              {content == 'appointments' && (
+              {content === 'appointments' && (
                 <>
-                <Appointments id={id}></Appointments>
+                  <Appointments id={id}></Appointments>
                 </>
               )}
-              {content == 'addappointment' && (
+              {content === 'addappointment' && (
                 <>
-                <AddAppointment></AddAppointment>
+                  <AddAppointment></AddAppointment>
                 </>
               )}
-              {content == 'reviews' && (
+              {content === 'reviews' && (
                 <TherapistReview id={id}></TherapistReview>
               )}
 
@@ -103,14 +102,14 @@ const TherapistDashboard = ({
         </div>
       </div>
     </React.Fragment>
-  )
-}
-const mapStateToProps = state => ({
+  );
+};
+const mapStateToProps = (state) => ({
   therapist: state.therapists.oneTherapist,
   review: state.therapists?.oneTherapist?.reviews,
-  user: state.auth?.user?._id
-})
+  user: state.auth?.user?._id,
+});
 
-export default connect(mapStateToProps, { getTherapist, newConversation })(
+export default connect(mapStateToProps, {getTherapist, newConversation})(
   TherapistDashboard
-)
+);
