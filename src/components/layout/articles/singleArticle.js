@@ -10,6 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 
+
 import { useParams } from "react-router-dom";
 import Footer from "../../shared/footer";
 import NavBar from "../../shared/navbar";
@@ -70,7 +71,9 @@ const SingleArticle = ({ article: { article }, getArticle }) => {
                 />
                 <CardContent>
                   <Typography variant="body2" component="p">
+                    {/* {htmlToText(article.content)} */}
                     {article.content}
+                    
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing></CardActions>

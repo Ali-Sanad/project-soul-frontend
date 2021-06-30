@@ -235,7 +235,7 @@ export const paymentBookingAction =
       dispatch(loadUser());
     }
   };
-
+ 
 //cancel an appointment
 export const cancelAppointment = (id) => async (dispatch) => {
   try {

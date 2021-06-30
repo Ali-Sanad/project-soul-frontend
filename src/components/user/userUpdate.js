@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../actions/auth";
 import {Link} from 'react-router-dom';
 
-
+   
 const UserUpdate = ({ auth }) => {
   const {
     user: { _id, name, email, gender, dob },
