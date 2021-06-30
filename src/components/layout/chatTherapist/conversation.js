@@ -3,10 +3,7 @@ import { useEffect, useState } from "react";
 import noAvatar from "../../../assets/images/noAvatar.gif";
 
 const Conversation = ({ members, therapist }) => {
-  console.log("members", members);
-
   const [user, setUser] = useState(null);
-  console.log(user);
 
   useEffect(() => {
     const userId = members.find((member) => member !== therapist._id);
@@ -15,12 +12,8 @@ const Conversation = ({ members, therapist }) => {
         const res = await axios.get(
           "https://project-soul-api.herokuapp.com/api/auth/" + userId
         );
-        console.log(res.data);
         setUser(res.data);
-        console.log(user);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     getUser();
   }, [therapist, members]);

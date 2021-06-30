@@ -20,15 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-const AdminTherapistCard = ({
-  match,
-  therapist,
-  getTherapist,
-  createTherapistProfile,
-  id,
-  children,
-}) => {
-  // let id = match.params.id.trim();
+const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
   useEffect(() => {
     getTherapist(id);
   }, [getTherapist, id]);
@@ -64,7 +56,7 @@ const AdminTherapistCard = ({
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title headers">More Info</h2>
-            <p id="transition-modal-description">
+            <div id="transition-modal-description">
               {/* ************************* */}
 
               <React.Fragment>
@@ -87,12 +79,9 @@ const AdminTherapistCard = ({
                           <p>
                             Last Name: <span>{therapist?.lname}</span>
                           </p>
-                          {/* <p>
-                  Date Of Birth: <span>{therapist?}</span>
-                </p> */}
                         </div>
                       </div>
-                      <hr></hr>
+                      <hr />
                       {/* Education */}
                       <h5 className="headers">Education</h5>
                       <div className="row">
@@ -153,7 +142,7 @@ const AdminTherapistCard = ({
                 )}
               </React.Fragment>
               {/* ************************* */}
-            </p>
+            </div>
           </div>
         </Fade>
       </Modal>
@@ -161,9 +150,6 @@ const AdminTherapistCard = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  therapist: state.therapists.oneTherapist,
-});
 export default connect(null, {
   getTherapist,
   createTherapistProfile,

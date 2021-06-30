@@ -12,7 +12,6 @@ import {
   THERAPIST_AUTH_ERROR,
   THERAPIST_FORGOT_PASSWORD,
   THERAPIST_RESET_PASSWORD,
-  UPDATE_THERAPIST_FORM,
 } from "./types";
 
 //load therapist

@@ -1,9 +1,5 @@
 import React from "react";
 
-// import Navbar from "../shared/navbar";
-// import AdminSideNav from "./adminsidenav";
-// import AdminVerifyTherapist from "./adminverifytherapist";
-// import AdminVerifyPost from "./adminverifypost";
 import AdminShowWaitingTherapists from "./adminShowWaitingTherapist";
 import AdminShowWaitingPosts from "./adminShowWaitingPosts";
 import PropTypes from "prop-types";
@@ -27,7 +23,9 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={2}>
-          <Typography>{children}</Typography>
+          <Typography component={"span"} variant={"body2"}>
+            {children}
+          </Typography>
         </Box>
       )}
     </div>

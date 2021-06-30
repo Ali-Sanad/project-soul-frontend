@@ -1,11 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useEffect } from "react";
 import Navbar from "../shared/navbar";
-import SideNav from "../shared/sidenav";
 import Sidenavuser from "../shared/sidenavuser";
 import UserDate from "./userData";
-import UserUpdateForm from "./userUpdateForm";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 

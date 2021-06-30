@@ -2,7 +2,6 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { therapist_logout } from "../../actions/therapistAuth";
-//import logo from "../../../assets/images/logo.png";
 import logo from "../../assets/images/logo.png";
 const TherapistRejected = ({ therapist_logout }) => {
   return (

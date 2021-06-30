@@ -9,15 +9,7 @@ import { cancelAppointment } from "../../actions/auth";
 
 const UserAppointments = ({ auth, cancelAppointment }) => {
   const dispatch = useDispatch();
-  // const cancelUserAPP = () => {
-  //   dispatch(
-  //     auth.user.appointments.map((app) =>{
-  //       console.log("id" , app._id)
-  //       cancelAppointment({id : auth.user.appointments._id})
 
-  //     })
-  //   );
-  // };
 
   return (
     <>

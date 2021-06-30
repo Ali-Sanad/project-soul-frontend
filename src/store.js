@@ -1,8 +1,8 @@
-import {createStore, applyMiddleware} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers/index';
-import {setAuthToken, setTherapistAuthToken} from './utils/setAuthToken';
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers/index";
+import { setAuthToken, setTherapistAuthToken } from "./utils/setAuthToken";
 
 const store = createStore(
   rootReducer,

@@ -22,7 +22,6 @@ const initialState = {
 
 const therapists = (state = initialState, action) => {
   const { type, payload } = action;
-  console.log("action", action);
   switch (type) {
     case GET_THERAPISTS:
       return {

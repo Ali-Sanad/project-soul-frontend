@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import React from "react";
 import { connect } from "react-redux";
 import { therapist_logout } from "../../actions/therapistAuth";
-//import logo from "../../../assets/images/logo.png";
 import logo from "../../assets/images/logo.png";
 const TherapistPending = ({ therapist_logout }) => {
   return (

@@ -25,8 +25,6 @@ const Article = ({
     getArticles();
   }, [getArticles]);
 
-  console.log(article);
-
   return (
     <div className="container-fluid">
       <NavBar />
