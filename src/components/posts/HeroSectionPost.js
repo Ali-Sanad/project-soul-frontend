@@ -1,5 +1,5 @@
-import React from 'react'
-import ImageHero from '../../assets/images/Group therapy-bro 1.png'
+import React from 'react';
+import ImageHero from '../../assets/images/Group therapy-bro 1.png';
 const HeroSectionPost = () => {
   return (
     <>
@@ -14,7 +14,11 @@ const HeroSectionPost = () => {
               </a>
             </div>
             <div className='col-6 heroSection__post__image'>
-              <img className='heroSection__postimage__img' src={ImageHero} />
+              <img
+                className='heroSection__postimage__img'
+                src={ImageHero}
+                alt=''
+              />
             </div>
             <div className='col-12 heroSection__post__blogs'>
               <span>Blogs</span>
@@ -23,7 +27,7 @@ const HeroSectionPost = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HeroSectionPost
+export default HeroSectionPost;
