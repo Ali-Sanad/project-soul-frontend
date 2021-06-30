@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import Sidenavuser from "../shared/sidenavuser";
 import classes from "../therapist/appointments.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { cancelAppointment } from "../../actions/auth";
 
 const UserAppointments = ({ auth, cancelAppointment }) => {
-  const dispatch = useDispatch();
+ 
 
 
   return (
@@ -27,13 +26,16 @@ const UserAppointments = ({ auth, cancelAppointment }) => {
                 </div>
                 <div className="col-8">
                   <h3>Appointments</h3>
-                  {auth.user.appointments.length > 0 ? <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-auto sm:shadow-lg my-5">
+                  {auth.user.appointments.length > 0 ? 
+                  <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-auto sm:shadow-lg my-5">
                     <thead className="text-black bg-soul-100 ">
-                      <th className="p-3 text-left">Date</th>
+                     <tr>
+                     <th className="p-3 text-left">Date</th>
                       <th className="p-3 text-left">From</th>
                       <th className="p-3 text-left">To</th>
                       <th className="p-3 text-left">Therapist</th>
                       <th className="p-3 text-left">Canceling</th>
+                     </tr>
                     </thead>
                     <tbody className="flex-1 sm:flex-none">
                       {auth.user.appointments.map((app) => (

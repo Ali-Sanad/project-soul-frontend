@@ -23,7 +23,6 @@ const TherapistDashboard = ({
 }) => {
   let content = match.params.content;
   let id = match.params.id.trim();
-  console.log("user", user);
   useEffect(() => {
     getTherapist(id);
   }, [getTherapist, id, newConversation, user]);

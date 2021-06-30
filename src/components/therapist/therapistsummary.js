@@ -12,7 +12,7 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
     specialties: "",
     fees: "",
     birthOfDate: "",
-    yearsofEeperience: 0,
+    yearsofEeperience: "",
   });
   useEffect(() => {
     setFormData({
