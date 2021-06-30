@@ -88,7 +88,7 @@ const UpdateAppointment = ({
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id='transition-modal-title headers'>Edit Appointment</h2>
-            <p id='transition-modal-description'>
+            <div id='transition-modal-description'>
               {/* ************************* */}
 
               <React.Fragment>
@@ -148,7 +148,7 @@ const UpdateAppointment = ({
               </React.Fragment>
 
               {/* ************************* */}
-            </p>
+            </div>
           </div>
         </Fade>
       </Modal>
