@@ -56,7 +56,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title headers">More Info</h2>
-            <p id="transition-modal-description">
+            <div id="transition-modal-description">
               {/* ************************* */}
 
               <React.Fragment>
@@ -81,7 +81,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                           </p>
                         </div>
                       </div>
-                      <hr></hr>
+                      <hr />
                       {/* Education */}
                       <h5 className="headers">Education</h5>
                       <div className="row">
@@ -142,7 +142,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                 )}
               </React.Fragment>
               {/* ************************* */}
-            </p>
+            </div>
           </div>
         </Fade>
       </Modal>

@@ -57,7 +57,7 @@ const AdminPostCard = ({ children, getPosts, post }) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title headers">More Info</h2>
-            <p id="transition-modal-description">
+            <div id="transition-modal-description">
               <React.Fragment>
                 <div className="adminpostcard">
                   <div className="postCard">
@@ -82,7 +82,7 @@ const AdminPostCard = ({ children, getPosts, post }) => {
                   </div>
                 </div>
               </React.Fragment>
-            </p>
+            </div>
           </div>
         </Fade>
       </Modal>

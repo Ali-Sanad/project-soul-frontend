@@ -123,7 +123,7 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
               ></input>
               <h6>Years of Experience</h6>
               <input
-                type="text"
+                type="number"
                 disabled={disable}
                 className="inputstyle"
                 value={yearsofEeperience}
@@ -133,7 +133,7 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
               <h6>Date of Birth</h6>
 
               <input
-                type="text"
+                type="date"
                 disabled={disable}
                 className="inputstyle"
                 value={birthOfDate}
@@ -143,7 +143,8 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
               <h6>Fees</h6>
 
               <input
-                type="text"
+                type="number"
+                min="1"
                 disabled={disable}
                 className="inputstyle"
                 value={fees}
