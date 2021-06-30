@@ -48,18 +48,9 @@ const RegisterTherapist = ({
       setAlert("password dont match", "error");
     } else {
       register({ fname, lname, email, password, confirmPassword });
-      // setAlert("Account created successfully", "success");
-      //  console.log("success");
-      //history.replace("/therapist-pending-verification");
     }
   };
-  // history.replace("/pending-therapist-verification");
-  console.log("ther", therapist);
-  console.log("isAurh", isAuthenticated_therapist);
-  //console.log("auth", auth);
-  // if (isAuthenticated_therapist) {
-  //   history.replace('/therapist-pending-verification');
-  // }
+
   if (auth.status === "Pending") {
     history.replace("/therapist-pending-verification");
   }
@@ -193,115 +184,6 @@ const RegisterTherapist = ({
         </div>
       </div>
     </>
-
-    // <Container component="main" maxWidth="xs">
-    //   <CssBaseline />
-    //   <div className={classes.paper}>
-    //     <Avatar className={classes.avatar}>
-    //       <LockOutlinedIcon />
-    //     </Avatar>
-    //     <Typography component="h1" variant="h5">
-    //       Sign up
-    //     </Typography>
-    //     <form className={classes.form} noValidate onSubmit={(e) => onSubmit(e)}>
-    //       <Grid container spacing={2}>
-    //         <Grid item xs={12} sm={6}>
-    //           <TextField
-    //             autoComplete="fname"
-    //             name="fname"
-    //             variant="outlined"
-    //             required
-    //             fullWidth
-    //             id="firstName"
-    //             label="First Name"
-    //             value={fname}
-    //             onChange={(e) => onChange(e)}
-    //             autoFocus
-    //           />
-    //         </Grid>
-    //         <Grid item xs={12} sm={6}>
-    //           <TextField
-    //             variant="outlined"
-    //             required
-    //             fullWidth
-    //             id="lastName"
-    //             label="Last Name"
-    //             name="lname"
-    //             autoComplete="lname"
-    //             value={lname}
-    //             onChange={(e) => onChange(e)}
-    //           />
-    //         </Grid>
-    //         <Grid item xs={12}>
-    //           <TextField
-    //             variant="outlined"
-    //             required
-    //             fullWidth
-    //             id="email"
-    //             label="Email Address"
-    //             name="email"
-    //             autoComplete="email"
-    //             value={email}
-    //             onChange={(e) => onChange(e)}
-    //           />
-    //         </Grid>
-    //         <Grid item xs={12}>
-    //           <TextField
-    //             variant="outlined"
-    //             required
-    //             fullWidth
-    //             name="password"
-    //             label="Password"
-    //             type="password"
-    //             id="password"
-    //             autoComplete="current-password"
-    //             value={password}
-    //             onChange={(e) => onChange(e)}
-    //           />
-    //         </Grid>
-    //         <Grid item xs={12}>
-    //           <TextField
-    //             variant="outlined"
-    //             required
-    //             fullWidth
-    //             name="confirmPassword"
-    //             label="Password"
-    //             type="password"
-    //             id="password"
-    //             autoComplete="current-password"
-    //             value={confirmPassword}
-    //             onChange={(e) => onChange(e)}
-    //           />
-    //         </Grid>
-    //         {/* <Grid item xs={12}>
-    //           <FormControlLabel
-    //             control={<Checkbox value="allowExtraEmails" color="primary" />}
-    //             label="I want to receive inspiration, marketing promotions and updates via email."
-    //           />
-    //         </Grid> */}
-    //       </Grid>
-    //       <Button
-    //         type="submit"
-    //         fullWidth
-    //         variant="contained"
-    //         color="primary"
-    //         className={classes.submit}
-    //       >
-    //         Sign Up
-    //       </Button>
-    //       <Grid container justify="flex-end">
-    //         <Grid item>
-    //           <Link href="/logintherapist" variant="body2">
-    //             Already have an account? Sign in
-    //           </Link>
-    //         </Grid>
-    //       </Grid>
-    //     </form>
-    //   </div>
-    //   <Box mt={5}>
-    //     <Copyright />
-    //   </Box>
-    // </Container>
   );
 };
 RegisterTherapist.propTypes = {
@@ -314,7 +196,6 @@ const mapStateToProps = (state) => ({
 
   isAuthenticated_therapist: state.therapistAuth.isAuthenticated_therapist,
   therapist: state.therapistAuth.therapist,
-  // isAuthenticated: state.therapistAuthReducer?.isAuthenticated,
 });
 export default connect(mapStateToProps, { setAlert, register })(
   RegisterTherapist

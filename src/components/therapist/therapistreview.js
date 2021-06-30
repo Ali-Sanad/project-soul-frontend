@@ -4,14 +4,12 @@ import Box from "@material-ui/core/Box";
 import { connect } from "react-redux";
 
 import ReviewForm from "./createReview";
-import { useEffect } from "react";
-import { getReviews, deleteReview } from "../../actions/therapists";
+import { deleteReview } from "../../actions/therapists";
 import Moment from "react-moment";
 
 const TherapistReview = ({
   isAuth,
   id,
-  //getReviews,
   review,
   deleteReview,
   auth,
@@ -24,7 +22,6 @@ const TherapistReview = ({
 
   return (
     <React.Fragment>
-      {console.log(therapist)}
       {therapist && (
         <div className="therapistreview">
           <div className="container">

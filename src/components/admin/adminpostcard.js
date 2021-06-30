@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-// import postImage from "./../../assets/images/article.png";
 import { getPosts } from "../../actions/post";
 import { updatePost } from "../../actions/post";
 const useStyles = makeStyles((theme) => ({
@@ -21,12 +20,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-const AdminPostCard = ({ id, children, getPosts, updatePost, post }) => {
+const AdminPostCard = ({ children, getPosts, post }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
-  console.log("postssss", post);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -79,26 +77,7 @@ const AdminPostCard = ({ id, children, getPosts, updatePost, post }) => {
                         </p>
                       </div>
                       <hr></hr>
-                      <div className="adminpostcard__btns">
-                        {/* <button
-                          onClick={() => {
-                            updatePost({ isAccepted: "Accepted" }, post?._id);
-                            getPosts();
-                          }}
-                          className="mainbtn adminpostcard__verifybtn"
-                        >
-                          Accept
-                        </button>
-                        <button
-                          onClick={() => {
-                            updatePost({ isAccepted: "Rejected" }, post?._id);
-                            getPosts();
-                          }}
-                          className="mainbtn adminpostcard__rejectbtn"
-                        >
-                          Reject
-                        </button> */}
-                      </div>
+                      <div className="adminpostcard__btns"></div>
                     </div>
                   </div>
                 </div>
@@ -110,10 +89,5 @@ const AdminPostCard = ({ id, children, getPosts, updatePost, post }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  state: state,
-  //  oneTherapist: state.oneTherapist,
-  post: state.post.post,
-  // therapist: state.therapistAuth,
-});
+
 export default connect(null, { getPosts, updatePost })(AdminPostCard);

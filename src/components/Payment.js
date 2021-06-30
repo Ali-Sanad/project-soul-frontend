@@ -3,7 +3,6 @@ import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
 import { paymentBookingAction } from "../actions/auth";
 import { newConversation } from "../actions/chat";
-import { Redirect } from "react-router";
 const Payment = ({
   paymentBookingAction,
   price,
@@ -18,7 +17,6 @@ const Payment = ({
     try {
       paymentBookingAction({ appointmentId, token, therapist_id });
       newConversation({ senderId: user_id, receiverId: therapist_id });
-      // <Redirect to="messenger-user" />;
     } catch (err) {
       console.log(err);
     }

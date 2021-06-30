@@ -35,17 +35,11 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
     fees,
     birthOfDate,
   } = formData;
-  console.log("Auth", auth);
-  //  var { fname, lname, email, yearsofEeperience, licenseNo } =
-  //therapist.therapist;
 
-  console.log(summary);
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmit = async (e) => {
-    console.log("on submit");
     e.preventDefault();
-    console.log("disable", disable);
     if (disable) {
       setDisable(false);
     } else {

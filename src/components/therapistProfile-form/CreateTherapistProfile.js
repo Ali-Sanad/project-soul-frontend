@@ -1,39 +1,35 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { withRouter, Redirect, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { createTherapistProfile } from '../../actions/therapistProfile';
+import { createTherapistProfile } from "../../actions/therapistProfile";
 
-import logo from './../../assets/images/logo.png';
-import userRegister from './../../assets/images/user-register.png';
+import logo from "./../../assets/images/logo.png";
+import userRegister from "./../../assets/images/user-register.png";
 
 const CreateTherapistProfile = ({
-  // therapistProfile: { therapistProfile },
-  // therapistProfile,
   createTherapistProfile,
-  // setAlert,
   isAuthenticated_therapist,
   match,
 }) => {
-  // const classes = useStyles();
   const [formData, setFormData] = useState({
-    summary: '',
-    therapist_image_url: '',
-    licenseOfOrganization: '',
-    prefix: '',
-    yearsofEeperience: '',
-    licenseNo: '',
-    mainsFocus: '',
-    birthOfDate: '',
-    specialties: '',
-    uploadCv: '',
-    uploadimg: '',
-    twitter: '',
-    facebook: '',
-    linkedin: '',
-    instagram: '',
-    youtube: '',
+    summary: "",
+    therapist_image_url: "",
+    licenseOfOrganization: "",
+    prefix: "",
+    yearsofEeperience: "",
+    licenseNo: "",
+    mainsFocus: "",
+    birthOfDate: "",
+    specialties: "",
+    uploadCv: "",
+    uploadimg: "",
+    twitter: "",
+    facebook: "",
+    linkedin: "",
+    instagram: "",
+    youtube: "",
   });
   const {
     summary,
@@ -64,7 +60,6 @@ const CreateTherapistProfile = ({
     console.log(ID);
     e.preventDefault();
     createTherapistProfile(formData, id);
-    //<Redirect to="/controlTherapistActions" />;
   };
 
   console.log(ID);
@@ -78,12 +73,8 @@ const CreateTherapistProfile = ({
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
       setFormData({ ...formData, [e.target.name]: reader.result });
-      //CreateTherapistProfile({ data: reader.result });
-      console.log({ data: reader.result });
     };
-    reader.onerror = () => {
-      console.error('Article failed');
-    };
+    reader.onerror = () => {};
   };
 
   if (
@@ -104,8 +95,6 @@ const CreateTherapistProfile = ({
     !instagram ||
     !youtube
   ) {
-    //   setAlert('all fields required', 'error');
-    // }
   } else {
     createTherapistProfile({
       summary,
@@ -342,9 +331,9 @@ const CreateTherapistProfile = ({
                   src={previewImage}
                   alt="chosen"
                   style={{
-                    height: '80px',
-                    paddingLeft: '3rem',
-                    paddingTop: '1rem',
+                    height: "80px",
+                    paddingLeft: "3rem",
+                    paddingTop: "1rem",
                   }}
                 />
               )}
@@ -379,6 +368,5 @@ const mapStateToProps = (state) => ({
   therapistProfile: state.therapistProfile,
 });
 export default connect(mapStateToProps, {
-  //setAlert,
   createTherapistProfile,
 })(withRouter(CreateTherapistProfile));

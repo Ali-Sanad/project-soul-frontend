@@ -4,16 +4,12 @@ import Box from "@material-ui/core/Box";
 import { withRouter } from "react-router-dom";
 import noAvatar from "../../assets/images/noAvatar.gif";
 
-import userimg from "../../assets/images/user.png";
-
 const TherapistCard = ({ therapist, history }) => {
   const bookTherapistHandler = (id) => {
-    // history.push(`/booktherapist/${id}`);
     history.push(`/therapistlist/${id}/appointments`);
   };
 
   const viewProfileHandler = (id) => {
-    // history.push(`/therapistdashboard/${id}`);
     history.push(`therapistlist/${id}/summary`);
   };
 
@@ -50,10 +46,6 @@ const TherapistCard = ({ therapist, history }) => {
           >
             View Profile
           </button>
-          {/* <Link className='mainbtn' to={`/therapistdashboard/${therapist._id}`}>
-            {' '}
-            View Profile
-          </Link> */}
         </div>
       </div>
     </React.Fragment>

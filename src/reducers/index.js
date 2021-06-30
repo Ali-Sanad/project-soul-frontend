@@ -5,8 +5,6 @@ import therapistAuth from "./therapistAuthReducer";
 import article from "./article";
 import chat from "./chat";
 import therapists from "./therapistsReducer";
-import therapist from "./therapist";
-import review from "./review";
 import post from "./post";
 
 export default combineReducers({
@@ -15,8 +13,6 @@ export default combineReducers({
   therapistAuth,
   article,
   chat,
-  //  review,
   therapists,
-  //therapist,
   post,
 });

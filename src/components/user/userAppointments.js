@@ -3,10 +3,8 @@ import Navbar from "../shared/navbar";
 import { connect } from "react-redux";
 import Sidenavuser from "../shared/sidenavuser";
 import classes from "../therapist/appointments.module.css";
-import {Link} from "react-router-dom";
-const UserAppointments = ({ auth, therapists }) => {
-
-
+import { Link } from "react-router-dom";
+const UserAppointments = ({ auth }) => {
   return (
     <>
       {auth.user && (

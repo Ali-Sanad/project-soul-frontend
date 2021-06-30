@@ -20,15 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-const AdminTherapistCard = ({
-  match,
-  therapist,
-  getTherapist,
-  createTherapistProfile,
-  id,
-  children,
-}) => {
-  // let id = match.params.id.trim();
+const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
   useEffect(() => {
     getTherapist(id);
   }, [getTherapist, id]);
@@ -87,9 +79,6 @@ const AdminTherapistCard = ({
                           <p>
                             Last Name: <span>{therapist?.lname}</span>
                           </p>
-                          {/* <p>
-                  Date Of Birth: <span>{therapist?}</span>
-                </p> */}
                         </div>
                       </div>
                       <hr></hr>
@@ -161,9 +150,6 @@ const AdminTherapistCard = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  therapist: state.therapists.oneTherapist,
-});
 export default connect(null, {
   getTherapist,
   createTherapistProfile,

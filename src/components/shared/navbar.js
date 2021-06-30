@@ -26,11 +26,9 @@ const Navbar = ({
   /* scroll nav */
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
-  console.log(auth);
   /* color nav */
   const [colnavbar, setColNavbar] = useState(false);
   const changeBackground = () => {
-    // console.log(window.scrollY);
     if (window.scrollY >= 80 || window.innerWidth < 992) {
       setColNavbar(true);
     } else {

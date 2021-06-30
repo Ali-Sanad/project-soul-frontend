@@ -1,5 +1,5 @@
-import api from '../utils/api';
-import { setAlert } from './alert';
+import api from "../utils/api";
+import { setAlert } from "./alert";
 import {
   GET_POSTS,
   POST_ERROR,
@@ -9,13 +9,13 @@ import {
   REMOVE_COMMENT,
   UPDATE_LIKES,
   GET_POST,
-  UPDATE_POST
-} from './types';
+  UPDATE_POST,
+} from "./types";
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
   try {
-    const res = await api.get('/posts');
+    const res = await api.get("/posts");
 
     dispatch({
       type: GET_POSTS,
@@ -29,29 +29,19 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-
-export const updatePost=(formData,id)=>async (dispatch)=>{
+export const updatePost = (formData, id) => async (dispatch) => {
   try {
     const res = await api.patch(`/posts/${id}`, formData);
-    console.log(res.data, 'gg');
     dispatch({
       type: UPDATE_POST,
       payload: res.data,
     });
   } catch (err) {
-    console.log(err, 'hh');
-    const errors = err.response.data.errors;
-
-    // if (errors) {
-    //   errors.forEach((error) => dispatch(setAlert(error.msg, error)));
-    // }
-
     dispatch({
       type: POST_ERROR,
-// payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
-}
+};
 // Delete post
 export const deletePost = (id) => async (dispatch) => {
   try {
@@ -62,7 +52,7 @@ export const deletePost = (id) => async (dispatch) => {
       payload: id,
     });
 
-    dispatch(setAlert('Post Removed', 'success'));
+    dispatch(setAlert("Post Removed", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -75,13 +65,12 @@ export const deletePost = (id) => async (dispatch) => {
 export const addPost = (formData) => async (dispatch) => {
   try {
     const res = await api.post(`/posts`, formData);
-     console.log(res)
     dispatch({
       type: ADD_POST,
       payload: res.data,
     });
 
-    dispatch(setAlert('Post Added', 'success'));
+    dispatch(setAlert("Post Added", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -116,7 +105,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert('Comment Added', 'success'));
+    dispatch(setAlert("Comment Added", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -135,7 +124,7 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
       payload: commentId,
     });
 
-    dispatch(setAlert('Comment Removed', 'success'));
+    dispatch(setAlert("Comment Removed", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -148,7 +137,6 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
 export const addLike = (id) => async (dispatch) => {
   try {
     const res = await api.put(`/posts/like/${id}`);
-         console.log(res)
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data },
@@ -165,8 +153,7 @@ export const addLike = (id) => async (dispatch) => {
 export const removeLike = (id) => async (dispatch) => {
   try {
     const res = await api.put(`/posts/unlike/${id}`);
-    console.log(res)
-      
+
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data },

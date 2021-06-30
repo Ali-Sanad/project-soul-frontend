@@ -1,17 +1,13 @@
 import {
   GET_CONVERSATIONS,
-  CONVERSATIONS_ERROR,
   NEW_CONVERSATION,
-  GET_THERAPIST_CONVERSATION,
   SET_CURRENT_CHAT,
   NEW_MESSAGE,
 } from "../actions/types";
 
 const initialState = {
   conversations: [],
-  // therapist: null,
 
-  //   article: null,
   currentChat: [],
 };
 

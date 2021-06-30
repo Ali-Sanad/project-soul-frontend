@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const TherapistAccountConfirmed = (props) => {
   if (props.match.path === "/therapist-email-confirmed") {
-    console.log(props.match.path);
   }
 
   return (

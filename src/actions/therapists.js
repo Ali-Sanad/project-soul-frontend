@@ -1,4 +1,4 @@
-import axios from '../utils/api';
+import axios from "../utils/api";
 
 import {
   GET_THERAPISTS,
@@ -15,28 +15,19 @@ import {
   DELETE_REVIEW,
   ADD_REVIEW,
   ADD_THERAPIST_IMAGE,
-} from './types';
-import {setAlert} from './alert';
-import {loadTherapist} from './therapistAuth';
+} from "./types";
+import { setAlert } from "./alert";
 
 //GET ALL Therapists
 export const getTherapists = () => async (dispatch) => {
   try {
-    const res = await axios.get('/therapist');
-    console.log(
-      'array of Therapist from therapist action',
-      res.data.therapists
-    );
-    // const acceptedTherapist = res.data.therapists.filter(
-    //   (th) => th.isAccepted == true
-    // );
-    console.log('accepted', res.data.therapists);
+    const res = await axios.get("/therapist");
+
     dispatch({
       type: GET_THERAPISTS,
       payload: res.data.therapists,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: THERAPISTS_ERROR,
     });
@@ -46,14 +37,12 @@ export const getTherapists = () => async (dispatch) => {
 export const getTherapist = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/therapist/${id}`);
-    // console.log(' Therapist from therapist action', res.data.therapist);
 
     dispatch({
       type: GET_THERAPIST,
       payload: res.data.therapist,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: THERAPIST_ERROR,
     });
@@ -70,8 +59,7 @@ export const loadAppointmentById = (id) => async (dispatch) => {
       payload: id,
     });
   } catch (err) {
-    console.log(err);
-    dispatch(setAlert('Loading appointment by id failed ', 'error'));
+    dispatch(setAlert("Loading appointment by id failed ", "error"));
     dispatch({
       type: THERAPIST_APPOINTMENT_ACTION_FAILED,
     });
@@ -80,20 +68,17 @@ export const loadAppointmentById = (id) => async (dispatch) => {
 //add appointment
 export const addAppointment = (formData, therapist_id) => async (dispatch) => {
   try {
-    const res = await axios.post('/appointments', formData);
-    console.log(res.data);
+    const res = await axios.post("/appointments", formData);
     dispatch({
       type: ADD_THERAPIST_APPOINTMENT,
       payload: res.data,
     });
-    // console.log(therapist_id);
     //optimistic update
     dispatch(getTherapist(therapist_id));
 
-    dispatch(setAlert('Appointment added successfully ', 'success'));
+    dispatch(setAlert("Appointment added successfully ", "success"));
   } catch (err) {
-    console.log(err);
-    dispatch(setAlert('Appointment add failed ', 'error'));
+    dispatch(setAlert("Appointment add failed ", "error"));
     dispatch({
       type: THERAPIST_APPOINTMENT_ACTION_FAILED,
     });
@@ -111,10 +96,9 @@ export const updateAppointment =
         payload: res.data,
       });
       dispatch(getTherapist(therapist_id));
-      dispatch(setAlert('Appointment updated successfully ', 'success'));
+      dispatch(setAlert("Appointment updated successfully ", "success"));
     } catch (err) {
-      console.log(err);
-      dispatch(setAlert('Appointment update failed ', 'error'));
+      dispatch(setAlert("Appointment update failed ", "error"));
       dispatch({
         type: THERAPIST_APPOINTMENT_ACTION_FAILED,
       });
@@ -125,17 +109,15 @@ export const updateAppointment =
 //delete appointment
 export const deleteAppointment = (id, therapist_id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/appointments/${id}`);
-    console.log(res.data);
+    await axios.delete(`/appointments/${id}`);
     dispatch({
       type: DELETE_THERAPIST_APPOINTMENT,
       payload: id,
     });
     dispatch(getTherapist(therapist_id));
-    dispatch(setAlert('Appointment deleted successfully ', 'success'));
+    dispatch(setAlert("Appointment deleted successfully ", "success"));
   } catch (err) {
-    console.log(err);
-    dispatch(setAlert('Appointment delete failed ', 'error'));
+    dispatch(setAlert("Appointment delete failed ", "error"));
     dispatch({
       type: THERAPIST_APPOINTMENT_ACTION_FAILED,
     });
@@ -144,10 +126,10 @@ export const deleteAppointment = (id, therapist_id) => async (dispatch) => {
 };
 
 export const addReview = (body, therapistId) => async (dispatch) => {
-  let {rating, review} = body;
+  let { rating, review } = body;
 
   rating = Number(rating);
-  const bodyTosent = {rating, review};
+  const bodyTosent = { rating, review };
   try {
     const res = await axios.post(
       `/therapist/${therapistId}/reviews`,
@@ -158,59 +140,32 @@ export const addReview = (body, therapistId) => async (dispatch) => {
         },
       }
     );
-    console.log('add review action', res.data);
-    console.log('review res,data', res.data.review);
     dispatch({
       type: ADD_REVIEW,
       payload: res.data,
     });
     //dispatch()
     dispatch(getTherapist(therapistId));
-    dispatch(setAlert('Review created successfully ', 'success'));
+    dispatch(setAlert("Review created successfully ", "success"));
   } catch (error) {
-    console.log(error);
     dispatch({
       type: REVIEW_ERROR,
     });
   }
 };
 
-// export const getReviews = (id) => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`/therapist/${id}/reviews`);
-//     console.log("array of reviews from review action", res.data);
-//     dispatch({
-//       type: GET_REVIEWS,
-//       payload: res.data,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     dispatch({
-//       type: REVIEW_ERROR,
-//     });
-//   }
-// };
-
 export const updateReview =
   (therapistId, reviewId, body) => async (dispatch) => {
     try {
-      const res = await axios.patch(
-        `/therapist/${therapistId}/reviews/${reviewId}`,
-        body,
-        {
-          headers: {
-            Authorization: localStorage.token,
-          },
-        }
-      );
-      //console.log(res.data)
-      console.log('review res,data', res.data);
+      await axios.patch(`/therapist/${therapistId}/reviews/${reviewId}`, body, {
+        headers: {
+          Authorization: localStorage.token,
+        },
+      });
       dispatch({
         type: UPDATE_REVIEW,
-        //  payload: res.data,
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: REVIEW_ERROR,
       });
@@ -219,24 +174,18 @@ export const updateReview =
 
 export const deleteReview = (therapistId, reviewId) => async (dispatch) => {
   try {
-    const res = await axios.delete(
-      `/therapist/${therapistId}/reviews/${reviewId}`,
-      {
-        headers: {
-          Authorization: localStorage.token,
-        },
-      }
-    );
-    //console.log(res.data)
-    console.log('review res,data', res.data);
+    await axios.delete(`/therapist/${therapistId}/reviews/${reviewId}`, {
+      headers: {
+        Authorization: localStorage.token,
+      },
+    });
     dispatch({
       type: DELETE_REVIEW,
       payload: reviewId,
     });
     dispatch(getTherapist(therapistId));
-    dispatch(setAlert('review deleted successfully ', 'success'));
+    dispatch(setAlert("review deleted successfully ", "success"));
   } catch (error) {
-    console.log('error', error);
     dispatch({
       type: REVIEW_ERROR,
     });
@@ -245,15 +194,12 @@ export const deleteReview = (therapistId, reviewId) => async (dispatch) => {
 
 export const addTherapistProfileImage = (body, id) => async (dispatch) => {
   try {
-    await axios.patch('/therapist/uploadTherapistImage', body);
-    // console.log(res.data);
-    // console.log(id);
+    await axios.patch("/therapist/uploadTherapistImage", body);
     dispatch({
       type: ADD_THERAPIST_IMAGE,
     });
     dispatch(getTherapist(id));
   } catch (error) {
-    console.log(error);
     dispatch({
       type: THERAPISTS_ERROR,
     });

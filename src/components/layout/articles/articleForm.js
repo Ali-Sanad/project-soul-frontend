@@ -29,8 +29,6 @@ const ArticleForm = ({ addArticle }) => {
   const [image, setImage] = useState("");
   const [previewImage, setPreviewImage] = useState(null);
 
-  console.log(content);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -39,11 +37,8 @@ const ArticleForm = ({ addArticle }) => {
       reader.readAsDataURL(image);
       reader.onloadend = () => {
         addArticle({ data: reader.result, content, title });
-        console.log({ data: reader.result, content: content, title: title });
       };
-      reader.onerror = () => {
-        console.error("Article failed");
-      };
+      reader.onerror = () => {};
       handleClose();
     }
   };

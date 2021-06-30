@@ -55,7 +55,7 @@ const AdminShowWaitingTherapists = ({
                   <TableCell align="right">{th?.fname}</TableCell>
                   <TableCell align="right">{th?.lname}</TableCell>
                   <TableCell align="right">
-                    <img src={th?.uploadCv} />
+                    <img src={th?.uploadCv} alt="" />
                   </TableCell>
                   <TableCell align="right">
                     {" "}
@@ -98,11 +98,9 @@ const AdminShowWaitingTherapists = ({
 
 const mapStateToProps = (state) => ({
   state: state,
-  //  oneTherapist: state.oneTherapist,
   therapists: state.therapists?.therapists.filter(
-    (th) => th.isAccepted == "Pending"
+    (th) => th.isAccepted === "Pending"
   ),
-  // therapist: state.therapistAuth,
 });
 export default connect(mapStateToProps, {
   getTherapists,

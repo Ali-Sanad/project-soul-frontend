@@ -15,16 +15,12 @@ const Sidenav = ({
   authId,
 }) => {
   const uploadTherapistImage = (e, id) => {
-    // setPreviewImage(URL.createObjectURL(e.target.files[0]));
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onloadend = () => {
       addTherapistProfileImage({ data: reader.result }, id);
-      console.log({ data: reader.result });
     };
-    reader.onerror = () => {
-      console.error("Article failed");
-    };
+    reader.onerror = () => {};
   };
 
   return (

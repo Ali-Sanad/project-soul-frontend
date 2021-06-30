@@ -10,7 +10,6 @@ const ReviewForm = ({ addReview, id }) => {
     review: "",
   });
 
-  console.log(formData);
   const { rating, review } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

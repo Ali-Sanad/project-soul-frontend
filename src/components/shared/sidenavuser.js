@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-// import client from "./../../assets/images/client.jpeg";
 import noAvatar from "./../../assets/images/noAvatar.gif";
-import iconimg from "./../../assets/images/iconimg.png";
-import { Link, NavLink } from "react-router-dom";
-import UserAppointments from "../user/userAppointments";
+import { NavLink } from "react-router-dom";
 
 const Sidenavuser = ({ auth }) => {
   return (
@@ -15,14 +12,6 @@ const Sidenavuser = ({ auth }) => {
             <div className="sidenav__image">
               <img src={noAvatar} alt="" className="sidenav__image__user"></img>
               <div className="file-upload">
-                {/* <label htmlFor="file-input">
-                  <img
-                    src={iconimg}
-                    className="sidenav__image__upload"
-                    alt=""
-                  />
-                </label> */}
-
                 <input id="file-input" type="file" />
               </div>
             </div>

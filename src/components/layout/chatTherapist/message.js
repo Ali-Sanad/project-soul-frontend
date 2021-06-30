@@ -13,12 +13,8 @@ const Message = ({ message, own, therapist, members }) => {
         const res = await axios.get(
           "https://project-soul-api.herokuapp.com/api/auth/" + userId
         );
-        console.log(res.data);
         setUser(res.data);
-        console.log(user);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     getUser();
   }, [therapist, members]);

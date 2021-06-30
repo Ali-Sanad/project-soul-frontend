@@ -61,7 +61,6 @@ import Error from "./components/shared/error";
 import TherapistDashboard from "./components/therapist/therapistdashboard";
 // import Post from "./components/posts/Post";
 import RegisterOptions from "./components/auth/registeroptions";
-import HeroSection from "./components/landingpage/herosection";
 import Works from "./components/landingpage/works";
 import Contact from "./components/landingpage/contact";
 
@@ -80,7 +79,6 @@ import TherapistRejected from "./components/auth/therapist-rejected";
 
 const App = () => {
   useEffect(() => {
-    console.log(store.getState().auth.isAdmin);
     //attach the token to every axios request ##USER
     if (localStorage.token) {
       setAuthToken(localStorage.token);

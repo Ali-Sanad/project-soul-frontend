@@ -1,17 +1,16 @@
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, useEffect } from "react";
+import PropTypes from "prop-types";
 
-import { connect } from 'react-redux';
-import Spinner from '../Spinner';
-import PostCard from '../PostList';
-import CommentForm from './CommentForm';
-import CommentItem from './CommentItem';
-import { getPost } from '../../../actions/post';
-import Navbar from '../../shared/navbar';
-import HeroSectionPost from '../HeroSectionPost';
-import Footer from '../../shared/footer';
-import Message from '../../shared/message';
-import Totop from '../../shared/totop';
+import { connect } from "react-redux";
+import Spinner from "../Spinner";
+import PostCard from "../PostList";
+import CommentForm from "./CommentForm";
+import CommentItem from "./CommentItem";
+import { getPost } from "../../../actions/post";
+import Navbar from "../../shared/navbar";
+import HeroSectionPost from "../HeroSectionPost";
+import Message from "../../shared/message";
+import Totop from "../../shared/totop";
 const PostItem = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
@@ -27,7 +26,7 @@ const PostItem = ({ getPost, post: { post, loading }, match }) => {
       <PostCard post={post} showActions={false} />
 
       <CommentForm postId={post._id} />
-      <div className='comments'>
+      <div className="comments">
         {post.comments.map((comment) => (
           <CommentItem key={comment._id} comment={comment} postId={post._id} />
         ))}

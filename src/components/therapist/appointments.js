@@ -22,7 +22,6 @@ const Appointments = ({
   const [inputValue, setInputValue] = useState("");
 
   const onChange = (e) => {
-    console.log(e.target.value);
     setInputValue(e.target.value);
   };
 

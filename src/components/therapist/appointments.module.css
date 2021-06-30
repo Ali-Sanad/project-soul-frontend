@@ -1,8 +1,3 @@
-/* html,
-body {
-  height: 100%;
-} */
-
 @media (min-width: 640px) {
   .APP table {
     display: inline-table !important;
