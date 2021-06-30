@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../shared/navbar";
 import Sidenavuser from "../shared/sidenavuser";
-import UserDate from "./userData";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import UserUpdateForm from"./userUpdateForm"
 
 const UserProfile = (props) => {
   const { auth } = props;
@@ -25,7 +25,8 @@ const UserProfile = (props) => {
               <Sidenavuser></Sidenavuser>
             </div>
             <div className="col-8">
-              <UserDate></UserDate>
+              
+              <UserUpdateForm></UserUpdateForm>
             </div>
           </div>
         </div>

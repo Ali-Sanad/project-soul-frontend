@@ -59,17 +59,21 @@ export const updateUser = (user) => {
   };
 };
 //update
-export const updateProfile = (userId, body) => async (dispatch) => {
+export const updateProfile = ( body) => async (dispatch) => {
+  const config = {
+    headers: {
+      Authorization: localStorage.token,
+    },
+  };
   try {
-    const res = await axios.patch("/auth", body, {
-      headers: {
-        Authorization: localStorage.token,
-      },
-    });
+    const res = await axios.put("/user-profile", body, config);
+
+   
     dispatch({
       type: UPDATE_USER_PROFILE,
       payload: res.data,
     });
+    dispatch(loadUser)
   } catch (error) {
     dispatch({
       type: UPDATE_USER_PROFILE_ERROR,
