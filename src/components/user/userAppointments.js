@@ -37,6 +37,7 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                           <th className='p-3 text-left'>To</th>
                           <th className='p-3 text-left'>Therapist</th>
                           <th className='p-3 text-left'>Canceling</th>
+                          <th className='p-3 text-left'>Session</th>
                         </tr>
                       </thead>
                       <tbody className='flex-1 sm:flex-none'>
@@ -74,6 +75,9 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                                   Cancel
                                 </span>
                               </button>
+                            </td>
+                            <td className='border-grey-light border hover:bg-gray-100 p-3  text-center'>
+                                <a href={app.zoomLink}>session link</a>
                             </td>
                           </tr>
                         ))}
