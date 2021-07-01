@@ -46,7 +46,7 @@ const TherapistList = ({ getTherapists, therapists }) => {
           <div className="row">
             {therapists &&
               currentTherapists.map((therapist) => (
-                <div className="col-6 col-md-3" key={therapist._id}>
+                <div className="col-12 col-lg-3" key={therapist._id}>
                   <TherapistCard therapist={therapist}></TherapistCard>
                 </div>
               ))}

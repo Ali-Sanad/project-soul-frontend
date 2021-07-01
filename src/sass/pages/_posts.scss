@@ -123,6 +123,37 @@
   }
 }
 
+@media (max-width:800px){
+  .postCard{
+    width:100%
+  }
+
+  .postForm{
+    width:100%;
+    &__inputs{
+      &__search{
+      width:80%;
+    }
+    }
+  }
+  .post-form{
+      width:90%;
+    form{
+      display:flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items:center;
+      width:100%;
+    .inputstyle{
+      margin-bottom:.5rem;
+    }
+    }
+  }
+  .post{
+    width:90%;
+  }
+}
+
 // .heroSection__post {
 // 	display: grid;
 // 	justify-content: center;

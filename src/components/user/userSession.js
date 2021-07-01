@@ -11,10 +11,10 @@ const UserSession = () => {
             <div className="col-12">
               <Navbar className="therapistdashboard__navbar"></Navbar>
             </div>
-            <div className="col-3">
+            <div className="col-12 col-md-3">
               <Sidenavuser></Sidenavuser>
             </div>
-            <div className="col-8">
+            <div className="col-12 col-md-8">
               <div className="container">
                 <form>
                   <h3>Session</h3>

@@ -6,14 +6,14 @@ const HeroSectionPost = () => {
       <div className='heroSection__post'>
         <div className='container'>
           <div className='row'>
-            <div className='col-6 heroSection__post__text'>
+            <div className='col-12 col-md-6 heroSection__post__text'>
               <h2>Explore Our Community</h2>
               <p>feel free to share your ideas.</p>
               <a href='#postScroll' className='mainbtn linkstyle'>
                 Explore
               </a>
             </div>
-            <div className='col-6 heroSection__post__image'>
+            <div className='col-12 col-md-6 heroSection__post__image'>
               <img
                 className='heroSection__postimage__img'
                 src={ImageHero}
