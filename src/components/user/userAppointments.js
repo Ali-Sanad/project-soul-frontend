@@ -77,7 +77,7 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                               </button>
                             </td>
                             <td className='border-grey-light border hover:bg-gray-100 p-3  text-center'>
-                                <a href={app.zoomLink}>session link</a>
+                                <a href={app.zoomLink}>Session Link</a>
                             </td>
                           </tr>
                         ))}

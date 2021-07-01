@@ -46,7 +46,7 @@ export const updateUser = (user) => {
 
     try {
       const res = await axios.put("/user-profile", user, config);
-
+      dispatch(setAlert("Data has updated successfully ", "success"));
       dispatch({
         type: UPDATE_USER_PROFILE,
         payload: res.data,
@@ -68,7 +68,8 @@ export const updateProfile = ( body) => async (dispatch) => {
   try {
     const res = await axios.put("/user-profile", body, config);
 
-   
+    dispatch(setAlert("Data has updated successfully ", "success"));
+
     dispatch({
       type: UPDATE_USER_PROFILE,
       payload: res.data,

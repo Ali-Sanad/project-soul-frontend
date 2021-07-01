@@ -38,15 +38,7 @@ const Sidenavuser = ({ auth }) => {
                     Appointments
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to={{
-                      pathname: `/userSession`,
-                    }}
-                  >
-                    Session
-                  </NavLink>
-                </li>
+               
               </ul>
             </div>
           </div>
