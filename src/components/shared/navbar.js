@@ -195,12 +195,17 @@ const Navbar = ({
                 <div className='navBar__login'>
                   {auth.isAuthenticated && (
                     // <Link to={`/therapistlist/${id}`}>
+                    <Link
+                    to={{
+                      pathname: `/user-profile`,
+                    }}
+                  >
                     <img
                       className='navBar__login__user'
                       src={img || noAvatar}
                       alt=''
                     ></img>
-                    // </Link>
+                   </Link>
                   )}
 
                   {therapistAuth.isAuthenticated_therapist && (
