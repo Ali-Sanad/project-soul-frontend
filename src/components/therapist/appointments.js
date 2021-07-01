@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 //redux
-import {connect} from 'react-redux';
+import {connect} from 'react-redux';   
 
 import {deleteAppointment, loadAppointmentById} from '../../actions/therapists';
 import UpdateAppointment from './updateappointment';
