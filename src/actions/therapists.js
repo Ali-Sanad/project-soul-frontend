@@ -200,12 +200,12 @@ export const addTherapistProfileImage = (body, id) => async (dispatch) => {
       type: ADD_THERAPIST_IMAGE,
     });
     dispatch(getTherapist(id));
-    dispatch(loadTherapist);
+    dispatch(loadTherapist());
   } catch (error) {
     dispatch({
       type: THERAPISTS_ERROR,
     });
     dispatch(getTherapist(id));
-    dispatch(loadTherapist);
+    dispatch(loadTherapist());
   }
 };

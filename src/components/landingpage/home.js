@@ -19,8 +19,6 @@ const Home = (props) => {
   }, []);
   useEffect(() => {
     if (props.therapistAuth.therapist) {
-      console.log("yes");
-      console.log(props.therapistAuth?.therapist._id);
       props.getTherapist(props.therapistAuth?.therapist?._id);
     }
   }, [getTherapist, props.therapistAuth?.therapist?._id]);
