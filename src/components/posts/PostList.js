@@ -19,7 +19,7 @@ const PostCard = ({
         <div className='container'>
           <div className='row'>
             <div className='col-lg-12 postCard__main'>
-              <div className='card mb-3 postCard__card'>
+              <div className='card postCard__card'>
                 <img
                   src={postImage}
                   className='card-img-top postCard__image'

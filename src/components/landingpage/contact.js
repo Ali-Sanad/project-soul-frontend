@@ -42,7 +42,7 @@ const Contact = ({ contactUsAction }) => {
           </div>
           <div className="row">
             <div
-              className="col-6 contact__form wow fadeInLeft"
+              className="col-12 col-md-6 contact__form wow fadeInLeft"
               data-wow-duration="1s"
               data-wow-delay=".1s"
             >
@@ -100,7 +100,7 @@ const Contact = ({ contactUsAction }) => {
               </form>
             </div>
             <div
-              className="col-6 contact__image wow fadeInRight"
+              className="col-12 col-md-6 contact__image wow fadeInRight"
               data-wow-duration="1s"
               data-wow-delay=".5s"
             >

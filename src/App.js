@@ -47,7 +47,6 @@ import Home from './components/landingpage/home';
 import About from './components/landingpage/about'
 import UserProfile from './components/user/UserProfile';
 import UserAppointments from './components/user/userAppointments';
-import UserSession from './components/user/userSession';
 
 import Post from './components/posts/Post';
 import PostItem from './components/posts/postComment/PostItem';
@@ -212,7 +211,6 @@ const App = () => {
             component={AddTherapistEducation}
           />
           <Route exact path='/userAppointments' component={UserAppointments} />
-          <Route exact path='/userSession' component={UserSession} />
 
           <Route path='/messenger-user' component={MessengerUser} />
           {/* <MessengerUser /> */}

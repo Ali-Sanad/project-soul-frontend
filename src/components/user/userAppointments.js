@@ -23,10 +23,10 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                   <Navbar className='therapistdashboard__navbar'></Navbar>
                 </div>
 
-                <div className='col-3'>
+                <div className='col-12 col-md-3'>
                   <Sidenavuser></Sidenavuser>
                 </div>
-                <div className='col-8'>
+                <div className='col-12 col-md-8'>
                   <h3>Appointments</h3>
                   {auth.user.appointments.length > 0 ? (
                     <table className='w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-auto sm:shadow-lg my-5'>
@@ -37,6 +37,7 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                           <th className='p-3 text-left'>To</th>
                           <th className='p-3 text-left'>Therapist</th>
                           <th className='p-3 text-left'>Canceling</th>
+                          <th className='p-3 text-left'>Session</th>
                         </tr>
                       </thead>
                       <tbody className='flex-1 sm:flex-none'>
@@ -74,6 +75,9 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                                   Cancel
                                 </span>
                               </button>
+                            </td>
+                            <td className='border-grey-light border hover:bg-gray-100 p-3  text-center'>
+                                <a href={app.zoomLink}>Session Link</a>
                             </td>
                           </tr>
                         ))}
