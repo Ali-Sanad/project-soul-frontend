@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import ImageSearch from "../../assets/images/icons8_Search_4 3.png";
-import { getPosts } from "../../actions/post";
-import { connect } from "react-redux";
+import React, {useState, useEffect} from 'react';
+import ImageSearch from '../../assets/images/icons8_Search_4 3.png';
+import {getPosts} from '../../actions/post';
+import {connect} from 'react-redux';
 
 const SearchPost = ({
   getPosts,
-  auth: { user, isAuthenticated },
-  post: { posts, loading },
+  auth: {user, isAuthenticated},
+  post: {posts, loading},
   setfilteredPosts,
   postList,
 }) => {
-  const [searchValue, setSearch] = useState("");
+  const [searchValue, setSearch] = useState('');
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [getPosts]);
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
 
     let searchPosts;
-    if (e.target.value == "" && !loading) {
+    if (e.target.value === '' && !loading) {
       searchPosts = postList;
     } else if (!loading) {
       searchPosts =
@@ -33,10 +33,10 @@ const SearchPost = ({
   };
   return (
     <>
-      <div className="postForm">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 postForm__inputs">
+      <div className='postForm'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12 postForm__inputs'>
               {/* <Dropdown>
                 <Dropdown.Toggle variant='success' id='dropdown-basic'>
                   Category
@@ -53,16 +53,20 @@ const SearchPost = ({
                 </Dropdown.Menu>
               </Dropdown> */}
               <input
-                type="text"
-                placeholder="Search"
-                className="postForm__inputs__search inputstyle"
+                type='text'
+                placeholder='Search'
+                className='postForm__inputs__search inputstyle'
                 value={searchValue}
                 onChange={(e) => handleInputChange(e)}
                 required
               />
-              <a>
-                <img src={ImageSearch} className="postForm__imageSearch" />
-              </a>
+              <span>
+                <img
+                  src={ImageSearch}
+                  className='postForm__imageSearch'
+                  alt=''
+                />
+              </span>
             </div>
           </div>
         </div>

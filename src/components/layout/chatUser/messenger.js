@@ -1,34 +1,34 @@
-import { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
-import NavBar from "../../shared/navbar";
+import {useEffect, useRef, useState} from 'react';
+import {connect} from 'react-redux';
+import NavBar from '../../shared/navbar';
 
-import Conversation from "./conversation";
-import Message from "./message";
-import { Redirect } from "react-router-dom";
+import Conversation from './conversation';
+import Message from './message';
+import {Redirect} from 'react-router-dom';
 import {
   getConversations,
   setCurrentChatAction,
   addMessage,
-} from "../../../actions/chat";
+} from '../../../actions/chat';
 
 const MessengerUser = ({
-  auth: { isAuthenticated, user },
-  therapistAuth: { isAuthenticated_therapist, therapist },
+  auth: {isAuthenticated, user},
+  therapistAuth: {isAuthenticated_therapist, therapist},
   conversations,
   currentChat,
   getConversations,
   setCurrentChatAction,
   addMessage,
 }) => {
-  const [newMessage, setNewMessage] = useState("");
-  const [conversationId, setConversationId] = useState("");
+  const [newMessage, setNewMessage] = useState('');
+  const [conversationId, setConversationId] = useState('');
   const [members, setMembers] = useState([]);
 
   const scrollRef = useRef();
 
   useEffect(() => {
     getConversations(user?._id);
-  }, [user]);
+  }, [user, getConversations]);
 
   const getCurrentChat = async (conversation) => {
     await setCurrentChatAction(conversation._id);
@@ -44,21 +44,21 @@ const MessengerUser = ({
       ConversationId: conversationId,
     };
     addMessage(message);
-    setNewMessage("");
+    setNewMessage('');
   };
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    scrollRef.current?.scrollIntoView({behavior: 'smooth'});
   }, [currentChat]);
 
   return (
     <>
-      <div className="container">
+      <div className='container'>
         <NavBar />
-        <div className="messenger">
-          {!isAuthenticated && !user && <Redirect to="/" />}
-          <div className="chatMenu">
-            <div className="chatMenuWrapper">
+        <div className='messenger'>
+          {!isAuthenticated && !user && <Redirect to='/' />}
+          <div className='chatMenu'>
+            <div className='chatMenuWrapper'>
               {conversations.map((conversation) => {
                 return (
                   <div onClick={() => getCurrentChat(conversation)}>
@@ -72,11 +72,11 @@ const MessengerUser = ({
               })}
             </div>
           </div>
-          <div className="chatBox">
-            <div className="chatBoxWrapper">
+          <div className='chatBox'>
+            <div className='chatBoxWrapper'>
               {currentChat && conversationId ? (
                 <>
-                  <div className="chatBoxTop">
+                  <div className='chatBoxTop'>
                     {currentChat.map((message) => {
                       return (
                         <div ref={scrollRef}>
@@ -90,22 +90,22 @@ const MessengerUser = ({
                       );
                     })}
                   </div>
-                  <div className="chatBoxBottom">
+                  <div className='chatBoxBottom'>
                     <textarea
-                      rows="1"
-                      placeholder="Write Some Thing..."
-                      className="chatMessageInput"
+                      rows='1'
+                      placeholder='Write Some Thing...'
+                      className='chatMessageInput'
                       onChange={(e) => setNewMessage(e.target.value)}
                       value={newMessage}
                     ></textarea>
 
-                    <button className="chatSubmitButton" onClick={handleSubmit}>
+                    <button className='chatSubmitButton' onClick={handleSubmit}>
                       Send
                     </button>
                   </div>
                 </>
               ) : (
-                <span className="NoConversation"> Select Conversation</span>
+                <span className='NoConversation'> Select Conversation</span>
               )}
             </div>
           </div>

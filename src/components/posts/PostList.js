@@ -1,17 +1,17 @@
-import React, { useEffect, Fragment } from 'react'
-import ImageHero from '../../assets/images/Group therapy-bro 1.png'
-import { connect } from 'react-redux'
-import { addLike, removeLike, deletePost } from '../../actions/post'
-import Moment from 'react-moment'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React, {Fragment} from 'react';
+// import ImageHero from '../../assets/images/Group therapy-bro 1.png'
+import {connect} from 'react-redux';
+import {addLike, removeLike, deletePost} from '../../actions/post';
+import Moment from 'react-moment';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 const PostCard = ({
   addLike,
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, user, name, postImage, likes, comments, date },
-  showActions
+  post: {_id, text, user, name, postImage, likes, comments, date},
+  showActions,
 }) => {
   return (
     <>
@@ -42,7 +42,7 @@ const PostCard = ({
                           onClick={() =>
                             auth.user &&
                             auth.isAuthenticated &&
-                            (likes.filter(like => like.user === auth.user._id)
+                            (likes.filter((like) => like.user === auth.user._id)
                               .length > 0
                               ? removeLike(_id)
                               : addLike(_id))
@@ -87,26 +87,26 @@ const PostCard = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 PostCard.defaultProps = {
-  showActions: true
-}
+  showActions: true,
+};
 PostCard.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired
+  deletePost: PropTypes.func.isRequired,
   // showActions: PropTypes.bool,
-}
+};
 
-const mapStateToProps = state => ({
-  auth: state.auth
-})
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 export default connect(mapStateToProps, {
   addLike,
   removeLike,
-  deletePost
-})(PostCard)
+  deletePost,
+})(PostCard);

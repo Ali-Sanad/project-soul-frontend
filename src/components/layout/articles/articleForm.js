@@ -107,12 +107,7 @@ const ArticleForm = ({ addArticle }) => {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button
-              type="submit"
-              onClick={handleClose}
-              color="primary"
-              onClick={handleSubmit}
-            >
+            <Button type="submit" color="primary" onClick={handleSubmit}>
               Post
             </Button>
           </DialogActions>

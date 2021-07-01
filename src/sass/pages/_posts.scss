@@ -1,122 +1,122 @@
 .heroSection__post {
-	&__text {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	&__blogs {
-		text-align: center;
-		span {
-			border-bottom: 3px solid $colmain;
-			width: fit-content;
-			font-size: 2rem;
-			font-weight: 500;
-		}
-	}
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__blogs {
+    text-align: center;
+    span {
+      border-bottom: 3px solid $colmain;
+      width: fit-content;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
 }
 
 .postForm {
-	&__form {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 2rem 0rem;
-	}
-	&__input {
-		background-color: $colwhite;
-		width: 80%;
-	}
-	&__imageUpload {
-		width: 30px;
-		position: relative;
-		left: -4.5rem;
-	}
-	&__imageSent {
-		width: 30px;
-		position: relative;
-		left: -4rem;
-	}
-	&__inputs {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-bottom: 2rem;
-		&__search {
-			background-color: $colwhite;
-			width: 40%;
-		}
-	}
-	&__imageSearch {
-		width: 30px;
-		position: relative;
-		left: -2.5rem;
-	}
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0rem;
+  }
+  &__input {
+    background-color: $colwhite;
+    width: 80%;
+  }
+  &__imageUpload {
+    width: 30px;
+    position: relative;
+    left: -4.5rem;
+  }
+  &__imageSent {
+    width: 30px;
+    position: relative;
+    left: -4rem;
+  }
+  &__inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    &__search {
+      background-color: $colwhite;
+      width: 40%;
+    }
+  }
+  &__imageSearch {
+    width: 30px;
+    position: relative;
+    left: -2.5rem;
+  }
 }
 
 .postCard {
   width: 50%;
   margin: auto;
-  &__main{
+  &__main {
     margin: 1rem 0rem;
   }
-  &__image{
+  &__image {
     height: 20rem;
   }
-	&__actions {
+  &__actions {
     display: flex;
     justify-content: space-between;
-	}
-  i{
-    margin: .5rem;
+  }
+  i {
+    margin: 0.5rem;
     font-size: 1.3rem;
   }
-  .fa-thumbs-up{
+  .fa-thumbs-up {
     color: dodgerblue;
   }
-  .fa-comment{
+  .fa-comment {
     color: $colmain;
   }
-  .fa-times{
+  .fa-times {
     color: darkred;
   }
 }
 
-.post-form{
-  border-radius: .5rem;
+.post-form {
+  border-radius: 0.5rem;
   margin: auto;
   width: 50%;
-  form{
+  form {
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-    .inputstyle{
+    .inputstyle {
       background-color: $colwhite;
       width: 80%;
     }
   }
 }
 
-.post{
+.post {
   background-color: salmon;
   width: 50%;
-  margin:2rem auto;
+  margin: 2rem auto;
   padding: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: $colwhite;
-  &__link{
-    &:hover{
+  &__link {
+    &:hover {
       text-decoration: none;
     }
   }
-  &__name{
+  &__name {
     color: $colmain;
   }
-  &__date{
+  &__date {
     color: $colfontsecondary;
   }
-  &__delete{
+  &__delete {
     float: right;
-    i{
+    i {
       color: firebrick;
       font-size: 1.5rem;
     }

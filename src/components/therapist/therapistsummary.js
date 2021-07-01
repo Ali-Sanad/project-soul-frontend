@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { updateTherapistForm } from "../../actions/therapistProfile";
+import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
+import {updateTherapistForm} from '../../actions/therapistProfile';
 
-const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
+const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
   const [disable, setDisable] = useState(true);
   const [formData, setFormData] = useState({
-    summary: "",
-    prefix: "",
-    mainsFocus: "",
+    summary: '',
+    prefix: '',
+    mainsFocus: '',
 
-    specialties: "",
-    fees: "",
-    birthOfDate: "",
-    yearsofEeperience: 0,
+    specialties: '',
+    fees: '',
+    birthOfDate: '',
+    yearsofEeperience: '',
   });
   useEffect(() => {
     setFormData({
@@ -37,7 +37,7 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
   } = formData;
 
   const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value});
   const onSubmit = async (e) => {
     e.preventDefault();
     if (disable) {
@@ -51,26 +51,26 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
   return (
     <React.Fragment>
       {therapist && (
-        <div className="therapistsummary">
-          <div className="container">
-            <h2 className="headers">Summary</h2>
+        <div className='therapistsummary'>
+          <div className='container'>
+            <h2 className='headers'>Summary</h2>
             <form onSubmit={(e) => onSubmit(e)}>
               <h6>Summary</h6>
               <textarea
-                rows="4"
+                rows='4'
                 disabled={disable}
-                className="inputstyle"
+                className='inputstyle'
                 value={summary}
-                name="summary"
+                name='summary'
                 onChange={(e) => onChange(e)}
               ></textarea>
               <h6>Main Focus</h6>
               <textarea
-                rows="2"
+                rows='2'
                 disabled={disable}
-                className="inputstyle"
+                className='inputstyle'
                 value={mainsFocus}
-                name="mainsFocus"
+                name='mainsFocus'
                 onChange={(e) => onChange(e)}
               ></textarea>
               <h6>Specialist</h6>
@@ -84,82 +84,83 @@ const TherapistSummary = ({ therapist, id, updateTherapistForm, auth }) => {
               ></input> */}
               <select
                 value={specialties}
-                className="inputstyle"
-                name="specialties"
+                className='inputstyle'
+                name='specialties'
                 onChange={(e) => onChange(e)}
                 disabled={disable}
               >
-                <option value="Anxiety disorders">Anxiety disorders</option>
-                <option value="Mood disorders">Mood disorders</option>
-                <option value="Psychotic disorders">Psychotic disorders</option>
-                <option value="Obsessive-compulsive disorder">
+                <option value='Anxiety disorders'>Anxiety disorders</option>
+                <option value='Mood disorders'>Mood disorders</option>
+                <option value='Psychotic disorders'>Psychotic disorders</option>
+                <option value='Obsessive-compulsive disorder'>
                   Obsessive-compulsive disorder
                 </option>
-                <option value="Post-traumatic stress disorder">
+                <option value='Post-traumatic stress disorder'>
                   Post-traumatic stress disorder
                 </option>
-                <option value="Stress response syndromes">
+                <option value='Stress response syndromes'>
                   Stress response syndromes
                 </option>
 
-                <option value="Dissociative disorders">
+                <option value='Dissociative disorders'>
                   Dissociative disorders
                 </option>
-                <option value="Factitious disorders">
+                <option value='Factitious disorders'>
                   Factitious disorders
                 </option>
-                <option value="Somatic symptom disorders">
+                <option value='Somatic symptom disorders'>
                   Somatic symptom disorders
                 </option>
               </select>
               <h6>Prefix</h6>
               <input
-                type="text"
+                type='text'
                 disabled={disable}
-                className="inputstyle"
+                className='inputstyle'
                 value={prefix}
-                name="prefix"
+                name='prefix'
                 onChange={(e) => onChange(e)}
               ></input>
               <h6>Years of Experience</h6>
               <input
-                type="text"
+                type='number'
                 disabled={disable}
-                className="inputstyle"
+                className='inputstyle'
                 value={yearsofEeperience}
-                name="yearsofEeperience"
+                name='yearsofEeperience'
                 onChange={(e) => onChange(e)}
               ></input>
               <h6>Date of Birth</h6>
 
               <input
-                type="text"
+                type='date'
                 disabled={disable}
-                className="inputstyle"
+                className='inputstyle'
                 value={birthOfDate}
-                name="birthOfDate"
+                name='birthOfDate'
                 onChange={(e) => onChange(e)}
               ></input>
               <h6>Fees</h6>
 
               <input
-                type="text"
+                type='number'
+                min='1'
                 disabled={disable}
-                className="inputstyle"
+                className='inputstyle'
                 value={fees}
-                name="fees"
+                name='fees'
                 onChange={(e) => onChange(e)}
               ></input>
               {auth.isAuthenticated_therapist &&
                 auth.therapist._id === id &&
                 disable && (
-                  <div className="col-12">
-                    <button className="mainbtn">edit</button>
+                  <div className='col-12'>
+                    <button className='mainbtn'>edit</button>
                   </div>
                 )}
               {!disable && (
-                <div className="col-12">
-                  <button className="mainbtn">save</button>
+                <div className='col-12'>
+                  <button className='mainbtn'>save</button>
                 </div>
               )}
             </form>
@@ -174,6 +175,6 @@ const mapStateToProps = (state) => ({
   therapist: state.therapists?.oneTherapist,
   auth: state.therapistAuth,
 });
-export default connect(mapStateToProps, { updateTherapistForm })(
+export default connect(mapStateToProps, {updateTherapistForm})(
   TherapistSummary
 );
