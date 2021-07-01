@@ -35,3 +35,17 @@
         color: black;
     }
 }
+
+@media (max-width:750px){
+    .footer{
+        h5{
+            font-size:1rem;
+        }
+           &__links {
+        img {
+            width:20px;
+            margin-right: .1rem;
+        }
+    }
+    }
+}
