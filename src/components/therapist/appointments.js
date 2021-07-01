@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 //redux
 import {connect} from 'react-redux';
-
 import {deleteAppointment, loadAppointmentById} from '../../actions/therapists';
 import UpdateAppointment from './updateappointment';
 import {withRouter} from 'react-router-dom';
@@ -59,6 +58,7 @@ const Appointments = ({
                               <th className='p-3 text-left' width='110px'>
                                 Patient
                               </th>
+                              <th className='p-3 text-left'>Meeting</th>
                             </>
                           )}
                       </tr>
@@ -127,6 +127,16 @@ const Appointments = ({
                               </td>
                               <td className='border-grey-light border hover:bg-gray-100 p-3 text-center '>
                                 {app.booking.isBooked && app.booking.user.name}
+                              </td>
+                              <td className='border-grey-light border hover:bg-gray-100 p-3 text-center '>
+                                <a
+                                  href={app.zoomLink}
+                                  target='_blank'
+                                  rel='noopener noreferrer'
+                                  className='font-bold text-soul-300'
+                                >
+                                  Join
+                                </a>
                               </td>
                             </>
                           )}
