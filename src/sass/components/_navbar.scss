@@ -6,10 +6,10 @@
   // z-index: 1;
   &.color {
     background-color: $colbg;
-    box-shadow: 0px 0px 5px $colmain;
+    // box-shadow: 0px 0px 5px $colmain;
   }
   &__image {
-    // width: 150px;
+    width: 130px;
     // height: 40px;
     &__user {
       width: 40px;
@@ -73,3 +73,13 @@
   color: $colmain !important ;
   font-weight: bold;
 }
+
+
+// @media (max-width:995px){
+//   .navBar{
+//     &__image{
+//       width: 150px;
+//     height: 40px;
+//     }
+//   }
+// }

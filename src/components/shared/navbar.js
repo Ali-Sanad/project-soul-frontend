@@ -223,7 +223,7 @@ const Navbar = ({
                   {isAuthenticated_therapist && (
                     <Link
                       to={{
-                        pathname: `/therapistlist/${id}/profile`,
+                        pathname: `/therapistlist/${id}/summary`,
                       }}
                     >
                       <span className='navBar__login__span'>

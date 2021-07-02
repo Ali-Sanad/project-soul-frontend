@@ -16,11 +16,31 @@
     }
 }
 
+.createtheraistprofile{
+    input[type='file']{
+        background-color:$colwhite !important;
+    }
+}
+
 /* material ui */
 .MuiStepper-horizontal{
     background-color: $colbg !important;
+    flex-wrap:wrap;
 }
 .MuiStepIcon-root.MuiStepIcon-active,
 .MuiSvgIcon-root.MuiStepIcon-root.MuiStepIcon-completed {
     color: $colmain !important;
+}
+
+@media (max-width:500px){
+    .createtheraistprofile{
+        h4{
+            font-size:1rem;
+        }
+    }
+    .registertherapist__content{
+        h4{
+            font-size:1rem;
+        }
+    }
 }

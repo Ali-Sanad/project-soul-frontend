@@ -53,7 +53,7 @@ const LoginTherapist = ({
     therapist &&
     therapist?.isAccepted === "Accepted"
   ) {
-    return <Redirect to={`/therapistlist/${therapist._id}/profile`} />;
+    return <Redirect to={"/"} />;
   }
   return (
     <>
