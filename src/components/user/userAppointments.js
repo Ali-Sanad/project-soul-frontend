@@ -17,17 +17,17 @@ const UserAppointments = ({auth, cancelAppointment}) => {
       {auth.user && (
         <div className='userdashboard '>
           <div className={classes.APP}>
-            <div className='container'>
-              <div className='row'>
                 <div className='col-12'>
                   <Navbar className='therapistdashboard__navbar'></Navbar>
                 </div>
+            <div className='container'>
+              <div className='row'>
 
                 <div className='col-12 col-md-3'>
                   <Sidenavuser></Sidenavuser>
                 </div>
                 <div className='col-12 col-md-8 userdashboard__appointments'>
-                  <h3>Appointments</h3>
+                  <h4 className="headers">Appointments</h4>
 
                   {auth && auth.user && auth.user.appointments.length > 0 ? (
                     <div className='h-full overflow-auto flex items-center justify-center'>
@@ -103,7 +103,7 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                       </div>
                     </div>
                   ) : (
-                    <h3>You don't have appointments</h3>
+                    <h5 className="text-center">You don't have appointments</h5>
                   )}
                 </div>
               </div>

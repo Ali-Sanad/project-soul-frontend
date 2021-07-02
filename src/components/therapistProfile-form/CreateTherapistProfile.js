@@ -118,7 +118,7 @@ const CreateTherapistProfile = ({
 
   return (
     <>
-      <div className="grid sm:grid-cols-2 grid-cols-1 h-screen bg-soul_bg font-Nunito">
+      <div className="grid sm:grid-cols-2 grid-cols-1 h-screen bg-soul_bg font-Nunito createtheraistprofile">
         <div className="">
           <div className="w-44 h-24 mx-auto">
             <Link to="/">
@@ -332,7 +332,7 @@ const CreateTherapistProfile = ({
                   alt="chosen"
                   style={{
                     height: "80px",
-                    paddingLeft: "3rem",
+                    paddingLeft: "5rem",
                     paddingTop: "1rem",
                   }}
                 />

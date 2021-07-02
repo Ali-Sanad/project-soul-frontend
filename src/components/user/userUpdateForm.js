@@ -37,7 +37,7 @@ const UserUpdateForm = ({ auth, updateProfile }) => {
       {auth.user && (
         <div className="userprofile">
           <div className="container">
-            <h2 className="headers">Profile</h2>
+            <h4 className="headers">Profile</h4>
             <form onSubmit={(e) => onSubmit(e)}>
               <div className="row">
                 <div className=" col-12 col-md-6">
@@ -81,7 +81,7 @@ const UserUpdateForm = ({ auth, updateProfile }) => {
                     onChange={(e) => onChange(e)}
                   ></input>
                   {disable && (
-                    <button className="button btn">
+                    <button>
                       <span className="mainbtn">Edit your information</span>
                     </button>
                   )}

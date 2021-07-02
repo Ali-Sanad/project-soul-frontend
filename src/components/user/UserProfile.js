@@ -16,11 +16,11 @@ const UserProfile = (props) => {
   return (
     <>
       <div className="userdashboard">
-        <div className="container">
-          <div className="row">
             <div className="col-12">
               <Navbar className="therapistdashboard__navbar"></Navbar>
             </div>
+        <div className="container">
+          <div className="row">
             <div className="col-12 col-md-3">
               <Sidenavuser></Sidenavuser>
             </div>
