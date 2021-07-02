@@ -27,7 +27,7 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                   <Sidenavuser></Sidenavuser>
                 </div>
                 <div className='col-12 col-md-8'>
-                  <h3>Appointments</h3>
+                  <h3 className='headers'>Appointments</h3>
 
                   {auth && auth.user && auth.user.appointments.length > 0 ? (
                     <div className='h-full overflow-auto flex items-center justify-center'>
