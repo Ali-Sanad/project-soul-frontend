@@ -9,7 +9,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-
+import { logout } from "../../actions/auth";
+import logoutimg from "./../../assets/images/logout.png";
+import { connect } from "react-redux";
+import { left } from "@popperjs/core";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -52,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ history, logout }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -69,8 +72,24 @@ const AdminDashboard = () => {
         >
           <Tab label="Therapists" {...a11yProps(0)} />
           <Tab label="Posts" {...a11yProps(1)} />
+          {/* <Tab label="logout" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
+      <img
+        className="navBar__login__logout"
+        src={logoutimg}
+        alt=""
+        style={{
+          cursor: "pointer",
+          position: "fixed",
+          top: "15px",
+          right: "100px",
+        }}
+        onClick={() => {
+          logout();
+          history.replace("/");
+        }}
+      ></img>
       <TabPanel value={value} index={0}>
         <AdminShowWaitingTherapists />
       </TabPanel>
@@ -81,4 +100,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default connect(null, { logout })(AdminDashboard);
