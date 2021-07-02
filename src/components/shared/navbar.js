@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react'; 
-import {NavLink, Link, withRouter} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 // import userimg from './../../assets/images/user-image.svg';
 import therapistimg from './../../assets/images/user.png';
 import logoutimg from './../../assets/images/logout.png';
 import noAvatar from '../../assets/images/noAvatar.gif';
-import {connect} from 'react-redux';
-import {Link as LinkScroll} from 'react-scroll';
+import { connect } from 'react-redux';
+import { Link as LinkScroll } from 'react-scroll';
 
 //import { Link } from "@material-ui/core";
 
-import {therapist_logout} from '../../actions/therapistAuth';
-import {logout} from '../../actions/auth';
+import { therapist_logout } from '../../actions/therapistAuth';
+import { logout } from '../../actions/auth';
 
 import logo from '../../assets/images/logo.png';
 
@@ -134,8 +134,7 @@ const Navbar = ({
                   Therpist List
                 </NavLink>
               </li>
-              {((auth && auth.isAuthenticated) ||
-                (therapistAuth && therapistAuth.isAuthenticated_therapist)) && (
+              {auth && auth.isAuthenticated && (
                 <li className='navBar__list__item nav-item'>
                   <NavLink
                     className='navBar__list__item__link nav-link'
@@ -196,16 +195,16 @@ const Navbar = ({
                   {auth.isAuthenticated && (
                     // <Link to={`/therapistlist/${id}`}>
                     <Link
-                    to={{
-                      pathname: `/user-profile`,
-                    }}
-                  >
-                    <img
-                      className='navBar__login__user'
-                      src={img || noAvatar}
-                      alt=''
-                    ></img>
-                   </Link>
+                      to={{
+                        pathname: `/user-profile`,
+                      }}
+                    >
+                      <img
+                        className='navBar__login__user'
+                        src={img || noAvatar}
+                        alt=''
+                      ></img>
+                    </Link>
                   )}
 
                   {therapistAuth.isAuthenticated_therapist && (
@@ -251,7 +250,7 @@ const Navbar = ({
                     className='navBar__login__logout'
                     src={logoutimg}
                     alt=''
-                    style={{cursor: 'pointer'}}
+                    style={{ cursor: 'pointer' }}
                     onClick={() => {
                       if (auth.isAuthenticated) {
                         logout();
@@ -281,6 +280,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   therapistAuth: state.therapistAuth,
 });
-export default connect(mapStateToProps, {logout, therapist_logout})(
+export default connect(mapStateToProps, { logout, therapist_logout })(
   withRouter(Navbar)
 );
