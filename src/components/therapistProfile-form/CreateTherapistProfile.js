@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { withRouter, Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { createTherapistProfile } from "../../actions/therapistProfile";
+import { createTherapistProfile } from '../../actions/therapistProfile';
 
-import logo from "./../../assets/images/logo.png";
-import userRegister from "./../../assets/images/user-register.png";
+import logo from './../../assets/images/logo.png';
+import userRegister from './../../assets/images/user-register.png';
 
 const CreateTherapistProfile = ({
   createTherapistProfile,
@@ -14,22 +14,22 @@ const CreateTherapistProfile = ({
   match,
 }) => {
   const [formData, setFormData] = useState({
-    summary: "",
-    therapist_image_url: "",
-    licenseOfOrganization: "",
-    prefix: "",
-    yearsofEeperience: "",
-    licenseNo: "",
-    mainsFocus: "",
-    birthOfDate: "",
-    specialties: "",
-    uploadCv: "",
-    uploadimg: "",
-    twitter: "",
-    facebook: "",
-    linkedin: "",
-    instagram: "",
-    youtube: "",
+    summary: '',
+    therapist_image_url: '',
+    licenseOfOrganization: '',
+    prefix: '',
+    yearsofEeperience: '',
+    licenseNo: '',
+    mainsFocus: '',
+    birthOfDate: '',
+    specialties: '',
+    uploadCv: '',
+    uploadimg: '',
+    twitter: '',
+    facebook: '',
+    linkedin: '',
+    instagram: '',
+    youtube: '',
   });
   const {
     summary,
@@ -61,7 +61,7 @@ const CreateTherapistProfile = ({
     e.preventDefault();
     createTherapistProfile(formData, id);
   };
-
+  console.log(formData);
   console.log(ID);
 
   const [previewImage, setPreviewImage] = useState(null);
@@ -331,9 +331,9 @@ const CreateTherapistProfile = ({
                   src={previewImage}
                   alt="chosen"
                   style={{
-                    height: "80px",
-                    paddingLeft: "3rem",
-                    paddingTop: "1rem",
+                    height: '80px',
+                    paddingLeft: '3rem',
+                    paddingTop: '1rem',
                   }}
                 />
               )}
