@@ -6,7 +6,7 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
   const [disable, setDisable] = useState(true);
   const [formData, setFormData] = useState({
     summary: '',
-    prefix: '',
+    // prefix: '',
     mainsFocus: '',
 
     specialties: '',
@@ -17,7 +17,7 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
   useEffect(() => {
     setFormData({
       summary: therapist?.summary,
-      prefix: therapist?.prefix,
+      // prefix: therapist?.prefix,
       mainsFocus: therapist?.mainsFocus,
 
       specialties: therapist?.specialties,
@@ -28,7 +28,7 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
   }, [therapist]);
   const {
     summary,
-    prefix,
+    // prefix,
     mainsFocus,
     specialties,
     yearsofEeperience,
@@ -112,7 +112,7 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
                   Somatic symptom disorders
                 </option>
               </select> */}
-              <h6>Prefix</h6>
+              {/* <h6>Prefix</h6>
               <input
                 type='text'
                 disabled={disable}
@@ -120,7 +120,7 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
                 value={prefix}
                 name='prefix'
                 onChange={(e) => onChange(e)}
-              ></input>
+              ></input> */}
               <h6>Years of Experience</h6>
               <input
                 type='number'

@@ -91,7 +91,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                             <span>{therapist?.specialties}</span>
                           </p>
                           <p>
-                            Prefix: <span>{therapist?.prefix}</span>
+                          Years of Experience: <span>{therapist?.yearsofEeperience }</span>
                           </p>
                           <p>
                             Licenec: <span>{therapist?.licenseNo}</span>
