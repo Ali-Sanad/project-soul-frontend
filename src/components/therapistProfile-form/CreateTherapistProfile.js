@@ -88,12 +88,13 @@ const CreateTherapistProfile = ({
     !birthOfDate ||
     !specialties ||
     !uploadCv ||
-    !uploadimg ||
-    !twitter ||
-    !facebook ||
-    !linkedin ||
-    !instagram ||
-    !youtube
+    !uploadimg 
+    // ||
+    // !twitter ||
+    // !facebook ||
+    // !linkedin ||
+    // !instagram ||
+    // !youtube
   ) {
   } else {
     createTheraProfile({
@@ -175,12 +176,15 @@ const CreateTherapistProfile = ({
             </div>
 
             <div className=" mt-6 ">
+              <h6 className="block mx-auto mt-2  w-4/5 p-2 rounded-full text-gray-400">
+               Birth of Date
+              </h6>
               <input
                 className="block mx-auto mt-2  w-4/5 p-3 rounded-full
           border focus:outline-none
           focus:ring-1 focus:to-soul focus:border-transparent 
           "
-                type="text"
+       type="date"
                 placeholder="Date Of Birth "
                 name="birthOfDate"
                 value={birthOfDate}
@@ -245,7 +249,7 @@ const CreateTherapistProfile = ({
                 name="twitter"
                 value={twitter}
                 onChange={(e) => onChange(e)}
-                required
+                // required
               />
             </div>
 
@@ -260,7 +264,7 @@ const CreateTherapistProfile = ({
                 name="facebook"
                 value={facebook}
                 onChange={(e) => onChange(e)}
-                required
+                // required
               />
             </div>
 
@@ -275,7 +279,7 @@ const CreateTherapistProfile = ({
                 name="linkedin"
                 value={linkedin}
                 onChange={(e) => onChange(e)}
-                required
+                // required
               />
             </div>
 
@@ -290,7 +294,7 @@ const CreateTherapistProfile = ({
                 name="instagram"
                 value={instagram}
                 onChange={(e) => onChange(e)}
-                required
+                // required
               />
             </div>
 
@@ -305,12 +309,12 @@ const CreateTherapistProfile = ({
                 name="youtube"
                 value={youtube}
                 onChange={(e) => onChange(e)}
-                required
+                // required
               />
             </div>
 
             <div className=" mt-6 ">
-              <h6 className="block mx-auto mt-2  w-4/5 p-2 rounded-full">
+              <h6 className="block mx-auto mt-2  w-4/5 p-2 rounded-full text-gray-400">
                 Upload your Licence
               </h6>
 
