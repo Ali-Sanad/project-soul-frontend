@@ -54,10 +54,10 @@ const Article = ({
           {article?.articles.map((article) => (
             <>
               <div className="article" key={article._id}>
-                <div>
+                <div className="article__image">
                   <img src={article.ArticleImg} alt="SingleArticleImage" />
                 </div>
-                <div>
+                <div className="article__paragraph">
                   <small>
                     <Moment format="YYYY/MM/DD">{article.date}</Moment>
                   </small>
