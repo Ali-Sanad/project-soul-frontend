@@ -74,15 +74,15 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
                 onChange={(e) => onChange(e)}
               ></textarea>
               <h6>Specialist</h6>
-              {/* <input
+              <input
                 type="text"
                 disabled={disable}
                 className="inputstyle"
                 value={specialties}
                 name="specialties"
                 onChange={(e) => onChange(e)}
-              ></input> */}
-              <select
+              ></input>
+              {/* <select
                 value={specialties}
                 className='inputstyle'
                 name='specialties'
@@ -111,7 +111,7 @@ const TherapistSummary = ({therapist, id, updateTherapistForm, auth}) => {
                 <option value='Somatic symptom disorders'>
                   Somatic symptom disorders
                 </option>
-              </select>
+              </select> */}
               <h6>Prefix</h6>
               <input
                 type='text'

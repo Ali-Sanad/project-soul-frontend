@@ -88,7 +88,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                         <div className="col-12 col-md-6">
                           <p>
                             Specialist:{' '}
-                            <span>{therapist?.specialties.toString()}</span>
+                            <span>{therapist?.specialties}</span>
                           </p>
                           <p>
                             Prefix: <span>{therapist?.prefix}</span>
@@ -103,7 +103,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                         <div className="col-12 col-md-6">
                           <p>
                             Main Focus:{' '}
-                            <span>{therapist?.mainsFocus.toString()}</span>
+                            <span>{therapist?.mainsFocus}</span>
                           </p>
                           <p>
                             Licence No.: <span>15-10-1996</span>
