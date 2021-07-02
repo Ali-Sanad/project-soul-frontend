@@ -29,3 +29,13 @@
     border: 1px solid $colsecondary !important;
   }
 }
+
+
+
+.userdashboard{
+  &__appointments{
+    background-color:$colwhite;
+      border-radius: 2rem;
+  padding: 2rem 1rem;
+  }
+}

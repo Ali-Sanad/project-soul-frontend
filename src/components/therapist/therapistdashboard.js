@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { getTherapist } from "../../actions/therapists";
+import { getTherapist, getTherapists } from "../../actions/therapists";
 
 import Navbar from "../shared/navbar";
 import SideNav from "../shared/sidenav";
@@ -20,6 +20,7 @@ const TherapistDashboard = ({
   getTherapist,
   user,
   newConversation,
+  getTherapists,
 }) => {
   let content = match.params.content;
   let id = match.params.id.trim();
@@ -71,10 +72,12 @@ const TherapistDashboard = ({
   );
 };
 const mapStateToProps = (state) => ({
-  therapist: state.therapists.oneTherapist,
+  therapist: state.therapists?.oneTherapist,
   user: state.auth?.user?._id,
 });
 
-export default connect(mapStateToProps, { getTherapist, newConversation })(
-  TherapistDashboard
-);
+export default connect(mapStateToProps, {
+  getTherapist,
+  getTherapists,
+  newConversation,
+})(TherapistDashboard);

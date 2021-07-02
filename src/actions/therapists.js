@@ -17,6 +17,7 @@ import {
   ADD_THERAPIST_IMAGE,
 } from './types';
 import {setAlert} from './alert';
+import {loadTherapist} from './therapistAuth';
 
 //GET ALL Therapists
 export const getTherapists = () => async (dispatch) => {
@@ -199,10 +200,12 @@ export const addTherapistProfileImage = (body, id) => async (dispatch) => {
       type: ADD_THERAPIST_IMAGE,
     });
     dispatch(getTherapist(id));
+    dispatch(loadTherapist());
   } catch (error) {
     dispatch({
       type: THERAPISTS_ERROR,
     });
     dispatch(getTherapist(id));
+    dispatch(loadTherapist());
   }
 };

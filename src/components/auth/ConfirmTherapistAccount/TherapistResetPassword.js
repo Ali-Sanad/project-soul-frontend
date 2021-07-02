@@ -36,7 +36,6 @@ const TherapistResetPassword = ({ match, resetPassword, auth }) => {
     e.preventDefault();
     resetPassword(match.params.id, { password, confirmPassword });
   };
-  console.log("auth", auth);
   if (auth.redirect === true) {
     return <Redirect to="/logintherapist" />;
   }

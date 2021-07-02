@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Navbar from "../shared/navbar";
 import HeroSection from "./herosection";
@@ -9,10 +9,19 @@ import Footer from "../shared/footer";
 import MessageIcon from "../shared/message";
 import ToTop from "../shared/totop";
 //redux
+import { getTherapists, getTherapist } from "../../actions/therapists";
 import { connect } from "react-redux";
 import { therapist_logout } from "../../actions/therapistAuth";
 import { logout } from "../../actions/auth";
 const Home = (props) => {
+  useEffect(() => {
+    props.getTherapists();
+  }, []);
+  useEffect(() => {
+    if (props.therapistAuth.therapist) {
+      props.getTherapist(props.therapistAuth?.therapist?._id);
+    }
+  }, [getTherapist, props.therapistAuth?.therapist?._id]);
   return (
     <>
       <Navbar {...props}></Navbar>
@@ -32,4 +41,9 @@ const mapStateToProps = (state) => {
     therapistAuth: state.therapistAuth,
   };
 };
-export default connect(mapStateToProps, { logout, therapist_logout })(Home);
+export default connect(mapStateToProps, {
+  getTherapists,
+  logout,
+  therapist_logout,
+  getTherapist,
+})(Home);
