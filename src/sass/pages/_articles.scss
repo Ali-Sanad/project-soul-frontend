@@ -46,19 +46,22 @@
 .articles {
   .article {
     background-color: white;
-    display: flex;
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
 
-    div {
+    div .article__image {
       img {
-        max-width: 15rem;
-        margin-right: 0.2rem;
+        max-width: 20rem;
+        margin-right: 2rem;
       }
     }
 
-    div {
+    div  {
       margin: 0.5rem;
       font-family: Roboto;
       small {
@@ -99,6 +102,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    &__text {
+      margin-top: 3rem;
+    }
   }
 }
+
+
+    @media (max-width:464px){
+      .article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;    
+        div {
+          img {
+            max-width: 90%;
+          }
+        }      } 
+    }
+
