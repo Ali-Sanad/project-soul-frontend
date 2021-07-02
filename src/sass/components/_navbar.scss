@@ -30,6 +30,7 @@
       &__link {
         color: $colfont !important;
         font-family: Roboto;
+        cursor: pointer;
         &:hover {
           color: $colmain !important;
         }
