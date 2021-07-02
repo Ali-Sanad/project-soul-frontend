@@ -26,7 +26,7 @@ const UserAppointments = ({auth, cancelAppointment}) => {
                 <div className='col-12 col-md-3'>
                   <Sidenavuser></Sidenavuser>
                 </div>
-                <div className='col-12 col-md-8'>
+                <div className='col-12 col-md-8 userdashboard__appointments'>
                   <h3>Appointments</h3>
 
                   {auth && auth.user && auth.user.appointments.length > 0 ? (
