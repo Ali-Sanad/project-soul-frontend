@@ -1,21 +1,21 @@
-import React from "react";
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
-import { getTherapist } from "../../actions/therapists";
-import { createTherapistProfile } from "../../actions/therapistProfile";
+import React from 'react';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import { getTherapist } from '../../actions/therapists';
+import { createTheraProfile } from '../../actions/therapistProfile';
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -87,7 +87,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                       <div className="row">
                         <div className="col-12 col-md-6">
                           <p>
-                            Specialist:{" "}
+                            Specialist:{' '}
                             <span>{therapist?.specialties.toString()}</span>
                           </p>
                           <p>
@@ -102,7 +102,7 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
                         </div>
                         <div className="col-12 col-md-6">
                           <p>
-                            Main Focus:{" "}
+                            Main Focus:{' '}
                             <span>{therapist?.mainsFocus.toString()}</span>
                           </p>
                           <p>
@@ -152,5 +152,5 @@ const AdminTherapistCard = ({ therapist, getTherapist, id, children }) => {
 
 export default connect(null, {
   getTherapist,
-  createTherapistProfile,
+  createTheraProfile,
 })(AdminTherapistCard);

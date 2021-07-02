@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { createTherapistProfile } from '../../actions/therapistProfile';
+import { createTheraProfile } from '../../actions/therapistProfile';
 
 import logo from './../../assets/images/logo.png';
 import userRegister from './../../assets/images/user-register.png';
 
 const CreateTherapistProfile = ({
-  createTherapistProfile,
+  createTheraProfile,
   isAuthenticated_therapist,
   match,
 }) => {
@@ -54,12 +54,12 @@ const CreateTherapistProfile = ({
   const [ID, setID] = useState(null);
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     let id = match.params.id.trim();
     console.log(id);
-    await setID(match.params.id.trim());
+    setID(match.params.id.trim());
     console.log(ID);
-    e.preventDefault();
-    createTherapistProfile(formData, id);
+    createTheraProfile(formData, id);
   };
   console.log(formData);
   console.log(ID);
@@ -96,7 +96,7 @@ const CreateTherapistProfile = ({
     !youtube
   ) {
   } else {
-    createTherapistProfile({
+    createTheraProfile({
       summary,
       therapist_image_url,
       licenseOfOrganization,
@@ -360,7 +360,7 @@ const CreateTherapistProfile = ({
 };
 
 CreateTherapistProfile.propTypes = {
-  createTherapistProfile: PropTypes.func.isRequired,
+  // createTheraProfile: PropTypes.func.isRequired,
 
   isAuthenticated_therapist: PropTypes.bool,
 };
@@ -368,5 +368,5 @@ const mapStateToProps = (state) => ({
   therapistProfile: state.therapistProfile,
 });
 export default connect(mapStateToProps, {
-  createTherapistProfile,
+  createTheraProfile,
 })(withRouter(CreateTherapistProfile));

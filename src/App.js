@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 
 //import sass
 import './sass/main.scss';
@@ -109,8 +109,8 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      {/* <BrowserRouter> */}
-      <HashRouter>
+      <BrowserRouter>
+        {/* <HashRouter> */}
         {/* <NavBar></NavBar> */}
         <Alert />
         <Switch>
@@ -237,8 +237,8 @@ const App = () => {
           <Route path="/error" component={Error} />
           <Redirect to="/error" />
         </Switch>
-        {/* </BrowserRouter> */}
-      </HashRouter>
+      </BrowserRouter>
+      {/* </HashRouter> */}
     </Provider>
   );
 };
