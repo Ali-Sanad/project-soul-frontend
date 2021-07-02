@@ -11,16 +11,16 @@ const TherapistConfirmUserAccount = (props) => {
           Your account has been registered successfully! A link has been sent to
           to your email, Please check the inbox to verify your account.
         </h6>
-        {/* <h6 className="mt-6">
-          <span className="text-soul-300 font-bold ">
+        <h6 className='mt-6'>
+          <span className='text-soul-300 font-bold '>
             <Link
-              to="/registertherapist"
-              className=" text-gray-600 no-underline hover:text-soul-300 text-xl"
+              to='/logintherapist'
+              className=' text-gray-600 no-underline hover:text-soul-300 text-xl'
             >
               Go back !
             </Link>
           </span>
-        </h6> */}
+        </h6>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const ConfirmUserAccount = (props) => {
           Your account has been registered successfully! A link has been sent to
           to your email, Please check the inbox to verify your account.
         </h6>
-        {/* <h6 className='mt-6'>
+        <h6 className='mt-6'>
           <span className='text-soul-300 font-bold '>
             <Link
               to='/login'
@@ -19,7 +19,7 @@ const ConfirmUserAccount = (props) => {
               Go back !
             </Link>
           </span>
-        </h6> */}
+        </h6>
       </div>
     </div>
   );
