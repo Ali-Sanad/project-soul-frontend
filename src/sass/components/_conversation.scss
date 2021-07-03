@@ -21,3 +21,21 @@
 .conversationName {
   font-weight: 900;
 }
+
+
+@media (max-width:1023px){
+  .conversation {
+     padding: .2rem;
+  }
+  .conversationImg {
+    display: none;
+  }
+  
+  .conversationName {
+    font-weight: 600;
+    text-align: center;
+  }
+ 
+}
+
+

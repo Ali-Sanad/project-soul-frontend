@@ -72,3 +72,29 @@
   color: $colfont;
   text-transform: uppercase;
 }
+
+// @media (max-width:1023px){
+//   .messenger {
+//       display: flex;
+//   flex-direction: column;
+//   justify-content: center;  
+//   }
+ 
+// }
+
+@media (max-width:700px){
+
+
+.chatMessageInput {
+
+  padding: .5rem;
+  
+
+}
+.chatSubmitButton {
+  padding: 0.4rem;
+
+}
+  
+}
+
