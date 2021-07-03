@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 // import userimg from './../../assets/images/user-image.svg';
-import therapistimg from './../../assets/images/user.png';
+// import therapistimg from './../../assets/images/user.png';
+import doctorImg from './../../assets/images/doctorImg.jpg';
 import logoutimg from './../../assets/images/logout.png';
 import noAvatar from '../../assets/images/noAvatar.gif';
 import { connect } from 'react-redux';
@@ -213,7 +214,7 @@ const Navbar = ({
                       src={
                         therapistAuth.therapist.therapistImg !== ''
                           ? therapistAuth.therapist.therapistImg
-                          : therapistimg
+                          : doctorImg
                       }
                       alt=''
                     ></img>
