@@ -17,7 +17,7 @@ const CreateTherapistProfile = ({
     summary: '',
     therapist_image_url: '',
     licenseOfOrganization: '',
-    prefix: '',
+    // prefix: '',
     yearsofEeperience: '',
     licenseNo: '',
     mainsFocus: '',
@@ -35,7 +35,7 @@ const CreateTherapistProfile = ({
     summary,
     therapist_image_url,
     licenseOfOrganization,
-    prefix,
+    // prefix,
     yearsofEeperience,
     licenseNo,
     mainsFocus,
@@ -81,7 +81,7 @@ const CreateTherapistProfile = ({
     !summary ||
     !therapist_image_url ||
     !licenseOfOrganization ||
-    !prefix ||
+    // !prefix ||
     !yearsofEeperience ||
     !licenseNo ||
     !mainsFocus ||
@@ -101,7 +101,7 @@ const CreateTherapistProfile = ({
       summary,
       therapist_image_url,
       licenseOfOrganization,
-      prefix,
+      // prefix,
       yearsofEeperience,
       licenseNo,
       mainsFocus,
@@ -200,9 +200,9 @@ const CreateTherapistProfile = ({
           focus:ring-1 focus:to-soul focus:border-transparent 
           "
                 type="text"
-                placeholder="Prefix "
-                name="prefix"
-                value={prefix}
+                placeholder="Years of Experience "
+                name="yearsofEeperience"
+                value={yearsofEeperience}
                 onChange={(e) => onChange(e)}
                 required
               />
