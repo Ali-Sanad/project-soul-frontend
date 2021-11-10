@@ -1,4 +1,5 @@
-# Project Soul is live on :=> https://project-soul.netlify.app/
+## [Live App :rocket:](https://project-soul.netlify.app)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
